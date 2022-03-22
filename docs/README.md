@@ -6,10 +6,12 @@ The teams consists of students identified in the following table.
 
 | Student Number	| Name |
 |--------------|----------------------------|
-| **1210001**  | Name of student 1          |
-| **1210002**  | Name of student 2          |
-| **1210003**  | Name of student 3          |
-| **1210004**  | Name of student 4          |
+| **1211638**  | Ana Carolina Soares Araújo Barbosa          |
+| **1210983**  | Gustavo Bandeira Pinho Caiano          |
+| **1211487**  | Henrique Gonçalves Pereira Ennes Ribeiro          |
+| **1210957**  | João Miguel Oliveira Teixeira          |
+| **1211155**  | José Diogo Nápoles de Sousa Rente          |
+| **1202054**  | Tiago Miguel Soares Ribeiro          |
 
 
 
