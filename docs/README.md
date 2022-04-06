@@ -8,10 +8,8 @@ The teams consists of students identified in the following table.
 |--------------|----------------------------|
 | **1211638**  | Ana Carolina Soares Araújo Barbosa          |
 | **1210983**  | Gustavo Bandeira Pinho Caiano          |
-| **1211487**  | Henrique Gonçalves Pereira Ennes Ribeiro          |
 | **1210957**  | João Miguel Oliveira Teixeira          |
 | **1211155**  | José Diogo Nápoles de Sousa Rente          |
-| **1202054**  | Tiago Miguel Soares Ribeiro          |
 
 
 
