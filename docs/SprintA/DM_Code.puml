@@ -118,9 +118,9 @@ CenterCoordinator "*" --- "*" Report : analyses >
 
 Administrator "1" -left- "*" Employee : registers and configures >
 
-SNSUser -right-- VaccinationCertificate : requests >
+SNSUser "1" -right-- "1" VaccinationCertificate : requests >
 
-VaccineSchedule -down-- SNSUser : made for >
+VaccineSchedule "*" -down-- "1" SNSUser : made for >
 
 Receptionist "*" -up-- "*" SNSUser : registers arrival of >
 Receptionist "*" -down--- "*" VaccineSchedule : confirms >
@@ -133,8 +133,8 @@ Nurse "*" -down-- "1" RecoveryRoom : sends user to >
 (Nurse, RecoveryRoom) .. AdverseReaction
 VaccineAdministration "1" -left- "*" Nurse : executed by >
 
-ScheduleVerification -up- VaccineSchedule : confirms >
-ScheduleVerification -up-- Notification : executes >
+ScheduleVerification "1" -up- "1" VaccineSchedule : confirms >
+ScheduleVerification "1" -up-- "0..1" Notification : emits >
 
 Notification <|-- SMSNotification
 Notification <|-- EmailNotification
