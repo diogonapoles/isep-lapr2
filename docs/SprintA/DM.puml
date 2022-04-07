@@ -1,0 +1,128 @@
+@startuml
+class HealthcareCenters{
+}
+
+class Report
+
+class CenterCoordinator{
+name
+companyID
+}
+
+class Company{
+designation
+}
+
+class Administrator
+
+class Vaccine
+
+class VaccineSchedule{
+date
+time
+userNumber
+vaccinationCenter
+}
+
+class Receptionist{
+name
+companyID
+}
+
+class SNSUser{
+name
+birthDate
+}
+
+class Notification
+
+class SMSNotification
+
+class EmailNotification
+
+class Report
+
+class Dose{
+age
+dosage
+timeInterval
+}
+
+class VaccineAdministration
+
+class Nurse{
+name
+companyID
+}
+
+class AdverseReaction
+
+class RecoveryRoom{
+listUsers
+}
+
+
+class CommunityCenters{
+}
+
+class VaccinationCenter{
+name
+phoneNumber
+faxNumber
+homeAddress
+emailAddress
+websiteAddress
+openingHours
+closingHours
+slotDuration
+maxNumVaccinesPerSlot
+}
+
+class VaccineType{
+code
+designation
+whoID
+}
+
+class VaccinationCertificate
+
+class ScheduleVerification
+
+class WaitingRoom
+
+class Employees
+
+Employees <|-- Nurse
+Employees <|-- Receptionist
+Company - VaccinationCenter : manages >
+VaccinationCenter - Vaccine : applies >
+Vaccine -up VaccineType : is >
+Vaccine -down VaccineAdministration : of <
+VaccinationCenter <|-- HealthcareCenters
+VaccinationCenter <|-- CommunityCenters
+VaccinationCenter - Report : reports >
+HealthcareCenters - VaccineType : can administer >
+CommunityCenters - VaccineType : can administer >
+Vaccine - VaccineType : is
+VaccineAdministration - VaccineSchedule : > fulfilling
+CenterCoordinator - VaccinationCenter : coordinates >
+Administrator - Employees : registers and configures
+SNSUser -up VaccinationCertificate : requests >
+VaccineAdministration -down SNSUser : > administrated on
+VaccineAdministration -left Dose : has
+VaccineSchedule - SNSUser : made for >
+Receptionist -right SNSUser : registers arrival of
+Receptionist -down VaccineSchedule : confirms >
+Receptionist -left WaitingRoom : sends SNS user to >
+Nurse - WaitingRoom : checks list of people on the >
+Nurse - VaccinationCertificate : issues and delivers >
+Nurse - RecoveryRoom : sends user to >
+VaccineAdministration - Nurse : executed by >
+
+ScheduleVerification -left VaccineSchedule : confirms >
+ScheduleVerification -left Notification : executes
+
+Notification <|-- SMSNotification
+Notification <|-- EmailNotification
+
+@enduml
