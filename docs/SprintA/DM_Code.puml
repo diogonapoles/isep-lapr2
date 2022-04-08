@@ -1,4 +1,10 @@
 @startuml
+left to right direction
+hide methods
+skinparam classFontSize 20
+skinparam padding 4
+skinparam ranksep 150
+
 class HealthcareCenter{
 }
 
@@ -126,7 +132,7 @@ Receptionist "*" -up-- "*" SNSUser : registers arrival of >
 Receptionist "*" -down--- "*" VaccineSchedule : confirms >
 Receptionist "1..*"-right-- "1..*"WaitingRoom : sends SNS user to >
 
-Nurse "*" -down--- "1..*" WaitingRoom : checks list of people on the >
+Nurse "*" -down--- "1..*" WaitingRoom : sends user to >
 (Nurse, WaitingRoom) .. UserHealthHistoric
 Nurse "1" -up-- "*" VaccinationCertificate : issues and delivers >
 Nurse "*" -down-- "1" RecoveryRoom : sends user to >
