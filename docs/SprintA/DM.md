@@ -49,7 +49,8 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Places**
 
-* 
+* Healthcare Center
+* Vaccination Center
 
 ---
 
@@ -98,7 +99,7 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Organizations**
 
-* 
+* SNS
 
 ---
 
