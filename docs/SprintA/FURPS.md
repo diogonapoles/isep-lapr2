@@ -1,8 +1,16 @@
-# Supplementary specification
+# Supplementary Specification
 
 ## Functionality
 
 *Specifies the features that are not related to the use cases, namely: Audit, Reporting and Security.*
+
+**<u> Audit: </u>**
+
+- **It will be **
+
+**<u> Reporting: </u>**
+
+- **lallala**
 
 **<u> Security: </u>**
   
@@ -42,7 +50,7 @@
 **<u> Possibility of Recovery: </u>**
 
 - **The application will have multiple windows in order to be possible to exit in case of failure and get back to the menu.**
-- **These windows will help to maintain the well-function of the application, making sure the found problem won´t interfere with other parts of the app.**
+- **These windows will help to maintain the well-function of the application, making sure the found problem wonÂ´t interfere with other parts of the app.**
 
 **<u> Possibility of Prediction: </u>**
 
@@ -50,7 +58,7 @@
 
 **<u> Accuracy: </u>**
 
-- **The application will be as accurate as possible.**
+- **The application will be as accurate in its calculations as possible.**
 
 **<u> Average Time Between Failures :</u>**
 
@@ -63,6 +71,7 @@
 
 - **The code should be implemented thinking about the performance of the program, namely the requirements above referenced.**
 - **The system should have responses in small time ranges. It should not consume a lot of memory.**
+- **The application is supposed to start in a very short amount of time.**
 
 ## Supportability
 
@@ -71,11 +80,12 @@
 **<u> Testability: </u>**
 
 - **Expects to use Test Driven Development in order to test the features and performance of the important classes.**
-- **[...] unit tests are recommended [...]**
+
+- **Unit tests are recommended.**
 
 **<u> Adaptability: </u>**
 
-- **It´s expected th**
+- **ItÂ´s expected for the application to be easy to adapt to any hardware.**
 
 **<u> Maintainability: </u>**
 
@@ -83,7 +93,7 @@
 
 **<u> Compatibility: </u>**
 
-- **It should be compatible with as many softwares as possible.**
+- **It should be compatible with many software.**
 
 **<u> Configurability: </u>**
 
@@ -101,12 +111,16 @@
 
 ### Design Constraints
 
+*Specifies or constraints the system design process. Examples may include: programming languages, software process, mandatory standards/patterns, use of development tools, class library, etc.*
+
 - **Adopt good design pratices and coding standards using GRASP patterns.**
 
 - **The system should be prepared to send notifications to SNS Users.**
  
 
 ### Implementation Constraints
+
+*Specifies or constraints the code or construction of a system such such as: mandatory standards/patterns, implementation languages, database integrity, resource limits, operating system.*
 
 - **Implement the core software in Java**
 
@@ -115,8 +129,12 @@
 
 ### Interface Constraints
 
+*Specifies or constraints the features inherent to the interaction of the system being developed with other external systems.*
+
 - **Implement using JavaFx.**
 
 ### Physical Constraints
+
+*Specifies a limitation or physical requirement regarding the hardware used to house the system, as for example: material, shape, size or weight.*
 
 - **Should be used by a computer with an IDE that reads Java code.**
