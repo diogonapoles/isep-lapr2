@@ -10,7 +10,7 @@
 
 **<u> Reporting: </u>**
 
-- **Create a support for generating reports.**
+- **The system does data report to analise.**
 
 **<u> Security: </u>**
   
