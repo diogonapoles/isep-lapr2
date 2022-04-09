@@ -24,7 +24,7 @@ Throughout the project's development period, the distribution of _tasks / requir
 |-----------------------------|------------|------------|------------|------------|
 | Glossary  |  [1211638](SprintA/Glossary.md)   |   [all](SprintB/Glossary.md)  |   [all](SprintC/Glossary.md)  | [all](SprintD/Glossary.md)  |
 | Use Case Diagram (UCD)  |  [1210957](SprintA/UCD.md)   |   [all](SprintB/UCD.md)  |   [all](SprintC/UCD.md)  | [all](SprintD/UCD.md)  |
-| Supplementary Specification   |  [1210983](SprintA/FURPS.md)   |   [all](SprintB/FURPS.md)  |   [all](SprintC/FURPS.md)  | [all](SprintD/FURPS.md)  |
+| Supplementary Specification   |  [1211638](SprintA/FURPS.md)   |   [all](SprintB/FURPS.md)  |   [all](SprintC/FURPS.md)  | [all](SprintD/FURPS.md)  |
 | Domain Model  |  [1211155](SprintA/DM.md)   |   [all](SprintB/DM.md)  |   [all](SprintC/DM.md)  | [all](SprintD/DM.md)  |
 | US 001 (SDP Activities)  |  [1210001](SprintA/US001.md)   |    |   |  |
 | US 002 (SDP Activities)  |  [1210002](SprintA/US002.md)   |    |   |  |
