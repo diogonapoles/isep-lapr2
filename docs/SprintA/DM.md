@@ -136,16 +136,11 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 An association is a relationship between instances of objects that indicates a relevant connection and that is worth of remembering, or it is derivable from the List of Common Associations:
 
-+ **_HealthcareCenter_** is physically part of **_SNS_**
-+ **_VaccinationCenter_** is physically or logically part of **_HealthcareCenter_**
-+ **_Vaccine_** is physically or logically contained in/on **_VaccinationCenter_**
-+ **_VaccinationCenter_** is a description for **_HealthcareCenter_**
-+ **_Nurse_** known/logged/recorded/reported/captured in **_AdverseReaction_**
-+ **_Nurse_** known/logged/recorded/reported/captured in **_RecoveryRoom_**
-+ **_Receptionist_** known/logged/recorded/reported/captured in **_SNSUser_**
++ **_A_** is physically or logically part of **_B_**
++ **_A_** is physically or logically contained in/on **_B_**
++ **_A_** is a description for **_B_**
 + **_A_** known/logged/recorded/reported/captured in **_B_**
-+ **_Company_** uses or manages or owns **_VaccinationCenter_**
-+ **_Administrator_** uses or manages or owns **_Employee_**
++ **_A_** uses or manages or owns **_B_**
 + **_A_** is related with a transaction (item) of **_B_**
 + etc.
 
