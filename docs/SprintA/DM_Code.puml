@@ -10,7 +10,7 @@ class HealthcareCenter{
 
 class Report
 
-class CenterCoordinator{
+class Coordinator{
 name
 companyID
 }
@@ -103,24 +103,25 @@ Employee <|-down- Receptionist
 
 Company "1" -up-- "*" VaccinationCenter : manages >
 
+VaccinationCenter <|-left- HealthcareCenter
+VaccinationCenter <|-left- CommunityCenter
 VaccinationCenter "1" -down-- "*"Vaccine : applies >
+VaccinationCenter "1" -up-- "*" Report : reports >
 
 Vaccine "*" -down--- "1" VaccineType : is >
 Vaccine "1" -down-- "*" VaccineAdministration : of <
+VaccineAdministration "0..1" -right- "0..1" VaccineSchedule : > fulfilling
+VaccineAdministration "*" -down-- "1" SNSUser : > administrated on
+VaccineAdministration "1" -down--- "*" Dose : has >
+VaccineAdministration "1" -left- "*" Nurse : executed by >
 
-VaccinationCenter <|-left- HealthcareCenter
-VaccinationCenter <|-left- CommunityCenter
-VaccinationCenter "1" -up-- "*" Report : reports >
 
 HealthcareCenter "*" -down- "*" VaccineType : can administer >
 CommunityCenter "*" -right- "1" VaccineType : can administer >
 
-VaccineAdministration "0..1" -right- "0..1" VaccineSchedule : > fulfilling
-VaccineAdministration "*" -down-- "1" SNSUser : > administrated on
-VaccineAdministration "1" -down--- "*" Dose : has >
 
-CenterCoordinator "1" -left- "1" VaccinationCenter : coordinates >
-CenterCoordinator "*" --- "*" Report : analyses >
+Coordinator "1" -left- "1" VaccinationCenter : coordinates >
+Coordinator "*" --- "*" Report : analyses >
 
 Administrator "1" -left- "*" Employee : registers and configures >
 
@@ -132,12 +133,11 @@ Receptionist "*" -up-- "*" SNSUser : registers arrival of >
 Receptionist "*" -down--- "*" VaccineSchedule : confirms >
 Receptionist "1..*"-right-- "1..*"WaitingRoom : sends SNS user to >
 
-Nurse "*" -down--- "1..*" WaitingRoom : sends user to >
+Nurse "*" -down--- "1..*" WaitingRoom : sends SNS user to >
 (Nurse, WaitingRoom) .. UserHealthHistoric
 Nurse "1" -up-- "*" VaccinationCertificate : issues and delivers >
 Nurse "*" -down-- "1" RecoveryRoom : sends user to >
 (Nurse, RecoveryRoom) .. AdverseReaction
-VaccineAdministration "1" -left- "*" Nurse : executed by >
 
 ScheduleVerification "1" -up- "1" VaccineSchedule : confirms >
 ScheduleVerification "1" -up-- "0..1" Notification : emits >
