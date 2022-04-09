@@ -6,11 +6,11 @@
 
 **<u> Audit: </u>**
 
-- **It will be **
+- **Recording extra information to audit purposes.**
 
 **<u> Reporting: </u>**
 
-- **lallala**
+- **Create a support for generating reports.**
 
 **<u> Security: </u>**
   
