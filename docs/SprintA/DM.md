@@ -50,13 +50,16 @@ To identify domain conceptual classes, start by making a list of candidate conce
 **Places**
 
 * Healthcare Center
-* Vaccination Center
+* Community Mass Vaccination Center
 
 ---
 
-** Noteworthy Events**
+**Noteworthy Events**
 
-* 
+* Vaccination Process
+* Immunization
+* Recovery Period
+* Covid-19 disease
 
 ---
 
@@ -70,7 +73,17 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Descriptions of Things**
 
-* 
+* Vaccine Type
+* Vacinne Brand
+* Vaccine Dosage
+* Name
+* Address
+* Phone Number
+* E-mail Address
+* Fax Number
+* Website Address
+* Opening  and  Closing Hours
+* Slot Duration
 
 
 ---
@@ -100,6 +113,9 @@ To identify domain conceptual classes, start by making a list of candidate conce
 **Organizations**
 
 * SNS
+* DGS
+* ARS
+* AGES
 
 ---
 
@@ -182,6 +198,6 @@ An association is a relationship between instances of objects that indicates a r
 
 **Insert below the Domain Model Diagram in a SVG format**
 
-![DM.svg](/Users/diogonapoles/Desktop/DM.svg)
+
 
 
