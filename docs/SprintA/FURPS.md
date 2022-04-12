@@ -4,14 +4,6 @@
 
 *Specifies the features that are not related to the use cases, namely: Audit, Reporting and Security.*
 
-**<u> Audit: </u>**
-
-- **Recording extra information to audit purposes.**
-
-**<u> Reporting: </u>**
-
-- **The system does data report to analise.**
-
 **<u> Security: </u>**
   
 - **The interactions made by users (i.e. Administrator, Coordinator, Nurses, Receptionists, SNS Users) will proceed by an authentication using a password interface.** 
