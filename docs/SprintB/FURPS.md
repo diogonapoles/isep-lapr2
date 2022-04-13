@@ -28,7 +28,7 @@
 
 **<u> Consistency and Standards: </u>**
 
-- **All the GRASP Patterns should be used to ensure that the program is well-designed.**
+- **The program will be well-designed.**
 
 
 ## Reliability
@@ -117,6 +117,8 @@
 - **Implement the core software in Java**
 
 - **Must follow a Test Driven Development approach.**
+
+- **Intellij IDEA Educational Edition 2021.2.3 will be used to code.**
  
 
 ### Interface Constraints
