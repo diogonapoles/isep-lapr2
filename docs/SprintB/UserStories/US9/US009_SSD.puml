@@ -5,17 +5,17 @@ actor "Administrator" as ADM
 activate ADM
 ADM -> ":System" : asks to register a new Vaccination Center
 activate ":System"
-":System" - -> ADM : requests data (vaccination center, ongoing pandemic)
+":System" --> ADM : requests data (vaccination center, ongoing pandemic)
 deactivate ":System"
 
 ADM -> ":System" : types requested data
 activate ":System"
-":System" - -> ADM : shows all data and requests confirmation
+":System" --> ADM : shows all data and requests confirmation
 deactivate ":System"
 
 ADM -> ":System" : confirms the data
 activate ":System"
-":System" - -> ADM : informs operation success
+":System" --> ADM : informs operation success
 deactivate ":System"
 
 deactivate ADM
