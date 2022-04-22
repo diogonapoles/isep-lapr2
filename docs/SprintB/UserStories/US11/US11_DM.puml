@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Receptionist
+class Administrator
+class Nurse
+class Employee{
+name
+companyID
+}
+Employee <|-down- Nurse
+Employee <|-down- Receptionist
+
+Administrator "1" -left- "*" Employee : registers and configures >
+
+@enduml

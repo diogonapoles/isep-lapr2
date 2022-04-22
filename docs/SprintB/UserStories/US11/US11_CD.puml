@@ -1,0 +1,37 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+
+
+
+
+
+
+
+
+
+
+
+class ListEmployeesController {
+  +getCategories()
+  +createTask(ref,designation,informalDesc,technicalDesc,duration,cost,categoryId)
+  +saveTask()
+}
+
+class ListEmployeesUI {
+
+}
+
+ListEmployeesUI ..> ListEmployeesController
+ListEmployeesController ..> Platform
+ListEmployeesController ..> Category
+ListEmployeesController ..> Task
+ListEmployeesController ..> Organization
+ListEmployeesController ..> ApplicationPOT
+ListEmployeesController ..> UserSession
+Task "*" -> "1" Category : classified in
+Platform "1" --> "*" Category : defines
+Organization "1" --> "*" Task : owns
+
+
+@enduml
