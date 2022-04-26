@@ -1,0 +1,20 @@
+@startuml
+skinparam classFontSize 17
+skinparam padding 4
+skinparam ranksep 150
+
+class Administrator
+class Employee{
+<size:14>name
+<size:14>companyID
+}
+class Receptionist
+class Nurse
+
+
+Employee <-- Nurse
+Employee <-- Receptionist
+
+Administrator "1" -left- "*" Employee : <size:11>registers and configures >
+
+@enduml
