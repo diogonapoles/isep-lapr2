@@ -1,0 +1,147 @@
+@startuml
+left to right direction
+hide methods
+skinparam classFontSize 20
+skinparam padding 4
+skinparam ranksep 150
+
+class HealthcareCenter{
+}
+
+class Report
+
+class Coordinator{
+name
+companyID
+}
+
+class Company{
+designation
+}
+
+class Administrator
+
+class Vaccine
+
+class VaccineSchedule{
+date
+time
+userNumber
+vaccinationCenter
+scheduleVerification
+}
+
+class Receptionist
+
+class SNSUser{
+name
+birthDate
+}
+
+class Notification
+
+class SMSNotification
+
+class EmailNotification
+
+class Report
+
+class Dose{
+age
+dosage
+timeInterval
+}
+
+class VaccineAdministration{
+designation
+ageGroup
+}
+
+class Nurse
+
+class AdverseReaction
+
+class RecoveryRoom{
+listUsers
+}
+
+
+class CommunityCenter{
+}
+
+class VaccinationCenter{
+name
+phoneNumber
+faxNumber
+homeAddress
+emailAddress
+websiteAddress
+openingHours
+closingHours
+slotDuration
+maxNumVaccinesPerSlot
+}
+
+class VaccineType{
+code
+designation
+whoID
+}
+
+class VaccinationCertificate
+
+class WaitingRoom
+
+class Employee{
+name
+companyID
+}
+
+Employee <|-down- Nurse
+Employee <|-down- Receptionist
+
+Company "1" -up-- "*" VaccinationCenter : manages >
+Company "1" -up-- "*" VaccineType : administers >
+
+VaccinationCenter <|-up- HealthcareCenter
+VaccinationCenter <|-up- CommunityCenter
+VaccinationCenter "1" -down-- "*"Vaccine : applies >
+VaccinationCenter "1" -up-- "*" Report : reports >
+
+Vaccine "*" -down--- "1" VaccineType : is >
+Vaccine "1" -down-- "*" VaccineAdministration : of <
+Vaccine "*" -down-- "1" SNSUser : > administrated on
+VaccinationCenter "0..1" -right- "0..1" VaccineSchedule : > fulfilling
+VaccineType "1" -down- "*" Dose : has >
+VaccineAdministration "1" -up- "*" Nurse : executed by >
+
+
+HealthcareCenter "*" -down- "*" VaccineType : can administer >
+CommunityCenter "*" -right- "1" VaccineType : can administer >
+
+
+Coordinator "1" -left- "1" VaccinationCenter : coordinates >
+Coordinator "*" --- "*" Report : analyses >
+
+Administrator "1" -right- "*" Employee : registers and configures >
+
+SNSUser "1" -right-- "1" VaccinationCertificate : requests >
+
+VaccineSchedule "*" -down-- "1" SNSUser : made for >
+VaccineSchedule "1" -left-- "0..1" VaccineType : administers >
+
+Receptionist "*" -up-- "*" SNSUser : registers arrival of >
+Receptionist "*" -down--- "*" VaccineSchedule : confirms >
+Receptionist "1..*"-right-- "1..*"WaitingRoom : sends SNS user to >
+
+Nurse "*" -down--- "1..*" WaitingRoom : sends SNS user to >
+(Nurse, WaitingRoom) .. UserHealthHistoric
+Nurse "1" -up-- "*" VaccinationCertificate : issues and delivers >
+VaccineAdministration "*" -down-- "1" RecoveryRoom : sends user to >
+(VaccineAdministration, RecoveryRoom) .. AdverseReaction
+
+VaccineSchedule "1" -up-- "0..1" Notification : emits >
+
+Notification <|-- SMSNotification
+Notification <|-- EmailNotification
+@enduml
