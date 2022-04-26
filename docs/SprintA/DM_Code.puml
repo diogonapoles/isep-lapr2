@@ -110,9 +110,9 @@ VaccinationCenter "1" -up-- "*" Report : reports >
 
 Vaccine "*" -down--- "1" VaccineType : is >
 Vaccine "1" -down-- "*" VaccineAdministration : of <
-Vaccine "*" -down-- "1" SNSUser : > administrated on
-Vaccine "0..1" -right- "0..1" VaccineSchedule : > fulfilling
-VaccineType "1" -down- "*" Dose : has >
+VaccineAdministration "0..1" -right- "0..1" VaccineSchedule : > fulfilling
+VaccineAdministration "*" -down-- "1" SNSUser : > administrated on
+VaccineAdministration "1" -down--- "*" Dose : has >
 VaccineAdministration "1" -left- "*" Nurse : executed by >
 
 
