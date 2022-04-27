@@ -94,6 +94,10 @@ class WaitingRoom
 
 class Employee{
 name
+phoneNumber
+address
+emailAddress
+citizenCardNumber
 companyID
 }
 

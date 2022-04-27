@@ -3,9 +3,14 @@ autonumber
 actor "Administrator" as ADM
 
 activate ADM
-ADM -> ":System" : specify employee type
+ADM -> ":System" : starts registering a new employee
 activate ":System"
-":System" --> ADM : requests data (name, companyID)
+":System" --> ADM : ask to select the employee role
+deactivate ":System"
+
+ADM -> ":System" : selects the intended role
+activate ":System"
+":System" --> ADM : request data (name, phoneNumber, address,\n emailAddress, citizenCardNumber)
 deactivate ":System"
 
 ADM -> ":System" : types requested data

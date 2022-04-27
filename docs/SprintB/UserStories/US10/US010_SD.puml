@@ -2,93 +2,141 @@
 autonumber
 actor "Administrator" as ADM
 
-participant ":CreateTaskUI" as UI
-participant ":CreateTaskController" as CTRL
-participant "ApplicationPOT" as _APP
-participant "app\n:ApplicationPOT" as APP
-participant "session\n:UserSession" as SESSAO
+
+participant ":RegisterEmployeeUI" as UI
+participant ":RegisterEmployeeController" as CTRL
+participant "Application" as APP
+participant "app\n:Application" as App
+participant "comp:Company" as COMP
 participant ":Platform" as PLAT
-participant "org\n:Organization" as ORG
-participant "task\n:Task" as TAREFA
-participant "cat\n:Category" as CAT
-participant "lc\n:List<Category>" as LIST_CAT
+participant "gre\n:RegisterEmployee" as RE
+participant "emp: Employee" as EMP
+participant "auth\n:AuthFacade" as AF
+participant ":UserRoleStore" as URS
+participant ":UserRoleMapper" as URM
+participant "lRolesDTO\n: List<UserRoleDTO>" as lRDTO
+participant "sRoles\n: Set<UserRole>" as SR
+participant "rl\n List<String> RolesList" as rl
+
 
 activate ADM
-ADM -> UI : asks to register a new employee
+
+ADM -> UI : starts registering a new employee
 activate UI
-UI --> ADM : requests employee category
+
+UI -> CTRL : rl = getRoles()
+activate CTRL
+
+CTRL -> APP : app = getInstance()
+activate APP
+deactivate APP
+
+CTRL -> App : comp = getCompany()
+activate App
+deactivate App
+
+CTRL -> COMP : plat = getPlatform()
+activate COMP
+
+CTRL -> COMP: auth = getAuthFacade()
+deactivate COMP
+
+CTRL -> AF : lRolesDTO = getUserRoles()
+activate AF
+
+AF -> URS : sRoles = getAll()
+activate URS
+deactivate URS
+
+AF -> URM :  toDTO(sRoles)
+activate URM
+
+deactivate URM
+deactivate AF
+deactivate CTRL
+
+UI --> ADM : ask to select the employee role
 deactivate UI
 
-ADM -> UI : selects employee category
+
+
+ADM -> UI : selects the intended role
 activate UI
-UI --> ADM : requests data (name, companyID)
+
+UI --> ADM : request data (name, phoneNumber, address,\n emailAddress, citizenCardNumber)
 deactivate UI
+
+
+
 
 ADM -> UI : types requested data
 activate UI
 
-UI -> CTRL : lc=getTaskCategories()
+UI -> CTRL :createEmployee(name, phoneNumber, address,\n emailAddress, citizenCardNumber, role)
 activate CTRL
 
-CTRL -> PLAT : lc=getTaskCategories()
+CTRL -> PLAT : gre = getRegisterEmployee()
 activate PLAT
-|||
 deactivate PLAT
-deactivate CTRL
 
-UI --> ADM : shows all data and requests confirmation
-deactivate PLAT
+CTRL -> RE : emp = createEmployee(name, phoneNumber, address,\nemailAddress, citizenCardNumber, role)
+activate RE
+
+RE --> EMP** : create(name, address, phoneNumber,\nemailAddress, citizenCardNumber)
+
+note over EMP : **emp** might be an instance of Nurse or Receptionist.\nIt depends of the type of Employee receiving this message
+
+
+CTRL -> RE : validateEmployee(emp)
+
+RE -> EMP : email = getEmailAddress()
+activate EMP
+deactivate EMP
+
+RE -> AF : uv = existsUser(email)
+activate AF
+deactivate AF
+deactivate CTRL
+deactivate RE
+
+UI --> ADM : shows the data and requests a confirmation
 deactivate UI
 
 
-deactivate ORG
-deactivate PLAT
-deactivate CTRL
-deactivate UI
 
 ADM -> UI : confirms the data
 activate UI
 
-UI -> CTRL : createTask(ref,designation,informalDesc,technicalDesc,duration,cost,categoryId)
+UI -> CTRL : registerEmployee()
 activate CTRL
 
-CTRL -> PLAT : cat=getCategoryById(categoryId)
-activate PLAT
-|||
-deactivate PLAT
+CTRL -> RE: registerEmployee(emp)
+activate RE
 
-CTRL -> _APP: app = getInstance()
-activate _APP
-|||
-deactivate _APP
+RE -> EMP : email = getEmailAddress()
+activate EMP
 
-CTRL -> APP: session = getCurrentSession()
-activate APP
-|||
-deactivate APP
+RE -> EMP : name = getName()
 
-CTRL -> SESSAO: email = getUserEmail()
-activate SESSAO
-|||
-deactivate SESSAO
+deactivate EMP
 
-CTRL -> PLAT: org = getOrganizationByUserEmail(email)
-activate PLAT
-|||
-deactivate PLAT
+RE -> RE : pwd = passwordGenerator(name,email)
+activate RE
+deactivate RE
 
-CTRL -> ORG: task=createAndSaveTask(ref,designation,informalDesc,technicalDesc,duration,cost,cat)
-activate ORG
-ORG --> TAREFA**: create(ref,designation,informalDesc,technicalDesc,duration,cost,cat)
-ORG -> ORG: validateTask(task)
-ORG -> ORG: addTask(task)
+RE -> AF : addu = addUserWithRole(name, email, pwd, role)
+activate AF
+deactivate AF
 
-CTRL --> UI: result
+RE -> RE : addEmployee(emp)
+activate RE
+deactivate RE
+deactivate RE
+deactivate CTRL
 
 UI --> ADM : informs operation success
-deactivate ORG
-deactivate CTRL
 deactivate UI
+
 
 deactivate ADM
 
