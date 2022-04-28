@@ -31,9 +31,14 @@ CTRL -> APP : app = getInstance()
 activate APP
 deactivate APP
 
+CTRL -> App: session = getCurrentSession()
+activate App
+deactivate App
+
 CTRL -> App : comp = getCompany()
 activate App
 deactivate App
+
 
 CTRL -> COMP : plat = getPlatform()
 activate COMP
@@ -82,9 +87,9 @@ deactivate PLAT
 CTRL -> RE : emp = createEmployee(name, phoneNumber, address,\nemailAddress, citizenCardNumber, role)
 activate RE
 
-RE --> EMP** : create(name, address, phoneNumber,\nemailAddress, citizenCardNumber)
+RE --> EMP** : create(name, phoneNumber, address, \nemailAddress, citizenCardNumber)
 
-note over EMP : **emp** might be an instance of Nurse or Receptionist.\nIt depends of the type of Employee receiving this message
+note over EMP : **emp** might be an instance of CenterCoordinator \nor Nurse or Receptionist. It depends of the type \nof Employee receiving this message
 
 
 CTRL -> RE : validateEmployee(emp)
