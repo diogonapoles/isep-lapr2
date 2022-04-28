@@ -115,6 +115,9 @@ emailAddress
 citizenCardNumber
 companyID
 }
+class Platform{
+description
+}
 
 Employee <|-down- Nurse
 Employee <|-down- Receptionist
