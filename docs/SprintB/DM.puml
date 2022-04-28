@@ -10,7 +10,7 @@ class HealthcareCenter{
 
 class Report
 
-class Coordinator{
+class CenterCoordinator{
 name
 companyID
 }
@@ -121,6 +121,7 @@ description
 
 Employee <|-down- Nurse
 Employee <|-down- Receptionist
+Employee <|-down- CenterCoordinator
 
 Company "1" -up-- "*" VaccinationCenter : manages >
 Company "1" -up-- "*" VaccineType : administers >
@@ -142,8 +143,8 @@ HealthcareCenter "*" -down- "*" VaccineType : can administer >
 CommunityCenter "*" -right- "1" VaccineType : can administer >
 
 
-Coordinator "1" -left- "1" VaccinationCenter : coordinates >
-Coordinator "*" --- "*" Report : analyses >
+CenterCoordinator "1" -left- "1" VaccinationCenter : coordinates >
+CenterCoordinator "*" --- "*" Report : analyses >
 
 Administrator "1" -right- "*" Employee : registers and configures >
 
