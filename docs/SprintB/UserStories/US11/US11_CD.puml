@@ -6,32 +6,34 @@ skinparam classAttributeIconSize 0
 
 
 
+class Employee {
++listEmployees(function)
+}
 
 
 
-
+class AuthVerification{
++verifyAuthorization
+}
 
 
 class ListEmployeesController {
-  +getCategories()
-  +createTask(ref,designation,informalDesc,technicalDesc,duration,cost,categoryId)
-  +saveTask()
+  +getListEmployees(function)
+
 }
 
 class ListEmployeesUI {
-
++askFunction()
 }
 
 ListEmployeesUI ..> ListEmployeesController
 ListEmployeesController ..> Platform
-ListEmployeesController ..> Category
-ListEmployeesController ..> Task
-ListEmployeesController ..> Organization
-ListEmployeesController ..> ApplicationPOT
-ListEmployeesController ..> UserSession
-Task "*" -> "1" Category : classified in
-Platform "1" --> "*" Category : defines
-Organization "1" --> "*" Task : owns
+Platform ..> Employee
+Employee <|--- Nurse
+Employee <|--- Receptionist
+Employee <|--- CenterCoordinator
+ListEmployeesUI ..> AuthVerification
+
 
 
 @enduml

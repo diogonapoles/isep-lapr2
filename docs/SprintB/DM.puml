@@ -1,4 +1,4 @@
-@startuml
+ @startuml
 left to right direction
 hide methods
 skinparam classFontSize 20

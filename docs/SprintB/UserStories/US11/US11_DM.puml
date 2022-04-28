@@ -6,11 +6,17 @@ class Administrator
 class Nurse
 class Employee{
 name
+phoneNumber
+address
+emailAddress
+citizenCardNumber
 companyID
 }
 Employee <|-down- Nurse
 Employee <|-down- Receptionist
+Employee <|-down- CenterCoordinator
 
-Administrator "1" -left- "*" Employee : registers and configures >
+
+Administrator "1" -left- "*" Employee : requires a list of employees with a given role >
 
 @enduml

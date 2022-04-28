@@ -5,10 +5,10 @@ actor "Administrator" as ADM
 activate ADM
 ADM -> ":System" : asks to return list of Employees
 activate ":System"
-":System" --> ADM : requests specific function/role
+":System" --> ADM : ask to select employee role
 deactivate ":System"
 
-ADM -> ":System" : types requested function/role
+ADM -> ":System" : selects requested role
 activate ":System"
 ":System" --> ADM : shows required list
 deactivate ":System"

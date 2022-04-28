@@ -1,0 +1,102 @@
+@startuml
+autonumber
+actor "Administrator" as ADM
+
+
+participant ":ListEmployeesUI" as UI
+participant ":ListEmployeesController" as CTRL
+participant "Application" as APP
+participant "app\n:Application" as App
+participant "comp:Company" as COMP
+participant ":Platform" as PLAT
+participant "gre\n:RegisterEmployee" as RE
+participant "emp: Employee" as EMP
+participant "auth\n:AuthFacade" as AF
+participant ":UserRoleStore" as URS
+participant ":UserRoleMapper" as URM
+participant "lRolesDTO\n: List<UserRoleDTO>" as lRDTO
+participant "sRoles\n: Set<UserRole>" as SR
+participant "rl\n List<String> RolesList" as rl
+
+
+activate ADM
+
+ADM -> UI : asks to return list of Employees     .
+activate UI
+
+UI -> CTRL : rl = getRoles()
+activate CTRL
+
+CTRL -> APP : app = getInstance()
+activate APP
+deactivate APP
+
+CTRL -> App : comp = getCompany()
+activate App
+deactivate App
+
+CTRL -> COMP : plat = getPlatform()
+activate COMP
+
+CTRL -> COMP: auth = getAuthFacade()
+deactivate COMP
+
+CTRL -> AF : lRolesDTO = getUserRoles()
+activate AF
+
+AF -> URS : sRoles = getAll()
+activate URS
+deactivate URS
+
+AF -> URM :  toDTO(sRoles)
+activate URM
+
+deactivate URM
+deactivate AF
+deactivate CTRL
+
+UI --> ADM : ask to select employee role
+deactivate UI
+
+
+
+ADM -> UI : selects the requested role
+activate UI
+
+
+
+UI -> CTRL :createEmployee(name, phoneNumber, address,\n emailAddress, citizenCardNumber, role)
+activate CTRL
+
+CTRL -> PLAT : gre = getRegisterEmployee()
+activate PLAT
+deactivate PLAT
+
+CTRL -> RE : emp = createEmployee(name, phoneNumber, address,\nemailAddress, citizenCardNumber, role)
+activate RE
+
+RE --> EMP** : create(name, address, phoneNumber,\nemailAddress, citizenCardNumber)
+
+note over EMP : **emp** might be an instance of Nurse or Receptionist.\nIt depends of the type of Employee receiving this message
+
+
+CTRL -> RE : validateEmployee(emp)
+
+RE -> EMP : email = getEmailAddress()
+activate EMP
+deactivate EMP
+
+RE -> AF : uv = existsUser(email)
+activate AF
+deactivate AF
+deactivate CTRL
+deactivate RE
+
+UI --> ADM : shows required list
+deactivate UI
+
+
+
+deactivate ADM
+
+@enduml
