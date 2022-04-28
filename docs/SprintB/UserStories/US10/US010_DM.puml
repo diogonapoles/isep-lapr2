@@ -6,6 +6,10 @@ skinparam ranksep 150
 class Administrator
 class Employee{
 <size:14>name
+<size:14>phoneNumber
+<size:14>address
+<size:14>emailAddress
+<size:14>citizenCardNumber
 <size:14>companyID
 }
 class Receptionist
