@@ -21,7 +21,16 @@ designation
 
 class Administrator
 
-class Vaccine
+class Vaccine{
+Id
+Name
+Brand
+Vaccine Type
+Age Group
+Dose Number
+Vaccine Dosage
+Time Since Last Dose
+}
 
 class VaccineSchedule{
 date
@@ -35,7 +44,13 @@ class Receptionist
 
 class SNSUser{
 name
+address
+gender
+phoneNumber
+email
 birthDate
+snsUserNumber
+citizenCardNumber
 }
 
 class Notification
@@ -85,7 +100,7 @@ maxNumVaccinesPerSlot
 class VaccineType{
 code
 designation
-whoID
+vaccineTechnology
 }
 
 class VaccinationCertificate
