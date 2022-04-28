@@ -5,7 +5,12 @@ actor "Administrator" as ADM
 activate ADM
 ADM -> ":System" : asks to register a new Vaccination Center
 activate ":System"
-":System" --> ADM : requests data (vaccination center, ongoing pandemic)
+":System" --> ADM : shows different types of vaccination centers \n and asks user to select one
+deactivate ":System"
+
+ADM -> ":System" : selects the desired type of vaccination center
+activate ":System"
+":System" --> ADM : requests data (i.e., name, phoneNumber, faxNumber,\n homeAddress, emailAddress, websiteAddress,\n openingHours, closingHours, slotDuration,\n maxNumVaccinesPerSlot)
 deactivate ":System"
 
 ADM -> ":System" : types requested data
