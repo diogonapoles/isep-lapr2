@@ -2,37 +2,72 @@
 skinparam classAttributeIconSize 0
 
 
+class AuthFacade{
++getUserRoles()
++existsUser(email)
+}
 
+class Application {
+  +static getInstance()
+  +getCurrentSession()
+  +getCompany()
 
+}
 
+class Company {
++getplatform()
++getAuthFacade()
+}
 
 class Employee {
-+listEmployees(function)
+-name
+-phoneNumber
+-address
+-emailAddress
+-citizenCardNumber
+-companyID
++getEmailAddress()
++getName()
+}
+
+
+class RegisterEmployee{
++getListEmployees(role)
+
 }
 
 
 
-class AuthVerification{
-+verifyAuthorization
-}
 
+class Platform{
++getRegisterEmployee()
+}
 
 class ListEmployeesController {
-  +getListEmployees(function)
++getRoles()
+  +getListEmployees(role)
+
 
 }
 
 class ListEmployeesUI {
-+askFunction()
+
 }
 
 ListEmployeesUI ..> ListEmployeesController
+ListEmployeesController ..> Application
+ListEmployeesController ..> Company
 ListEmployeesController ..> Platform
-Platform ..> Employee
-Employee <|--- Nurse
-Employee <|--- Receptionist
-Employee <|--- CenterCoordinator
-ListEmployeesUI ..> AuthVerification
+Application ..> Platform
+Platform ..> AuthFacade
+Company ..> AuthFacade
+RegisterEmployee .left.> AuthFacade
+ListEmployeesController ..> Employee
+Platform --> RegisterEmployee :has
+Company "1" --> "1" Platform : has
+RegisterEmployee -right-> Employee : knows
+
+
 
 
 
