@@ -6,48 +6,61 @@
 
 ### 1.1. User Story Description
 
-As an administrator, I want to register a vaccination center to respond to a certain pandemic.
+As an **Administrator**, I want to register a **Vaccination Center** to respond to a certain pandemic.
 
 ### 1.2. Customer Specifications and Clarifications 
 
-*Insert here any related specification and/or clarification provided by the client together with **your interpretation**. When possible, provide a link to such specifications/clarifications.*
+The client did not present any clarification to the questions on the forum but, from my interpretation, I concluded that the Vaccination Center registration is a pretty straight forward procedure where the user only
+needs to select the type of center to be registered and, right after that, type all the data related to the center followed by a verification of all the data given.
 
 ### 1.3. Acceptance Criteria
 
-*Insert here the client acceptance criteria.*
+n/a
 
 ### 1.4. Found out Dependencies
 
-*Identify here any found out dependency to other US and/or requirements.*
+n/a
 
 ### 1.5 Input and Output Data
 
-*Identity here the data to be inputted by the system actor as well as the output data that the system have/needs to present in order to properly support the actor actions. Regarding the inputted data, it is suggested to distinguish between typed data and selected data (e.g. from a list)*
+**Input Data:**
 
+* Typed data:
+    * a name,
+    * a phone number,
+    * a fax number,
+    * a home address,
+    * an email address,
+    * a website address,
+    * opening hours,
+    * closing hours,
+    * slot duration,
+    * maximum number of vaccines per slot.
 
+* Selected data:
+    * vaccination center type.
+    
+**Output Data:**
+
+* (In)Success of the operation
 ### 1.6. System Sequence Diagram (SSD)
-
-*Insert here a SSD depicting the envisioned Actor-System interactions and throughout which data is inputted and outputted to fulfill the requirement. All interactions must be numbered.*
 
 ![US009_SSD](US009_SSD.svg)
 
 
 ### 1.7 Other Relevant Remarks
 
-*Use this section to capture other relevant information that is related with this US such as (i) special requirements ; (ii) data and/or technology variations; (iii) how often this US is held.* 
-
+n/a
 
 ## 2. OO Analysis
 
 ### 2.1. Relevant Domain Model Excerpt 
-*In this section, it is suggested to present an excerpt of the domain model that is seen as relevant to fulfill this requirement.* 
 
-![USXXX-MD](USXXX-MD.svg)
+![US009_DM](US009_DM.svg)
 
 ### 2.2. Other Remarks
 
-*Use this section to capture some aditional notes/remarks that must be taken into consideration into the design activity. In some case, it might be usefull to add other analysis artifacts (e.g. activity or state diagrams).* 
-
+n/a
 
 
 ## 3. Design - User Story Realization 
@@ -58,8 +71,8 @@ As an administrator, I want to register a vaccination center to respond to a cer
 
 | Interaction ID | Question: Which class is responsible for... | Answer  | Justification (with patterns)  |
 |:-------------  |:--------------------- |:------------|:---------------------------- |
-| Step 1  		 |							 |             |                              |
-| Step 2  		 |							 |             |                              |
+| Step 1  		 |	... interacting with the actor?						 |RegisterVaccinationCenterUI             |Pure Fabrication: there is no reason to assign this responsibility to any existing class in the Domain Model.                              |
+| Step 2  		 |	... coordinating the US?							 |RegisterVaccinationCenterController             |Controller                              |
 | Step 3  		 |							 |             |                              |
 | Step 4  		 |							 |             |                              |
 | Step 5  		 |							 |             |                              |
@@ -79,20 +92,16 @@ According to the taken rationale, the conceptual classes promoted to software cl
  * Class3
 
 Other software classes (i.e. Pure Fabrication) identified: 
- * xxxxUI  
- * xxxxController
+ * RegisterVaccinationCenterUI  
+ * RegisterVaccinationCenterController
 
 ## 3.2. Sequence Diagram (SD)
 
-*In this section, it is suggested to present an UML dynamic view stating the sequence of domain related software objects' interactions that allows to fulfill the requirement.* 
-
-![USXXX-SD](USXXX-SD.svg)
+![US009_SD](US009_SD.svg)
 
 ## 3.3. Class Diagram (CD)
 
-*In this section, it is suggested to present an UML static view representing the main domain related software classes that are involved in fulfilling the requirement as well as and their relations, attributes and methods.*
-
-![USXXX-CD](USXXX-CD.svg)
+![US009_CD](US009_CD.svg)
 
 # 4. Tests 
 *In this section, it is suggested to systematize how the tests were designed to allow a correct measurement of requirements fulfilling.* 
