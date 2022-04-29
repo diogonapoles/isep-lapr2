@@ -115,19 +115,16 @@ emailAddress
 citizenCardNumber
 companyID
 }
-class Platform{
-description
-}
 
 Employee <|-down- Nurse
 Employee <|-down- Receptionist
-Employee <|-down- CenterCoordinator
+Employee <|-up- CenterCoordinator
 
 Company "1" -up-- "*" VaccinationCenter : manages >
-Company "1" -up-- "*" VaccineType : administers >
+Company "1" -down-- "*" VaccineType : administers >
 
 VaccinationCenter <|-up- HealthcareCenter
-VaccinationCenter <|-up- CommunityCenter
+VaccinationCenter <|-- CommunityCenter
 VaccinationCenter "1" -down-- "*"Vaccine : applies >
 VaccinationCenter "1" -up-- "*" Report : reports >
 
@@ -147,11 +144,13 @@ CenterCoordinator "1" -left- "1" VaccinationCenter : coordinates >
 CenterCoordinator "*" --- "*" Report : analyses >
 
 Administrator "1" -right- "*" Employee : registers and configures >
+Administrator "1" -right- "*" VaccinationCenter : registers and configures >
+Administrator "1" -down- "*" SNSUser : registers and configures >
 
 SNSUser "1" -right-- "1" VaccinationCertificate : requests >
 
 VaccineSchedule "*" -down-- "1" SNSUser : made for >
-VaccineSchedule "1" -left-- "0..1" VaccineType : administers >
+VaccineSchedule "1" -up-- "0..1" VaccineType : administers >
 
 Receptionist "*" -up-- "*" SNSUser : registers arrival of >
 Receptionist "*" -down--- "*" VaccineSchedule : confirms >
