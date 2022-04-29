@@ -1,0 +1,64 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam classAttributeIconSize 0
+
+class App{
+    +getCompany()
+    +static getInstance()
+}
+
+class VaccinationCenter{
+    -String name
+    -String phoneNumber
+    -String faxNumber
+    -String homeAddress
+    -String emailAddress
+    -String websiteAddress
+    -Double openingHours
+    -Double closingHours
+    -Double slotDuration
+    -Integer maxNumVaccinesPerSlot
+    +VaccinationCenter(name, phoneNumber, faxNumber, homeAddress, emailAddress,\nwebsiteAddress, openingHours, closingHours, slotDuration, maxNumVaccinesPerSlot)
+
+}
+
+
+class RegisterVaccinationCenterUI {
+}
+
+class RegisterVaccinationCenterController{
+    +getVaccinationCenterTypes()
+    +registerVaccinationCenter()
+    +createCenter(Integer vaccinationCenterType, String name, String phoneNumber, String faxNumber, String homeAddress,String emailAddress,\nString websiteAddress, Double openingHours, Double closingHours, Double slotDuration, Integer maxNumVaccinesPerSlot)
+    +saveCenter()
+}
+
+class Company {
+    -designation
+    +getRegisterVaccinationCenter()
+}
+
+class RegisterVaccinationCenter{
+    +getVaccinationCenterTypes()
+    +createCenter(Integer vaccinationCenterType, String name, String phoneNumber, String faxNumber, String homeAddress,String emailAddress,\nString websiteAddress, Double openingHours, Double closingHours, Double slotDuration, Integer maxNumVaccinesPerSlot)
+    +saveCenter(VaccinationCenter center)
+    -validateCenter(VaccinationCenter center)
+    -addCenter(VaccinationCenter center)
+}
+
+class CommunityCenter
+
+class HealthCareCenter
+
+RegisterVaccinationCenterUI .down.> RegisterVaccinationCenterController
+RegisterVaccinationCenterController .down.> Company
+Company "1" -down- "1" RegisterVaccinationCenter : has >
+RegisterVaccinationCenter "1" -down- "*" VaccinationCenter : has >
+CommunityCenter -up--|> VaccinationCenter
+HealthCareCenter -up--|> VaccinationCenter
+RegisterVaccinationCenter ..> HealthCareCenter
+RegisterVaccinationCenter ..> CommunityCenter
+RegisterVaccinationCenterController ..> VaccinationCenter
+RegisterVaccinationCenterController ..> App
+
+@enduml
