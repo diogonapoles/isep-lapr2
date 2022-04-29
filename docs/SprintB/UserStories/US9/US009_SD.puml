@@ -5,10 +5,9 @@ actor "Administrator" as ADM
 
 participant ":RegisterVaccinationCenterUI" as UI
 participant ":RegisterVaccinationCenterController" as CTRL
-participant ":App" as _APP
+participant "App" as _APP
 participant "app\n:App" as APP
 participant "comp\n:Company" as COMP
-participant "plat\n:Platform" as PLAT
 participant ":RegisterVaccinationCenter" as RVC
 participant "center\n:VaccinationCenter" as VC
 participant "lvct\n:List<String> vaccinationCenterTypes" as LVCT
@@ -16,12 +15,17 @@ participant "lvct\n:List<String> vaccinationCenterTypes" as LVCT
 activate ADM
 ADM -> UI : starts the registration of a new vaccination center
 activate UI
-UI -> CTRL : lvct = getVaccinationCenterTypes()
+UI -> CTRL : getVaccinationCenterTypes()
 activate CTRL
-
-CTRL --> RVC : lvct = getVaccinationCenterTypes((
-activate RVC
-deactivate RVC
+CTRL -> _APP : app = getInstance()
+activate _APP
+deactivate _APP
+CTRL -> APP : comp = getCompany()
+activate APP
+deactivate APP
+CTRL -> COMP : lvct = getVaccinationCenterTypes()
+activate COMP
+deactivate COMP
 deactivate CTRL
 UI --> ADM : shows different types of vaccination centers \nand asks user to select one
 deactivate UI
@@ -37,34 +41,30 @@ deactivate UI
 
 ADM -> UI : types requested data
 activate UI
-
+UI -> CTRL : createCenter(vaccinationCenterType, name,\nphoneNumber, faxNumber,homeAddress, emailAddress,\nwebsiteAddress,openingHours, closingHours, slotDuration,\nmaxNumVaccinesPerSlot)
+activate CTRL
+CTRL -> COMP : rvc = getRegisterVaccinationCenter()
+activate COMP
+deactivate COMP
+CTRL -> RVC : center = createAndSaveCenter(vaccinationCenterType, name,\nphoneNumber, faxNumber,homeAddress, emailAddress,\nwebsiteAddress, openingHours, closingHours, slotDuration,\nmaxNumVaccinesPerSlot)
+activate RVC
+RVC -> VC ** : create(vaccinationCenterType, name,\nphoneNumber, faxNumber,homeAddress, emailAddress,\nwebsiteAddress, openingHours, closingHours, slotDuration,\nmaxNumVaccinesPerSlot)
+RVC -> RVC : validateCenter(center)
+deactivate CTRL
 UI --> ADM: shows all data and requests confirmation
 deactivate RVC
 
-deactivate PLAT
 deactivate CTRL
 deactivate UI
 
 ADM -> UI : confirms the data
 activate UI
-UI -> CTRL : createCenter(vaccinationCenterType, name,\n phoneNumber, faxNumber,homeAddress, emailAddress,\n websiteAddress,openingHours, closingHours, slotDuration,\nmaxNumVaccinesPerSlot)
+UI -> CTRL : saveCenter()
 activate CTRL
 |||
-CTRL --> _APP : app = getInstance()
-activate _APP
-deactivate _APP
-CTRL --> APP : comp = getCompany()
-activate APP
-deactivate APP
-CTRL --> COMP : getPlatform()
-activate COMP
-deactivate COMP
-CTRL --> PLAT : rvc = getRegisterVaccinationCenter()
-activate PLAT
-deactivate PLAT
-CTRL -> RVC : center = createAndSaveCenter(vaccinationCenterType, name,\nphoneNumber, faxNumber,homeAddress, emailAddress,\nwebsiteAddress, openingHours, closingHours, slotDuration,\nmaxNumVaccinesPerSlot)
+CTRL -> RVC : saveCenter(center)
 activate RVC
-RVC -> VC ** : create(vaccinationCenterType, name,\nphoneNumber, faxNumber,homeAddress, emailAddress,\nwebsiteAddress, openingHours, closingHours, slotDuration,\nmaxNumVaccinesPerSlot)
+RVC -> VC ** : saveCenter(center)
 RVC -> RVC : validateCenter(center)
 RVC -> RVC : addCenter(center)
 UI --> ADM : informs operation success
