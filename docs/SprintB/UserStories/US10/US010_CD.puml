@@ -1,72 +1,72 @@
 @startuml
 skinparam classAttributeIconSize 0
 
-class ApplicationPOT
-{
+class Application {
   +static getInstance()
   +getCurrentSession()
+  +getCompany()
+
 }
 
-class UserSession
-{
-  +getUserEmail()
+class RegisterEmployee {
++createEmployee(name, phoneNumber, address,\nemailAddress, citizenCardNumber, role)
++validateEmployee(emp)
++registerEmployee(emp)
++passwordGenerator(name,email)
++addEmployee(emp)
 }
 
-class Task {
-  -String reference
-  -String designation
-  -String informalDescription
-  -String technicalDescription
-  -Integer duration
-  -Double cost
-  +Task(ref,designation,informalDesc,technicalDesc,duration,cost,cat)
+class Employee {
+-name
+-phoneNumber
+-address
+-emailAddress
+-citizenCardNumber
+-companyID
++getEmailAddress()
++getName()
 }
 
-class Category {
-  -String id
-  -String description
-}
+class Company {
 
-class Organization {
-  -String name
-  -String VatNumber
-  -String website
-  -String phone
-  -String email
-  +Organization(name, VatNumber, webSite, phone, email, postalAddress, manager)
-  +createTask(ref,designation,informalDesc,technicalDesc,duration,cost,cat)
-  +saveTask(task)
-  -addTask(task)
-  -validateTask(task)
+  +getPlatform()
+  +getAuthFacade()
+
 }
 
 class Platform {
-  -String designation
-  +getCategories()
-  +getCategoryById(catId)
-  +getOrganizationByUserEmail(email)
+
+  +getRegisterEmployee()
 }
 
-class CreateTaskController {
-  +getCategories()
-  +createTask(ref,designation,informalDesc,technicalDesc,duration,cost,categoryId)
-  +saveTask()
-}
-
-class CreateTaskUI {
+class RegisterEmployeeController {
++getRoles()
++createEmployee(name, phoneNumber, address,\n emailAddress, citizenCardNumber, role)
++registerEmployee()
 
 }
 
-CreateTaskUI ..> CreateTaskController
-CreateTaskController ..> Platform
-CreateTaskController ..> Category
-CreateTaskController ..> Task
-CreateTaskController ..> Organization
-CreateTaskController ..> ApplicationPOT
-CreateTaskController ..> UserSession
-Task "*" -> "1" Category : classified in
-Platform "1" --> "*" Category : defines
-Organization "1" --> "*" Task : owns
+class RegisterEmployeeUI {
+
+}
+
+class AuthFacade{
++getUserRoles()
++existsUser(email)
+}
+
+RegisterEmployeeUI ..> RegisterEmployeeController
+RegisterEmployeeController ..> Platform
+RegisterEmployeeController ..> Employee
+RegisterEmployeeController ..> Company
+RegisterEmployeeController ..> Application
+RegisterEmployee "1" -> "*" Employee : knows
+Platform "1" --> "1" RegisterEmployee : has
+Company "1" --> "1" Platform : has
+Application ..> Platform
+Company ..> AuthFacade
+Platform ..> AuthFacade
+RegisterEmployee .left.> AuthFacade
 
 
 @enduml
