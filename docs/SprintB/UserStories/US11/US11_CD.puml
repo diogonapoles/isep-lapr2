@@ -32,7 +32,7 @@ class Employee {
 
 
 class RegisterEmployee{
-+getListEmployees(role)
++getListEmployees()
 
 }
 
@@ -45,7 +45,8 @@ class Platform{
 
 class ListEmployeesController {
 +getRoles()
-  +getListEmployees(role)
+  +getListEmployees()
+  +listEmployeesByRole(role)
 
 
 }

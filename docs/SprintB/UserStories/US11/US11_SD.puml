@@ -5,6 +5,8 @@ actor "Administrator" as ADM
 
 participant ":ListEmployeesUI" as UI
 participant ":ListEmployeesController" as CTRL
+participant ":ListEmployeesUI" as UI
+participant ":ListEmployeesController" as CTRL
 participant "Application" as APP
 participant "app\n:Application" as App
 participant "comp:Company" as COMP
@@ -65,30 +67,29 @@ activate UI
 
 
 
-UI -> CTRL :createEmployee(name, phoneNumber, address,\n emailAddress, citizenCardNumber, role)
+UI -> CTRL : getlistEmployees(role)
 activate CTRL
 
 CTRL -> PLAT : gre = getRegisterEmployee()
 activate PLAT
 deactivate PLAT
 
-CTRL -> RE : emp = createEmployee(name, phoneNumber, address,\nemailAddress, citizenCardNumber, role)
+CTRL -> RE : getlistEmployees()
 activate RE
 
-RE --> EMP** : create(name, address, phoneNumber,\nemailAddress, citizenCardNumber)
 
-note over EMP : **emp** might be an instance of Nurse or Receptionist.\nIt depends of the type of Employee receiving this message
+RE --> EMP** : getlistEmployees()
+note over EMP : **emp** might be an instance of Nurse, Receptionist or CenterCoordinator.\nIt depends of the type of Employee receiving this message
+
+deactivate RE
+CTRL -> CTRL : ListEmployeesByRole(role)
+activate CTRL
+Deactivate CTRL
 
 
-CTRL -> RE : validateEmployee(emp)
 
-RE -> EMP : email = getEmailAddress()
-activate EMP
-deactivate EMP
 
-RE -> AF : uv = existsUser(email)
-activate AF
-deactivate AF
+
 deactivate CTRL
 deactivate RE
 
