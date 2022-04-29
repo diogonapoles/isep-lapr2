@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Administrator
+class HealthcareCenter{
+}
+class CommunityCenter{
+}
+class Company{
+designation
+}
+class VaccinationCenter{
+name
+phoneNumber
+faxNumber
+homeAddress
+emailAddress
+websiteAddress
+openingHours
+closingHours
+slotDuration
+maxNumVaccinesPerSlot
+}
+
+Company "1" -up-- "*" VaccinationCenter : manages >
+Administrator "1" -right- "*" VaccinationCenter : registers and configures >
+VaccinationCenter <|-up- HealthcareCenter
+VaccinationCenter <|-up- CommunityCenter
+
+
+@enduml
