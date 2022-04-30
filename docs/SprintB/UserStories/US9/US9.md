@@ -71,25 +71,23 @@ n/a
 
 | Interaction ID | Question: Which class is responsible for... | Answer  | Justification (with patterns)  |
 |:-------------  |:--------------------- |:------------|:---------------------------- |
-| Step 1  		 |	... interacting with the actor?						 |RegisterVaccinationCenterUI             |Pure Fabrication: there is no reason to assign this responsibility to any existing class in the Domain Model.                              |
-| Step 2  		 |	... coordinating the US?							 |RegisterVaccinationCenterController             |Controller                              |
-| Step 3  		 |							 |             |                              |
-| Step 4  		 |							 |             |                              |
-| Step 5  		 |							 |             |                              |
-| Step 6  		 |							 |             |                              |              
-| Step 7  		 |							 |             |                              |
-| Step 8  		 |							 |             |                              |
-| Step 9  		 |							 |             |                              |
-| Step 10  		 |							 |             |                              |  
+| Step 1  		 |	...interacting with the actor?						 |RegisterVaccinationCenterUI             |Pure Fabrication: there is no reason to assign this responsibility to any existing class in the Domain Model.                              |
+|   		 |	...coordinating the US?							 |RegisterVaccinationCenterController             |Controller                              |
+| Step 2  		 |	...saving the inputed data						 |VaccinationCenter             |IE: object created in step 1 has its own data.                              |
+| Step 4  		 |	...knowing the Vaccination Center types to show?						 |Company             |IE: Vaccination Center types are defined by the Company.                              |
+| Step 5  		 |	...validating all data (local validation)?						 |VaccinationCenter             |IE: owns its data.                              |
+|   		 |	...validating all data (global validation)?						 |RegisterVaccinationCenter             |IE: knows all Vaccination Centers.                              |              
+|   		 |	...saving the created Vaccination Center?						 |RegisterVaccinationCenter             |IE: owns all Vaccination Centers.                              |
+| Step 6  		 |	...informing operation success?						 |RegisterVaccinationCenterUI             |IE: is responsible for user interactions.                              |
 
 
 ### Systematization ##
 
 According to the taken rationale, the conceptual classes promoted to software classes are: 
 
- * Class1
- * Class2
- * Class3
+ * RegisterVaccinationCenter
+ * Company
+ * VaccinationCenter
 
 Other software classes (i.e. Pure Fabrication) identified: 
  * RegisterVaccinationCenterUI  
@@ -130,8 +128,8 @@ Other software classes (i.e. Pure Fabrication) identified:
 
 # 7. Observations
 
-*In this section, it is suggested to present a critical perspective on the developed work, pointing, for example, to other alternatives and or future related work.*
-
+The US is not finished yet, I still have to develop the code. Besides that, the ESOFT component of the US went great, it was my first time working on a US and it was not easy, especially the SD development. I plan on fixing the issues
+that the teacher points out about my models and finish the code as soon as possible.
 
 
 
