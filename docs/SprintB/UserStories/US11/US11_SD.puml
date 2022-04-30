@@ -10,7 +10,6 @@ participant ":ListEmployeesController" as CTRL
 participant "Application" as APP
 participant "app\n:Application" as App
 participant "comp:Company" as COMP
-participant ":Platform" as PLAT
 participant "gre\n:RegisterEmployee" as RE
 participant "emp: Employee" as EMP
 participant "auth\n:AuthFacade" as AF
@@ -70,9 +69,9 @@ activate UI
 UI -> CTRL : getlistEmployees(role)
 activate CTRL
 
-CTRL -> PLAT : gre = getRegisterEmployee()
-activate PLAT
-deactivate PLAT
+CTRL -> COMP : gre = getRegisterEmployee()
+activate COMP
+deactivate COMP
 
 CTRL -> RE : getlistEmployees()
 activate RE
