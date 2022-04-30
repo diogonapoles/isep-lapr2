@@ -17,6 +17,7 @@ class Application {
 class Company {
 +getplatform()
 +getAuthFacade()
++getRegisterEmployee()
 }
 
 class Employee {
@@ -39,9 +40,7 @@ class RegisterEmployee{
 
 
 
-class Platform{
-+getRegisterEmployee()
-}
+
 
 class ListEmployeesController {
 +getRoles()
@@ -58,14 +57,10 @@ class ListEmployeesUI {
 ListEmployeesUI ..> ListEmployeesController
 ListEmployeesController ..> Application
 ListEmployeesController ..> Company
-ListEmployeesController ..> Platform
-Application ..> Platform
-Platform ..> AuthFacade
 Company ..> AuthFacade
 RegisterEmployee .left.> AuthFacade
 ListEmployeesController ..> Employee
-Platform --> RegisterEmployee :has
-Company "1" --> "1" Platform : has
+Company "1" --> "1" RegisterEmployee : has
 RegisterEmployee -right-> Employee : knows
 
 
