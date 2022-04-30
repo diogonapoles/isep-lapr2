@@ -45,11 +45,8 @@ class Receptionist
 class SNSUser{
 name
 address
-gender
 phoneNumber
-email
-birthDate
-snsUserNumber
+emailAddress
 citizenCardNumber
 }
 
