@@ -12,6 +12,13 @@ public class Company {
     private String designation;
     private AuthFacade authFacade;
 
+
+    private EmployeeStore oRegisterEmployee;
+
+
+
+
+
     public Company(String designation)
     {
         if (StringUtils.isBlank(designation))
@@ -27,5 +34,11 @@ public class Company {
 
     public AuthFacade getAuthFacade() {
         return authFacade;
+    }
+
+    public EmployeeStore getEmployeeStore(){return this.oRegisterEmployee;}
+
+    public void defaultRegister(AuthFacade authFacade){
+   //     this.oRegisterEmployee = new EmployeeStore(authFacade);
     }
 }
