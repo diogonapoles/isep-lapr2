@@ -1,2 +1,4 @@
-package app.domain.model;public class RegisterVaccinationCenter {
+package app.domain.model;
+
+public class RegisterVaccinationCenter {
 }
