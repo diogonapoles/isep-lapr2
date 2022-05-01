@@ -8,15 +8,15 @@ participant ":RegisterEmployeeController" as CTRL
 participant "Application" as APP
 participant "app\n:Application" as App
 participant "comp:Company" as COMP
-participant ":Platform" as PLAT
-participant "gre\n:RegisterEmployee" as RE
+participant "emps\n:EmployeeStore" as EMPS
 participant "emp: Employee" as EMP
 participant "auth\n:AuthFacade" as AF
 participant ":UserRoleStore" as URS
 participant ":UserRoleMapper" as URM
+participant "lRoles\n List<UserRole>" as LR
 participant "lRolesDTO\n: List<UserRoleDTO>" as lRDTO
 participant "sRoles\n: Set<UserRole>" as SR
-participant "rl\n List<String> RolesList" as rl
+
 
 
 activate ADM
@@ -80,29 +80,29 @@ activate UI
 UI -> CTRL :createEmployee(name, phoneNumber, address,\n emailAddress, citizenCardNumber, role)
 activate CTRL
 
-CTRL -> PLAT : gre = getRegisterEmployee()
-activate PLAT
-deactivate PLAT
+CTRL -> COMP : gre = getRegisterEmployee()
+activate COMP
+deactivate COMP
 
-CTRL -> RE : emp = createEmployee(name, phoneNumber, address,\nemailAddress, citizenCardNumber, role)
-activate RE
+CTRL -> EMPS : emp = createEmployee(name, phoneNumber, address,\nemailAddress, citizenCardNumber, role)
+activate EMPS
 
-RE --> EMP** : create(name, phoneNumber, address, \nemailAddress, citizenCardNumber)
+EMPS --> EMP** : create(name, phoneNumber, address, \nemailAddress, citizenCardNumber)
 
 note over EMP : **emp** might be an instance of CenterCoordinator \nor Nurse or Receptionist. It depends of the type \nof Employee receiving this message
 
 
-CTRL -> RE : validateEmployee(emp)
+CTRL -> EMPS : validateEmployee(emp)
 
-RE -> EMP : email = getEmailAddress()
+EMPS -> EMP : email = getEmailAddress()
 activate EMP
 deactivate EMP
 
-RE -> AF : uv = existsUser(email)
+EMPS -> AF : eu = existsUser(email)
 activate AF
 deactivate AF
 deactivate CTRL
-deactivate RE
+deactivate EMPS
 
 UI --> ADM : shows the data and requests a confirmation
 deactivate UI
@@ -115,28 +115,28 @@ activate UI
 UI -> CTRL : registerEmployee()
 activate CTRL
 
-CTRL -> RE: registerEmployee(emp)
-activate RE
+CTRL -> EMPS: registerEmployee(emp)
+activate EMPS
 
-RE -> EMP : email = getEmailAddress()
+EMPS -> EMP : email = getEmailAddress()
 activate EMP
 
-RE -> EMP : name = getName()
+EMPS -> EMP : name = getName()
 
 deactivate EMP
 
-RE -> RE : pwd = passwordGenerator(name,email)
-activate RE
-deactivate RE
+EMPS -> EMPS : pwd = passwordGenerator(name,email)
+activate EMPS
+deactivate EMPS
 
-RE -> AF : addu = addUserWithRole(name, email, pwd, role)
+EMPS -> AF : addu = addUserWithRole(name, email, pwd, role)
 activate AF
 deactivate AF
 
-RE -> RE : addEmployee(emp)
-activate RE
-deactivate RE
-deactivate RE
+EMPS -> EMPS : addEmployee(emp)
+activate EMPS
+deactivate EMPS
+deactivate EMPS
 deactivate CTRL
 
 UI --> ADM : informs operation success

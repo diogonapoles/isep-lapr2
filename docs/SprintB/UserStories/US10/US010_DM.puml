@@ -14,8 +14,9 @@ class Employee{
 }
 class Receptionist
 class Nurse
+class CenterCoordinator
 
-
+Employee <-- CenterCoordinator
 Employee <-- Nurse
 Employee <-- Receptionist
 

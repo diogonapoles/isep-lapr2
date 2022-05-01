@@ -11,8 +11,6 @@ class HealthcareCenter{
 class Report
 
 class CenterCoordinator{
-name
-companyID
 }
 
 class Company{
@@ -42,11 +40,15 @@ scheduleVerification
 
 class Receptionist
 
+
 class SNSUser{
 name
 address
+gender
 phoneNumber
+birthDate
 emailAddress
+snsUserNumber
 citizenCardNumber
 }
 
