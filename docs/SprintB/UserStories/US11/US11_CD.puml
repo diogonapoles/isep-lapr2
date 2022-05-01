@@ -17,7 +17,7 @@ class Application {
 class Company {
 +getplatform()
 +getAuthFacade()
-+getRegisterEmployee()
++getEmployeeStore()
 }
 
 class Employee {
@@ -32,7 +32,7 @@ class Employee {
 }
 
 
-class RegisterEmployee{
+class EmployeeStore{
 +getListEmployees()
 +ListEmployeesByRole(role)
 
@@ -60,10 +60,10 @@ ListEmployeesUI ..> ListEmployeesController
 ListEmployeesController ..> Application
 ListEmployeesController ..> Company
 Company ..> AuthFacade
-RegisterEmployee .left.> AuthFacade
+EmployeeStore .left.> AuthFacade
 ListEmployeesController ..> Employee
-Company "1" --> "1" RegisterEmployee : has
-RegisterEmployee -right-> Employee : knows
+Company "1" --> "1" EmployeeStore : has
+EmployeeStore -right-> Employee : knows
 
 
 

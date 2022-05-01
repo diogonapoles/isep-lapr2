@@ -10,7 +10,7 @@ participant ":ListEmployeesController" as CTRL
 participant "Application" as APP
 participant "app\n:Application" as App
 participant "comp:Company" as COMP
-participant "gre\n:RegisterEmployee" as RE
+participant "gre\n:EmployeeStore" as ES
 participant "emp: Employee" as EMP
 participant "auth\n:AuthFacade" as AF
 participant ":UserRoleStore" as URS
@@ -69,29 +69,29 @@ activate UI
 UI -> CTRL : getListEmployees(role)
 activate CTRL
 
-CTRL -> COMP : gre = getRegisterEmployee()
+CTRL -> COMP : gre = getEmployeeStore()
 activate COMP
 deactivate COMP
 
-CTRL -> RE : getListEmployees()
-activate RE
+CTRL -> ES : getListEmployees()
+activate ES
 
 
-RE --> EMP** : getListEmployees()
+ES --> EMP** : getListEmployees()
 note over EMP : **emp** might be an instance of Nurse, Receptionist or CenterCoordinator.\nIt depends of the type of Employee receiving this message
 
 
-RE -> RE : ListEmployeesByRole(role)
-activate RE
-deactivate RE
-deactivate RE
+ES -> ES : ListEmployeesByRole(role)
+activate ES
+deactivate ES
+deactivate ES
 
 
 
 
 
 deactivate CTRL
-deactivate RE
+deactivate ES
 
 UI --> ADM : shows required list
 deactivate UI
