@@ -1,0 +1,94 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+'hide footbox
+actor "Administrator" as ADM
+
+participant ":NewVaccineUI" as UI
+participant ":NewVaccineController" as CTRL
+participant "Application" as _APP
+participant "app\n:Application" as APP
+participant " :Company" as COMP
+participant "spnv\n:NewVaccine" as SPNV
+participant "vac\n:List<String> Vaccines" as VAC
+
+
+activate ADM
+ADM -> UI : starts to specify a new vaccine
+activate UI
+UI --> CTRL : create
+UI -> CTRL : getVaccineTypes()
+activate CTRL
+COMP --> SPNV : create(name, brand, age group, \n dose number, dosage, time since last dose)
+CTRL -> COMP : gvt = getVaccineTypes()
+activate COMP
+deactivate COMP
+
+
+UI -> ADM :  shows types of vaccines
+deactivate UI
+
+ADM -> UI : chooses vaccine type
+activate UI
+UI -> CTRL : createNewVaccine()
+CTRL -> COMP : cnv = createNewVaccine()
+activate COMP
+deactivate COMP
+
+
+UI --> ADM :  requests data (name, brand, age group, \n dose number, dosage, time since last dose)
+deactivate CTRL
+deactivate UI
+
+
+ADM -> UI : types administration process data
+activate UI
+
+UI -> CTRL : setNewVaccine()
+activate CTRL
+
+CTRL -> SPNV : create(name, brand, age group, dose number, \n dosage, time since last dose)
+activate SPNV
+deactivate SPNV
+
+CTRL -> COMP : validateNewVaccine(cnv)
+activate COMP
+deactivate COMP
+
+
+
+UI --> ADM: shows all data and requests confirmation
+deactivate SPNV
+deactivate COMP
+deactivate CTRL
+deactivate UI
+
+ADM -> UI : confirms the data
+activate UI
+UI -> CTRL : saveNewVaccine()
+activate CTRL
+
+CTRL -> COMP : snv = saveNewVaccine(cnv)
+activate COMP
+
+COMP -> COMP: validateNewVaccine(cnv))
+activate COMP
+deactivate COMP
+
+COMP -> COMP: addNewVaccine(cnv)
+activate COMP
+deactivate COMP
+
+deactivate COMP
+
+
+UI --> ADM : informs operation success
+deactivate SPNV
+deactivate CTRL
+deactivate UI
+
+deactivate ADM
+
+@enduml
