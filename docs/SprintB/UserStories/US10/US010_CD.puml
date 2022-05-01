@@ -8,8 +8,7 @@ class Application {
 
 }
 
-class EmployeeStore {
--List<Employee> listaEmployee
+class RegisterEmployee {
 +createEmployee(name, phoneNumber, address,\nemailAddress, citizenCardNumber, role)
 +validateEmployee(emp)
 +registerEmployee(emp)
@@ -30,12 +29,15 @@ class Employee {
 
 class Company {
 
+  +getPlatform()
   +getAuthFacade()
-  +getRegisterEmployee()
 
 }
 
+class Platform {
 
+  +getRegisterEmployee()
+}
 
 class RegisterEmployeeController {
 +getRoles()
@@ -51,20 +53,20 @@ class RegisterEmployeeUI {
 class AuthFacade{
 +getUserRoles()
 +existsUser(email)
-+addUserWithRole(name, email, pwd, role)
 }
 
 RegisterEmployeeUI ..> RegisterEmployeeController
+RegisterEmployeeController ..> Platform
 RegisterEmployeeController ..> Employee
 RegisterEmployeeController ..> Company
 RegisterEmployeeController ..> Application
-Application ..> Company
-EmployeeStore "1" -> "*" Employee : knows
-Company "1" --> "1" EmployeeStore : has
-
+RegisterEmployee "1" -> "*" Employee : knows
+Platform "1" --> "1" RegisterEmployee : has
+Company "1" --> "1" Platform : has
+Application ..> Platform
 Company ..> AuthFacade
-
-EmployeeStore .left.> AuthFacade
+Platform ..> AuthFacade
+RegisterEmployee .left.> AuthFacade
 
 
 @enduml
