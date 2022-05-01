@@ -1,0 +1,47 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class Vaccine{
+id
+Name
+Brand
+Vaccine Type
+Age Group
+Dose Number
+Time Since Last Dose
+}
+class VaccinationCenter{
+name
+phoneNumber
+faxNumber
+homeAddress
+emailAddress
+websiteAddress
+openingHours
+closingHours
+slotDuration
+maxNumVaccinesPerSlot
+}
+class VaccineAdministration{
+designation
+ageGroup
+}
+class VaccineType{
+code
+designation
+whoID
+}
+class SNSUser{
+name
+address
+phoneNumber
+emailAddress
+citizenCardNumber
+}
+
+Vaccine "1" -down-- "*" VaccineAdministration : of <
+VaccinationCenter "1" -left- "*" Vaccine : applies >
+Vaccine "*" -down-- "1" VaccineType : is >
+Vaccine "*" -down-- "1" SNSUser : > administrated on
+
+@enduml
