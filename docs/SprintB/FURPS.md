@@ -35,26 +35,9 @@
 
 *Refers to the integrity, compliance and interoperability of the software. The requirements to be considered are: frequency and severity of failure, possibility of recovery, possibility of prediction, accuracy, average time between failures.*
 
-**<u> Frequency and Severity of Failure: </u>**
-
-- **The application will be as complete as possible in order to prevent eventual failures, especially big ones which can crash the system.**
-
-**<u> Possibility of Recovery: </u>**
-
-- **The application will have multiple windows in order to be possible to exit in case of failure and get back to the menu.**
-- **These windows will help to maintain the well-function of the application, making sure the found problem won´t interfere with other parts of the app.**
-
 **<u> Possibility of Prediction: </u>**
 
 - **Exceptions will be used to prevent possible mistakes.**
-
-**<u> Accuracy: </u>**
-
-- **The application will be as accurate in its calculations as possible.**
-
-**<u> Average Time Between Failures :</u>**
-
-- **This time will be the smallest possible.**
 
 
 ## Performance
@@ -75,25 +58,13 @@
 
 - **Unit tests are recommended.**
 
-**<u> Adaptability: </u>**
-
-- **It´s expected for the application to be easy to adapt to any hardware.**
-
 **<u> Maintainability: </u>**
 
 - **The application should be easy to do regular maintenance. For that is important that the code is well commented.**
 
-**<u> Compatibility: </u>**
-
-- **It should be compatible with many software.**
-
 **<u> Configurability: </u>**
 
 - **The system should be prepared to send SMS notifications.**
-
-**<u> Instability: </u>**
-
-- **The application will be easy to install.**
 
 **<u> Scalability: </u>**
 
