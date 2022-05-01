@@ -39,7 +39,11 @@ deactivate App
 
 CTRL -> COMP: auth = getAuthFacade()
 activate COMP
+
+
+CTRL -> COMP: lRoles = getRoles()
 deactivate COMP
+
 
 CTRL -> AF : lRolesDTO = getUserRoles()
 activate AF

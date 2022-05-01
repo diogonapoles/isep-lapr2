@@ -24,7 +24,7 @@ activate ADM
 ADM -> UI : starts registering a new employee
 activate UI
 
-UI -> CTRL : rl = getRoles()
+UI -> CTRL : lRolesDto = getRoles()
 activate CTRL
 
 CTRL -> APP : app = getInstance()
@@ -39,12 +39,13 @@ CTRL -> App : comp = getCompany()
 activate App
 deactivate App
 
-
-CTRL -> COMP : plat = getPlatform()
+CTRL -> COMP: auth = getAuthFacade()
 activate COMP
 
-CTRL -> COMP: auth = getAuthFacade()
+
+CTRL -> COMP: lRoles = getRoles()
 deactivate COMP
+
 
 CTRL -> AF : lRolesDTO = getUserRoles()
 activate AF
@@ -80,7 +81,7 @@ activate UI
 UI -> CTRL :createEmployee(name, phoneNumber, address,\n emailAddress, citizenCardNumber, role)
 activate CTRL
 
-CTRL -> COMP : gre = getRegisterEmployee()
+CTRL -> COMP : emps = getEmployeeStore()
 activate COMP
 deactivate COMP
 
