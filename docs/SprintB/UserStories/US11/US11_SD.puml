@@ -36,10 +36,9 @@ CTRL -> App : comp = getCompany()
 activate App
 deactivate App
 
-CTRL -> COMP : plat = getPlatform()
-activate COMP
 
 CTRL -> COMP: auth = getAuthFacade()
+activate COMP
 deactivate COMP
 
 CTRL -> AF : lRolesDTO = getUserRoles()
