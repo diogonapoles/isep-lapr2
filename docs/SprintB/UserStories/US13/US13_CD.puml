@@ -1,0 +1,42 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class NewVaccineUI {
+}
+
+class NewVaccineController{
+         + getVaccineTypes()
+         + createNewVaccine()
+         + setNewVaccine()
+         + saveNewVaccine()
+
+}
+
+class NewVaccine{
+}
+
+class NewVaccine{
+        -String name
+        -String brand
+        -String age group
+        -String dose number
+        -Double dosage
+        -Integer time since last dose
+
+}
+
+class Company{
+        - designation
+        + getVaccineTypes()
+        + createNewVaccine()
+        + validateNewVaccine(cnv)
+        + saveNewVaccine(cnv)
+        - addNewVaccine(cnv)
+}
+
+
+NewVaccineUI ..> NewVaccineController
+NewVaccineController ..> Company
+Company "1" -up- "*" NewVaccine : specify >
+
+@enduml
