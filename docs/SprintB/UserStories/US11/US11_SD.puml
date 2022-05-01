@@ -66,24 +66,25 @@ activate UI
 
 
 
-UI -> CTRL : getlistEmployees(role)
+UI -> CTRL : getListEmployees(role)
 activate CTRL
 
 CTRL -> COMP : gre = getRegisterEmployee()
 activate COMP
 deactivate COMP
 
-CTRL -> RE : getlistEmployees()
+CTRL -> RE : getListEmployees()
 activate RE
 
 
-RE --> EMP** : getlistEmployees()
+RE --> EMP** : getListEmployees()
 note over EMP : **emp** might be an instance of Nurse, Receptionist or CenterCoordinator.\nIt depends of the type of Employee receiving this message
 
+
+RE -> RE : ListEmployeesByRole(role)
+activate RE
 deactivate RE
-CTRL -> CTRL : ListEmployeesByRole(role)
-activate CTRL
-Deactivate CTRL
+deactivate RE
 
 
 
