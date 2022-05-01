@@ -10,19 +10,18 @@ participant ":ListEmployeesController" as CTRL
 participant "Application" as APP
 participant "app\n:Application" as App
 participant "comp:Company" as COMP
-participant "gre\n:EmployeeStore" as ES
+participant "emps\n:EmployeeStore" as ES
 participant "emp: Employee" as EMP
 participant "auth\n:AuthFacade" as AF
 participant ":UserRoleStore" as URS
 participant ":UserRoleMapper" as URM
 participant "lRolesDTO\n: List<UserRoleDTO>" as lRDTO
-participant "sRoles\n: Set<UserRole>" as SR
-participant "rl\n List<String> RolesList" as rl
+
 
 
 activate ADM
 
-ADM -> UI : asks to return list of Employees     .
+ADM -> UI : asks to return list of Employees
 activate UI
 
 UI -> CTRL : rl = getRoles()
@@ -72,7 +71,7 @@ activate UI
 UI -> CTRL : getListEmployees(role)
 activate CTRL
 
-CTRL -> COMP : gre = getEmployeeStore()
+CTRL -> COMP : emps = getEmployeeStore()
 activate COMP
 deactivate COMP
 
@@ -80,7 +79,7 @@ CTRL -> ES : getListEmployees()
 activate ES
 
 
-ES --> EMP** : getn iListEmployees()
+ES --> EMP** : getn = iListEmployees()
                                      note over EMP : **emp** might be anstance of Nurse, Receptionist or CenterCoordinator.\nIt depends of the type of Employee requested to be listed.
 
 

@@ -15,7 +15,7 @@ participant ":UserRoleStore" as URS
 participant ":UserRoleMapper" as URM
 participant "lRoles\n List<UserRole>" as LR
 participant "lRolesDTO\n: List<UserRoleDTO>" as lRDTO
-participant "sRoles\n: Set<UserRole>" as SR
+
 
 
 
