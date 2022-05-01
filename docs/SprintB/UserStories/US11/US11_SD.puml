@@ -76,8 +76,8 @@ CTRL -> ES : getListEmployees()
 activate ES
 
 
-ES --> EMP** : getListEmployees()
-note over EMP : **emp** might be an instance of Nurse, Receptionist or CenterCoordinator.\nIt depends of the type of Employee receiving this message
+ES --> EMP** : getn iListEmployees()
+                                     note over EMP : **emp** might be anstance of Nurse, Receptionist or CenterCoordinator.\nIt depends of the type of Employee requested to be listed.
 
 
 ES -> ES : ListEmployeesByRole(role)
