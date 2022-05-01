@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor "Administrator" as ADM
+
+activate ADM
+ADM -> ":System" : wants to specify a new vaccine
+activate ":System"
+":System" --> ADM : shows types of vaccines
+deactivate ":System"
+
+ADM -> ":System" : chooses vaccine type
+activate ":System"
+":System" --> ADM : request its administration process data (name, id, brand, \n age group, dose number, vaccine dosage, time since last dose)
+deactivate ":System"
+
+ADM -> ":System" : types administration process data
+activate ":System"
+":System" --> ADM : shows all data and requests confirmation
+deactivate ":System"
+
+ADM-> ":System" : confirms the data
+activate ":System"
+":System" --> ADM : informs operation success
+deactivate ":System"
+
+deactivate ADM
+@enduml
