@@ -14,6 +14,7 @@ public class Company {
 
 
     private EmployeeStore oEmployeeStore;
+    private VaccinationCenterStore oVaccinationCenterStore;
 
 
 
@@ -26,6 +27,7 @@ public class Company {
 
         this.designation = designation;
         this.authFacade = new AuthFacade();
+        this.oVaccinationCenterStore = new VaccinationCenterStore();
     }
 
     public String getDesignation() {
@@ -42,5 +44,5 @@ public class Company {
         this.oEmployeeStore = new EmployeeStore(this.authFacade);
     }
 
-
+    public VaccinationCenterStore getVaccinationCenterStore(){return this.oVaccinationCenterStore;}
 }

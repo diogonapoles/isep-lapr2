@@ -1,15 +1,66 @@
 package app.ui.console;
 
 import app.controller.RegisterVaccinationCenterController;
+import app.ui.console.utils.Utils;
 
 public class RegisterVaccinationCenterUI implements Runnable{
+
     private RegisterVaccinationCenterController controller;
 
-    public RegisterVaccinationCenterUI(){
-        controller = new RegisterVaccinationCenterController();
+    public RegisterVaccinationCenterUI()
+    {
+        this.controller = new RegisterVaccinationCenterController();
     }
 
     public void run(){
-        System.out.println("");
+        int selection = Utils.showAndSelectIndex(this.controller.getVaccinationCenterTypes(), "Vaccination Center Types:");
+
+        if(selection >= 0 && selection < 2)
+        {
+            if(inputData(selection))
+            {
+                getData();
+
+                if(Utils.confirm("Confirms data?(s/n)"))
+                {
+                    controller.registerVaccinationCenter();
+                    System.out.println("success");
+                }
+                else
+                    run();
+
+
+            }
+            else
+            {
+                System.out.println("not a valid vaccination center or already exists");
+            }
+
+        }
+        else
+        {
+            System.out.println("invalid selection");
+        }
     }
+
+    private boolean inputData(int typeSelection)
+    {
+        String name = Utils.readLineFromConsole("Name:");
+        String phoneNumber = Utils.readLineFromConsole("Phone Number:");
+        String faxNumber = Utils.readLineFromConsole("Fax Number:");
+        String homeAddress = Utils.readLineFromConsole("Home Address:");
+        String emailAddress = Utils.readLineFromConsole("Email Address:");
+        String websiteAddress = Utils.readLineFromConsole("Website Address:");
+        String openingHours = Utils.readLineFromConsole("Opening Hours:");
+        String closingHours = Utils.readLineFromConsole("Closing Hours:");
+        String slotDuration = Utils.readLineFromConsole("Slot Duration:");
+        String maxNumVaccinesPerSlot = Utils.readLineFromConsole("Maximum number of vaccines per slot:");
+
+        return controller.newVaccinationCenter(typeSelection, name,phoneNumber,faxNumber,homeAddress,emailAddress, websiteAddress,openingHours,closingHours,slotDuration,maxNumVaccinesPerSlot);
+
+    }
+    private void getData(){
+        System.out.println(controller.getVaccinationCenterString());
+    }
+
 }
