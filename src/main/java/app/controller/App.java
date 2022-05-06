@@ -71,11 +71,16 @@ public class App {
     }
 
 
-    private void bootstrap()
-    {
+    private void bootstrap() {
         this.authFacade.addUserRole(Constants.ROLE_ADMIN,Constants.ROLE_ADMIN);
+        this.authFacade.addUserRole(Constants.ROLE_SNS_USER,Constants.ROLE_SNS_USER);
+        this.authFacade.addUserRole(Constants.ROLE_RECEPTIONIST,Constants.ROLE_RECEPTIONIST);
+        this.authFacade.addUserRole(Constants.ROLE_NURSE,Constants.ROLE_NURSE);
+        this.authFacade.addUserRole(Constants.ROLE_CENTER_COORDINATOR,Constants.ROLE_CENTER_COORDINATOR);
 
         this.authFacade.addUserWithRole("Main Administrator", "admin@lei.sem2.pt", "123456",Constants.ROLE_ADMIN);
+        this.getCompany().defaultRegister(this.authFacade);
+
     }
 
     // Extracted from https://www.javaworld.com/article/2073352/core-java/core-java-simply-singleton.html?page=2

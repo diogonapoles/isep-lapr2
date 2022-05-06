@@ -3,6 +3,8 @@ package app.controller;
 import app.domain.model.Company;
 import app.domain.model.Employee;
 
+import java.util.List;
+
 public class RegisterEmployeeController {
 
     private App oApp;
@@ -15,9 +17,22 @@ public class RegisterEmployeeController {
     }
 
     public boolean newEmployee(String name, String phoneNumber, String address,
-                               String emailaddress, int citizenCardNumber ){
-        return false;
+                               String emailAddress, String citizenCardNumber, int roleSelection ){
+
+        this.oEmployee = oCompany.getEmployeeStore().newEmployee(name, phoneNumber, address, emailAddress, citizenCardNumber, roleSelection);
+        if (this.oEmployee != null)
+            return true;
+        else
+            return false;
     }
+
+    public boolean registerEmployee(){return this.oCompany.getEmployeeStore().registerEmployee(this.oEmployee);}
+
+    public List<String> getEmployeeRoles(){return this.oCompany.getEmployeeStore().getEmployeeRoles();}
+
+    public String getEmployeeString(){return this.oEmployee.toString();}
+
+
 
 
 

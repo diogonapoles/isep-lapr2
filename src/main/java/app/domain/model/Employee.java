@@ -1,13 +1,37 @@
 package app.domain.model;
 
-public class Employee {
+import org.apache.commons.lang3.StringUtils;
+
+public abstract class Employee {
 
 
     private String name;
     private String phoneNumber;
     private String address;
     private String emailAddress;
-    private int citizenCardNumber;
+    private String citizenCardNumber;
+
+
+    public Employee(String name, String phoneNumber, String address, String emailAddress, String citizenCardNumber) {
+        if ((name == null) || (name.isEmpty())
+                || (phoneNumber == null) || (phoneNumber.isEmpty())
+                || (address == null) || (address.isEmpty())
+                || (emailAddress == null) || (emailAddress.isEmpty())
+                || (citizenCardNumber == null) || (citizenCardNumber.isEmpty())
+                || (phoneNumber.length() != 9) || !StringUtils.isNumeric(phoneNumber)
+                || (citizenCardNumber.length() != 8) || !StringUtils.isNumeric(citizenCardNumber)) {
+            throw new IllegalArgumentException("All attributes are mandatory!" +
+                    " Phone Number and Citizen Card Number must have 9 and 8 numbers respectively!");
+        } else {
+            this.name = name;
+            this.phoneNumber = phoneNumber;
+            this.address = address;
+            this.emailAddress = emailAddress;
+            this.citizenCardNumber = citizenCardNumber;
+        }
+    }
+
+
 
     public String getName() {
         return name;
@@ -41,11 +65,11 @@ public class Employee {
         this.emailAddress = emailAddress;
     }
 
-    public int getCitizenCardNumber() {
+    public String getCitizenCardNumber() {
         return citizenCardNumber;
     }
 
-    public void setCitizenCardNumber(int citizenCardNumber) {
+    public void setCitizenCardNumber(String citizenCardNumber) {
         this.citizenCardNumber = citizenCardNumber;
     }
 

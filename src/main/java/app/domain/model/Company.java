@@ -13,7 +13,7 @@ public class Company {
     private AuthFacade authFacade;
 
 
-    private EmployeeStore oRegisterEmployee;
+    private EmployeeStore oEmployeeStore;
 
 
 
@@ -36,9 +36,11 @@ public class Company {
         return authFacade;
     }
 
-    public EmployeeStore getEmployeeStore(){return this.oRegisterEmployee;}
+    public EmployeeStore getEmployeeStore(){return this.oEmployeeStore;}
 
     public void defaultRegister(AuthFacade authFacade){
-   //     this.oRegisterEmployee = new EmployeeStore(authFacade);
+        this.oEmployeeStore = new EmployeeStore(this.authFacade);
     }
+
+
 }
