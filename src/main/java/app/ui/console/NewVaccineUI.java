@@ -1,4 +1,4 @@
-package app.ui.console.utils;
+package app.ui.console;
 
 public class NewVaccineUI {
 }
