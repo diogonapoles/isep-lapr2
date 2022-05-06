@@ -69,6 +69,24 @@ public class EmployeeStore {
         return roles;
     }
 
+    public List<Employee> getEmployeesByRole( int selectionRole)
+    {
+        List<Employee> listTemp = new ArrayList<>();
+
+        for(Employee employee : listEmployee)
+        {
+            if(employee instanceof Receptionist && selectionRole == 0)
+                listTemp.add(employee);
+            else if (employee instanceof CenterCoordinator && selectionRole == 1)
+                listTemp.add(employee);
+            else if (employee instanceof Nurse && selectionRole == 2)
+                listTemp.add(employee);
+        }
+
+        return listTemp;
+
+    }
+
 
 
 }
