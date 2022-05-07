@@ -93,15 +93,6 @@ EMPS --> EMP** : create(name, phoneNumber, address, \nemailAddress, citizenCardN
 note over EMP : **emp** might be an instance of CenterCoordinator \nor Nurse or Receptionist. It depends of the type \nof Employee receiving this message
 
 
-CTRL -> EMPS : validateEmployee(emp)
-
-EMPS -> EMP : email = getEmailAddress()
-activate EMP
-deactivate EMP
-
-EMPS -> AF : eu = existsUser(email)
-activate AF
-deactivate AF
 deactivate CTRL
 deactivate EMPS
 
@@ -119,20 +110,31 @@ activate CTRL
 CTRL -> EMPS: registerEmployee(emp)
 activate EMPS
 
-EMPS -> EMP : email = getEmailAddress()
+
+EMPS ->  EMP: emailAddress = getEmailAddress()
 activate EMP
-
-EMPS -> EMP : name = getName()
-
 deactivate EMP
 
-EMPS -> EMPS : pwd = passwordGenerator(name,email)
+EMPS -> EMPS : validateEmployee(emp)
+activate EMPS
+EMPS -> AF : eu = existsUser(emailAddress)
+activate AF
+deactivate AF
+deactivate EMPS
+
+
+EMPS ->  EMP: name = getName()
+activate EMP
+deactivate EMP
+
+EMPS -> EMPS : pwd = generatePassword()
 activate EMPS
 deactivate EMPS
 
-EMPS -> AF : addu = addUserWithRole(name, email, pwd, role)
+EMPS -> AF : addU = addUserWithRole(name, emailAddress, pwd, role)
 activate AF
 deactivate AF
+
 
 EMPS -> EMPS : addEmployee(emp)
 activate EMPS
