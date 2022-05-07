@@ -12,13 +12,9 @@ public class Company {
     private String designation;
     private AuthFacade authFacade;
 
-
     private EmployeeStore oEmployeeStore;
     private VaccinationCenterStore oVaccinationCenterStore;
-
-
-
-
+    private VaccineTypeStore oVaccineTypeStore;
 
     public Company(String designation)
     {
@@ -28,6 +24,7 @@ public class Company {
         this.designation = designation;
         this.authFacade = new AuthFacade();
         this.oVaccinationCenterStore = new VaccinationCenterStore();
+        this.oVaccineTypeStore = new VaccineTypeStore();
     }
 
     public String getDesignation() {
@@ -45,4 +42,6 @@ public class Company {
     }
 
     public VaccinationCenterStore getVaccinationCenterStore(){return this.oVaccinationCenterStore;}
+
+    public VaccineTypeStore getVaccineTypeStore(){return this.oVaccineTypeStore;}
 }
