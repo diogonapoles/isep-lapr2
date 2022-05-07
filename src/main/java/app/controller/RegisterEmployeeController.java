@@ -32,8 +32,4 @@ public class RegisterEmployeeController {
 
     public String getEmployeeString(){return this.oEmployee.toString();}
 
-
-
-
-
 }

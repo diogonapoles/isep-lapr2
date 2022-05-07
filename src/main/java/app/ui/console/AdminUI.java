@@ -1,5 +1,6 @@
 package app.ui.console;
 
+import app.controller.RegisterEmployeeController;
 import app.domain.model.VaccinationCenter;
 import app.ui.console.utils.Utils;
 
@@ -24,6 +25,7 @@ public class AdminUI implements Runnable{
         options.add(new MenuItem("List Employees ", new ListEmployeesUI()));
         //options.add(new MenuItem("New Vaccine", new NewVaccineUI()));
         options.add(new MenuItem("New Vaccine Type", new NewVaccineTypeUI()));
+
 
         int option = 0;
         do
