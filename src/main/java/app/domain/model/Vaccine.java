@@ -1,9 +1,8 @@
 package app.domain.model;
 
-
 import org.apache.commons.lang3.StringUtils;
 
-public class NewVaccine {
+public class Vaccine {
 
     private String name;
     private String brand;
@@ -61,7 +60,7 @@ public class NewVaccine {
         this.timeSinceLastDose = timeSinceLastDose;
     }
 
-    public NewVaccine (String name, String brand, String ageGroup, String doseNumber, double dosage, int timeSinceLastDose){
+    public Vaccine(String name, String brand, String ageGroup, String doseNumber, double dosage, int timeSinceLastDose){
         if ((name == null) || (name.isEmpty())
                 || (brand == null) || (brand.isEmpty())
                 || (ageGroup == null) || (ageGroup.isEmpty())

@@ -15,6 +15,7 @@ public class Company {
     private EmployeeStore oEmployeeStore;
     private VaccinationCenterStore oVaccinationCenterStore;
     private VaccineTypeStore oVaccineTypeStore;
+    private VaccineStore oVaccineStore;
 
     public Company(String designation)
     {
@@ -44,4 +45,6 @@ public class Company {
     public VaccinationCenterStore getVaccinationCenterStore(){return this.oVaccinationCenterStore;}
 
     public VaccineTypeStore getVaccineTypeStore(){return this.oVaccineTypeStore;}
+
+    public VaccineStore getVaccineStore(){ return this.oVaccineStore;}
 }
