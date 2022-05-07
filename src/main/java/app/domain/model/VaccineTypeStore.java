@@ -16,13 +16,13 @@ public class VaccineTypeStore {
                 return new LiveAttenuatedVaccine(code, designation);
             else if (technology == 1)
                 return new InactivatedVaccine(code, designation);
-            else if (technology == 1)
+            else if (technology == 2)
                 return new SubunitVaccine(code, designation);
-            else if (technology == 1)
+            else if (technology == 3)
                 return new ToxoidVaccine(code, designation);
-            else if (technology == 1)
+            else if (technology == 4)
                 return new ViralVectorVaccine(code, designation);
-            else if (technology == 1)
+            else if (technology == 5)
                 return new mRNAVaccine(code, designation);
         }
         return null;
