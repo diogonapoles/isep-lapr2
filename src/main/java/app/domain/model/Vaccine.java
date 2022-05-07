@@ -75,6 +75,7 @@ public class Vaccine {
             this.ageGroup = ageGroup;
             this.doseNumber = doseNumber;
             this.dosage = dosage;
+            this.timeSinceLastDose = timeSinceLastDose;
         }
     }
 
