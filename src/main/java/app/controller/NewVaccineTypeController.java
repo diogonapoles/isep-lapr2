@@ -22,9 +22,7 @@ public class NewVaccineTypeController {
             return true;
         else
             return false;
-
     }
-
     public List<String> getVaccineTechnologyTypes(){return this.oCompany.getVaccineTypeStore().getVaccineTechnologyTypes();}
 
     public String getVaccineTypeString(){return this.oVaccineType.toString();}
