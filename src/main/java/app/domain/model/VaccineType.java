@@ -37,9 +37,9 @@ public abstract class VaccineType {
 
     @Override
     public String toString() {
-        return "VaccineType{" +
-                "code='" + code + '\'' +
-                ", designation='" + designation + '\'' +
-                '}';
+        return "VaccineType [" +
+                "code: " + code +
+                ", description: " + designation +
+                "]";
     }
 }

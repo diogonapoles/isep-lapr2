@@ -21,10 +21,10 @@ public class RegisterVaccinationCenterUI implements Runnable{
             {
                 getData();
 
-                if(Utils.confirm("Confirms data?(s/n)"))
+                if(Utils.confirm("Confirm data?(s/n)"))
                 {
                     controller.registerVaccinationCenter();
-                    System.out.println("success");
+                    System.out.println("Success");
                 }
                 else
                     run();
@@ -33,13 +33,13 @@ public class RegisterVaccinationCenterUI implements Runnable{
             }
             else
             {
-                System.out.println("not a valid vaccination center or already exists");
+                System.out.println("Not a valid vaccination center or already exists");
             }
 
         }
         else
         {
-            System.out.println("invalid selection");
+            System.out.println("Invalid selection");
         }
     }
 
