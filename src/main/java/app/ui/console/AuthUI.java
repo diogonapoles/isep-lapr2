@@ -11,39 +11,29 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- *
  * @author Paulo Maio <pam@isep.ipp.pt>
  */
 
-public class AuthUI implements Runnable{
+public class AuthUI implements Runnable {
     private AuthController ctrl;
 
-    public AuthUI()
-    {
+    public AuthUI() {
         ctrl = new AuthController();
     }
 
-    public void run()
-    {
+    public void run() {
         boolean success = doLogin();
 
-        if (success)
-        {
+        if (success) {
             List<UserRoleDTO> roles = this.ctrl.getUserRoles();
-            if ( (roles == null) || (roles.isEmpty()) )
-            {
+            if ((roles == null) || (roles.isEmpty())) {
                 System.out.println("User has not any role assigned.");
-            }
-            else
-            {
+            } else {
                 UserRoleDTO role = selectsRole(roles);
-                if (!Objects.isNull(role))
-                {
+                if (!Objects.isNull(role)) {
                     List<MenuItem> rolesUI = getMenuItemForRoles();
-                    this.redirectToRoleUI(rolesUI,role);
-                }
-                else
-                {
+                    this.redirectToRoleUI(rolesUI, role);
+                } else {
                     System.out.println("User did not select a role.");
                 }
             }
@@ -51,8 +41,7 @@ public class AuthUI implements Runnable{
         this.logout();
     }
 
-    private List<MenuItem> getMenuItemForRoles()
-    {
+    private List<MenuItem> getMenuItemForRoles() {
         List<MenuItem> rolesUI = new ArrayList<>();
         rolesUI.add(new MenuItem(Constants.ROLE_ADMIN, new AdminUI()));
         // To complete with other user roles and related RoleUI
@@ -61,21 +50,18 @@ public class AuthUI implements Runnable{
         return rolesUI;
     }
 
-    private boolean doLogin()
-    {
+    private boolean doLogin() {
         System.out.println("\nLogin UI:");
 
         int maxAttempts = 3;
         boolean success = false;
-        do
-        {
+        do {
             maxAttempts--;
             String id = Utils.readLineFromConsole("Enter UserId/Email: ");
             String pwd = Utils.readLineFromConsole("Enter Password: ");
 
             success = ctrl.doLogin(id, pwd);
-            if (!success)
-            {
+            if (!success) {
                 System.out.println("Invalid UserId and/or Password. \n You have  " + maxAttempts + " more attempt(s).");
             }
 
@@ -83,17 +69,14 @@ public class AuthUI implements Runnable{
         return success;
     }
 
-    private void logout()
-    {
+    private void logout() {
         ctrl.doLogout();
     }
 
-    private void redirectToRoleUI(List<MenuItem> rolesUI, UserRoleDTO role)
-    {
+    private void redirectToRoleUI(List<MenuItem> rolesUI, UserRoleDTO role) {
         boolean found = false;
         Iterator<MenuItem> it = rolesUI.iterator();
-        while (it.hasNext() && !found)
-        {
+        while (it.hasNext() && !found) {
             MenuItem item = it.next();
             found = item.hasDescription(role.getDescription());
             if (found)
@@ -103,8 +86,7 @@ public class AuthUI implements Runnable{
             System.out.println("There is no UI for users with role '" + role.getDescription() + "'");
     }
 
-    private UserRoleDTO selectsRole(List<UserRoleDTO> roles)
-    {
+    private UserRoleDTO selectsRole(List<UserRoleDTO> roles) {
         if (roles.size() == 1)
             return roles.get(0);
         else

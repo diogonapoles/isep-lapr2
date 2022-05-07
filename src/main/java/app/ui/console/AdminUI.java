@@ -2,23 +2,21 @@ package app.ui.console;
 
 import app.controller.RegisterEmployeeController;
 import app.domain.model.VaccinationCenter;
+
 import app.ui.console.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author Paulo Maio <pam@isep.ipp.pt>
  */
 
-public class AdminUI implements Runnable{
-    public AdminUI()
-    {
+public class AdminUI implements Runnable {
+    public AdminUI() {
     }
 
-    public void run()
-    {
+    public void run() {
         List<MenuItem> options = new ArrayList<MenuItem>();
         options.add(new MenuItem("Register Vaccination Center ", new RegisterVaccinationCenterUI()));
         options.add(new MenuItem("Register Employee ", new RegisterEmployeeUI()));
@@ -28,15 +26,13 @@ public class AdminUI implements Runnable{
 
 
         int option = 0;
-        do
-        {
+        do {
             option = Utils.showAndSelectIndex(options, "\n\nAdmin Menu:");
 
-            if ( (option >= 0) && (option < options.size()))
-            {
+            if ((option >= 0) && (option < options.size())) {
                 options.get(option).run();
             }
         }
-        while (option != -1 );
+        while (option != -1);
     }
 }
