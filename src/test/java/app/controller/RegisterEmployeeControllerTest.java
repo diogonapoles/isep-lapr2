@@ -6,6 +6,9 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class RegisterEmployeeControllerTest {
@@ -55,6 +58,14 @@ class RegisterEmployeeControllerTest {
 
     @Test
     void getEmployeeRoles() {
+
+        List<String> EmployeeRoles = new ArrayList<>();
+        EmployeeRoles.add("RECEPTIONIST");
+        EmployeeRoles.add("NURSE");
+        EmployeeRoles.add("CENTER_COORDINATOR");
+
+        assertLinesMatch(emp.getEmployeeRoles(), EmployeeRoles);
+
     }
 
     @Test
