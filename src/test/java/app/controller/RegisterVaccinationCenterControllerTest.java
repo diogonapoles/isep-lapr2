@@ -5,8 +5,12 @@ import app.domain.model.HealthcareCenter;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertLinesMatch;
 
 public class RegisterVaccinationCenterControllerTest {
     HealthcareCenter hc = new HealthcareCenter("Healthcare", "917876321", "493782",
@@ -33,6 +37,13 @@ public class RegisterVaccinationCenterControllerTest {
 
     @Test
     public void getVaccinationCenterTypes() {
+        RegisterVaccinationCenterController rvcc = new RegisterVaccinationCenterController();
+
+        List<String> VaccinationCenterTypes = new ArrayList<>();
+        VaccinationCenterTypes.add("HealthCareCenter");
+        VaccinationCenterTypes.add("Community Mass Vaccination Center");
+
+        assertLinesMatch(rvcc.getVaccinationCenterTypes(), VaccinationCenterTypes);
     }
 
     @Test

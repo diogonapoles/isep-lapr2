@@ -20,9 +20,25 @@ public class VaccinationCenterTest {
     }
 
     @Test
+    public void setName() {
+        hc.setName("Healthcare");
+        cc.setName("Community");
+        assertEquals(hc.getName(), "Healthcare");
+        assertEquals(cc.getName(), "Community");
+    }
+
+    @Test
     public void getPhoneNumber() {
         assertEquals("917876321", hc.getPhoneNumber());
         assertEquals("917312756", cc.getPhoneNumber());
+    }
+
+    @Test
+    public void setPhoneNumber() {
+        hc.setPhoneNumber("917876321");
+        cc.setPhoneNumber("917312756");
+        assertEquals(hc.getPhoneNumber(), "917876321");
+        assertEquals(cc.getPhoneNumber(), "917312756");
     }
 
     @Test
@@ -32,9 +48,25 @@ public class VaccinationCenterTest {
     }
 
     @Test
+    public void setFaxNumber() {
+        hc.setFaxNumber("493782");
+        cc.setFaxNumber("654253");
+        assertEquals(hc.getFaxNumber(), "493782");
+        assertEquals(cc.getFaxNumber(), "654253");
+    }
+
+    @Test
     public void getHomeAddress() {
         assertEquals("TesteRua1", hc.getHomeAddress());
         assertEquals("TesteRua2", cc.getHomeAddress());
+    }
+
+    @Test
+    public void setHomeAddress() {
+        hc.setHomeAddress("TesteRua1");
+        cc.setHomeAddress("TesteRua2");
+        assertEquals(hc.getHomeAddress(), "TesteRua1");
+        assertEquals(cc.getHomeAddress(), "TesteRua2");
     }
 
     @Test
@@ -44,9 +76,25 @@ public class VaccinationCenterTest {
     }
 
     @Test
+    public void setEmailAddress() {
+        hc.setEmailAddress("teste1@gmail.com");
+        cc.setEmailAddress("teste2@gmail.com");
+        assertEquals(hc.getEmailAddress(), "teste1@gmail.com");
+        assertEquals(cc.getEmailAddress(), "teste2@gmail.com");
+    }
+
+    @Test
     public void getWebsiteAddress() {
         assertEquals("healthcare.com", hc.getWebsiteAddress());
         assertEquals("community.com", cc.getWebsiteAddress());
+    }
+
+    @Test
+    public void setWebsiteAddress() {
+        hc.setWebsiteAddress("healthcare.com");
+        cc.setWebsiteAddress("community.com");
+        assertEquals(hc.getWebsiteAddress(), "healthcare.com");
+        assertEquals(cc.getWebsiteAddress(), "community.com");
     }
 
     @Test
@@ -56,9 +104,25 @@ public class VaccinationCenterTest {
     }
 
     @Test
+    public void setOpeningHours() {
+        hc.setOpeningHours("10");
+        cc.setOpeningHours("8");
+        assertEquals(hc.getOpeningHours(), "10");
+        assertEquals(cc.getOpeningHours(), "8");
+    }
+
+    @Test
     public void getClosingHours() {
         assertEquals("20", hc.getClosingHours());
         assertEquals("22", cc.getClosingHours());
+    }
+
+    @Test
+    public void setClosingHours() {
+        hc.setClosingHours("20");
+        cc.setClosingHours("22");
+        assertEquals(hc.getClosingHours(), "20");
+        assertEquals(cc.getClosingHours(), "22");
     }
 
     @Test
@@ -68,9 +132,25 @@ public class VaccinationCenterTest {
     }
 
     @Test
+    public void setSlotDuration() {
+        hc.setSlotDuration("3");
+        cc.setSlotDuration("5");
+        assertEquals(hc.getSlotDuration(), "3");
+        assertEquals(cc.getSlotDuration(), "5");
+    }
+
+    @Test
     public void getMaxNumVaccinesPerSlot() {
         assertEquals("20", hc.getMaxNumVaccinesPerSlot());
         assertEquals("40", cc.getMaxNumVaccinesPerSlot());
+    }
+
+    @Test
+    public void setMaxNumVaccinesPerSlot() {
+        hc.setMaxNumVaccinesPerSlot("20");
+        cc.setMaxNumVaccinesPerSlot("40");
+        assertEquals(hc.getMaxNumVaccinesPerSlot(), "20");
+        assertEquals(cc.getMaxNumVaccinesPerSlot(), "40");
     }
 
     @Test

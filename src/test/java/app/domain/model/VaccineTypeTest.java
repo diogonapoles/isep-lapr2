@@ -24,6 +24,22 @@ public class VaccineTypeTest {
     }
 
     @Test
+    public void setCode() {
+        vaccine1.setCode("31265");
+        vaccine2.setCode("67823");
+        vaccine3.setCode("42375");
+        vaccine4.setCode("78942");
+        vaccine5.setCode("43267");
+        vaccine6.setCode("53497");
+        assertEquals(vaccine1.getCode(), "31265");
+        assertEquals(vaccine2.getCode(), "67823");
+        assertEquals(vaccine3.getCode(), "42375");
+        assertEquals(vaccine4.getCode(), "78942");
+        assertEquals(vaccine5.getCode(), "43267");
+        assertEquals(vaccine6.getCode(), "53497");
+    }
+
+    @Test
     public void getDesignation() {
         assertEquals("unittest1", vaccine1.getDesignation());
         assertEquals("unittest2", vaccine2.getDesignation());
@@ -31,6 +47,22 @@ public class VaccineTypeTest {
         assertEquals("unittest4", vaccine4.getDesignation());
         assertEquals("unittest5", vaccine5.getDesignation());
         assertEquals("unittest6", vaccine6.getDesignation());
+    }
+
+    @Test
+    public void setDesignation() {
+        vaccine1.setDesignation("unittest1");
+        vaccine2.setDesignation("unittest2");
+        vaccine3.setDesignation("unittest3");
+        vaccine4.setDesignation("unittest4");
+        vaccine5.setDesignation("unittest5");
+        vaccine6.setDesignation("unittest6");
+        assertEquals(vaccine1.getDesignation(), "unittest1");
+        assertEquals(vaccine2.getDesignation(), "unittest2");
+        assertEquals(vaccine3.getDesignation(), "unittest3");
+        assertEquals(vaccine4.getDesignation(), "unittest4");
+        assertEquals(vaccine5.getDesignation(), "unittest5");
+        assertEquals(vaccine6.getDesignation(), "unittest6");
     }
 
 

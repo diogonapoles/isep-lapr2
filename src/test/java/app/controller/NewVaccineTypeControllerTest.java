@@ -9,6 +9,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertLinesMatch;
 
 public class NewVaccineTypeControllerTest {
 
@@ -21,6 +22,21 @@ public class NewVaccineTypeControllerTest {
 
         assertEquals(true, result1);
         assertEquals(false, result2);
+    }
+
+    @Test
+    public void getVaccineTechnologyTypes(){
+        NewVaccineTypeController nvtc = new NewVaccineTypeController();
+
+        List<String> Technology = new ArrayList<>();
+        Technology.add("Live-Attenuated Vaccine");
+        Technology.add("Inactivated Vaccine");
+        Technology.add("Subunit Vaccine");
+        Technology.add("Toxoid Vaccine");
+        Technology.add("Viral Vector Vaccine");
+        Technology.add("Messenger RNA (mRNA) Vaccine");
+
+        assertLinesMatch(nvtc.getVaccineTechnologyTypes(), Technology);
     }
 
 
