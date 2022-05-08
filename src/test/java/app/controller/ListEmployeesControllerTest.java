@@ -19,9 +19,9 @@ public class ListEmployeesControllerTest {
     public void getEmployeeRoles() {
 
         List<String> roles = new ArrayList<>();
+        roles.add("RECEPTIONIST");
         roles.add("NURSE");
         roles.add("CENTER_COORDINATOR");
-        roles.add("RECEPTIONIST");
 
         assertEquals( roles , controller.getEmployeeRoles() );
 
