@@ -22,15 +22,14 @@ public abstract class Employee {
                 || (citizenCardNumber.length() != 8) || !StringUtils.isNumeric(citizenCardNumber)) {
             throw new IllegalArgumentException("All attributes are mandatory!" +
                     " Phone Number and Citizen Card Number must have 9 and 8 numbers respectively!");
-        } else {
-            this.name = name;
-            this.phoneNumber = phoneNumber;
-            this.address = address;
-            this.emailAddress = emailAddress;
-            this.citizenCardNumber = citizenCardNumber;
+        } else{
+                this.name = name;
+                this.phoneNumber = phoneNumber;
+                this.address = address;
+                this.emailAddress = emailAddress;
+                this.citizenCardNumber = citizenCardNumber;
         }
     }
-
 
 
     public String getName() {

@@ -2,6 +2,7 @@ package app.domain.model;
 
 import pt.isep.lei.esoft.auth.AuthFacade;
 import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
+import app.domain.model.Employee;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,9 @@ public class EmployeeStore {
         this.authFacade = authFacade;
     }
 
-    public Employee newEmployee(String name, String phoneNumber, String address, String emailAddress, String citizenCardNumber, int roleSelection) {
+    public Employee newEmployee(String name, String phoneNumber, String address,
+                                String emailAddress, String citizenCardNumber, int roleSelection) {
+
         if (validateEmployee(phoneNumber, emailAddress, citizenCardNumber)) {
             if (roleSelection == 0)
                 return new Receptionist(name, phoneNumber, address, emailAddress, citizenCardNumber);
@@ -24,22 +27,22 @@ public class EmployeeStore {
             else if (roleSelection == 2)
                 return new Nurse(name, phoneNumber, address, emailAddress, citizenCardNumber);
         }
+
         return null;
     }
 
     private boolean validateEmployee(String phoneNumber, String emailAddress, String citizenCardNumber) {
 
-        if (authFacade.existsUser(emailAddress))
-            return false;
-        else {
-            for (Employee employee : listEmployee) {
-                if (employee.getCitizenCardNumber() == citizenCardNumber
-                        || employee.getPhoneNumber() == phoneNumber
-                        || employee.getEmailAddress().compareTo(emailAddress) == 0)
-                    return false;
-            }
-            return true;
+        for (Employee employee : listEmployee) {
+            if (employee.getCitizenCardNumber().equals(citizenCardNumber)
+                    || employee.getPhoneNumber().equals(phoneNumber)
+                    || employee.getEmailAddress().compareTo(emailAddress) == 0)
+                return false;
         }
+        if (authFacade.existsUser(emailAddress)) {
+            return false;
+        } else
+            return true;
 
     }
 
@@ -52,30 +55,28 @@ public class EmployeeStore {
         return this.listEmployee.add(employee);
     }
 
-    public List<String> getEmployeeRoles(){
+    public List<String> getEmployeeRoles() {
 
         List<UserRoleDTO> lRolesDTO;
         lRolesDTO = authFacade.getUserRoles();
 
 
         List<String> roles = new ArrayList<>();
-        for (int x = 0; x < lRolesDTO.size() ; x++) {
-            if(lRolesDTO.get(x).getDescription().compareToIgnoreCase("NURSE") == 0
-                    || lRolesDTO.get(x).getDescription().compareToIgnoreCase( "CENTER_COORDINATOR") == 0
-                    || lRolesDTO.get(x).getDescription().compareToIgnoreCase( "RECEPTIONIST") == 0)
+        for (int x = 0; x < lRolesDTO.size(); x++) {
+            if (lRolesDTO.get(x).getDescription().compareToIgnoreCase("NURSE") == 0
+                    || lRolesDTO.get(x).getDescription().compareToIgnoreCase("CENTER_COORDINATOR") == 0
+                    || lRolesDTO.get(x).getDescription().compareToIgnoreCase("RECEPTIONIST") == 0)
                 roles.add(lRolesDTO.get(x).getDescription());
         }
 
         return roles;
     }
 
-    public List<Employee> getEmployeesByRole( int selectionRole)
-    {
+    public List<Employee> getEmployeesByRole(int selectionRole) {
         List<Employee> listTemp = new ArrayList<>();
 
-        for(Employee employee : listEmployee)
-        {
-            if(employee instanceof Receptionist && selectionRole == 0)
+        for (Employee employee : listEmployee) {
+            if (employee instanceof Receptionist && selectionRole == 0)
                 listTemp.add(employee);
             else if (employee instanceof CenterCoordinator && selectionRole == 1)
                 listTemp.add(employee);
@@ -86,7 +87,6 @@ public class EmployeeStore {
         return listTemp;
 
     }
-
 
 
 }

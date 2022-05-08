@@ -22,9 +22,6 @@ public class RegisterEmployeeController {
 
         this.oEmployee = oCompany.getEmployeeStore().newEmployee(name, phoneNumber, address, emailAddress, citizenCardNumber, roleSelection);
 
-
-        this.oEmployee = oCompany.getEmployeeStore().newEmployee(name, phoneNumber, address, emailAddress, citizenCardNumber, roleSelection);
-
         if (this.oEmployee != null)
             return true;
         else

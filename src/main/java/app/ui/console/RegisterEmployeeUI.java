@@ -28,7 +28,7 @@ public class RegisterEmployeeUI implements Runnable {
 
 
             } else {
-                System.out.println("not a valid user / already exists");
+                System.out.println("not a valid user or already exists");
             }
 
         } else {
@@ -49,8 +49,6 @@ public class RegisterEmployeeUI implements Runnable {
 
 
         return controller.newEmployee(name, phoneNumber, address, emailAddress, citizenCardNumber, roleSelection);
-
-
     }
 
     private void getData() {
