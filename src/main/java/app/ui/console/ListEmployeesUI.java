@@ -3,9 +3,15 @@ package app.ui.console;
 import app.controller.ListEmployeesController;
 import app.ui.console.utils.Utils;
 
+/**
+ * type List employees ui.
+ */
 public class ListEmployeesUI implements Runnable{
     private ListEmployeesController controller;
 
+    /**
+     * Instantiates a new List employees ui.
+     */
     public ListEmployeesUI(){
         controller = new ListEmployeesController();
     }

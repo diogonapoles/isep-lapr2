@@ -8,15 +8,24 @@ import java.util.List;
 
 
 /**
+ * type Main menu ui.
  *
  * @author Paulo Maio <pam@isep.ipp.pt>
  */
 public class MainMenuUI {
 
+    /**
+     * Instantiates a new Main menu ui.
+     */
     public MainMenuUI()
     {
     }
 
+    /**
+     * Run.
+     *
+     * @throws IOException the io exception
+     */
     public void run() throws IOException
     {
         List<MenuItem> options = new ArrayList<MenuItem>();

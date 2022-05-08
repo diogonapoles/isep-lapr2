@@ -11,12 +11,16 @@ import java.util.List;
 import java.util.Objects;
 
 /**
+ * type Auth ui.
+ *
  * @author Paulo Maio <pam@isep.ipp.pt>
  */
-
 public class AuthUI implements Runnable {
     private AuthController ctrl;
 
+    /**
+     * Instantiates a new Auth ui.
+     */
     public AuthUI() {
         ctrl = new AuthController();
     }

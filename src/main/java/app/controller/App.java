@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
+ * The type App.
  *
  * @author Paulo Maio <pam@isep.ipp.pt>
  */
@@ -27,22 +28,42 @@ public class App {
         bootstrap();
     }
 
+    /**
+     * Gets company.
+     *
+     * @return the company
+     */
     public Company getCompany()
     {
         return this.company;
     }
 
 
+    /**
+     * Gets current user session.
+     *
+     * @return the current user session
+     */
     public UserSession getCurrentUserSession()
     {
         return this.authFacade.getCurrentUserSession();
     }
 
+    /**
+     * Do login boolean.
+     *
+     * @param email the email
+     * @param pwd   the pwd
+     * @return the boolean
+     */
     public boolean doLogin(String email, String pwd)
     {
         return this.authFacade.doLogin(email,pwd).isLoggedIn();
     }
 
+    /**
+     * Do logout.
+     */
     public void doLogout()
     {
         this.authFacade.doLogout();
@@ -85,6 +106,12 @@ public class App {
 
     // Extracted from https://www.javaworld.com/article/2073352/core-java/core-java-simply-singleton.html?page=2
     private static App singleton = null;
+
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static App getInstance()
     {
         if(singleton == null)

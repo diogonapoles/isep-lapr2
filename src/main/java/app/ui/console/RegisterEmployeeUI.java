@@ -4,10 +4,16 @@ import app.controller.RegisterEmployeeController;
 import app.ui.console.utils.Utils;
 
 
+/**
+ * The type Register employee ui.
+ */
 public class RegisterEmployeeUI implements Runnable {
 
     private RegisterEmployeeController controller;
 
+    /**
+     * Instantiates a new Register employee ui.
+     */
     public RegisterEmployeeUI() {
         this.controller = new RegisterEmployeeController();
     }

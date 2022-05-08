@@ -3,10 +3,16 @@ package app.ui.console;
 import app.controller.NewVaccineController;
 import app.ui.console.utils.Utils;
 
+/**
+ * The type New vaccine ui.
+ */
 public class NewVaccineUI implements Runnable {
 
     private NewVaccineController controller;
 
+    /**
+     * Instantiates a new New vaccine ui.
+     */
     public NewVaccineUI() {
         this.controller = new NewVaccineController();
     }

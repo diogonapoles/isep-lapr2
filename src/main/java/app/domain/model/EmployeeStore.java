@@ -7,15 +7,34 @@ import app.domain.model.Employee;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Employee store.
+ */
 public class EmployeeStore {
 
     private final List<Employee> listEmployee = new ArrayList<>();
     private final AuthFacade authFacade;
 
+    /**
+     * Instantiates a new Employee store.
+     *
+     * @param authFacade the auth facade
+     */
     public EmployeeStore(AuthFacade authFacade) {
         this.authFacade = authFacade;
     }
 
+    /**
+     * New employee employee.
+     *
+     * @param name              the name
+     * @param phoneNumber       the phone number
+     * @param address           the address
+     * @param emailAddress      the email address
+     * @param citizenCardNumber the citizen card number
+     * @param roleSelection     the role selection
+     * @return the employee
+     */
     public Employee newEmployee(String name, String phoneNumber, String address,
                                 String emailAddress, String citizenCardNumber, int roleSelection) {
 
@@ -47,6 +66,12 @@ public class EmployeeStore {
     }
 
 
+    /**
+     * Register employee boolean.
+     *
+     * @param employee the employee
+     * @return the boolean
+     */
     public boolean registerEmployee(Employee employee) {
         return addEmployee(employee);
     }
@@ -55,6 +80,11 @@ public class EmployeeStore {
         return this.listEmployee.add(employee);
     }
 
+    /**
+     * Gets employee roles.
+     *
+     * @return the employee roles
+     */
     public List<String> getEmployeeRoles() {
 
         List<UserRoleDTO> lRolesDTO;
@@ -72,6 +102,12 @@ public class EmployeeStore {
         return roles;
     }
 
+    /**
+     * Gets employees by role.
+     *
+     * @param selectionRole the selection role
+     * @return the employees by role
+     */
     public List<Employee> getEmployeesByRole(int selectionRole) {
         List<Employee> listTemp = new ArrayList<>();
 

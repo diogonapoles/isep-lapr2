@@ -9,10 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * type Admin ui.
+ *
  * @author Paulo Maio <pam@isep.ipp.pt>
  */
-
 public class AdminUI implements Runnable {
+    /**
+     * Instantiates a new Admin ui.
+     */
     public AdminUI() {
     }
 

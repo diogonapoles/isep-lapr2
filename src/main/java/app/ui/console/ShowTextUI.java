@@ -3,12 +3,19 @@ package app.ui.console;
 import org.apache.commons.lang3.StringUtils;
 
 /**
+ * type Show text ui.
  *
  * @author Paulo Maio <pam@isep.ipp.pt>
  */
 public class ShowTextUI implements Runnable{
 
     private String text;
+
+    /**
+     * Instantiates a new Show text ui.
+     *
+     * @param text the text
+     */
     public ShowTextUI(String text)
     {
         if (StringUtils.isBlank(text))

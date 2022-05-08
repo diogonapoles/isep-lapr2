@@ -3,10 +3,19 @@ package app.domain.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Vaccine store.
+ */
 public class VaccineStore {
 
     private final List<Vaccine> listVaccine = new ArrayList<>();
 
+    /**
+     * Validate vaccine boolean.
+     *
+     * @param name the name
+     * @return the boolean
+     */
     public boolean validateVaccine(String name){
         for(Vaccine lv: listVaccine)
         {
@@ -16,6 +25,12 @@ public class VaccineStore {
         return true;
     }
 
+    /**
+     * Register vaccine boolean.
+     *
+     * @param oVaccine the o vaccine
+     * @return the boolean
+     */
     public boolean registerVaccine(Vaccine oVaccine)
     {
         if(validateVaccine(oVaccine.getName()))
@@ -26,6 +41,17 @@ public class VaccineStore {
 
     private boolean addVaccine(Vaccine lv){return this.listVaccine.add(lv);}
 
+    /**
+     * New vaccine vaccine.
+     *
+     * @param name              the name
+     * @param brand             the brand
+     * @param ageGroup          the age group
+     * @param doseNumber        the dose number
+     * @param dosage            the dosage
+     * @param timeSinceLastDose the time since last dose
+     * @return the vaccine
+     */
     public Vaccine newVaccine(String name, String brand, String ageGroup, String doseNumber, double dosage, int timeSinceLastDose){
         return new Vaccine(name, brand, ageGroup, doseNumber, dosage, timeSinceLastDose);
     }
