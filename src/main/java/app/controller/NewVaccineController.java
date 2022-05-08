@@ -3,7 +3,6 @@ package app.controller;
 import app.domain.model.Company;
 import app.domain.model.Vaccine;
 
-import java.util.List;
 
 public class NewVaccineController {
 
