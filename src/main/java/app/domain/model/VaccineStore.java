@@ -39,7 +39,8 @@ public class VaccineStore {
             return false;
     }
 
-    private boolean addVaccine(Vaccine lv){return this.listVaccine.add(lv);}
+
+    private boolean addVaccine(Vaccine lv){ return this.listVaccine.add(lv); }
 
     /**
      * New vaccine vaccine.
@@ -55,6 +56,8 @@ public class VaccineStore {
     public Vaccine newVaccine(String name, String brand, String ageGroup, String doseNumber, double dosage, int timeSinceLastDose){
         return new Vaccine(name, brand, ageGroup, doseNumber, dosage, timeSinceLastDose);
     }
+
+
 
 }
 
