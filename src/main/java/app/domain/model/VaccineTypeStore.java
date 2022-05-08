@@ -3,12 +3,26 @@ package app.domain.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Vaccine type store.
+ */
 public class VaccineTypeStore {
     private final List<VaccineType> listVaccineType = new ArrayList<>();
 
+    /**
+     * Instantiates a new Vaccine type store.
+     */
     public VaccineTypeStore() {
     }
 
+    /**
+     * New vaccine type vaccine type.
+     *
+     * @param technology  the technology
+     * @param code        the code
+     * @param designation the designation
+     * @return the vaccine type
+     */
     public VaccineType newVaccineType(int technology, String code, String designation){
     if(validateVaccineType(code))
         {
@@ -28,6 +42,12 @@ public class VaccineTypeStore {
         return null;
     }
 
+    /**
+     * Validate vaccine type boolean.
+     *
+     * @param code the code
+     * @return the boolean
+     */
     public boolean validateVaccineType(String code){
         for(VaccineType vt: listVaccineType)
         {
@@ -37,6 +57,12 @@ public class VaccineTypeStore {
         return true;
     }
 
+    /**
+     * Register vaccine type boolean.
+     *
+     * @param oVaccineType the o vaccine type
+     * @return the boolean
+     */
     public boolean registerVaccineType(VaccineType oVaccineType)
     {
         if(validateVaccineType(oVaccineType.getCode()))
@@ -47,6 +73,11 @@ public class VaccineTypeStore {
 
     private boolean addVaccineType(VaccineType vt){return this.listVaccineType.add(vt);}
 
+    /**
+     * Gets vaccine technology types.
+     *
+     * @return the vaccine technology types
+     */
     public List<String> getVaccineTechnologyTypes()
     {
         List<String> listOfVaccineType = new ArrayList<>();

@@ -3,10 +3,16 @@ package app.ui.console;
 import app.controller.RegisterVaccinationCenterController;
 import app.ui.console.utils.Utils;
 
+/**
+ * The type Register vaccination center ui.
+ */
 public class RegisterVaccinationCenterUI implements Runnable{
 
     private RegisterVaccinationCenterController controller;
 
+    /**
+     * Instantiates a new Register vaccination center ui.
+     */
     public RegisterVaccinationCenterUI()
     {
         this.controller = new RegisterVaccinationCenterController();

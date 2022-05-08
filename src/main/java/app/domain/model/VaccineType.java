@@ -2,10 +2,19 @@ package app.domain.model;
 
 import org.apache.commons.lang3.StringUtils;
 
+/**
+ * The type Vaccine type.
+ */
 public abstract class VaccineType {
     private String code;
     private String designation;
 
+    /**
+     * Instantiates a new Vaccine type.
+     *
+     * @param code        the code
+     * @param designation the designation
+     */
     public VaccineType(String code, String designation){
         if((code == null) || (code.isEmpty()) ||
                 (designation == null) || (designation.isEmpty()) ||
@@ -16,21 +25,44 @@ public abstract class VaccineType {
         this.designation = designation;
     }
 
+    /**
+     * Instantiates a new Vaccine type.
+     */
     public VaccineType(){
     }
 
+    /**
+     * Gets code.
+     *
+     * @return the code
+     */
     public String getCode() {
         return code;
     }
 
+    /**
+     * Sets code.
+     *
+     * @param code the code
+     */
     public void setCode(String code) {
         this.code = code;
     }
 
+    /**
+     * Gets designation.
+     *
+     * @return the designation
+     */
     public String getDesignation() {
         return designation;
     }
 
+    /**
+     * Sets designation.
+     *
+     * @param designation the designation
+     */
     public void setDesignation(String designation) {
         this.designation = designation;
     }
