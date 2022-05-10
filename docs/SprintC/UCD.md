@@ -28,5 +28,3 @@ However, be aware, this is a pedagogical simplification. On further projects and
 | US 012 | [Specify Vaccine Type](US012.md)|
 | US 013 | [Specify Administration Process](US13.md)|
 | US 014 | [Manage centers analysis](US014.md)|
-
-
