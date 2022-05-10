@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor "SNS User" as User
+
+activate User
+User -> ":System" : wants to schedule a vaccine
+activate ":System"
+":System" --> User : requests SNS user number
+deactivate ":System"
+
+User -> ":System" : types SNS user number
+activate ":System"
+":System" --> User : asks to select the vaccination center, date and time
+deactivate ":System"
+
+User -> ":System" : chooses vaccination center, date and time
+activate ":System"
+":System" --> User : asks to confirm all data
+deactivate ":System"
+
+User-> ":System" : confirms the data
+activate ":System"
+":System" --> User : check the vaccination capacity for that day/time \n and infoms (in)sucess
+deactivate ":System"
+
+
+deactivate User
+@enduml
