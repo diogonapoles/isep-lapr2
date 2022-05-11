@@ -1,0 +1,54 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class VaccineSchedule{
+date
+time
+userNumber
+vaccinationCenter
+scheduleVerification
+}
+
+class Notification
+
+class Receptionist
+
+class SNSUser{
+name
+address
+gender
+phoneNumber
+birthDate
+emailAddress
+snsUserNumber
+citizenCardNumber
+}
+
+class VaccineType{
+code
+designation
+vaccineTechnology
+}
+
+class VaccinationCenter{
+name
+phoneNumber
+faxNumber
+homeAddress
+emailAddress
+websiteAddress
+openingHours
+closingHours
+slotDuration
+maxNumVaccinesPerSlot
+}
+
+Receptionist "*" -down--- "*" VaccineSchedule : confirms >
+
+VaccinationCenter "0..1" -right- "0..1" VaccineSchedule : > fulfilling
+
+VaccineSchedule "1" -up-- "0..1" Notification : emits >
+
+VaccineSchedule "*" -down-- "1" SNSUser : made for >
+VaccineSchedule "1" -up-- "0..1" VaccineType : administers >
+@enduml

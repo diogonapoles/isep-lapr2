@@ -62,7 +62,7 @@ As a SNS user, I intend to use the application to schedule a vaccine.
 
 **Alternative 1**
 
-![US4_SSD](US4_SSD.svg)
+![US4_SSD](US1_SSD.svg)
 
 
 

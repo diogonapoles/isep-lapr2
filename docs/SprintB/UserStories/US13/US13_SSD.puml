@@ -27,4 +27,4 @@ activate ":System"
 deactivate ":System"
 
 deactivate ADM
-@endumlDm
+@enduml
