@@ -12,18 +12,12 @@ As a SNS user, I intend to use the application to schedule a vaccine.
 
 **From the specifications document:**
 
->	Each task is characterized by having a unique reference per organization, a designation, an informal and a technical description, an estimated duration and cost as well as the its classifying task category.
-
-
->	As long as it is not published, access to the task is exclusive to the employees of the respective organization.
-
+>	"To take a vaccine, the SNS user should use the application to schedule his/her vaccination. The user should introduce his/her SNS user number, select the vaccination center, the date, and the time (s)he wants to be vaccinated as well as the type of vaccine to be administered (by default, the system suggests the one related to the ongoing outbreak). Then, the application should check the vaccination center capacity for that day/time and, if possible, confirm that the vaccination is scheduled and inform the user that (s)he should be at the selected vaccination center at the scheduled day and time."
 
 
 **From the client clarifications:**
 
-> **Question:** Which is the unit of measurement used to estimate duration?
->
-> **Answer:** Duration is estimated in days.
+There were none.
 
 
 ### 1.3. Acceptance Criteria
@@ -90,8 +84,8 @@ n/a
 
 | Interaction ID | Question: Which class is responsible for... | Answer  | Justification (with patterns)  |
 |:-------------  |:--------------------- |:------------|:---------------------------- |
-| Step 1  		 |	... interacting with the actor? | CreateTaskUI   |  Pure Fabrication: there is no reason to assign this responsibility to any existing class in the Domain Model.           |
-| 			  		 |	... coordinating the US? | CreateTaskController | Controller                             |
+| Step 1  		 |	... interacting with the actor? | ScheduleVaccineUI   |  Pure Fabrication: there is no reason to assign this responsibility to any existing class in the Domain Model.           |
+| 			  		 |	... coordinating the US? | ScheduleVaccineController | Controller                             |
 | 			  		 |	... instantiating a new Task? | Organization   | Creator (Rule 1): in the DM Organization has a Task.   |
 | 			  		 | ... knowing the user using the system?  | UserSession  | IE: cf. A&A component documentation.  |
 | 			  		 |	... knowing to which organization the user belongs to? | Platform  | IE: has registed all Organizations |
@@ -105,7 +99,7 @@ n/a
 | Step 7  		 |	... validating all data (local validation)? | Task | IE: owns its data.| 
 | 			  		 |	... validating all data (global validation)? | Organization | IE: knows all its tasks.| 
 | 			  		 |	... saving the created task? | Organization | IE: owns all its tasks.| 
-| Step 8  		 |	... informing operation success?| CreateTaskUI  | IE: is responsible for user interactions.  | 
+| Step 8  		 |	... informing operation success?| ScheduleVaccineUI  | IE: is responsible for user interactions.  | 
 
 ### Systematization ##
 
@@ -159,7 +153,7 @@ Other software classes (i.e. Pure Fabrication) identified:
 # 5. Construction (Implementation)
 
 
-## Class CreateTaskController
+## Class ScheduleVaccineController
 
 		public boolean createTask(String ref, String designation, String informalDesc, 
 			String technicalDesc, Integer duration, Double cost, Integer catId)() {
