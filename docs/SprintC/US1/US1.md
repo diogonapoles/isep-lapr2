@@ -62,7 +62,7 @@ As a SNS user, I intend to use the application to schedule a vaccine.
 
 **Alternative 1**
 
-![US4_SSD](US1_SSD.svg)
+![US1_SSD](US1_SSD.svg)
 
 
 
@@ -75,7 +75,7 @@ As a SNS user, I intend to use the application to schedule a vaccine.
 
 ### 2.1. Relevant Domain Model Excerpt
 
-![US4_MD](US4_MD.svg)
+![US1_DM](US1_DM.svg)
 
 ### 2.2. Other Remarks
 
