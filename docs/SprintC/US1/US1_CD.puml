@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class ScheduleVaccineController{
+}
+
+class ScheduleVaccineUI{
+}
+
+class ScheduleVaccine{
+}
+
+class Company{
+}
+
+ScheduleVaccineUI .down.> ScheduleVaccineController
+ScheduleVaccineController .down.> Company
+
+@enduml

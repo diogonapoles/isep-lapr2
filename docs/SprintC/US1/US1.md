@@ -17,7 +17,9 @@ As a SNS user, I intend to use the application to schedule a vaccine.
 
 **From the client clarifications:**
 
-There were none.
+> **Question:** Should the application send the SMS with the confirmation of the schedule or will it be other user story in the future?
+>
+> **Answer:** 
 
 
 ### 1.3. Acceptance Criteria

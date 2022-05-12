@@ -23,7 +23,7 @@ deactivate ":System"
 
 User-> ":System" : confirms the data
 activate ":System"
-":System" --> User : check the vaccination capacity for that day/time \n and infoms (in)sucess
+":System" --> User : infoms (in)sucess
 deactivate ":System"
 
 
