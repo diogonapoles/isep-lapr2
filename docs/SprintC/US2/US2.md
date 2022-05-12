@@ -1,36 +1,47 @@
-# US 1 - Schedule a Vaccine as a SNS User
+# US 2 - Schedule a Vaccine as a Recepcionist at one Vaccination Center
 
 ## 1. Requirements Engineering
 
 
 ### 1.1. User Story Description
 
-As a SNS user, I intend to use the application to schedule a vaccine.
+As a receptionist at one vaccination center, I want to schedule a vaccination.
 
 ### 1.2. Customer Specifications and Clarifications
 
 
 **From the specifications document:**
 
->	"To take a vaccine, the SNS user should use the application to schedule his/her vaccination. The user should introduce his/her SNS user number, select the vaccination center, the date, and the time (s)he wants to be vaccinated as well as the type of vaccine to be administered (by default, the system suggests the one related to the ongoing outbreak). Then, the application should check the vaccination center capacity for that day/time and, if possible, confirm that the vaccination is scheduled and inform the user that (s)he should be at the selected vaccination center at the scheduled day and time."
-
+> "Some users (e.g.: older ones) may want to go to a healthcare center to schedule the
+vaccine appointment with the help of a receptionists at one vaccination center. "
 
 **From the client clarifications:**
 
-There were none.
+> **Question:** What atributes of a SNS user are required to schedule a vaccination appointment?
+>
+> **Answer:**
+
+> **Question:** Are date and time predefined by the vaccination center or can the recepcionist choose? 
+>
+> **Answer:** 
+
+> **Question:** Can the recepcionist schedule an appointment in a different vaccine center of their own?
+>
+> **Answer:**
 
 
 ### 1.3. Acceptance Criteria
 
 
-* **AC1:** A SNS user cannot schedule the same vaccine more than once.
+* **AC1:** The algorithm should check if the SNS User is within the age
+  and time since the last vaccine.
 
 
 ### 1.4. Found out Dependencies
 
 
 * There is a dependency to "US9 Register a Vaccination Center" since its required to exist a vaccination center so the user can take the vaccine.
-* There is a dependency to "US12 Specify a new vaccine type" and "US13 Specify a new vaccine and its administration process" because, in order to book an appointment, a vaccine needs to exit and its administration process known. 
+* There is a dependency to "US12 Specify a new vaccine type" and "US13 Specify a new vaccine and its administration process" because, in order to book an appointment, a vaccine needs to exit and its administration process known.
 
 
 ### 1.5 Input and Output Data
@@ -56,7 +67,7 @@ There were none.
 
 **Alternative 1**
 
-![US1_SSD](US1_SSD.svg)
+![US2_SSD](US2_SSD.svg)
 
 
 
@@ -69,7 +80,7 @@ There were none.
 
 ### 2.1. Relevant Domain Model Excerpt
 
-![US1_DM](US1_DM.svg)
+![US2_DM](US2_DM.svg)
 
 ### 2.2. Other Remarks
 
@@ -119,14 +130,14 @@ Other software classes (i.e. Pure Fabrication) identified:
 
 **Alternative 1**
 
-![US006_SD](US006_SD.svg)
+![US2_SD](US2_SD.svg)
 
 
 ## 3.3. Class Diagram (CD)
 
 **From alternative 1**
 
-![US4_CD](US4_CD.svg)
+![US2_CD](US2_CD.svg)
 
 # 4. Tests
 
@@ -196,8 +207,4 @@ Other software classes (i.e. Pure Fabrication) identified:
 Platform and Organization classes are getting too many responsibilities due to IE pattern and, therefore, they are becoming huge and harder to maintain.
 
 Is there any way to avoid this to happen?
-
-
-
-
 
