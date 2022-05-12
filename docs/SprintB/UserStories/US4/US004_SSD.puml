@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor "Receptionist" as RCP
+
+activate RCP
+RCP -> ":System" : starts registering the arrival of the user
+activate ":System"
+":System" --> RCP : request data (snsNumber, )
+deactivate ":System"
+
+RCP -> ":System" :
+activate ":System"
+":System" --> RCP : ask for the user data
+deactivate ":System"
+@enduml
