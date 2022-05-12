@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Administrator
+
+class SNSUser{
+name
+address
+gender
+phoneNumber
+birthDate
+emailAddress
+snsUserNumber
+citizenCardNumber
+}
+
+Administrator "1" -down- "*" SNSUser : registers and configures >
+
+@enduml

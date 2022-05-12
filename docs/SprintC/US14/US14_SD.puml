@@ -1,0 +1,86 @@
+@startuml
+autonumber
+'hide footbox
+actor "Administrator" as ADM
+
+participant ":LoadSNSUserUI" as UI
+participant ":LoadSNSUserController" as CTRL
+participant "App" as _APP
+participant "app\n:App" as APP
+participant "comp\n:Company" as COMP
+participant ":CSVFileReader" as CSV
+participant ":LoadSNSUser" as LSU
+participant "user\n:SNSUser" as SU
+participant "csvft\n:List<String> csvFileTypes" as CSVFT
+
+activate ADM
+ADM -> UI : asks to load SNS users from a CSV file
+activate UI
+UI -> CTRL : getCSVFileTypes()
+activate CTRL
+CTRL -> _APP : app = getInstance()
+activate _APP
+deactivate _APP
+CTRL -> APP : comp = getCompany()
+activate APP
+deactivate APP
+CTRL -> COMP : csvft = getCSVFileTypes()
+activate COMP
+deactivate COMP
+deactivate CTRL
+UI --> ADM : shows different types of CSV files and asks user to select one
+deactivate UI
+|||
+
+
+ADM -> UI : selects the desired type of CSV file
+activate UI
+|||
+UI --> ADM : requests data (fileName, fileLocation)
+deactivate UI
+|||
+
+ADM -> UI : types requested data
+activate UI
+UI -> CTRL : csvToArray(fileType, fileName, fileLocation)
+activate CTRL
+CTRL -> COMP : csvfr = getCSVFileReader()
+activate COMP
+deactivate COMP
+CTRL -> CSV : csvToArray(fileType, fileName, fileLocation)
+activate CSV
+CSV -> CSV : validateArray()
+deactivate CSV
+
+CTRL -> COMP : lsu = getLoadSNSUser()
+activate COMP
+deactivate COMP
+CTRL -> LSU : loadUsers(array)
+activate LSU
+
+
+LSU -> SU ** : create(name, address, gender, phoneNumber, birthDate,\nemailAddress, snsUserNumber,citizenCardNumber)
+LSU -> LSU : validateUsers(user)
+deactivate CTRL
+UI --> ADM: shows all data and requests confirmation
+deactivate LSU
+
+deactivate CTRL
+deactivate UI
+
+ADM -> UI : confirms the data
+activate UI
+UI -> CTRL : saveUsers()
+activate CTRL
+|||
+CTRL -> LSU : saveUsers(user)
+activate LSU
+LSU -> SU ** : saveUsers(user)
+LSU -> LSU : validateUsers(user)
+LSU -> LSU : addUser(user)
+UI --> ADM : informs operation success
+CTRL --> UI : result
+deactivate LSU
+deactivate CTRL
+deactivate UI
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor "Administrator" as ADM
+
+activate ADM
+ADM -> ":System" : asks to load SNS users from a CSV file
+activate ":System"
+":System" --> ADM : shows different types of CSV files \n and asks user to select one
+deactivate ":System"
+
+ADM -> ":System" : selects the desired type of CSV file
+activate ":System"
+":System" --> ADM : requests data (fileName, fileLocation)
+deactivate ":System"
+
+ADM -> ":System" : types requested data
+activate ":System"
+":System" --> ADM : shows all data and requests confirmation
+deactivate ":System"
+
+ADM -> ":System" : confirms the data
+activate ":System"
+":System" --> ADM : informs operation success
+deactivate ":System"
+@enduml
