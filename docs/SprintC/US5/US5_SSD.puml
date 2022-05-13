@@ -1,27 +1,22 @@
 @startuml
-'https://plantuml.com/class-diagram
+'https://plantuml.com/sequence-diagram
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
+autonumber
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
+actor "Nurse" as Nurse
 
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
+activate Nurse
+Nurse -> ":System" : wants to schedule a vaccine
+activate ":System"
+":System" --> Nurse : requests SNS user number
+deactivate ":System"
 
-class ArrayList {
-Object[] elementData
-size()
-}
+Nurse -> ":System" : types SNS user number
+activate ":System"
+":System" --> Nurse : asks to select the vaccination center, date and time
+deactivate ":System"
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
-}
 
+
+deactivate Nurse
 @enduml
