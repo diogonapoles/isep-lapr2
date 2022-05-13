@@ -18,12 +18,12 @@ deactivate ":System"
 
 User -> ":System" : chooses vaccination center, date and time
 activate ":System"
-":System" --> User : asks to confirm all data
+":System" --> User : shows all data and requests confirmation
 deactivate ":System"
 
 User-> ":System" : confirms the data
 activate ":System"
-":System" --> User : infoms (in)sucess
+":System" --> User : infoms operation (in)sucess
 deactivate ":System"
 
 

@@ -1,0 +1,82 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+'hide footbox
+actor "SNS User" as USER
+
+participant ":ScheduleVaccineUI" as UI
+participant ":ScheduleVaccineController" as CTRL
+participant "App" as _APP
+participant "app\n:App" as APP
+participant "comp\n:Company" as COMP
+participant "center\n:VaccinationCenter" as VC
+participant "lvc\n:List<String> listVaccinationCenter" as LVC
+
+activate USER
+USER -> UI : wants to schedule a vaccine
+activate UI
+UI -> CTRL : getListVaccinationCenter()
+activate CTRL
+UI -> CTRL : getVaccineCenterSchedule()
+CTRL -> _APP : app = getInstance()
+activate _APP
+deactivate _APP
+CTRL -> APP : comp = getCompany()
+activate APP
+deactivate APP
+CTRL -> COMP : lvc = getListVaccinationCenter()
+activate COMP
+deactivate COMP
+CTRL -> COMP : gvcs = getVaccineCenterSchedule()
+activate COMP
+deactivate COMP
+deactivate CTRL
+UI --> USER : requests SNS user number
+deactivate UI
+|||
+
+
+
+USER -> UI : types SNS user number
+activate UI
+|||
+UI --> USER : asks to select the vaccination center, date and time
+deactivate UI
+|||
+
+USER -> UI : chooses vaccination center, date and time
+activate UI
+UI -> CTRL : createAppointment(SNS User number,vaccination center, date, time)
+activate CTRL
+CTRL -> COMP : VA = getAppointment()
+activate COMP
+deactivate COMP
+CTRL -> GSV : appointment = createAndSaveAppointment(SNSUserNumber, \n vaccinationCenter, date, time)
+activate GSV
+GSV -> VC ** : create(SNSUserNumber, vaccinationCenter, date, time)
+GSV -> GSV : validateAppointment(appointment)
+deactivate CTRL
+UI --> USER: shows all data and requests confirmation
+deactivate GSV
+deactivate CTRL
+deactivate UI
+|||
+
+
+USER -> UI : confirms the data
+activate UI
+UI -> CTRL : saveAppointment()
+activate CTRL
+|||
+CTRL -> GSV : saveAppointment(appointment)
+activate GSV
+GSV -> VC ** : saveAppointment(appointment)
+GSV -> GSV : validateAppointment(appointment)
+GSV -> GSV : addAppointment(appointment))
+UI --> USER : informs operation (in)success
+CTRL --> UI : result
+deactivate GSV
+deactivate CTRL
+deactivate UI
+@enduml
