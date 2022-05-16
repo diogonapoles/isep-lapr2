@@ -17,6 +17,8 @@ public class Company {
     private VaccinationCenterStore oVaccinationCenterStore;
     private VaccineTypeStore oVaccineTypeStore;
     private VaccineStore oVaccineStore;
+    private SNSUserStore oSNSUserStore;
+    private CSVReader oCSVReader;
 
     /**
      * Instantiates a new Company.
@@ -32,6 +34,8 @@ public class Company {
         this.authFacade = new AuthFacade();
         this.oVaccinationCenterStore = new VaccinationCenterStore();
         this.oVaccineTypeStore = new VaccineTypeStore();
+        this.oSNSUserStore = new SNSUserStore();
+        this.oCSVReader = new CSVReader();
     }
 
     /**
@@ -51,6 +55,8 @@ public class Company {
     public AuthFacade getAuthFacade() {
         return authFacade;
     }
+
+    public CSVReader getCSVReader(){return this.oCSVReader;}
 
     /**
      * Get employee store.
@@ -88,4 +94,6 @@ public class Company {
      * @return the vaccine store
      */
     public VaccineStore getVaccineStore(){ return this.oVaccineStore;}
+
+    public SNSUserStore getSNSUserStore(){return this.oSNSUserStore;}
 }
