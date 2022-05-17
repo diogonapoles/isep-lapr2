@@ -36,6 +36,7 @@ public class Company {
         this.oVaccineTypeStore = new VaccineTypeStore();
         this.oSNSUserStore = new SNSUserStore();
         this.oCSVReader = new CSVReader();
+        this.oVaccineStore = new VaccineStore();
     }
 
     /**
