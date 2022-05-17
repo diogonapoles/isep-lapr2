@@ -2,15 +2,19 @@
 'https://plantuml.com/sequence-diagram
 
 class ScheduleVaccineController{
++getListVaccinationCenter
++getVaccineScheduleStore
 }
 
 class ScheduleVaccineUI{
 }
 
 class ScheduleVaccine{
+
 }
 
 class Company{
+
 }
 
 ScheduleVaccineUI .down.> ScheduleVaccineController
