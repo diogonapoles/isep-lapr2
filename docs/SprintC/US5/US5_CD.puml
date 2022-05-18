@@ -15,6 +15,12 @@ class Application{
 +getCompany()
 }
 
+ListWaitingRoomUI ..> ListWaitingRoomController
+ListWaitingRoomController ..> Company
+ListWaitingRoomController ..> Application
+
+Company ..> WaitingRoom
+
 
 
 @enduml
