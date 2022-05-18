@@ -11,8 +11,6 @@ scheduleVerification
 
 class Notification
 
-class Receptionist
-
 class SNSUser{
 name
 address
@@ -43,7 +41,6 @@ slotDuration
 maxNumVaccinesPerSlot
 }
 
-Receptionist "*" -down--- "*" VaccineSchedule : confirms >
 
 VaccinationCenter "0..1" -right- "0..1" VaccineSchedule : > fulfilling
 
