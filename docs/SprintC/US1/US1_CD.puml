@@ -2,22 +2,48 @@
 'https://plantuml.com/sequence-diagram
 
 class ScheduleVaccineController{
-+getListVaccinationCenter
-+getVaccineScheduleStore
++createAppointment(SNSUserNumber, vaccinationCenter, date, time)
++getAvailableDate()
++getAvailableTime()
++getListVaccinationCenter()
 }
 
 class ScheduleVaccineUI{
 }
 
 class ScheduleVaccine{
++SNSUserNumber
++ vaccinationCenter
++date
++time
++create(SNSUserNumber, vaccinationCenter, date, time)
 
 }
 
 class Company{
+-designation
++getListVaccinationCenter()
++getVaccineScheduleStore()
++getAppointments()
 
+}
+
+class ScheduleVaccineStore{
++getAvailableDate()
++getAvailableTime()
++createAppointment(SNSUserNumber, vaccinationCenter, date, time)
++addAppointment()
+}
+
+class App{
++getInstance()
++getCompany()
 }
 
 ScheduleVaccineUI .down.> ScheduleVaccineController
 ScheduleVaccineController .down.> Company
-
+ScheduleVaccineController .> ScheduleVaccine
+ScheduleVaccineController .>App
+Company .down.> ScheduleVaccineStore
+ScheduleVaccineStore .> ScheduleVaccine
 @enduml

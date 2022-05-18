@@ -54,8 +54,6 @@ deactivate UI
 
 
 
-
-
 USER -> UI : chooses vaccination center, date and time
 activate UI
 |||
@@ -68,7 +66,7 @@ USER -> UI : confirms the data
 activate UI
 UI -> CTRL : createAppointment(SNS User number,vaccination center, date, time)
 activate CTRL
-CTRL -> COMP : VA = getAppointment()
+CTRL -> COMP : VA = getAppointments()
 activate COMP
 deactivate COMP
 CTRL -> STORE : appointment = createAppointment(SNSUserNumber, \n vaccinationCenter, date, time)
