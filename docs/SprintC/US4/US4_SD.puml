@@ -1,0 +1,89 @@
+@startuml
+autonumber
+actor "Receptionist" as RCP
+
+
+participant ":UserArrivalUI" as UI
+participant ":UserArrivalController" as CTRL
+participant "App" as APP
+participant "app\n:App" as App
+participant "comp:Company" as COMP
+participant "uas\n:UserArrivalStore" as UAS
+participant "snsU: SNSUser" as snsU
+participant "auth\n:AuthFacade" as AF
+
+
+
+activate RCP
+RCP -> UI : starts registering the arrival of the user
+activate UI
+UI -> CTRL : getUsersVaccineSchedule()
+activate CTRL
+CTRL -> APP : app = getInstance()
+activate APP
+deactivate APP
+CTRL -> App : comp = getCompany()
+activate App
+deactivate App
+CTRL -> COMP : guvs = getUsersVaccineSchedule()
+activate COMP
+deactivate COMP
+deactivate CTRL
+
+
+UI --> RCP : request data (name, vaccineScheduleDate, \narrivalTime,  citizenCardNumber, snsNumber)
+
+deactivate UI
+
+RCP -> UI : types requested data
+activate UI
+
+UI -> CTRL :createUser (name, vaccineScheduleDate, \narrivalTime,  citizenCardNumber, snsNumber)
+activate CTRL
+
+
+CTRL -> UAS : snsU = createUser (name, vaccineScheduleDate, \narrivalTime,  citizenCardNumber, snsNumber)
+activate UAS
+
+UAS --> snsU** : create(name, phoneNumber, address, \nemailAddress, citizenCardNumber)
+
+UAS --> UAS : validateUser(snsU)
+activate UAS
+deactivate UAS
+
+
+UI --> RCP : shows the data and requests a confirmation
+deactivate UI
+deactivate CTRL
+deactivate UAS
+
+
+
+
+
+RCP -> UI : confirms the data
+activate UI
+
+UI -> CTRL : saveUser()
+activate CTRL
+
+CTRL -> UAS: saveUser(snsU)
+activate UAS
+
+UAS -> UAS : validateUser(snsU)
+activate UAS
+deactivate UAS
+
+UAS -> UAS : addUserToRoom(snsU)
+activate UAS
+deactivate UAS
+deactivate UAS
+deactivate CTRL
+
+UI --> RCP : informs operation success
+deactivate UI
+
+
+deactivate RCP
+
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+
+class Receptionist
+
+class WaitingRoom
+
+class SNSUser{
+name
+address
+gender
+phoneNumber
+birthDate
+emailAddress
+snsUserNumber
+citizenCardNumber
+}
+
+Receptionist "*" -up-- "*" SNSUser : registers arrival of >
+Receptionist "1..*"-right-- "1..*"WaitingRoom : sends SNS user to >
+@enduml

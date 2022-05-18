@@ -1,0 +1,46 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Application {
+  +static getInstance()
+  +getCompany()
+
+}
+
+class UserArrivalStore {
++createUser (name, vaccineScheduleDate, \narrivalTime,  citizenCardNumber, snsNumber)
++validateUser(snsU)
++saveUser(snsU)
++addUserToRoom(snsU)
+}
+
+
+class Company {
++getUsersVaccineSchedule()
+
+}
+
+
+
+class UserArrivalController {
++getUsersVaccineSchedule()
++createUser (name, vaccineScheduleDate, \narrivalTime,  citizenCardNumber, snsNumber)
++saveUser()
+}
+
+class UserArrivalUI {
+
+}
+
+
+UserArrivalUI ..> UserArrivalController
+UserArrivalController ..> Company
+UserArrivalController ..> Application
+Application ..> Company
+UserArrivalController ..> UserArrivalStore
+Company "1" --> "1" UserArrivalStore : has
+
+
+
+
+@enduml
