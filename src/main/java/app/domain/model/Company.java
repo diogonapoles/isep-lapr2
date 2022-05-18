@@ -19,6 +19,7 @@ public class Company {
     private VaccineStore oVaccineStore;
     private SNSUserStore oSNSUserStore;
     private CSVReader oCSVReader;
+    private UserArrivalStore oUserArrivalStore;
 
     /**
      * Instantiates a new Company.
@@ -97,4 +98,6 @@ public class Company {
     public VaccineStore getVaccineStore(){ return this.oVaccineStore;}
 
     public SNSUserStore getSNSUserStore(){return this.oSNSUserStore;}
+
+    public UserArrivalStore getUserArrivalStore(){return this.oUserArrivalStore;}
 }

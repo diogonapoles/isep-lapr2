@@ -12,6 +12,7 @@ public class SNSUser {
     String emailAddress;
     String snsUserNumber;
     String citizenCardNumber;
+    String vaccineScheduleDate;
 
     public SNSUser(String name, String gender, String birthDate, String homeAddress, String phoneNumber, String emailAddress, String snsUserNumber, String citizenCardNumber) {
         try {
@@ -36,10 +37,18 @@ public class SNSUser {
                 this.emailAddress = emailAddress;
                 this.snsUserNumber = snsUserNumber;
                 this.citizenCardNumber = citizenCardNumber;
+                this.vaccineScheduleDate = vaccineScheduleDate;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    public SNSUser(String name, String snsUserNumber, String citizenCardNumber, String vaccineScheduleDate) {
+        this.name = name;
+        this.snsUserNumber = snsUserNumber;
+        this.citizenCardNumber = citizenCardNumber;
+        this.vaccineScheduleDate = vaccineScheduleDate;
     }
 
     public String getGender() {
@@ -104,6 +113,14 @@ public class SNSUser {
 
     public void setCitizenCardNumber(String citizenCardNumber) {
         this.citizenCardNumber = citizenCardNumber;
+    }
+
+    public String getVaccineScheduleDate(){
+        return vaccineScheduleDate;
+    }
+
+    public void setVaccineScheduleDate(String vaccineScheduleDate){
+        this.vaccineScheduleDate = vaccineScheduleDate;
     }
 
     @Override

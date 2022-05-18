@@ -31,35 +31,29 @@ deactivate COMP
 deactivate CTRL
 
 
-UI --> RCP : request data (name, vaccineScheduleDate, \narrivalTime,  citizenCardNumber, snsNumber)
+UI --> RCP : request data (name, snsUserNumber, \ncitizenCardNumber, vaccineScheduleDate)
 
 deactivate UI
 
 RCP -> UI : types requested data
 activate UI
 
-UI -> CTRL :createUser (name, vaccineScheduleDate, \narrivalTime,  citizenCardNumber, snsNumber)
+UI -> CTRL : createUser (name, snsUserNumber, \ncitizenCardNumber, vaccineScheduleDate)
 activate CTRL
 
-
-CTRL -> UAS : snsU = createUser (name, vaccineScheduleDate, \narrivalTime,  citizenCardNumber, snsNumber)
+CTRL -> UAS : snsU = createUser (name, snsUserNumber, \ncitizenCardNumber, vaccineScheduleDate)
 activate UAS
 
-UAS --> snsU** : create(name, phoneNumber, address, \nemailAddress, citizenCardNumber)
+UAS --> snsU** : createUser (name, snsUserNumber, \ncitizenCardNumber, vaccineScheduleDate)
 
-UAS --> UAS : validateUser(snsU)
+UAS -> UAS : validateUser(snsU)
 activate UAS
 deactivate UAS
-
 
 UI --> RCP : shows the data and requests a confirmation
 deactivate UI
 deactivate CTRL
 deactivate UAS
-
-
-
-
 
 RCP -> UI : confirms the data
 activate UI
@@ -77,13 +71,12 @@ deactivate UAS
 UAS -> UAS : addUserToRoom(snsU)
 activate UAS
 deactivate UAS
-deactivate UAS
-deactivate CTRL
+
 
 UI --> RCP : informs operation success
+deactivate UAS
+deactivate CTRL
 deactivate UI
-
-
 deactivate RCP
 
 @enduml

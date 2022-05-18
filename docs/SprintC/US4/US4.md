@@ -21,10 +21,6 @@ the arrival of a **SNS user** to take the vaccine.
 >
 > Answer: "The application should present a message saying that the SNS user did not scheduled a vaccination."
 
-> Question: "Regarding US02, i would like to know if a receptionist has the ability to schedule an appointment in different vaccination centres or only on their own."
->
-> Answer: "The receptionist has the ability to schedule the vaccine in any vaccination center. The receptionist should ask the SNS user to indicate/select the preferred vaccination center."
-
 >Question: "Respectively to US04, after the receptionist registers the SNS User's arrival at the Vaccination Center, the system creates the list that will be available for the Nurse to view, correct? "
 >
 >Answer: "The nurse checks the list (of SNS users in the waiting room) in US05."

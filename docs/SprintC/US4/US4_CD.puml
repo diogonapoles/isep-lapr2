@@ -8,7 +8,7 @@ class Application {
 }
 
 class UserArrivalStore {
-+createUser (name, vaccineScheduleDate, \narrivalTime,  citizenCardNumber, snsNumber)
++createUser (name, snsUserNumber, \ncitizenCardNumber, vaccineScheduleDate)
 +validateUser(snsU)
 +saveUser(snsU)
 +addUserToRoom(snsU)

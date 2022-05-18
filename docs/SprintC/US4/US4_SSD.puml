@@ -8,7 +8,7 @@ actor "Receptionist" as RCP
 activate RCP
 RCP -> ":System" : starts registering the arrival of the user
 activate ":System"
-":System" --> RCP : request data (name, vaccineScheduleDate, \narrivalTime,  citizenCardNumber, snsNumber)
+":System" --> RCP : request data (name, snsUserNumber, \ncitizenCardNumber, vaccineScheduleDate)
 deactivate ":System"
 
 RCP -> ":System" : types requested data
