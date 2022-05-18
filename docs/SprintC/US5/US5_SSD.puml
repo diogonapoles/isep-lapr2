@@ -6,15 +6,12 @@ autonumber
 actor "Nurse" as Nurse
 
 activate Nurse
-Nurse -> ":System" : wants to schedule a vaccine
+Nurse -> ":System" : requests list of people in the waiting room
 activate ":System"
-":System" --> Nurse : requests SNS user number
+":System" --> Nurse : Shows the requested list
 deactivate ":System"
 
-Nurse -> ":System" : types SNS user number
-activate ":System"
-":System" --> Nurse : asks to select the vaccination center, date and time
-deactivate ":System"
+
 
 
 
