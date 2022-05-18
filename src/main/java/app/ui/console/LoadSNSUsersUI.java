@@ -25,22 +25,17 @@ public class LoadSNSUsersUI implements Runnable {
                 if(Utils.confirm("Confirm data?(s/n)"))
                 {
                     controller.importSNSUserCSV();
+                    controller.clearTempArray();
                     System.out.println("Success");
                 }
                 else
                     run();
             }
-            else
-            {
-                System.out.println("Not a valid SNS User or already exists");
-            }
-
         }
         else
         {
             System.out.println("Invalid Selection");
         }
-
     }
 
     private boolean inputData(int typeSelection)

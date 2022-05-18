@@ -26,10 +26,13 @@ public class LoadSNSUsersController {
 
     public boolean newCSVReader(int typeSelection, String fileLocation) {
         this.oSNSUserList = oCompany.getCSVReader().readCSVFile(typeSelection, fileLocation);
-
         if (this.oSNSUserList != null)
             return true;
         else
             return false;
+    }
+
+    public void clearTempArray(){
+        oSNSUserList.clear();
     }
 }
