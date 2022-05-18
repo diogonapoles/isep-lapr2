@@ -1,27 +1,41 @@
 @startuml
-'https://plantuml.com/class-diagram
+autonumber
+'hide footbox
+actor "Administrator" as ADM
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
+participant ":ListWaitingRoomUI" as UI
+participant ":ListWaitingRoomController" as CTRL
+participant "App" as _APP
+participant "app\n:App" as APP
+participant "comp\n:Company" as COMP
+participant ":WaitingRoom" as WR
+participant "user\n:SNSUser" as SU
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
 
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
+activate ADM
+ADM -> UI : requests list of people in the waiting room
+activate UI
+UI -> CTRL : getUsersWaitingRoom()
+activate CTRL
+CTRL -> _APP : app = getInstance()
+activate _APP
+deactivate _APP
+CTRL -> APP : comp = getCompany()
+activate APP
+deactivate APP
+CTRL -> COMP : getWaitingRoom()
+activate COMP
+deactivate COMP
+CTRL -> WR : listUsersWaitingRoom()
+activate WR
+deactivate WR
+deactivate CTRL
+UI --> ADM : Shows the requested list
+deactivate UI
+deactivate ADM
 
-class ArrayList {
-Object[] elementData
-size()
-}
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
-}
+
+
 
 @enduml

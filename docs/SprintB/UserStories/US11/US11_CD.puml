@@ -15,7 +15,7 @@ class Application {
 }
 
 class Company {
-+getplatform()
+
 +getAuthFacade()
 +getEmployeeStore()
 }
