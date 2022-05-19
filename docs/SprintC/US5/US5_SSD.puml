@@ -6,7 +6,7 @@ autonumber
 actor "Nurse" as Nurse
 
 activate Nurse
-Nurse -> ":System" : requests list of people in the waiting room
+Nurse -> ":System" : Requests list of people in the waiting room
 activate ":System"
 ":System" --> Nurse : Shows the requested list
 deactivate ":System"
