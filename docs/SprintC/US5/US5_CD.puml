@@ -7,19 +7,19 @@ class ListWaitingRoomController{
 class Company{
 +getWaitingRoom()
 }
-class WaitingRoom{
-+listUsersWaitingRoom()
+class UserArrivalStore{
++listUsersInWaitingRoom()
 }
 class Application{
 +getInstance()
 +getCompany()
 }
 
+
 ListWaitingRoomUI ..> ListWaitingRoomController
 ListWaitingRoomController ..> Company
 ListWaitingRoomController ..> Application
-
-Company ..> WaitingRoom
+Company ..> UserArrivalStore
 
 
 

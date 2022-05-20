@@ -8,8 +8,10 @@ participant ":ListWaitingRoomController" as CTRL
 participant "App" as _APP
 participant "app\n:App" as APP
 participant "comp\n:Company" as COMP
-participant ":WaitingRoom" as WR
+participant ":UserArrivalStore" as UA
+participant ":Utils" as U
 participant "user\n:SNSUser" as SU
+
 
 
 activate ADM
@@ -26,10 +28,14 @@ deactivate APP
 CTRL -> COMP : getWaitingRoom()
 activate COMP
 deactivate COMP
-CTRL -> WR : listUsersWaitingRoom()
-activate WR
-deactivate WR
+CTRL -> UA : getListUsersInWaitingRoom()
+activate UA
+deactivate UA
 deactivate CTRL
+UI -> U : ShowList(List list, String header)
+activate U
+deactivate U
+
 UI --> ADM : Shows the requested list
 deactivate UI
 deactivate ADM

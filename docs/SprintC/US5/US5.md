@@ -1,4 +1,4 @@
-# US 04 - Register the Arrival of a SNS user to take the vaccine.
+# US 05 - Consult a list of the Users In the Waiting Room.
 
 ## 1. Requirements Engineering
 
@@ -43,7 +43,7 @@ As a **Nurse** e, I intend to consult the **users** in the waiting room of a vac
     * n/a
 
 * Selected data:
-    * n/a
+  * Show list of the SNS Users that are currently in the waiting room.
   
 
 
@@ -78,8 +78,8 @@ n/a
 
 | Interaction ID | Question: Which class is responsible for...        | Answer                | Justification (with patterns)                                                                                 |
 |:---------------|:---------------------------------------------------|:----------------------|:--------------------------------------------------------------------------------------------------------------|
-| Step 1  		     | 	... interacting with the actor?                   | UserArrivalUI         | Pure Fabrication: there is no reason to assign this responsibility to any existing class in the Domain Model. |
-| 			  		        | 	... coordinating the US?                          | UserArrivalController | Controller                                                                                                    |                                                           |
+| Step 1  		     | 	... interacting with the actor?                   | ListWaitingRoomUI         | Pure Fabrication: there is no reason to assign this responsibility to any existing class in the Domain Model. |
+| 			  		        | 	... coordinating the US?                          | ListWaitingRoomController | Controller                                                                                                    |                                                           |
 | Step 2  		     | 							                                            |                       |                                                                                                               |
 | Step 3  		     | 	... creating the instance of the sns user arrival | Company               | Creator: in the DM Company has a Task.                                                                        | IE: object created in step 1 has its own data.                                                                |
 | Step 4  		     | 	...knowing the task categories to show?           | Platform              | IE: Task Categories are defined by the Platform.                                                              |
@@ -100,8 +100,8 @@ According to the taken rationale, the conceptual classes promoted to software cl
  * UserArrivalStore
 
 Other software classes (i.e. Pure Fabrication) identified: 
- * UserArrivalUI  
- * UserArrivalController
+ * ListWaitingRoomUI  
+ * ListWaitingRoomController
 
 ## 3.2. Sequence Diagram (SD)
 
