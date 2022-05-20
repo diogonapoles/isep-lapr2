@@ -38,4 +38,10 @@ public class UserArrivalStore {
     private boolean addUserToWaitingRoom(SNSUser snsUser) {
         return this.listUserToWaitingRoom.add(snsUser);
     }
+
+
+    public List<SNSUser> getListUserToWaitingRoom() {
+        return listUserToWaitingRoom;
+    }
+
 }
