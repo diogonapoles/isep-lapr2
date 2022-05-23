@@ -12,7 +12,6 @@ public class Company {
 
     private String designation;
     private AuthFacade authFacade;
-
     private EmployeeStore oEmployeeStore;
     private VaccinationCenterStore oVaccinationCenterStore;
     private VaccineTypeStore oVaccineTypeStore;
@@ -38,6 +37,7 @@ public class Company {
         this.oSNSUserStore = new SNSUserStore();
         this.oCSVReader = new CSVReader();
         this.oVaccineStore = new VaccineStore();
+        this.oUserArrivalStore = new UserArrivalStore();
     }
 
     /**
@@ -100,4 +100,5 @@ public class Company {
     public SNSUserStore getSNSUserStore(){return this.oSNSUserStore;}
 
     public UserArrivalStore getUserArrivalStore(){return this.oUserArrivalStore;}
+
 }

@@ -37,7 +37,6 @@ public class SNSUser {
                 this.emailAddress = emailAddress;
                 this.snsUserNumber = snsUserNumber;
                 this.citizenCardNumber = citizenCardNumber;
-                this.vaccineScheduleDate = vaccineScheduleDate;
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -45,11 +44,29 @@ public class SNSUser {
     }
 
     public SNSUser(String name, String snsUserNumber, String citizenCardNumber, String vaccineScheduleDate) {
-        this.name = name;
-        this.snsUserNumber = snsUserNumber;
-        this.citizenCardNumber = citizenCardNumber;
-        this.vaccineScheduleDate = vaccineScheduleDate;
+
+        try {
+            if ((name == null) || (name.isEmpty())
+                    || (snsUserNumber == null) || (snsUserNumber.isEmpty())
+                    || (citizenCardNumber == null) || (citizenCardNumber.isEmpty())
+                    || (vaccineScheduleDate == null) || (vaccineScheduleDate.isEmpty())
+                    || (snsUserNumber.length() != 9) || !StringUtils.isNumeric(snsUserNumber)
+                    || (citizenCardNumber.length() != 8) || !StringUtils.isNumeric(citizenCardNumber)) {
+                throw new IllegalArgumentException("All attributes are mandatory!" +
+                        " SNS Number and Citizen Card Number must have 9 and 8 numbers respectively!");
+            } else {
+                this.name = name;
+                this.snsUserNumber = snsUserNumber;
+                this.citizenCardNumber = citizenCardNumber;
+                this.vaccineScheduleDate = vaccineScheduleDate;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+
     }
+
 
     public String getGender() {
         return gender;
@@ -115,11 +132,11 @@ public class SNSUser {
         this.citizenCardNumber = citizenCardNumber;
     }
 
-    public String getVaccineScheduleDate(){
+    public String getVaccineScheduleDate() {
         return vaccineScheduleDate;
     }
 
-    public void setVaccineScheduleDate(String vaccineScheduleDate){
+    public void setVaccineScheduleDate(String vaccineScheduleDate) {
         this.vaccineScheduleDate = vaccineScheduleDate;
     }
 
@@ -135,4 +152,14 @@ public class SNSUser {
                 ", citizenCardNumber='" + citizenCardNumber + '\'' +
                 '}';
     }
+
+    public String toStringArrival() {
+        return "SNSUser{" +
+                "name='" + name + '\'' +
+                ", snsUserNumber='" + snsUserNumber + '\'' +
+                ", citizenCardNumber='" + citizenCardNumber + '\'' +
+                ", vaccineScheduleDate='" + vaccineScheduleDate + '\'' +
+                '}';
+    }
+
 }
