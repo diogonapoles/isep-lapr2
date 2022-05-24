@@ -5,60 +5,62 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CSVReader {
+
     public CSVReader() {}
 
-    public List<String> getCSVFileTypes()
-    {
-        List<String> listOfVaccinationCenter = new ArrayList<>();
-        listOfVaccinationCenter.add("Has a header");
-        listOfVaccinationCenter.add("Doesn't have a header");
-
-        return listOfVaccinationCenter;
-    }
-
-    public List <SNSUser> readCSVFile(int typeSelection, String fileLocation) {
+    public List <SNSUser> readCSVFile(String fileLocation) {
         List<SNSUser> tempSave = new ArrayList<>();
         String line = "";
         String splitBy;
-        if (validateHeader(typeSelection, fileLocation)) {
-            if (typeSelection == 0) {
-                splitBy = ";";
-            } else {
-                splitBy = ",";
+        try {
+            switch (validateHeader(fileLocation)) {
+                case -1:
+                    return null;
+                case 0:
+                    System.out.println("Loading CSV file with header:");
+                    splitBy = ";";
+                    break;
+                case 1:
+                    System.out.println("Loading CSV file without header:");
+                    splitBy = ",";
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + validateHeader(fileLocation));
             }
-            try {
-                BufferedReader br = new BufferedReader(new FileReader(fileLocation));
-
-                if (typeSelection == 0) {
-                    br.readLine();
-                }
-
-                while ((line = br.readLine()) != null) {
-                    String[] SNSUser = line.split(splitBy);
-                    System.out.println("SNSUser[Name=" + SNSUser[0] + ", Gender=" + SNSUser[1] + ", Birth Date=" + SNSUser[2] + ", Home Address= " + SNSUser[3] + ", Phone Number= " + SNSUser[4] + ", E-Mail Address= " + SNSUser[5] + ", SNS User Number= " + SNSUser[6] + ", Citizen Card Number= " + SNSUser[7] + "]");
-                    SNSUser tempUser = new SNSUser(SNSUser[0], SNSUser[1], SNSUser[2], SNSUser[3], SNSUser[4], SNSUser[5], SNSUser[6], SNSUser[7]);
-                    tempSave.add(tempUser);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }else{
+        }catch (Exception e){
+            System.out.println("There was a problem validating the header");
             return null;
         }
 
-        if (tempSave == null)
-            return null;
-        else
-            return tempSave;
-    }
-
-    private boolean validateHeader(int typeSelection, String fileLocation){
-        String line = "";
-        String splitBy = ";";
         try {
             BufferedReader br = new BufferedReader(new FileReader(fileLocation));
-            if (typeSelection == 0) {
-                if ((line = br.readLine()) != null) {
+
+            if (splitBy.equals(";")) {
+                br.readLine();
+            }
+
+            while ((line = br.readLine()) != null) {
+                String[] SNSUser = line.split(splitBy);
+                SNSUser tempUser = new SNSUser(SNSUser[0], SNSUser[1], SNSUser[2], SNSUser[3], SNSUser[4], SNSUser[5], SNSUser[6], SNSUser[7]);
+                if(tempUser.getName() != null)
+                tempSave.add(tempUser);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return tempSave;
+    }
+
+    private int validateHeader(String fileLocation){
+        String line = "";
+        String splitBy;
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(fileLocation));
+            if ((line = br.readLine()) != null) {
+                if(line.contains(";")) {
+                    splitBy = ";";
                     String[] column = line.split(splitBy);
                     try {
                         if (!column[0].toLowerCase().equals("name") &&
@@ -72,11 +74,12 @@ public class CSVReader {
                             throw new Exception("Header doesn't exist or doesn't respect the guidelines: (Name | Sex | Birth Date | Address | Phone Number | E-mail | SNS User Number | Citizen Card Number)");
                     } catch (Exception e) {
                         System.out.println(e);
-                        return false;
+                        return -1;
                     }
+                    return 0;
                 }
-            }if (typeSelection == 1){
-                if ((line = br.readLine()) != null) {
+                if(line.contains(",")) {
+                    splitBy = ",";
                     String[] column = line.split(splitBy);
                     try {
                         if (column[0].toLowerCase().equals("name") ||
@@ -90,15 +93,16 @@ public class CSVReader {
                             throw new Exception("It seems like there might be a header in this file");
                     } catch (Exception e) {
                         System.out.println(e);
-                        return false;
+                        return -1;
                     }
+                    return 1;
                 }
+
             }
-        }
-        catch(IOException e) {
+        }catch(IOException e) {
             System.out.println("Can't find/open file");
-            return false;
+            return -1;
         }
-        return true;
+        return -1;
     }
 }

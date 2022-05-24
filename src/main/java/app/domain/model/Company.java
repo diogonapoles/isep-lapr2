@@ -35,7 +35,6 @@ public class Company {
         this.authFacade = new AuthFacade();
         this.oVaccinationCenterStore = new VaccinationCenterStore();
         this.oVaccineTypeStore = new VaccineTypeStore();
-        this.oSNSUserStore = new SNSUserStore();
         this.oCSVReader = new CSVReader();
         this.oVaccineStore = new VaccineStore();
         this.oUserArrivalStore = new UserArrivalStore();
@@ -75,6 +74,7 @@ public class Company {
      */
     public void defaultRegister(AuthFacade authFacade){
         this.oEmployeeStore = new EmployeeStore(this.authFacade);
+        this.oSNSUserStore = new SNSUserStore(this.authFacade);
     }
 
     /**

@@ -15,34 +15,27 @@ public class LoadSNSUsersUI implements Runnable {
     }
 
     public void run(){
-        int selection = Utils.showAndSelectIndex(this.controller.getCSVFileTypes(), "CSV File Types:");
-
-        if(selection >= 0 && selection < 2)
-        {
-
-            if(inputData(selection))
+        if(inputData()){
+            getData();
+            if(Utils.confirm("Confirm data?(s/n)"))
             {
-                if(Utils.confirm("Confirm data?(s/n)"))
-                {
-                    controller.importSNSUserCSV();
-                    controller.clearTempArray();
-                    System.out.println("Success");
-                }
-                else
-                    run();
-            }
-        }
-        else
-        {
-            System.out.println("Invalid Selection");
-        }
+                controller.importSNSUserCSV();
+                controller.clearTempArray();
+                System.out.println("Operation finished");
+            } else
+                run();
+        }else
+            System.out.println("There is a problem with the file");
     }
 
-    private boolean inputData(int typeSelection)
+    private boolean inputData()
     {
         String fileLocation = Utils.readLineFromConsole("File Location:");
 
-        return controller.newCSVReader(typeSelection, fileLocation);
+        return controller.newCSVReader(fileLocation);
     }
 
+    private void getData(){
+        System.out.println(controller.getCSVFileString());
+    }
 }
