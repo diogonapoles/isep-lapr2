@@ -1,4 +1,8 @@
-package app.domain.model;
+package app.domain.store;
+
+import app.domain.model.CommunityCenter;
+import app.domain.model.HealthcareCenter;
+import app.domain.model.VaccinationCenter;
 
 import java.util.ArrayList;
 import java.util.List;

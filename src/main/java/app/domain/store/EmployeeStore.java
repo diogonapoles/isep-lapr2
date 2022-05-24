@@ -1,5 +1,8 @@
-package app.domain.model;
+package app.domain.store;
 
+import app.domain.model.CenterCoordinator;
+import app.domain.model.Nurse;
+import app.domain.model.Receptionist;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
 import app.domain.model.Employee;

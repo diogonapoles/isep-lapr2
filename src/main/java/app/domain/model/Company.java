@@ -1,5 +1,6 @@
 package app.domain.model;
 
+import app.domain.store.*;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
 
