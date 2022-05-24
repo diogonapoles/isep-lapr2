@@ -30,6 +30,7 @@ Vaccine Dosage
 Time Since Last Dose
 }
 
+
 class VaccineSchedule{
 date
 time
@@ -60,12 +61,6 @@ class EmailNotification
 
 class Report
 
-class Dose{
-age
-dosage
-timeInterval
-}
-
 class VaccineAdministration{
 designation
 ageGroup
@@ -73,7 +68,6 @@ ageGroup
 
 class Nurse
 
-class AdverseReaction
 
 class RecoveryRoom{
 listUsers
@@ -126,14 +120,17 @@ VaccinationCenter <|-up- HealthcareCenter
 VaccinationCenter <|-- CommunityCenter
 VaccinationCenter "1" -down-- "*"Vaccine : applies >
 VaccinationCenter "1" -up-- "*" Report : reports >
+VaccinationCenter "1"--"*" VaccineType
 
+Vaccine "1" --"*" Dosage
 Vaccine "*" -down--- "1" VaccineType : is >
 Vaccine "1" -down-- "*" VaccineAdministration : of <
 Vaccine "*" -down-- "1" SNSUser : > administrated on
 VaccinationCenter "0..1" -right- "0..1" VaccineSchedule : > fulfilling
-VaccineType "1" -down- "*" Dose : has >
-VaccineAdministration "1" -up- "*" Nurse : executed by >
+VaccineType "1" -- "*" Vaccine
 
+VaccineAdministration "1" -up- "*" Nurse : executed by >
+VaccineAdministration "1" -down- "1" VaccinationCenter
 
 HealthcareCenter "*" -down- "*" VaccineType : can administer >
 CommunityCenter "*" -right- "1" VaccineType : can administer >
@@ -147,9 +144,14 @@ Administrator "1" -right- "*" VaccinationCenter : registers and configures >
 Administrator "1" -down- "*" SNSUser : registers and configures >
 
 SNSUser "1" -right-- "1" VaccinationCertificate : requests >
+SNSUser "1" -left- "1" VaccineAdministration
+
+VaccinationCertificate "1"--"1" VaccineType
+VaccinationCertificate "1"--"1" VaccineAdministration
 
 VaccineSchedule "*" -down-- "1" SNSUser : made for >
 VaccineSchedule "1" -up-- "0..1" VaccineType : administers >
+VaccineSchedule "0" -- "1" VaccineAdministration
 
 Receptionist "*" -up-- "*" SNSUser : registers arrival of >
 Receptionist "*" -down--- "*" VaccineSchedule : confirms >
@@ -159,7 +161,7 @@ Nurse "*" -down--- "1..*" WaitingRoom : sends SNS user to >
 (Nurse, WaitingRoom) .. UserHealthHistoric
 Nurse "1" -up-- "*" VaccinationCertificate : issues and delivers >
 VaccineAdministration "*" -down-- "1" RecoveryRoom : sends user to >
-(VaccineAdministration, RecoveryRoom) .. AdverseReaction
+VaccineAdministration -up-- WaitingRoom
 
 VaccineSchedule "1" -up-- "0..1" Notification : emits >
 
