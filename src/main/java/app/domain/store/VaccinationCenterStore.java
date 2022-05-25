@@ -37,7 +37,7 @@ public class VaccinationCenterStore {
      * @return the vaccination center
      */
     public VaccinationCenter newVaccinationCenter(int typeSelection, String name, String phoneNumber, String faxNumber, String homeAddress, String emailAddress, String websiteAddress, String openingHours, String closingHours, String slotDuration, String maxNumVaccinesPerSlot){
-        if(validateVaccinationCenter(name,faxNumber,homeAddress,emailAddress))
+        if(validateVaccinationCenter(name,phoneNumber,emailAddress))
         {
             if (typeSelection == 0)
                 return new HealthcareCenter(name,phoneNumber,faxNumber,homeAddress,emailAddress, websiteAddress,openingHours,closingHours,slotDuration,maxNumVaccinesPerSlot);
@@ -50,20 +50,18 @@ public class VaccinationCenterStore {
     /**
      * Validate vaccination center boolean.
      *
+     * @param name         the name
      * @param phoneNumber  the phone number
-     * @param faxNumber    the fax number
-     * @param homeAddress  the home address
      * @param emailAddress the email address
      * @return the boolean
      */
-    public boolean validateVaccinationCenter(String phoneNumber, String faxNumber, String homeAddress, String emailAddress)
+    public boolean validateVaccinationCenter(String name, String phoneNumber, String emailAddress)
     {
         for(VaccinationCenter vacs: listVaccinationCenter)
         {
-            if(vacs.getPhoneNumber().contains(phoneNumber)
-                    ||vacs.getFaxNumber().contains(faxNumber)
-                    || vacs.getEmailAddress().contains(emailAddress)
-                    || vacs.getHomeAddress().contains(homeAddress))
+            if(vacs.getName().contains(name)
+                    ||vacs.getPhoneNumber().contains(phoneNumber)
+                    || vacs.getEmailAddress().contains(emailAddress))
                 return false;
         }
 
@@ -79,7 +77,7 @@ public class VaccinationCenterStore {
      */
     public boolean registerVaccinationCenter(VaccinationCenter oVaccinationCenter)
     {
-        if(validateVaccinationCenter(oVaccinationCenter.getPhoneNumber(),oVaccinationCenter.getFaxNumber(),oVaccinationCenter.getHomeAddress(),oVaccinationCenter.getEmailAddress()))
+        if(validateVaccinationCenter(oVaccinationCenter.getName(),oVaccinationCenter.getPhoneNumber(),oVaccinationCenter.getEmailAddress()))
             return addVaccinationCenter(oVaccinationCenter);
         else
             return false;

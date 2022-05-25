@@ -31,9 +31,7 @@ public class UserArrivalStore {
         return false;
     }
 
-    public boolean registerUserArrival(SNSUser snsUser) {
-        return addUserToWaitingRoom(snsUser);
-    }
+    public boolean registerUserArrival(SNSUser snsUser) {return addUserToWaitingRoom(snsUser);}
 
     private boolean addUserToWaitingRoom(SNSUser snsUser) {
         return this.listUserToWaitingRoom.add(snsUser);
@@ -43,13 +41,6 @@ public class UserArrivalStore {
     public List<SNSUser> getListUserToWaitingRoom() {
         return listUserToWaitingRoom;
     }
-
-
-    public List<SNSUser> getWaitingRoomList() {
-        return listUserToWaitingRoom;
-
-    }
-
 
 
 }

@@ -31,10 +31,7 @@ public class UserArrivalController {
         return this.oCompany.getUserArrivalStore().registerUserArrival(this.oSNSUser);
     }
 
-    public List<SNSUser> getWaitingRoomList() {
-        return this.oApp.getCompany().getUserArrivalStore().getWaitingRoomList();
-    }
-
+ 
 
     public String getUserArrivalString() {
         return this.oSNSUser.toStringArrival();
