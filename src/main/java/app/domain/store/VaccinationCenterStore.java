@@ -100,4 +100,8 @@ public class VaccinationCenterStore {
 
         return listOfVaccinationCenter;
     }
+
+    public List<VaccinationCenter> getVaccinationCenters(){
+        return this.listVaccinationCenter;
+    }
 }

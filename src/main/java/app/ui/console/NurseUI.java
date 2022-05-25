@@ -11,7 +11,8 @@ public class NurseUI implements Runnable{
 
     public void run() {
         List<MenuItem> options = new ArrayList<MenuItem>();
-        
+
+        new ChoosingVaccinationCenterUI().run();
 
         options.add(new MenuItem("List Users in The Waiting Room ", new ListWaitingRoomUI()));
 

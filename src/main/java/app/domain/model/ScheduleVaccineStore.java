@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ScheduleVaccineStore {
 
-    private final List<ScheduleVaccine> listScheduleVaccine = new ArrayList<>();
+/*    private final List<ScheduleVaccine> listScheduleVaccine = new ArrayList<>();
 
     public ScheduleVaccineStore() {
     }
@@ -29,7 +29,13 @@ public class ScheduleVaccineStore {
         return true;
     }
 
+
+
     private boolean addScheduleVaccine(ScheduleVaccine shedule){return this.listScheduleVaccine.add(shedule);}
 
 
+ */
+
 }
+
+

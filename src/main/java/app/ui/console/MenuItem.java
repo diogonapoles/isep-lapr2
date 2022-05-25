@@ -35,7 +35,11 @@ public class MenuItem {
      */
     public void run()
     {
-        this.ui.run();
+        try {
+            this.ui.run();
+        }catch (IllegalArgumentException ex){
+            run();
+        }
     }
 
     /**

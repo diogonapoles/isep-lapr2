@@ -14,10 +14,10 @@ public class SNSUserStore {
         this.authFacade = authFacade;
     }
 
-    public boolean importSNSUserCSV(List<SNSUser> list){
+    public boolean importSNSUserCSV(List<SNSUser> list) {
         for (int counter = 0; counter < list.size(); counter++) {
             SNSUser oSNSUser = list.get(counter);
-            if(validateSNSUser(oSNSUser.getPhoneNumber(),oSNSUser.getHomeAddress(),oSNSUser.getEmailAddress()))
+            if (validateSNSUser(oSNSUser.getPhoneNumber(), oSNSUser.getHomeAddress(), oSNSUser.getEmailAddress()))
                 addSNSUser(oSNSUser);
             else
                 return false;
@@ -25,25 +25,23 @@ public class SNSUserStore {
         return true;
     }
 
-    public List<SNSUser> validateTempList(List<SNSUser> list){
+    public List<SNSUser> validateTempList(List<SNSUser> list) {
         int size = list.size();
         List<SNSUser> listCopy = new ArrayList<>();
         for (int counter = 0; counter < size; counter++) {
             SNSUser oSNSUser = list.get(counter);
-            if(validateSNSUser(oSNSUser.getPhoneNumber(),oSNSUser.getHomeAddress(),oSNSUser.getEmailAddress())) {
+            if (validateSNSUser(oSNSUser.getPhoneNumber(), oSNSUser.getHomeAddress(), oSNSUser.getEmailAddress())) {
                 listCopy.add(oSNSUser);
-            }else{
+            } else {
                 System.out.println("O " + oSNSUser + " já existe no sistema!");
             }
         }
         return listCopy;
     }
 
-    public boolean validateSNSUser(String phoneNumber, String homeAddress, String emailAddress)
-    {
-        for(SNSUser user: listSNSUser)
-        {
-            if(user.getPhoneNumber().contains(phoneNumber)
+    public boolean validateSNSUser(String phoneNumber, String homeAddress, String emailAddress) {
+        for (SNSUser user : listSNSUser) {
+            if (user.getPhoneNumber().contains(phoneNumber)
                     || user.getEmailAddress().contains(emailAddress)
                     || user.getHomeAddress().contains(homeAddress))
                 return false;
@@ -54,5 +52,16 @@ public class SNSUserStore {
             return true;
     }
 
-    private boolean addSNSUser(SNSUser user){return this.listSNSUser.add(user);}
+    public boolean registerSNSUser(SNSUser User) {
+        return addSNSUser(User);
+    }
+
+    private boolean addSNSUser(SNSUser user) {
+        return this.listSNSUser.add(user);
+    }
+
+
+    public SNSUser newSNSUser(String name, String gender, String birthDate, String homeAddress, String phoneNumber, String emailAddress, String snsUserNumber, String citizenCardNumber) {
+        return new SNSUser(name, gender, birthDate, homeAddress, phoneNumber, emailAddress, snsUserNumber, citizenCardNumber);
+    }
 }

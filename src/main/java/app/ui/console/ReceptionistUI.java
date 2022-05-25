@@ -10,6 +10,9 @@ public class ReceptionistUI implements Runnable{
 
     public void run() {
         List<MenuItem> options = new ArrayList<MenuItem>();
+
+        new ChoosingVaccinationCenterUI().run();
+
         options.add(new MenuItem("Register User Arrival ", new UserArrivalUI()));
 
 

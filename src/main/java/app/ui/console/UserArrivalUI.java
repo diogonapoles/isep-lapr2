@@ -4,7 +4,7 @@ import app.controller.UserArrivalController;
 import app.ui.console.utils.Utils;
 
 
-public class UserArrivalUI implements Runnable{
+public class UserArrivalUI implements Runnable {
 
     private UserArrivalController controller;
 
@@ -13,21 +13,25 @@ public class UserArrivalUI implements Runnable{
     }
 
     public void run() {
-        if (inputData()) {
-            getData();
 
-            if (Utils.confirm("Confirms data?(s/n)")) {
-                controller.registerUserArrival();
-                System.out.println("SNS User registered successfully");
-            } else
-                run();
-
-
+        if (controller.getWorking() == null) {
+            System.out.println("Doesn't exist");
         } else {
-            System.out.println("not a valid user or already exists");
+
+            if (inputData()) {
+                getData();
+
+                if (Utils.confirm("Confirms data?(s/n)")) {
+                    controller.registerUserArrival();
+                    System.out.println("SNS User registered successfully");
+                } else
+                    run();
+
+
+            } else {
+                System.out.println("not a valid user or already exists");
+            }
         }
-
-
 
     }
 

@@ -246,18 +246,17 @@ public abstract class VaccinationCenter {
 
     @Override
     public String toString() {
-        return "RegisterVaccinationCenter [" +
-                "name: " + name +
-                ", phoneNumber: " + phoneNumber +
-                ", faxNumber: " + faxNumber +
-                ", homeAddress: " + homeAddress +
-                ", emailAddress: " + emailAddress +
-                ", websiteAddress: " + websiteAddress +
-                ", openingHours: " + openingHours +
-                ", closingHours: " + closingHours +
-                ", slotDuration: " + slotDuration +
-                ", maxNumVaccinesPerSlot: " + maxNumVaccinesPerSlot +
-                "]";
+        return "name: " + name +
+                "\nphoneNumber: " + phoneNumber +
+                "\nfaxNumber: " + faxNumber +
+                "\nhomeAddress: " + homeAddress +
+                "\nemailAddress: " + emailAddress +
+                "\nwebsiteAddress: " + websiteAddress +
+                "\nopeningHours: " + openingHours +
+                "\nclosingHours: " + closingHours +
+                "\nslotDuration: " + slotDuration +
+                "\nmaxNumVaccinesPerSlot: " + maxNumVaccinesPerSlot +
+                "\n\n" ;
     }
 }
 

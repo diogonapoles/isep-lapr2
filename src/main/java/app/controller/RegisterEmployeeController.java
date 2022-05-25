@@ -38,12 +38,13 @@ public class RegisterEmployeeController {
                                String emailAddress, String citizenCardNumber, int roleSelection) {
 
         this.oEmployee = oCompany.getEmployeeStore().newEmployee(name, phoneNumber, address, emailAddress, citizenCardNumber, roleSelection);
-
-        if (this.oEmployee != null)
-            return true;
-        else
-            return false;
-
+        if (name != null) {
+            if (this.oEmployee != null)
+                return true;
+            else
+                return false;
+        }
+        return false;
 
     }
 

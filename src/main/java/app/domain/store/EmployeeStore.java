@@ -1,11 +1,9 @@
 package app.domain.store;
 
-import app.domain.model.CenterCoordinator;
-import app.domain.model.Nurse;
-import app.domain.model.Receptionist;
+import app.domain.model.*;
+import app.domain.shared.Constants;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
-import app.domain.model.Employee;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,12 +40,17 @@ public class EmployeeStore {
                                 String emailAddress, String citizenCardNumber, int roleSelection) {
 
         if (validateEmployee(phoneNumber, emailAddress, citizenCardNumber)) {
-            if (roleSelection == 0)
+            if (roleSelection == 0) {
+                this.authFacade.addUserWithRole(name, emailAddress, "123456", Constants.ROLE_RECEPTIONIST);
                 return new Receptionist(name, phoneNumber, address, emailAddress, citizenCardNumber);
-            else if (roleSelection == 1)
+            } else if (roleSelection == 1) {
+                this.authFacade.addUserWithRole(name, emailAddress, "123456", Constants.ROLE_CENTER_COORDINATOR);
                 return new CenterCoordinator(name, phoneNumber, address, emailAddress, citizenCardNumber);
-            else if (roleSelection == 2)
+            } else if (roleSelection == 2) {
+                this.authFacade.addUserWithRole(name, emailAddress, "123456", Constants.ROLE_RECEPTIONIST);
                 return new Nurse(name, phoneNumber, address, emailAddress, citizenCardNumber);
+            }
+
         }
 
         return null;
@@ -127,5 +130,20 @@ public class EmployeeStore {
 
     }
 
+    public Employee getEmployeeUsingEmail(String email) {
+        for (Employee employee : listEmployee)
+            if (employee.getEmailAddress().equals(email))
+                return employee;
+
+        return null;
+    }
+
+    public VaccinationCenter getWorking(String email) {
+        for (Employee employee : listEmployee)
+            if (employee.getEmailAddress().equals(email))
+                return employee.getWorking();
+
+        return null;
+    }
 
 }

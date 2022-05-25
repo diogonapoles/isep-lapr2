@@ -3,6 +3,7 @@ package app.controller;
 import app.domain.model.Company;
 import app.domain.model.Employee;
 import app.domain.model.SNSUser;
+import app.domain.model.VaccinationCenter;
 
 import java.util.List;
 
@@ -15,6 +16,10 @@ public class UserArrivalController {
     public UserArrivalController() {
         this.oApp = App.getInstance();
         this.oCompany = oApp.getCompany();
+    }
+
+    public VaccinationCenter getWorking(){
+        return oCompany.getEmployeeStore().getWorking(oApp.getCurrentUserSession().getUserId().getEmail());
     }
 
 

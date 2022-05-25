@@ -19,7 +19,6 @@ public class App {
 
     private Company company;
     private AuthFacade authFacade;
-    private Employee oEmployee;
 
     private App() {
         Properties props = getProperties();
@@ -97,27 +96,43 @@ public class App {
         this.getCompany().defaultRegister(this.authFacade);
 
         createEmployee();
-        //createSnsUser();
-        //createVaccinnationCenter();
+        createSnsUser();
+        createVaccinnationCenter();
         //createStrap
 
+    }
+
+    private void createSnsUser() {
+        SNSUser snsU1 = this.company.getSNSUserStore().newSNSUser("maria", "feminine", "09/03/1998", "Rua 21", "912245654", "maria12@gmail.com", "123476432", "34566543");
+        this.company.getSNSUserStore().registerSNSUser(snsU1);
+    }
+
+
+    private void createVaccinnationCenter() {
+        VaccinationCenter vc1 = this.company.getVaccinationCenterStore().newVaccinationCenter(1, "Healthcare", "917876321", "493782",
+                "TestRua1", "teste1@gmail.com", "healthcare.com",
+                "10", "20", "3", "20");
+        this.company.getVaccinationCenterStore().registerVaccinationCenter(vc1);
+        VaccinationCenter vc2 = this.company.getVaccinationCenterStore().newVaccinationCenter(0, "Community", "917312756", "654253",
+                "TestRua2", "teste2@gmail.com", "community.com",
+                "8", "22", "5", "40");
+        this.company.getVaccinationCenterStore().registerVaccinationCenter(vc2);
     }
 
 
     private void createEmployee() {
 
-        new Receptionist("maria", "123456789", "travessa 1",
-                "tgr@gmail.com", "12341234");
-
-        this.oEmployee =getCompany().getEmployeeStore().newEmployee("maria", "123456789", "travessa 1",
+        Employee employee1 = getCompany().getEmployeeStore().newEmployee("maria", "123456789", "avenue 1",
                 "tgr@gmail.com", "12341234", 0);
+        getCompany().getEmployeeStore().registerEmployee(employee1);
 
-        getCompany().getEmployeeStore().newEmployee("maria", "123456789", "travessa 1",
-                "tgr@gmail.com", "12341234", 0);
-        this.getCompany().getEmployeeStore().newEmployee("tiago", "912234572", "rua 2",
+        Employee employee2 = getCompany().getEmployeeStore().newEmployee("tiago", "912234572", "Street 2",
                 "tiago11@gmail.com", "12347623", 1);
-        this.getCompany().getEmployeeStore().newEmployee("fernando", "913434572", "avenida 3",
+        getCompany().getEmployeeStore().registerEmployee(employee2);
+
+        Employee employee3 = getCompany().getEmployeeStore().newEmployee("fernando", "913434572", "avenue 3",
                 "nando23@gmail.com", "12349876", 2);
+        getCompany().getEmployeeStore().registerEmployee(employee3);
 
     }
 

@@ -14,6 +14,8 @@ public abstract class Employee {
     private String emailAddress;
     private String citizenCardNumber;
 
+    private VaccinationCenter vaccinationCenter;
+
 
     /**
      * Instantiates a new Employee.
@@ -25,21 +27,26 @@ public abstract class Employee {
      * @param citizenCardNumber the citizen card number
      */
     public Employee(String name, String phoneNumber, String address, String emailAddress, String citizenCardNumber) {
-        if ((name == null) || (name.isEmpty())
-                || (phoneNumber == null) || (phoneNumber.isEmpty())
-                || (address == null) || (address.isEmpty())
-                || (emailAddress == null) || (emailAddress.isEmpty())
-                || (citizenCardNumber == null) || (citizenCardNumber.isEmpty())
-                || (phoneNumber.length() != 9) || !StringUtils.isNumeric(phoneNumber)
-                || (citizenCardNumber.length() != 8) || !StringUtils.isNumeric(citizenCardNumber)) {
-            throw new IllegalArgumentException("All attributes are mandatory!" +
-                    " Phone Number and Citizen Card Number must have 9 and 8 numbers respectively!");
-        } else{
+        try {
+            if ((name == null) || (name.isEmpty())
+                    || (phoneNumber == null) || (phoneNumber.isEmpty())
+                    || (address == null) || (address.isEmpty())
+                    || (emailAddress == null) || (emailAddress.isEmpty())
+                    || (citizenCardNumber == null) || (citizenCardNumber.isEmpty())
+                    || (phoneNumber.length() != 9) || !StringUtils.isNumeric(phoneNumber)
+                    || (citizenCardNumber.length() != 8) || !StringUtils.isNumeric(citizenCardNumber)) {
+                throw new IllegalArgumentException();
+            } else {
                 this.name = name;
                 this.phoneNumber = phoneNumber;
                 this.address = address;
                 this.emailAddress = emailAddress;
                 this.citizenCardNumber = citizenCardNumber;
+            }
+        }catch (IllegalArgumentException ex) {
+            System.out.println("All attributes are mandatory!" +
+                    " Phone Number and Citizen Card Number must have 9 and 8 numbers respectively!");
+
         }
     }
 
@@ -134,14 +141,20 @@ public abstract class Employee {
         this.citizenCardNumber = citizenCardNumber;
     }
 
+    public void setWorking(VaccinationCenter vaccinationCenter) {
+        this.vaccinationCenter = vaccinationCenter;
+    }
 
-    public String toString(){
-        return String.format("Employee [name = "+ name+", Phone Number = "+phoneNumber+
-                ", Address = "+address+", Email Address = "+emailAddress+
-                ", Citizen Card Number = "+citizenCardNumber+"]");
+    public VaccinationCenter getWorking() {
+        return vaccinationCenter;
     }
 
 
+    public String toString() {
+        return String.format("Employee [name = " + name + ", Phone Number = " + phoneNumber +
+                ", Address = " + address + ", Email Address = " + emailAddress +
+                ", Citizen Card Number = " + citizenCardNumber + "]");
+    }
 
 
 }

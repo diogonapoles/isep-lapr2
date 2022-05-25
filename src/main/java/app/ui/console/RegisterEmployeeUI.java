@@ -34,7 +34,9 @@ public class RegisterEmployeeUI implements Runnable {
 
 
             } else {
-                System.out.println("not a valid user or already exists");
+
+                System.out.println("That's not a Valid User");
+
             }
 
         } else {
