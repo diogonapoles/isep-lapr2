@@ -1,5 +1,7 @@
 @startuml
 'https://plantuml.com/class-diagram
+skinparam classAttributeIconSize 0
+
 class ListWaitingRoomUI
 class ListWaitingRoomController{
 +getUsersWaitingRoom()
@@ -18,8 +20,10 @@ class Application{
 
 ListWaitingRoomUI ..> ListWaitingRoomController
 ListWaitingRoomController ..> Company
-ListWaitingRoomController ..> Application
-Company ..> UserArrivalStore
+ListWaitingRoomController .left.> Application
+Application ..> Company
+ListWaitingRoomController ..> UserArrivalStore
+Company --> UserArrivalStore : has
 
 
 

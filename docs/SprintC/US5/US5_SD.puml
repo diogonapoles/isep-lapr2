@@ -9,7 +9,6 @@ participant "App" as _APP
 participant "app\n:App" as APP
 participant "comp\n:Company" as COMP
 participant ":UserArrivalStore" as UA
-participant ":Utils" as U
 participant "user\n:SNSUser" as SU
 
 
@@ -32,9 +31,9 @@ CTRL -> UA : getListUsersInWaitingRoom()
 activate UA
 deactivate UA
 deactivate CTRL
-UI -> U : ShowList(List list, String header)
-activate U
-deactivate U
+UI -> UI : ShowList(List list, String header)
+activate UI
+deactivate UI
 
 UI --> ADM : Shows the requested list
 deactivate UI

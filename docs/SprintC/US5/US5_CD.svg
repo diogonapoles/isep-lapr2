@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="468px" preserveAspectRatio="none" style="width:329px;height:468px;background:#FFFFFF;" version="1.1" viewBox="0 0 329 468" width="329px" zoomAndPan="magnify"><defs><filter height="300%" id="f1p7a7qumuyen8" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[bebe22018d3ad13eaaf15432bfb13d8d]
+class ListWaitingRoomUI--><rect codeLine="4" fill="#FEFECE" filter="url(#f1p7a7qumuyen8)" height="48" id="ListWaitingRoomUI" style="stroke:#A80036;stroke-width:1.5;" width="139" x="155.5" y="7"/><ellipse cx="170.5" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M172.5,19.5 Q172.7031,19 172.9375,18.75 Q173.1719,18.5 173.4375,18.5 Q173.9063,18.5 174.2031,18.7813 Q174.5,19.0625 174.5,19.7188 L174.5,21.2813 Q174.5,21.9375 174.2188,22.2188 Q173.9375,22.5 173.5,22.5 Q173.1094,22.5 172.8594,22.3281 Q172.6094,22.1563 172.5,21.7031 Q172.4531,21.3906 172.2813,21.2188 Q171.9688,20.8906 171.4063,20.7031 Q170.8438,20.5 170.2813,20.5 Q169.5781,20.5 168.9844,20.7813 Q168.4063,21.0625 167.9531,21.6875 Q167.5,22.3125 167.5,23.1719 L167.5,24.0938 Q167.5,25.125 168.3438,25.8125 Q169.1875,26.5 170.6875,26.5 Q171.5781,26.5 172.2031,26.2969 Q172.5625,26.1875 172.9688,25.8281 Q173.2344,25.625 173.375,25.5625 Q173.5156,25.5 173.6875,25.5 Q174.0156,25.5 174.25,25.7656 Q174.5,26.0156 174.5,26.375 Q174.5,26.7188 174.1563,27.125 Q173.6563,27.7188 172.8594,28.0469 Q171.8125,28.5 170.5313,28.5 Q169.0313,28.5 167.8281,27.9063 Q166.8594,27.4375 166.1719,26.4219 Q165.5,25.4063 165.5,24.2031 L165.5,23.1094 Q165.5,21.8594 166.0938,20.7656 Q166.7031,19.6719 167.75,19.0938 Q168.8125,18.5 170,18.5 Q170.7188,18.5 171.3438,18.75 Q171.9688,19 172.5,19.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="107" x="184.5" y="27.9102">ListWaitingRoomUI</text><line style="stroke:#A80036;stroke-width:1.5;" x1="156.5" x2="293.5" y1="39" y2="39"/><line style="stroke:#A80036;stroke-width:1.5;" x1="156.5" x2="293.5" y1="47" y2="47"/><!--MD5=[348bca7a610d9f3bfff225e8391660a4]
+class ListWaitingRoomController--><rect codeLine="5" fill="#FEFECE" filter="url(#f1p7a7qumuyen8)" height="61.8359" id="ListWaitingRoomController" style="stroke:#A80036;stroke-width:1.5;" width="181" x="134.5" y="123"/><ellipse cx="149.5" cy="139" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M151.5,135.5 Q151.7031,135 151.9375,134.75 Q152.1719,134.5 152.4375,134.5 Q152.9063,134.5 153.2031,134.7813 Q153.5,135.0625 153.5,135.7188 L153.5,137.2813 Q153.5,137.9375 153.2188,138.2188 Q152.9375,138.5 152.5,138.5 Q152.1094,138.5 151.8594,138.3281 Q151.6094,138.1563 151.5,137.7031 Q151.4531,137.3906 151.2813,137.2188 Q150.9688,136.8906 150.4063,136.7031 Q149.8438,136.5 149.2813,136.5 Q148.5781,136.5 147.9844,136.7813 Q147.4063,137.0625 146.9531,137.6875 Q146.5,138.3125 146.5,139.1719 L146.5,140.0938 Q146.5,141.125 147.3438,141.8125 Q148.1875,142.5 149.6875,142.5 Q150.5781,142.5 151.2031,142.2969 Q151.5625,142.1875 151.9688,141.8281 Q152.2344,141.625 152.375,141.5625 Q152.5156,141.5 152.6875,141.5 Q153.0156,141.5 153.25,141.7656 Q153.5,142.0156 153.5,142.375 Q153.5,142.7188 153.1563,143.125 Q152.6563,143.7188 151.8594,144.0469 Q150.8125,144.5 149.5313,144.5 Q148.0313,144.5 146.8281,143.9063 Q145.8594,143.4375 145.1719,142.4219 Q144.5,141.4063 144.5,140.2031 L144.5,139.1094 Q144.5,137.8594 145.0938,136.7656 Q145.7031,135.6719 146.75,135.0938 Q147.8125,134.5 149,134.5 Q149.7188,134.5 150.3438,134.75 Q150.9688,135 151.5,135.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="149" x="163.5" y="143.9102">ListWaitingRoomController</text><line style="stroke:#A80036;stroke-width:1.5;" x1="135.5" x2="314.5" y1="155" y2="155"/><line style="stroke:#A80036;stroke-width:1.5;" x1="135.5" x2="314.5" y1="163" y2="163"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="120" x="140.5" y="178.4189">+getUsersWaitingRoom()</text><!--MD5=[02e4b9b7573f1156f41e60aa5b4e25a4]
+class Company--><rect codeLine="8" fill="#FEFECE" filter="url(#f1p7a7qumuyen8)" height="61.8359" id="Company" style="stroke:#A80036;stroke-width:1.5;" width="103" x="68.5" y="253"/><ellipse cx="91.6" cy="269" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M93.6,265.5 Q93.8031,265 94.0375,264.75 Q94.2719,264.5 94.5375,264.5 Q95.0063,264.5 95.3031,264.7813 Q95.6,265.0625 95.6,265.7188 L95.6,267.2813 Q95.6,267.9375 95.3188,268.2188 Q95.0375,268.5 94.6,268.5 Q94.2094,268.5 93.9594,268.3281 Q93.7094,268.1563 93.6,267.7031 Q93.5531,267.3906 93.3813,267.2188 Q93.0688,266.8906 92.5063,266.7031 Q91.9438,266.5 91.3813,266.5 Q90.6781,266.5 90.0844,266.7813 Q89.5063,267.0625 89.0531,267.6875 Q88.6,268.3125 88.6,269.1719 L88.6,270.0938 Q88.6,271.125 89.4438,271.8125 Q90.2875,272.5 91.7875,272.5 Q92.6781,272.5 93.3031,272.2969 Q93.6625,272.1875 94.0688,271.8281 Q94.3344,271.625 94.475,271.5625 Q94.6156,271.5 94.7875,271.5 Q95.1156,271.5 95.35,271.7656 Q95.6,272.0156 95.6,272.375 Q95.6,272.7188 95.2563,273.125 Q94.7563,273.7188 93.9594,274.0469 Q92.9125,274.5 91.6313,274.5 Q90.1313,274.5 88.9281,273.9063 Q87.9594,273.4375 87.2719,272.4219 Q86.6,271.4063 86.6,270.2031 L86.6,269.1094 Q86.6,267.8594 87.1938,266.7656 Q87.8031,265.6719 88.85,265.0938 Q89.9125,264.5 91.1,264.5 Q91.8188,264.5 92.4438,264.75 Q93.0688,265 93.6,265.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="53" x="107.4" y="273.9102">Company</text><line style="stroke:#A80036;stroke-width:1.5;" x1="69.5" x2="170.5" y1="285" y2="285"/><line style="stroke:#A80036;stroke-width:1.5;" x1="69.5" x2="170.5" y1="293" y2="293"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="91" x="74.5" y="308.4189">+getWaitingRoom()</text><!--MD5=[d2cde82c346a91ca14143d0569ca0dea]
+class UserArrivalStore--><rect codeLine="11" fill="#FEFECE" filter="url(#f1p7a7qumuyen8)" height="61.8359" id="UserArrivalStore" style="stroke:#A80036;stroke-width:1.5;" width="138" x="104" y="393"/><ellipse cx="126.65" cy="409" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M128.65,405.5 Q128.8531,405 129.0875,404.75 Q129.3219,404.5 129.5875,404.5 Q130.0563,404.5 130.3531,404.7813 Q130.65,405.0625 130.65,405.7188 L130.65,407.2813 Q130.65,407.9375 130.3688,408.2188 Q130.0875,408.5 129.65,408.5 Q129.2594,408.5 129.0094,408.3281 Q128.7594,408.1563 128.65,407.7031 Q128.6031,407.3906 128.4313,407.2188 Q128.1188,406.8906 127.5563,406.7031 Q126.9938,406.5 126.4313,406.5 Q125.7281,406.5 125.1344,406.7813 Q124.5563,407.0625 124.1031,407.6875 Q123.65,408.3125 123.65,409.1719 L123.65,410.0938 Q123.65,411.125 124.4938,411.8125 Q125.3375,412.5 126.8375,412.5 Q127.7281,412.5 128.3531,412.2969 Q128.7125,412.1875 129.1188,411.8281 Q129.3844,411.625 129.525,411.5625 Q129.6656,411.5 129.8375,411.5 Q130.1656,411.5 130.4,411.7656 Q130.65,412.0156 130.65,412.375 Q130.65,412.7188 130.3063,413.125 Q129.8063,413.7188 129.0094,414.0469 Q127.9625,414.5 126.6813,414.5 Q125.1813,414.5 123.9781,413.9063 Q123.0094,413.4375 122.3219,412.4219 Q121.65,411.4063 121.65,410.2031 L121.65,409.1094 Q121.65,407.8594 122.2438,406.7656 Q122.8531,405.6719 123.9,405.0938 Q124.9625,404.5 126.15,404.5 Q126.8688,404.5 127.4938,404.75 Q128.1188,405 128.65,405.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="89" x="142.35" y="413.9102">UserArrivalStore</text><line style="stroke:#A80036;stroke-width:1.5;" x1="105" x2="241" y1="425" y2="425"/><line style="stroke:#A80036;stroke-width:1.5;" x1="105" x2="241" y1="433" y2="433"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="126" x="110" y="448.4189">+listUsersInWaitingRoom()</text><!--MD5=[0b4e4b4980470ea387cc45de9bd14b5b]
+class Application--><rect codeLine="14" fill="#FEFECE" filter="url(#f1p7a7qumuyen8)" height="75.6719" id="Application" style="stroke:#A80036;stroke-width:1.5;" width="92" x="7" y="116"/><ellipse cx="22" cy="132" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M24,128.5 Q24.2031,128 24.4375,127.75 Q24.6719,127.5 24.9375,127.5 Q25.4063,127.5 25.7031,127.7813 Q26,128.0625 26,128.7188 L26,130.2813 Q26,130.9375 25.7188,131.2188 Q25.4375,131.5 25,131.5 Q24.6094,131.5 24.3594,131.3281 Q24.1094,131.1563 24,130.7031 Q23.9531,130.3906 23.7813,130.2188 Q23.4688,129.8906 22.9063,129.7031 Q22.3438,129.5 21.7813,129.5 Q21.0781,129.5 20.4844,129.7813 Q19.9063,130.0625 19.4531,130.6875 Q19,131.3125 19,132.1719 L19,133.0938 Q19,134.125 19.8438,134.8125 Q20.6875,135.5 22.1875,135.5 Q23.0781,135.5 23.7031,135.2969 Q24.0625,135.1875 24.4688,134.8281 Q24.7344,134.625 24.875,134.5625 Q25.0156,134.5 25.1875,134.5 Q25.5156,134.5 25.75,134.7656 Q26,135.0156 26,135.375 Q26,135.7188 25.6563,136.125 Q25.1563,136.7188 24.3594,137.0469 Q23.3125,137.5 22.0313,137.5 Q20.5313,137.5 19.3281,136.9063 Q18.3594,136.4375 17.6719,135.4219 Q17,134.4063 17,133.2031 L17,132.1094 Q17,130.8594 17.5938,129.7656 Q18.2031,128.6719 19.25,128.0938 Q20.3125,127.5 21.5,127.5 Q22.2188,127.5 22.8438,127.75 Q23.4688,128 24,128.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="60" x="36" y="136.9102">Application</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="98" y1="148" y2="148"/><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="98" y1="156" y2="156"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="70" x="13" y="171.4189">+getInstance()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="74" x="13" y="185.2549">+getCompany()</text><!--MD5=[863b126a8c99db7c2e11d434a21165a2]
+link ListWaitingRoomUI to ListWaitingRoomController--><path codeLine="20" d="M225,55.04 C225,72.74 225,97.49 225,117.69 " fill="none" id="ListWaitingRoomUI-to-ListWaitingRoomController" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="225,122.72,229,113.72,225,117.72,221,113.72,225,122.72" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[0d88a6f0f66bed4d1a6535979947ddcb]
+link ListWaitingRoomController to Company--><path codeLine="21" d="M200.38,185.01 C184.7,204.13 164.34,228.95 148.03,248.83 " fill="none" id="ListWaitingRoomController-to-Company" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="144.83,252.73,153.6357,248.3186,148.0055,248.8679,147.4562,243.2377,144.83,252.73" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[d31a1af3ff2eb358248f9b79dec76181]
+reverse link Application to ListWaitingRoomController--><path codeLine="22" d="M104.28,154 C114.34,154 124.4,154 134.45,154 " fill="none" id="Application-backto-ListWaitingRoomController" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="99.02,154,108.02,158,104.02,154,108.02,150,99.02,154" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[aa87414629f40b8871c38fc4fdff0b84]
+link Application to Company--><path codeLine="23" d="M72.38,192.02 C81.63,209.71 92.65,230.75 101.75,248.14 " fill="none" id="Application-to-Company" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="104.27,252.95,103.6467,243.1209,101.9542,248.5186,96.5565,246.8261,104.27,252.95" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[547dd39eb63de61d5ad7045d9ebfcdf3]
+link ListWaitingRoomController to UserArrivalStore--><path codeLine="24" d="M219.14,185.22 C209.44,235.22 190.1,334.87 179.81,387.91 " fill="none" id="ListWaitingRoomController-to-UserArrivalStore" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="178.84,392.89,184.4685,384.8079,179.7848,387.9801,176.6126,383.2963,178.84,392.89" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[d28d31b1227178bd8717fb503a0f0075]
+link Company to UserArrivalStore--><path codeLine="25" d="M131.63,315.28 C139.88,336.77 150.97,365.65 159.6,388.1 " fill="none" id="Company-to-UserArrivalStore" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="161.4,392.79,161.8965,382.9537,159.6022,388.1244,154.4315,385.8301,161.4,392.79" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="21" x="150" y="359.4951">has</text><!--MD5=[b1e54141813c072b3830bbb24a142834]
+@startuml
+'https://plantuml.com/class-diagram
+skinparam classAttributeIconSize 0
+
+class ListWaitingRoomUI
+class ListWaitingRoomController{
++getUsersWaitingRoom()
+}
+class Company{
++getWaitingRoom()
+}
+class UserArrivalStore{
++listUsersInWaitingRoom()
+}
+class Application{
++getInstance()
++getCompany()
+}
+
+
+ListWaitingRoomUI ..> ListWaitingRoomController
+ListWaitingRoomController ..> Company
+ListWaitingRoomController .left.> Application
+Application ..> Company
+ListWaitingRoomController ..> UserArrivalStore
+Company - -> UserArrivalStore : has
+
+
+
+@enduml
+
+@startuml
+skinparam classAttributeIconSize 0
+
+class ListWaitingRoomUI
+class ListWaitingRoomController{
++getUsersWaitingRoom()
+}
+class Company{
++getWaitingRoom()
+}
+class UserArrivalStore{
++listUsersInWaitingRoom()
+}
+class Application{
++getInstance()
++getCompany()
+}
+
+
+ListWaitingRoomUI ..> ListWaitingRoomController
+ListWaitingRoomController ..> Company
+ListWaitingRoomController .left.> Application
+Application ..> Company
+ListWaitingRoomController ..> UserArrivalStore
+Company - -> UserArrivalStore : has
+
+
+
+@enduml
+
+PlantUML version 1.2022.1(Tue Feb 01 18:19:58 GMT 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: en
+Country: US
+--></g></svg>

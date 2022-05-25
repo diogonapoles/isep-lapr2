@@ -157,7 +157,7 @@ Receptionist "*" -up-- "*" SNSUser : registers arrival of >
 Receptionist "*" -down--- "*" VaccineSchedule : confirms >
 Receptionist "1..*"-right-- "1..*"WaitingRoom : sends SNS user to >
 
-Nurse "*" -down--- "1..*" WaitingRoom : sends SNS user to >
+Nurse "*" -down--- "1..*" WaitingRoom : Consults Users in Waiting room >
 (Nurse, WaitingRoom) .. UserHealthHistoric
 Nurse "1" -up-- "*" VaccinationCertificate : issues and delivers >
 VaccineAdministration "*" -down-- "1" RecoveryRoom : sends user to >

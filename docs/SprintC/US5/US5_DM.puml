@@ -1,27 +1,24 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
+class Nurse{}
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
 
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
+class Employee{
+name
+phoneNumber
+address
+emailAddress
+citizenCardNumber
+companyID
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
-}
 
+
+
+class WaitingRoom{}
+
+
+Nurse--|>Employee
+Nurse "*" -right- "1..*" WaitingRoom : Consults Users in Waiting Rooom
 @enduml
