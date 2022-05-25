@@ -27,7 +27,7 @@ public class UserArrivalUI implements Runnable{
             System.out.println("not a valid user or already exists");
         }
 
-        getWaitingRoomList();
+
 
     }
 
@@ -49,7 +49,4 @@ public class UserArrivalUI implements Runnable{
     }
 
 
-    private void getWaitingRoomList() {
-        Utils.showList(controller.getWaitingRoomList(),"Waiting Room List");
-    }
 }
