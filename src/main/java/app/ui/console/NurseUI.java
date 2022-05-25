@@ -1,5 +1,6 @@
 package app.ui.console;
 
+import app.domain.model.Nurse;
 import app.ui.console.utils.Utils;
 
 import java.util.ArrayList;
@@ -10,7 +11,9 @@ public class NurseUI implements Runnable{
 
     public void run() {
         List<MenuItem> options = new ArrayList<MenuItem>();
-        options.add(new MenuItem("List Users in The Waiting Room ", new UserArrivalUI()));
+        
+
+        options.add(new MenuItem("List Users in The Waiting Room ", new ListWaitingRoomUI()));
 
 
 
