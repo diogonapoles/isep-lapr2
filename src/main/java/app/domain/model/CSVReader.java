@@ -2,107 +2,134 @@ package app.domain.model;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 public class CSVReader {
 
     public CSVReader() {}
 
+    private enum HEADER_COLUMNS{
+        HEADER0("name"),
+        HEADER1("sex", "gender"),
+        HEADER2("birth date", "birthdate", "birth-date"),
+        HEADER3("homeaddress", "home-address", "home address", "address"),
+        HEADER4("phonenumber", "phone-number", "phone number"),
+        HEADER5("e-mail", "email", "e-mail address", "email address"),
+        HEADER6("sns user number", "snsusernumber", "sns-user-number"),
+        HEADER7("citizen card number", "citizencardnumber", "citizen-card-number"),
+        HEADER8;
+        private String columnValue;
+        private HashSet<String> similarValues;
+        HEADER_COLUMNS(String... similarValues){
+            this.columnValue = similarValues[0];
+            this.similarValues = new HashSet<String>(Arrays.asList(similarValues));
+        }
+
+        public String getColumnValue(){
+            return columnValue;
+        }
+
+        public HashSet<String> getSimilarValues(){
+            return similarValues;
+        }
+    }
+
+    private static final String SEPARATOR_A = ";";
+    private static final String SEPARATOR_B = ",";
+    private String separator = SEPARATOR_A;
     public List <SNSUser> readCSVFile(String fileLocation) {
         List<SNSUser> tempSave = new ArrayList<>();
         String line = "";
-        String splitBy;
         try {
-            switch (validateHeader(fileLocation)) {
-                case -1:
-                    return null;
-                case 0:
-                    System.out.println("Loading CSV file with header:");
-                    splitBy = ";";
-                    break;
-                case 1:
-                    System.out.println("Loading CSV file without header:");
-                    splitBy = ",";
-                    break;
-                default:
-                    throw new IllegalStateException("Unexpected value: " + validateHeader(fileLocation));
-            }
-        }catch (Exception e){
-            System.out.println("There was a problem validating the header");
-            return null;
-        }
-
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(fileLocation));
-
-            if (splitBy.equals(";")) {
-                br.readLine();
+        BufferedReader br = new BufferedReader(new FileReader(fileLocation));
+        line = br.readLine();
+            try {
+                switch (validateHeader(line)) {
+                    case -1:
+                        return null;
+                    case 0:
+                        System.out.println("Loading CSV file with header:");
+                        separator = SEPARATOR_A;
+                        break;
+                    case 1:
+                        System.out.println("Loading CSV file without header:");
+                        separator = SEPARATOR_B;
+                        break;
+                    default:
+                        throw new IllegalStateException("Unexpected value: " + validateHeader(fileLocation));
+                }
+            }catch (Exception e){
+                System.out.println("There was a problem validating the header");
+                return null;
             }
 
-            while ((line = br.readLine()) != null) {
-                String[] SNSUser = line.split(splitBy);
+            if (separator.equals(SEPARATOR_B)) {
+                line = br.readLine();
+            }
+
+            while (line != null) {
+                String[] SNSUser = line.split(separator);
                 SNSUser tempUser = new SNSUser(SNSUser[0], SNSUser[1], SNSUser[2], SNSUser[3], SNSUser[4], SNSUser[5], SNSUser[6], SNSUser[7]);
                 if(tempUser.getName() != null)
-                tempSave.add(tempUser);
+                    tempSave.add(tempUser);
+                line = br.readLine();
             }
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
-
         return tempSave;
     }
 
-    private int validateHeader(String fileLocation){
-        String line = "";
-        String splitBy;
+    public int validateHeader(String line){
         try {
-            BufferedReader br = new BufferedReader(new FileReader(fileLocation));
-            if ((line = br.readLine()) != null) {
-                if(line.contains(";")) {
-                    splitBy = ";";
-                    String[] column = line.split(splitBy);
-                    try {
-                        if (!column[0].toLowerCase().equals("name") &&
-                                !column[1].toLowerCase().equals("sex") &&
-                                !column[2].toLowerCase().equals("birth date") &&
-                                !column[3].toLowerCase().equals("address") &&
-                                !column[4].toLowerCase().equals("phone number") &&
-                                !column[5].toLowerCase().equals("e-mail") &&
-                                !column[6].toLowerCase().equals("sns user number") &&
-                                !column[7].toLowerCase().equals("citizen card number"))
-                            throw new Exception("Header doesn't exist or doesn't respect the guidelines: (Name | Sex | Birth Date | Address | Phone Number | E-mail | SNS User Number | Citizen Card Number)");
-                    } catch (Exception e) {
-                        System.out.println(e);
-                        return -1;
-                    }
-                    return 0;
+            line = line.toLowerCase();
+            if (line.contains(SEPARATOR_A)) {
+                separator = SEPARATOR_A;
+                // Validating if header is in the expected format
+                try {
+                    if (!line.equals(getCompleteHeader()))
+                        throw new IllegalArgumentException("Invalid header. Should be: " + getCompleteHeader());
+                } catch (Exception e) {
+                    System.out.println(e);
+                    return -1;
                 }
-                if(line.contains(",")) {
-                    splitBy = ",";
-                    String[] column = line.split(splitBy);
-                    try {
-                        if (column[0].toLowerCase().equals("name") ||
-                                (column[1].toLowerCase().equals("gender") || column[1].toLowerCase().equals("sex")) ||
-                                (column[2].toLowerCase().equals("birthdate") || column[2].toLowerCase().equals("birth-date") || column[2].toLowerCase().equals("birth date")) ||
-                                (column[3].toLowerCase().equals("homeaddress") || column[3].toLowerCase().equals("home-address") || column[3].toLowerCase().equals("home address") || column[3].toLowerCase().equals("address")) ||
-                                (column[4].toLowerCase().equals("phonenumber") || column[4].toLowerCase().equals("phone-number") || column[4].toLowerCase().equals("phone number")) ||
-                                (column[5].toLowerCase().equals("e-mail") || column[5].toLowerCase().equals("email") || column[5].toLowerCase().equals("e-mail address") || column[5].toLowerCase().equals("email address")) ||
-                                (column[6].toLowerCase().equals("sns user number") || column[6].toLowerCase().equals("snsusernumber") || column[6].toLowerCase().equals("sns-user-number")) ||
-                                (column[7].toLowerCase().equals("citizen card number") || column[7].toLowerCase().equals("citizencardnumber") || column[7].toLowerCase().equals("citizen-card-number")))
-                            throw new Exception("It seems like there might be a header in this file");
-                    } catch (Exception e) {
-                        System.out.println(e);
-                        return -1;
+                return 0;
+            } else if (line.contains(SEPARATOR_B)) {
+                separator = SEPARATOR_B;
+                // Validating if there is a possible header
+                String[] columns = line.split(separator);
+                try {
+                    if (columns.length == HEADER_COLUMNS.values().length) {
+                        for (int i = 0; i < columns.length; i++) {
+                            if (HEADER_COLUMNS.values()[i].getSimilarValues().contains(columns[i]))
+                                throw new IllegalArgumentException("An unexpected header was found.");
+                        }
+                    } else {
+                        throw new IllegalArgumentException("Number of columns is wrong.");
                     }
-                    return 1;
+                } catch (Exception e) {
+                    System.out.println(e);
+                    return -1;
                 }
-
+                return 1;
+            } else {
+                throw new IllegalArgumentException("No separator was found.");
             }
-        }catch(IOException e) {
-            System.out.println("Can't find/open file");
+        }catch (Exception e){
+            System.out.println(e);
             return -1;
         }
-        return -1;
+    }
+
+    private static String getCompleteHeader(){
+        String expectedHeader = "";
+        for (HEADER_COLUMNS headerColumn : HEADER_COLUMNS.values()) {
+            expectedHeader += headerColumn.getColumnValue() + SEPARATOR_A;
+        }
+        expectedHeader = expectedHeader.substring(0, expectedHeader.length()-1);
+        return expectedHeader;
     }
 }
