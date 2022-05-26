@@ -8,19 +8,52 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
+/**
+ * The type Csv reader.
+ */
 public class CSVReader {
 
+    /**
+     * Instantiates a new Csv reader.
+     */
     public CSVReader() {}
 
     private enum HEADER_COLUMNS{
+        /**
+         * Header 0 header columns.
+         */
         HEADER0("name"),
+        /**
+         * Header 1 header columns.
+         */
         HEADER1("sex", "gender"),
+        /**
+         * The Header 2.
+         */
         HEADER2("birth date", "birthdate", "birth-date"),
+        /**
+         * The Header 3.
+         */
         HEADER3("homeaddress", "home-address", "home address", "address"),
+        /**
+         * The Header 4.
+         */
         HEADER4("phonenumber", "phone-number", "phone number"),
+        /**
+         * The Header 5.
+         */
         HEADER5("e-mail", "email", "e-mail address", "email address"),
+        /**
+         * The Header 6.
+         */
         HEADER6("sns user number", "snsusernumber", "sns-user-number"),
+        /**
+         * The Header 7.
+         */
         HEADER7("citizen card number", "citizencardnumber", "citizen-card-number"),
+        /**
+         * Header 8 header columns.
+         */
         HEADER8;
         private String columnValue;
         private HashSet<String> similarValues;
@@ -29,10 +62,20 @@ public class CSVReader {
             this.similarValues = new HashSet<String>(Arrays.asList(similarValues));
         }
 
+        /**
+         * Get column value string.
+         *
+         * @return the string
+         */
         public String getColumnValue(){
             return columnValue;
         }
 
+        /**
+         * Get similar values hash set.
+         *
+         * @return the hash set
+         */
         public HashSet<String> getSimilarValues(){
             return similarValues;
         }
@@ -41,6 +84,13 @@ public class CSVReader {
     private static final String SEPARATOR_A = ";";
     private static final String SEPARATOR_B = ",";
     private String separator = SEPARATOR_A;
+
+    /**
+     * Read csv file list .
+     *
+     * @param fileLocation the file location
+     * @return the list
+     */
     public List <SNSUser> readCSVFile(String fileLocation) {
         List<SNSUser> tempSave = new ArrayList<>();
         String line = "";
@@ -85,6 +135,12 @@ public class CSVReader {
         return tempSave;
     }
 
+    /**
+     * Validate header int.
+     *
+     * @param line the line
+     * @return the int
+     */
     public int validateHeader(String line){
         try {
             line = line.toLowerCase();

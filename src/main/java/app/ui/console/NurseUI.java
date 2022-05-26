@@ -5,6 +5,9 @@ import app.ui.console.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Nurse ui.
+ */
 public class NurseUI implements Runnable{
 
 

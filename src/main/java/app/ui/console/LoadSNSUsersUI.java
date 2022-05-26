@@ -3,10 +3,16 @@ package app.ui.console;
 import app.controller.LoadSNSUsersController;
 import app.ui.console.utils.Utils;
 
+/**
+ * The type Load sns users ui.
+ */
 public class LoadSNSUsersUI implements Runnable {
 
     private LoadSNSUsersController controller;
 
+    /**
+     * Instantiates a new Load sns users ui.
+     */
     public LoadSNSUsersUI() {
         this.controller = new LoadSNSUsersController();
     }

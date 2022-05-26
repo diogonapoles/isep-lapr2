@@ -4,10 +4,16 @@ import app.controller.UserArrivalController;
 import app.ui.console.utils.Utils;
 
 
+/**
+ * The type User arrival ui.
+ */
 public class UserArrivalUI implements Runnable {
 
     private UserArrivalController controller;
 
+    /**
+     * Instantiates a new User arrival ui.
+     */
     public UserArrivalUI() {
         this.controller = new UserArrivalController();
     }

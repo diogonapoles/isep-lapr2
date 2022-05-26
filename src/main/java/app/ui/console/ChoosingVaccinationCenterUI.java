@@ -3,10 +3,16 @@ package app.ui.console;
 import app.controller.ChoosingVaccinationCenterController;
 import app.ui.console.utils.Utils;
 
+/**
+ * The type Choosing vaccination center ui.
+ */
 public class ChoosingVaccinationCenterUI implements Runnable {
 
     private final ChoosingVaccinationCenterController controller;
 
+    /**
+     * Instantiates a new Choosing vaccination center ui.
+     */
     public ChoosingVaccinationCenterUI() {
         controller = new ChoosingVaccinationCenterController();
     }

@@ -141,10 +141,20 @@ public abstract class Employee {
         this.citizenCardNumber = citizenCardNumber;
     }
 
+    /**
+     * Sets working.
+     *
+     * @param vaccinationCenter the vaccination center
+     */
     public void setWorking(VaccinationCenter vaccinationCenter) {
         this.vaccinationCenter = vaccinationCenter;
     }
 
+    /**
+     * Gets working.
+     *
+     * @return the working
+     */
     public VaccinationCenter getWorking() {
         return vaccinationCenter;
     }
