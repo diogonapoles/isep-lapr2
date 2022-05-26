@@ -1,6 +1,5 @@
 package app.ui.console;
 
-import app.domain.model.Nurse;
 import app.ui.console.utils.Utils;
 
 import java.util.ArrayList;

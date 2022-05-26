@@ -2,6 +2,9 @@ package app.domain.store;
 
 import app.domain.model.*;
 import app.domain.shared.Constants;
+import app.domain.systemUsers.CenterCoordinator;
+import app.domain.systemUsers.Nurse;
+import app.domain.systemUsers.Receptionist;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
 

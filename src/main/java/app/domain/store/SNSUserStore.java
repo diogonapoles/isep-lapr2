@@ -1,6 +1,6 @@
 package app.domain.store;
 
-import app.domain.model.SNSUser;
+import app.domain.systemUsers.SNSUser;
 import pt.isep.lei.esoft.auth.AuthFacade;
 
 import java.util.ArrayList;

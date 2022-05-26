@@ -1,9 +1,11 @@
-package app.domain.model;
+package app.domain.systemUsers;
+
+import app.domain.model.Employee;
 
 /**
  * The type Nurse.
  */
-public class Nurse extends Employee{
+public class Nurse extends Employee {
     /**
      * Instantiates a new Nurse.
      *

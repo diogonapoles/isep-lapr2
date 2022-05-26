@@ -1,12 +1,14 @@
-package app.domain.model;
+package app.domain.systemUsers;
+
+import app.domain.model.Employee;
 
 /**
- * The type Center coordinator.
+ * The type Receptionist.
  */
-public class CenterCoordinator extends Employee{
+public class Receptionist extends Employee {
 
     /**
-     * Instantiates a new Center coordinator.
+     * Instantiates a new Receptionist.
      *
      * @param name              the name
      * @param phoneNumber       the phone number
@@ -14,7 +16,7 @@ public class CenterCoordinator extends Employee{
      * @param emailAddress      the email address
      * @param citizenCardNumber the citizen card number
      */
-    public CenterCoordinator(String name, String phoneNumber, String address, String emailAddress, String citizenCardNumber) {
+    public Receptionist(String name, String phoneNumber, String address, String emailAddress, String citizenCardNumber) {
         super(name, phoneNumber, address, emailAddress, citizenCardNumber);
     }
 }

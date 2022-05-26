@@ -1,10 +1,12 @@
 package app.domain.model;
 
+import app.domain.systemUsers.CenterCoordinator;
+import app.domain.systemUsers.Nurse;
+import app.domain.systemUsers.Receptionist;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
 
 class EmployeeTest {
 

@@ -1,10 +1,7 @@
 package app.ui.console;
 
 import app.controller.LoadSNSUsersController;
-import app.domain.model.SNSUser;
 import app.ui.console.utils.Utils;
-
-import java.util.List;
 
 public class LoadSNSUsersUI implements Runnable {
 

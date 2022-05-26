@@ -1,11 +1,8 @@
 package app.controller;
 
 import app.domain.model.Company;
-import app.domain.model.Employee;
-import app.domain.model.SNSUser;
+import app.domain.systemUsers.SNSUser;
 import app.domain.model.VaccinationCenter;
-
-import java.util.List;
 
 public class UserArrivalController {
 

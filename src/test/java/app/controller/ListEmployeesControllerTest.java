@@ -1,9 +1,9 @@
 package app.controller;
 
-import app.domain.model.CenterCoordinator;
+import app.domain.systemUsers.CenterCoordinator;
 import app.domain.model.Employee;
-import app.domain.model.Nurse;
-import app.domain.model.Receptionist;
+import app.domain.systemUsers.Nurse;
+import app.domain.systemUsers.Receptionist;
 import org.junit.Test;
 
 import java.util.ArrayList;

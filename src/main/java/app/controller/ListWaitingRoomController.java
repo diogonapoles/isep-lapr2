@@ -1,6 +1,6 @@
 package app.controller;
 
-import app.domain.model.SNSUser;
+import app.domain.systemUsers.SNSUser;
 
 import java.util.List;
 

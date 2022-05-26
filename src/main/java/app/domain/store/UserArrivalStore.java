@@ -1,6 +1,6 @@
 package app.domain.store;
 
-import app.domain.model.SNSUser;
+import app.domain.systemUsers.SNSUser;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,7 @@
 package app.controller;
 
-import app.domain.model.CSVReader;
 import app.domain.model.Company;
-import app.domain.model.SNSUser;
-import app.domain.model.VaccineType;
+import app.domain.systemUsers.SNSUser;
 
 import java.util.List;
 

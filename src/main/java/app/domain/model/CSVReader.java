@@ -1,5 +1,7 @@
 package app.domain.model;
 
+import app.domain.systemUsers.SNSUser;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
