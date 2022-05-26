@@ -38,6 +38,7 @@ public class MenuItem {
         try {
             this.ui.run();
         }catch (IllegalArgumentException ex){
+            System.out.println(ex);
             run();
         }
     }
