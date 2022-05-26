@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="1006px" preserveAspectRatio="none" style="width:1441px;height:1006px;background:#FFFFFF;" version="1.1" viewBox="0 0 1441 1006" width="1441px" zoomAndPan="magnify"><defs><filter height="300%" id="ff5jtnam3age" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="803.625" style="stroke:#A80036;stroke-width:1.0;" width="10" x="21.5" y="99.6094"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="375.4609" style="stroke:#A80036;stroke-width:1.0;" width="10" x="351.5" y="121.9609"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="28" style="stroke:#A80036;stroke-width:1.0;" width="10" x="356.5" y="432.0703"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="375.4609" style="stroke:#A80036;stroke-width:1.0;" width="10" x="351.5" y="527.7734"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="241.4063" style="stroke:#A80036;stroke-width:1.0;" width="10" x="669.5" y="152.3125"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="354.1094" style="stroke:#A80036;stroke-width:1.0;" width="10" x="669.5" y="558.125"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="28" style="stroke:#A80036;stroke-width:1.0;" width="10" x="674.5" y="837.8828"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="857.5" y="182.6641"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="857.5" y="588.4766"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="912.5" y="243.0156"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="912.5" y="648.8281"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="987" y="303.3672"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="987" y="709.1797"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="1124" y="363.7188"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="1279" y="769.5313"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="26" x2="26" y1="89.6094" y2="921.2344"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="356.5" x2="356.5" y1="89.6094" y2="921.2344"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="674.5" x2="674.5" y1="89.6094" y2="921.2344"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="862" x2="862" y1="89.6094" y2="921.2344"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="917" x2="917" y1="89.6094" y2="921.2344"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="992" x2="992" y1="89.6094" y2="921.2344"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="1129" x2="1129" y1="89.6094" y2="921.2344"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="1284" x2="1284" y1="89.6094" y2="921.2344"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="1392" x2="1392" y1="89.6094" y2="921.2344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="5" y="86.5332">Nurse</text><ellipse cx="26.5" cy="15" fill="#FEFECE" filter="url(#ff5jtnam3age)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2.0;"/><path d="M26.5,23 L26.5,50 M13.5,31 L39.5,31 M26.5,50 L13.5,65 M26.5,50 L39.5,65 " fill="none" filter="url(#ff5jtnam3age)" style="stroke:#A80036;stroke-width:2.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="5" y="934.7676">Nurse</text><ellipse cx="26.5" cy="947.8438" fill="#FEFECE" filter="url(#ff5jtnam3age)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2.0;"/><path d="M26.5,955.8438 L26.5,982.8438 M13.5,963.8438 L39.5,963.8438 M26.5,982.8438 L13.5,997.8438 M26.5,982.8438 L39.5,997.8438 " fill="none" filter="url(#ff5jtnam3age)" style="stroke:#A80036;stroke-width:2.0;"/><rect fill="#FEFECE" filter="url(#ff5jtnam3age)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="206" x="251.5" y="53"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="192" x="258.5" y="74.5332">:ChoosingVaccinationCenterUI</text><rect fill="#FEFECE" filter="url(#ff5jtnam3age)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="206" x="251.5" y="920.2344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="192" x="258.5" y="941.7676">:ChoosingVaccinationCenterUI</text><rect fill="#FEFECE" filter="url(#ff5jtnam3age)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="256" x="544.5" y="53"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="242" x="551.5" y="74.5332">:ChoosingVaccinationCenterController</text><rect fill="#FEFECE" filter="url(#ff5jtnam3age)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="256" x="544.5" y="920.2344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="242" x="551.5" y="941.7676">:ChoosingVaccinationCenterController</text><rect fill="#FEFECE" filter="url(#ff5jtnam3age)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="39" x="841" y="53"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="25" x="848" y="74.5332">App</text><rect fill="#FEFECE" filter="url(#ff5jtnam3age)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="39" x="841" y="920.2344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="25" x="848" y="941.7676">App</text><rect fill="#FEFECE" filter="url(#ff5jtnam3age)" height="49.2188" style="stroke:#A80036;stroke-width:1.5;" width="43" x="894" y="35.3906"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="24" x="903.5" y="56.9238">app</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="29" x="901" y="74.5332">:App</text><rect fill="#FEFECE" filter="url(#ff5jtnam3age)" height="49.2188" style="stroke:#A80036;stroke-width:1.5;" width="43" x="894" y="920.2344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="24" x="903.5" y="941.7676">app</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="29" x="901" y="959.377">:App</text><rect fill="#FEFECE" filter="url(#ff5jtnam3age)" height="49.2188" style="stroke:#A80036;stroke-width:1.5;" width="78" x="951" y="35.3906"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="34" x="973" y="56.9238">comp</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="64" x="958" y="74.5332">:Company</text><rect fill="#FEFECE" filter="url(#ff5jtnam3age)" height="49.2188" style="stroke:#A80036;stroke-width:1.5;" width="78" x="951" y="920.2344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="34" x="973" y="941.7676">comp</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="64" x="958" y="959.377">:Company</text><rect fill="#FEFECE" filter="url(#ff5jtnam3age)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="168" x="1043" y="53"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="154" x="1050" y="74.5332">:VaccinationCenterStore</text><rect fill="#FEFECE" filter="url(#ff5jtnam3age)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="168" x="1043" y="920.2344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="154" x="1050" y="941.7676">:VaccinationCenterStore</text><rect fill="#FEFECE" filter="url(#ff5jtnam3age)" height="49.2188" style="stroke:#A80036;stroke-width:1.5;" width="114" x="1225" y="35.3906"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="34" x="1265" y="56.9238">emps</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="1232" y="74.5332">:EmployeeStore</text><rect fill="#FEFECE" filter="url(#ff5jtnam3age)" height="49.2188" style="stroke:#A80036;stroke-width:1.5;" width="114" x="1225" y="920.2344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="34" x="1265" y="941.7676">emps</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="1232" y="959.377">:EmployeeStore</text><rect fill="#FEFECE" filter="url(#ff5jtnam3age)" height="49.2188" style="stroke:#A80036;stroke-width:1.5;" width="74" x="1353" y="35.3906"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="28" x="1376" y="56.9238">user</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="1360" y="74.5332">:SNSUser</text><rect fill="#FEFECE" filter="url(#ff5jtnam3age)" height="49.2188" style="stroke:#A80036;stroke-width:1.5;" width="74" x="1353" y="920.2344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="28" x="1376" y="941.7676">user</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="1360" y="959.377">:SNSUser</text><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="803.625" style="stroke:#A80036;stroke-width:1.0;" width="10" x="21.5" y="99.6094"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="375.4609" style="stroke:#A80036;stroke-width:1.0;" width="10" x="351.5" y="121.9609"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="28" style="stroke:#A80036;stroke-width:1.0;" width="10" x="356.5" y="432.0703"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="375.4609" style="stroke:#A80036;stroke-width:1.0;" width="10" x="351.5" y="527.7734"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="241.4063" style="stroke:#A80036;stroke-width:1.0;" width="10" x="669.5" y="152.3125"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="354.1094" style="stroke:#A80036;stroke-width:1.0;" width="10" x="669.5" y="558.125"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="28" style="stroke:#A80036;stroke-width:1.0;" width="10" x="674.5" y="837.8828"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="857.5" y="182.6641"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="857.5" y="588.4766"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="912.5" y="243.0156"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="912.5" y="648.8281"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="987" y="303.3672"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="987" y="709.1797"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="1124" y="363.7188"/><rect fill="#FFFFFF" filter="url(#ff5jtnam3age)" height="30" style="stroke:#A80036;stroke-width:1.0;" width="10" x="1279" y="769.5313"/><polygon fill="#A80036" points="339.5,117.9609,349.5,121.9609,339.5,125.9609,343.5,121.9609" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="31.5" x2="345.5" y1="121.9609" y2="121.9609"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="38.5" y="117.1045">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="164" x="49.5" y="117.1045">Employee Logs In as Nurse.</text><polygon fill="#A80036" points="657.5,148.3125,667.5,152.3125,657.5,156.3125,661.5,152.3125" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="361.5" x2="663.5" y1="152.3125" y2="152.3125"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="368.5" y="147.4561">2</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="139" x="379.5" y="147.4561">getVaccinationCenters()</text><polygon fill="#A80036" points="845.5,178.6641,855.5,182.6641,845.5,186.6641,849.5,182.6641" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="679.5" x2="851.5" y1="182.6641" y2="182.6641"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="686.5" y="177.8076">3</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="112" x="697.5" y="177.8076">app = getInstance()</text><polygon fill="#A80036" points="900.5,239.0156,910.5,243.0156,900.5,247.0156,904.5,243.0156" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="679.5" x2="906.5" y1="243.0156" y2="243.0156"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="686.5" y="238.1592">4</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="129" x="697.5" y="238.1592">comp = getCompany()</text><polygon fill="#A80036" points="975,299.3672,985,303.3672,975,307.3672,979,303.3672" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="679.5" x2="981" y1="303.3672" y2="303.3672"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="686.5" y="298.5107">5</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="163" x="697.5" y="298.5107">getVaccinationCenterStore()</text><polygon fill="#A80036" points="1112,359.7188,1122,363.7188,1112,367.7188,1116,363.7188" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="679.5" x2="1118" y1="363.7188" y2="363.7188"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="686.5" y="358.8623">6</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="139" x="697.5" y="358.8623">getVaccinationCenters()</text><line style="stroke:#A80036;stroke-width:1.0;" x1="366.5" x2="408.5" y1="424.0703" y2="424.0703"/><line style="stroke:#A80036;stroke-width:1.0;" x1="408.5" x2="408.5" y1="424.0703" y2="437.0703"/><line style="stroke:#A80036;stroke-width:1.0;" x1="367.5" x2="408.5" y1="437.0703" y2="437.0703"/><polygon fill="#A80036" points="377.5,433.0703,367.5,437.0703,377.5,441.0703,373.5,437.0703" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="373.5" y="419.2139">7</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="283" x="384.5" y="419.2139">Utils.showAndSelectOne(List list , String header)</text><polygon fill="#A80036" points="42.5,493.4219,32.5,497.4219,42.5,501.4219,38.5,497.4219" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="36.5" x2="355.5" y1="497.4219" y2="497.4219"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="48.5" y="492.5654">8</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="285" x="59.5" y="492.5654">Lists Vaccination Centers and asks to select one</text><polygon fill="#A80036" points="339.5,523.7734,349.5,527.7734,339.5,531.7734,343.5,527.7734" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="31.5" x2="345.5" y1="527.7734" y2="527.7734"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="38.5" y="522.917">9</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="181" x="49.5" y="522.917">Selects one Vaccination center</text><polygon fill="#A80036" points="657.5,554.125,667.5,558.125,657.5,562.125,661.5,558.125" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="361.5" x2="663.5" y1="558.125" y2="558.125"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="368.5" y="553.2686">10</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="218" x="386.5" y="553.2686">setWorking(Object vaccinationCenter)</text><polygon fill="#A80036" points="845.5,584.4766,855.5,588.4766,845.5,592.4766,849.5,588.4766" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="679.5" x2="851.5" y1="588.4766" y2="588.4766"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="686.5" y="583.6201">11</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="112" x="704.5" y="583.6201">app = getInstance()</text><polygon fill="#A80036" points="900.5,644.8281,910.5,648.8281,900.5,652.8281,904.5,648.8281" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="679.5" x2="906.5" y1="648.8281" y2="648.8281"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="686.5" y="643.9717">12</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="129" x="704.5" y="643.9717">comp = getCompany()</text><polygon fill="#A80036" points="975,705.1797,985,709.1797,975,713.1797,979,709.1797" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="679.5" x2="981" y1="709.1797" y2="709.1797"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="686.5" y="704.3232">13</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="115" x="704.5" y="704.3232">getEmployeeStore()</text><polygon fill="#A80036" points="1267,765.5313,1277,769.5313,1267,773.5313,1271,769.5313" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="679.5" x2="1273" y1="769.5313" y2="769.5313"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="686.5" y="764.6748">14</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="181" x="704.5" y="764.6748">getEmployeeUsingEmail(email)</text><line style="stroke:#A80036;stroke-width:1.0;" x1="684.5" x2="726.5" y1="829.8828" y2="829.8828"/><line style="stroke:#A80036;stroke-width:1.0;" x1="726.5" x2="726.5" y1="829.8828" y2="842.8828"/><line style="stroke:#A80036;stroke-width:1.0;" x1="685.5" x2="726.5" y1="842.8828" y2="842.8828"/><polygon fill="#A80036" points="695.5,838.8828,685.5,842.8828,695.5,846.8828,691.5,842.8828" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="691.5" y="825.0264">15</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="146" x="709.5" y="825.0264">employee.setWorking(vc)</text><polygon fill="#A80036" points="37.5,899.2344,27.5,903.2344,37.5,907.2344,33.5,903.2344" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="31.5" x2="355.5" y1="903.2344" y2="903.2344"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="43.5" y="898.3779">16</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="271" x="61.5" y="898.3779">Shows the Nurse Options (ListWaitingRoomUI)</text><!--MD5=[3323cff3b08a60c3edb9d2f2ba3dbcda]
+@startuml
+autonumber
+'hide footbox
+actor "Nurse" as NU
+
+participant ":ChoosingVaccinationCenterUI" as UI
+participant ":ChoosingVaccinationCenterController" as CTRL
+participant "App" as _APP
+participant "app\n:App" as APP
+participant "comp\n:Company" as COMP
+participant ":VaccinationCenterStore" as VCS
+participant "emps\n:EmployeeStore" as ES
+participant "user\n:SNSUser" as SU
+
+
+
+
+
+activate NU
+NU -> UI : Employee Logs In as Nurse.
+activate UI
+UI -> CTRL : getVaccinationCenters()
+activate CTRL
+CTRL -> _APP : app = getInstance()
+activate _APP
+deactivate _APP
+CTRL -> APP : comp = getCompany()
+activate APP
+deactivate APP
+CTRL -> COMP : getVaccinationCenterStore()
+activate COMP
+deactivate COMP
+CTRL -> VCS : getVaccinationCenters()
+activate VCS
+deactivate VCS
+deactivate CTRL
+
+UI-> UI : Utils.showAndSelectOne(List list , String header)
+activate UI
+deactivate UI
+
+UI -> NU : Lists Vaccination Centers and asks to select one
+deactivate UI
+NU -> UI : Selects one Vaccination center
+activate UI
+
+UI -> CTRL :setWorking(Object vaccinationCenter)
+activate CTRL
+CTRL -> _APP : app = getInstance()
+activate _APP
+deactivate _APP
+CTRL -> APP : comp = getCompany()
+activate APP
+deactivate APP
+CTRL -> COMP : getEmployeeStore()
+activate COMP
+deactivate COMP
+CTRL -> ES :getEmployeeUsingEmail(email)
+activate ES
+deactivate ES
+
+CTRL -> CTRL : employee.setWorking(vc)
+activate CTRL
+deactivate CTRL
+
+
+
+
+UI - -> NU : Shows the Nurse Options (ListWaitingRoomUI)
+deactivate UI
+deactivate NU
+
+
+
+
+
+
+@enduml
+
+@startuml
+autonumber
+actor "Nurse" as NU
+
+participant ":ChoosingVaccinationCenterUI" as UI
+participant ":ChoosingVaccinationCenterController" as CTRL
+participant "App" as _APP
+participant "app\n:App" as APP
+participant "comp\n:Company" as COMP
+participant ":VaccinationCenterStore" as VCS
+participant "emps\n:EmployeeStore" as ES
+participant "user\n:SNSUser" as SU
+
+
+
+
+
+activate NU
+NU -> UI : Employee Logs In as Nurse.
+activate UI
+UI -> CTRL : getVaccinationCenters()
+activate CTRL
+CTRL -> _APP : app = getInstance()
+activate _APP
+deactivate _APP
+CTRL -> APP : comp = getCompany()
+activate APP
+deactivate APP
+CTRL -> COMP : getVaccinationCenterStore()
+activate COMP
+deactivate COMP
+CTRL -> VCS : getVaccinationCenters()
+activate VCS
+deactivate VCS
+deactivate CTRL
+
+UI-> UI : Utils.showAndSelectOne(List list , String header)
+activate UI
+deactivate UI
+
+UI -> NU : Lists Vaccination Centers and asks to select one
+deactivate UI
+NU -> UI : Selects one Vaccination center
+activate UI
+
+UI -> CTRL :setWorking(Object vaccinationCenter)
+activate CTRL
+CTRL -> _APP : app = getInstance()
+activate _APP
+deactivate _APP
+CTRL -> APP : comp = getCompany()
+activate APP
+deactivate APP
+CTRL -> COMP : getEmployeeStore()
+activate COMP
+deactivate COMP
+CTRL -> ES :getEmployeeUsingEmail(email)
+activate ES
+deactivate ES
+
+CTRL -> CTRL : employee.setWorking(vc)
+activate CTRL
+deactivate CTRL
+
+
+
+
+UI - -> NU : Shows the Nurse Options (ListWaitingRoomUI)
+deactivate UI
+deactivate NU
+
+
+
+
+
+
+@enduml
+
+PlantUML version 1.2022.1(Tue Feb 01 18:19:58 GMT 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: en
+Country: US
+--></g></svg>

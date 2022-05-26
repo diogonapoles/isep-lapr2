@@ -1,0 +1,78 @@
+@startuml
+autonumber
+'hide footbox
+actor "Nurse" as NU
+
+participant ":ChoosingVaccinationCenterUI" as UI
+participant ":ChoosingVaccinationCenterController" as CTRL
+participant "App" as _APP
+participant "app\n:App" as APP
+participant "comp\n:Company" as COMP
+participant ":VaccinationCenterStore" as VCS
+participant "emps\n:EmployeeStore" as ES
+participant "user\n:SNSUser" as SU
+
+
+
+
+
+activate NU
+NU -> UI : Employee Logs In as Nurse.
+activate UI
+UI -> CTRL : getVaccinationCenters()
+activate CTRL
+CTRL -> _APP : app = getInstance()
+activate _APP
+deactivate _APP
+CTRL -> APP : comp = getCompany()
+activate APP
+deactivate APP
+CTRL -> COMP : getVaccinationCenterStore()
+activate COMP
+deactivate COMP
+CTRL -> VCS : getVaccinationCenters()
+activate VCS
+deactivate VCS
+deactivate CTRL
+
+UI-> UI : Utils.showAndSelectOne(List list , String header)
+activate UI
+deactivate UI
+
+UI -> NU : Lists Vaccination Centers and asks to select one
+deactivate UI
+NU -> UI : Selects one Vaccination center
+activate UI
+
+UI -> CTRL :setWorking(Object vaccinationCenter)
+activate CTRL
+CTRL -> _APP : app = getInstance()
+activate _APP
+deactivate _APP
+CTRL -> APP : comp = getCompany()
+activate APP
+deactivate APP
+CTRL -> COMP : getEmployeeStore()
+activate COMP
+deactivate COMP
+CTRL -> ES :getEmployeeUsingEmail(email)
+activate ES
+deactivate ES
+
+CTRL -> CTRL : employee.setWorking(vc)
+activate CTRL
+deactivate CTRL
+
+
+
+
+UI --> NU : Shows the Nurse Options (ListWaitingRoomUI)
+deactivate UI
+deactivate NU
+
+
+
+
+
+
+@enduml

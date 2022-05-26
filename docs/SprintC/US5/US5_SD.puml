@@ -1,7 +1,7 @@
 @startuml
 autonumber
 'hide footbox
-actor "Administrator" as ADM
+actor "Nurse" as NU
 
 participant ":ListWaitingRoomUI" as UI
 participant ":ListWaitingRoomController" as CTRL
@@ -13,8 +13,8 @@ participant "user\n:SNSUser" as SU
 
 
 
-activate ADM
-ADM -> UI : requests list of people in the waiting room
+activate NU
+NU -> UI : requests list of people in the waiting room
 activate UI
 UI -> CTRL : getUsersWaitingRoom()
 activate CTRL
@@ -24,7 +24,7 @@ deactivate _APP
 CTRL -> APP : comp = getCompany()
 activate APP
 deactivate APP
-CTRL -> COMP : getWaitingRoom()
+CTRL -> COMP : getUserArrivalStore()
 activate COMP
 deactivate COMP
 CTRL -> UA : getListUsersInWaitingRoom()
@@ -35,9 +35,9 @@ UI -> UI : ShowList(List list, String header)
 activate UI
 deactivate UI
 
-UI --> ADM : Shows the requested list
+UI --> NU : Shows the requested list
 deactivate UI
-deactivate ADM
+deactivate NU
 
 
 

@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor "Nurse" as Nurse
+
+activate Nurse
+Nurse -> ":System" :Employee Logs In as Nurse.
+activate ":System"
+":System" --> Nurse : Lists Vaccination Centers and asks to select one
+deactivate ":System"
+Nurse --> ":System" : Selects one Vaccination center
+activate ":System"
+":System" --> Nurse : Shows the Nurse Options (ListWaitingRoomUI)
+deactivate ":System"
+
+
+
+
+
+deactivate Nurse
+@enduml
