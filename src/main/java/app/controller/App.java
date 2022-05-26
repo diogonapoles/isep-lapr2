@@ -110,6 +110,7 @@ public class App {
         SNSUser snsU2 = this.company.getSNSUserStore().newSNSUser("tomas", "masculine", "07/10/1999", "avenue 45", "915654723", "tomas23@gmail.com", "123761231", "76342123");
         this.company.getSNSUserStore().registerSNSUser(snsU2);
 
+
     }
 
 

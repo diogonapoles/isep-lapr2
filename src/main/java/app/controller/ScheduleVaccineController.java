@@ -38,3 +38,4 @@ public class ScheduleVaccineController {
     public boolean newScheduleVaccine(){return this.oCompany.getScheduleVaccineStore().newScheduleVaccine(oScheduleVaccine);}
 }
 */
+
