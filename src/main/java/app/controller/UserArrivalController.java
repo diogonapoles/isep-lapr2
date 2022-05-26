@@ -20,8 +20,8 @@ public class UserArrivalController {
     }
 
 
-    public boolean newUserArrival(String name, String snsUserNumber, String citizenCardNumber , String vaccineScheduleDate) {
-        this.oSNSUser = oCompany.getUserArrivalStore().newUserArrival(name, snsUserNumber, citizenCardNumber, vaccineScheduleDate);
+    public boolean newUserArrival(String snsUserNumber) {
+        this.oSNSUser = oCompany.getUserArrivalStore().newUserArrival(snsUserNumber);
 
         if (this.oSNSUser != null)
             return true;

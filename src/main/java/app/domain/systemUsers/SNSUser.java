@@ -43,25 +43,16 @@ public class SNSUser {
         }
     }
 
-    public SNSUser(String name, String snsUserNumber, String citizenCardNumber, String vaccineScheduleDate) {
+    public SNSUser(String snsUserNumber) {
 
         try {
-            if ((name == null) || (name.isEmpty())
-                    || (snsUserNumber == null) || (snsUserNumber.isEmpty())
-                    || (citizenCardNumber == null) || (citizenCardNumber.isEmpty())
-                    || (vaccineScheduleDate == null) || (vaccineScheduleDate.isEmpty())
-                    || (snsUserNumber.length() != 9) || !StringUtils.isNumeric(snsUserNumber)
-                    || (citizenCardNumber.length() != 8) || !StringUtils.isNumeric(citizenCardNumber)) {
-                throw new IllegalArgumentException("All attributes are mandatory!" +
-                        " SNS Number and Citizen Card Number must have 9 and 8 numbers respectively!");
+            if ((snsUserNumber == null) || snsUserNumber.length() != 9 || !StringUtils.isNumeric(snsUserNumber)) {
+                throw new IllegalArgumentException();
             } else {
-                this.name = name;
                 this.snsUserNumber = snsUserNumber;
-                this.citizenCardNumber = citizenCardNumber;
-                this.vaccineScheduleDate = vaccineScheduleDate;
             }
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Not a valid SNS Number");
         }
 
 

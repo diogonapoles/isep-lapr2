@@ -6,7 +6,7 @@ import app.domain.model.ScheduleVaccine;
 import java.util.List;
 
 public class ScheduleVaccineController {
-
+/*
         private App oApp;
         private Company oCompany;
         private ScheduleVaccine oScheduleVaccine;
@@ -30,4 +30,7 @@ public class ScheduleVaccineController {
         public String getScheduleVaccineString(){return this.oScheduleVaccine.toString();}
 
         public boolean newScheduleVaccine(){return this.oCompany.getScheduleVaccineStore().newScheduleVaccine(oScheduleVaccine);}
+
+
+ */
 }

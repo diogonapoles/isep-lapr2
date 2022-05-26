@@ -37,15 +37,11 @@ public class UserArrivalUI implements Runnable {
 
     private boolean inputData() {
 
-
-        String name = Utils.readLineFromConsole("Name:");
         String snsUserNumber = Utils.readLineFromConsole("SNS User Number");
-        String citizenCardNumber = Utils.readLineFromConsole("Citizen Card Number:");
-        String vaccineScheduleDate = Utils.readLineFromConsole("Vaccine Schedule Date:");
-//String arrivalTime = Utils.readLineFromConsole("Arrival Time:");
+        String arrivalTime = Utils.readLineFromConsole("Arrival Time:");
 
 
-        return controller.newUserArrival(name, snsUserNumber, citizenCardNumber, vaccineScheduleDate);
+        return controller.newUserArrival(snsUserNumber);
     }
 
     private void getData() {

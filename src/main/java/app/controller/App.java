@@ -94,6 +94,7 @@ public class App {
         this.authFacade.addUserWithRole("Nurse", "nurse@lei.sem2.pt", "123456", Constants.ROLE_NURSE);
         this.authFacade.addUserWithRole("Main Administrator", "admin@lei.sem2.pt", "123456", Constants.ROLE_ADMIN);
         this.authFacade.addUserWithRole("Receptionist", "receptionist@lei.sem2.pt", "123456", Constants.ROLE_RECEPTIONIST);
+
         this.getCompany().defaultRegister(this.authFacade);
 
         createEmployee();
@@ -104,8 +105,11 @@ public class App {
     }
 
     private void createSnsUser() {
-        SNSUser snsU1 = this.company.getSNSUserStore().newSNSUser("maria", "feminine", "09/03/1998", "Rua 21", "912245654", "maria12@gmail.com", "123476432", "34566543");
+        SNSUser snsU1 = this.company.getSNSUserStore().newSNSUser("maria", "feminine", "09/03/1998", "street 21", "912245654", "maria12@gmail.com", "123476432", "34566543");
         this.company.getSNSUserStore().registerSNSUser(snsU1);
+        SNSUser snsU2 = this.company.getSNSUserStore().newSNSUser("tomas", "masculine", "07/10/1999", "avenue 45", "915654723", "tomas23@gmail.com", "123761231", "76342123");
+        this.company.getSNSUserStore().registerSNSUser(snsU2);
+
     }
 
 

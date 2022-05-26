@@ -4,7 +4,7 @@ import app.controller.ScheduleVaccineController;
 import app.domain.model.ScheduleVaccine;
 import app.domain.model.VaccinationCenter;
 import app.ui.console.utils.Utils;
-
+/*
 public class ScheduleVaccineUI implements Runnable{
 
     private ScheduleVaccineController controller;
@@ -24,4 +24,6 @@ public class ScheduleVaccineUI implements Runnable{
     private boolean inputData(int selection){
 
     }
-}
+    }
+ */
+

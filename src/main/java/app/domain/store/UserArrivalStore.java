@@ -12,20 +12,17 @@ public class UserArrivalStore {
     private final List<SNSUser> listUserToWaitingRoom = new ArrayList<>();
 
 
-    public SNSUser newUserArrival(String name, String snsUserNumber, String citizenCardNumber, String vaccineScheduleDate) {
+    public SNSUser newUserArrival(String snsUserNumber) {
 
-        if (validateUserSchedule(name, snsUserNumber, citizenCardNumber, vaccineScheduleDate))
-            return new SNSUser(name, snsUserNumber, citizenCardNumber, vaccineScheduleDate);
+        if (validateUserSchedule(snsUserNumber))
+            return new SNSUser(snsUserNumber);
 
         return null;
     }
 
-    private boolean validateUserSchedule(String name, String snsUserNumber, String citizenCardNumber, String vaccineScheduleDate) {
+    private boolean validateUserSchedule(String snsUserNumber) {
         for (SNSUser snsUser : listSnsUser) {
-            if (snsUser.getName().equalsIgnoreCase(name)
-                    && snsUser.getSnsUserNumber().equals(snsUserNumber)
-                    && snsUser.getCitizenCardNumber().equals(citizenCardNumber)
-                    && snsUser.getVaccineScheduleDate().equals(vaccineScheduleDate))
+            if (snsUser.getSnsUserNumber().equals(snsUserNumber))
                 return true;
         }
         return false;
