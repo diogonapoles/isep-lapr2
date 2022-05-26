@@ -1,6 +1,9 @@
 package app.domain.systemUsers;
 
+import app.domain.store.SNSUserStore;
 import org.apache.commons.lang3.StringUtils;
+
+import java.util.List;
 
 public class SNSUser {
 
@@ -13,6 +16,7 @@ public class SNSUser {
     String snsUserNumber;
     String citizenCardNumber;
     String vaccineScheduleDate;
+
 
     public SNSUser(String name, String gender, String birthDate, String homeAddress, String phoneNumber, String emailAddress, String snsUserNumber, String citizenCardNumber) {
         try {
@@ -130,6 +134,9 @@ public class SNSUser {
     public void setVaccineScheduleDate(String vaccineScheduleDate) {
         this.vaccineScheduleDate = vaccineScheduleDate;
     }
+
+
+
 
     @Override
     public String toString() {

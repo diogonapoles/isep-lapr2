@@ -2,14 +2,14 @@ package app.domain.model;
 
 public class ScheduleVaccine {
 
-    private int SNSUserNumber;
+    private String SNSUserNumber;
     private String vaccinationCenter;
     private String date;
     private String time;
 
-    public ScheduleVaccine(int SNSUserNumber, String vaccinationCenter, String date, String time) {
+    public ScheduleVaccine(String SNSUserNumber, String vaccinationCenter, String date, String time) {
         if((vaccinationCenter == null) || (vaccinationCenter.isEmpty()) ||
-                (SNSUserNumber == 0) ||
+                (SNSUserNumber == null) ||
                 (date == null) || (date.isEmpty()) ||
                 (time == null) || (time.isEmpty()) )
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
@@ -20,11 +20,11 @@ public class ScheduleVaccine {
         this.time = time;
     }
 
-    public int getSNSUserNumber() {
+    public String getSNSUserNumber() {
         return SNSUserNumber;
     }
 
-    public void setSNSUserNumber(int SNSUserNumber) {
+    public void setSNSUserNumber(String SNSUserNumber) {
         this.SNSUserNumber = SNSUserNumber;
     }
 

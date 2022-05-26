@@ -10,6 +10,7 @@ public class SNSUserStore {
     private final List<SNSUser> listSNSUser = new ArrayList<>();
     private final AuthFacade authFacade;
 
+
     public SNSUserStore(AuthFacade authFacade) {
         this.authFacade = authFacade;
     }
@@ -63,5 +64,9 @@ public class SNSUserStore {
 
     public SNSUser newSNSUser(String name, String gender, String birthDate, String homeAddress, String phoneNumber, String emailAddress, String snsUserNumber, String citizenCardNumber) {
         return new SNSUser(name, gender, birthDate, homeAddress, phoneNumber, emailAddress, snsUserNumber, citizenCardNumber);
+    }
+
+    public List<SNSUser> getSnsUserList(){
+        return this.listSNSUser;
     }
 }
