@@ -20,41 +20,16 @@ public class CSVReader {
 
     private enum HEADER_COLUMNS{
         /**
-         * Header 0 header columns.
+         * Atributes of the header.
          */
         HEADER0("name"),
-        /**
-         * Header 1 header columns.
-         */
         HEADER1("sex", "gender"),
-        /**
-         * The Header 2.
-         */
         HEADER2("birth date", "birthdate", "birth-date"),
-        /**
-         * The Header 3.
-         */
         HEADER3("homeaddress", "home-address", "home address", "address"),
-        /**
-         * The Header 4.
-         */
         HEADER4("phonenumber", "phone-number", "phone number"),
-        /**
-         * The Header 5.
-         */
         HEADER5("e-mail", "email", "e-mail address", "email address"),
-        /**
-         * The Header 6.
-         */
         HEADER6("sns user number", "snsusernumber", "sns-user-number"),
-        /**
-         * The Header 7.
-         */
-        HEADER7("citizen card number", "citizencardnumber", "citizen-card-number"),
-        /**
-         * Header 8 header columns.
-         */
-        HEADER8;
+        HEADER7("citizen card number", "citizencardnumber", "citizen-card-number");
         private String columnValue;
         private HashSet<String> similarValues;
         HEADER_COLUMNS(String... similarValues){
