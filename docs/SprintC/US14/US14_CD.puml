@@ -28,35 +28,40 @@ class LoadSNSUserUI {
 
 
 class LoadSNSUserController{
-    +getCsvFileTypes()
-    +csvToArray(fileType, fileName, fileLocation)
-    +loadUsers()
-    +saveUsers()
+    +newCSVReader(String fileLocation)
+    +validateTempList(List<SNSUser> list)
+    +importSNSUserCSV()
+    +clearTempArray()
+    +getCSVFileString()
 }
 
 class Company {
     -designation
-    +getRegisterVaccinationCenter()
+    +getCSVReader()
+    +getSNSUserStore()
 }
 
-class CSVFileReader{
-    +getCsvFileTypes()
-    +csvToArray(fileType, fileName, fileLocation)
-    -validateArray(array)
+class SNSUserStore{
++importSNSUserCSV(List<SNSUser> list)
++validateTempList(List<SNSUser> list)
++validateSNSUser(String phoneNumber,\nString homeAddress, String emailAddress)
++registerSNSUser(SNSUser User)
++addSNSUser(SNSUser user)
++newSNSUser(String name, String gender, String birthDate, String homeAddress,\nString phoneNumber, String emailAddress, String snsUserNumber, String citizenCardNumber)
 }
 
-class loadSNSUser{
-    +createUser(name, address, gender, phoneNumber, birthDate,\nemailAddress, snsUserNumber,citizenCardNumber)
-    +saveUser(SNSUser user)
-    -validateUser(SNSUser user)
-    -addUser(SNSUser user)
+class CSVReader{
+    +readCSVFile(String fileLocation)
+    +validateHeader(String line)
+    -getCompleteHeader()
 }
+
 
 LoadSNSUserUI .down.> LoadSNSUserController
 LoadSNSUserController .down.> Company
-Company "1" -down- "1" loadSNSUser : has >
-Company "1" -down- "1" CSVFileReader : has >
-loadSNSUser "1" -up- "*" SNSUser : has >
+Company "1" -down-- "1" SNSUserStore : has >
+Company "1" -down- "1" CSVReader : has >
+CSVReader "1" -down- "*" SNSUser : loads >
 LoadSNSUserController ..> SNSUser
 LoadSNSUserController ..> App
 

@@ -3,20 +3,28 @@ autonumber
 'hide footbox
 actor "Administrator" as ADM
 
-participant ":LoadSNSUserUI" as UI
-participant ":LoadSNSUserController" as CTRL
+participant ":LoadSNSUsersUI" as UI
+participant ":LoadSNSUsersController" as CTRL
 participant "App" as _APP
 participant "app\n:App" as APP
 participant "comp\n:Company" as COMP
-participant ":CSVFileReader" as CSV
-participant ":LoadSNSUser" as LSU
+participant ":CSVReader" as CSV
+participant "store\n:SNSUserStore" as STORE
 participant "user\n:SNSUser" as SU
-participant "csvft\n:List<String> csvFileTypes" as CSVFT
+participant "ts\n:List <SNSUser> tempSave"
+participant "lsu\n:List <SNSUser> listSNSUser"
 
 activate ADM
 ADM -> UI : asks to load SNS users from a CSV file
 activate UI
-UI -> CTRL : getCSVFileTypes()
+|||
+UI --> ADM : requests data (fileLocation)
+deactivate UI
+|||
+
+ADM -> UI : types requested data
+activate UI
+UI -> CTRL : newCSVReader()
 activate CTRL
 CTRL -> _APP : app = getInstance()
 activate _APP
@@ -24,63 +32,62 @@ deactivate _APP
 CTRL -> APP : comp = getCompany()
 activate APP
 deactivate APP
-CTRL -> COMP : csvft = getCSVFileTypes()
+CTRL -> COMP : csvr = getCSVReader()
 activate COMP
 deactivate COMP
-deactivate CTRL
-UI --> ADM : shows different types of CSV files and asks user to select one
-deactivate UI
-|||
-
-
-ADM -> UI : selects the desired type of CSV file
-activate UI
-|||
-UI --> ADM : requests data (fileName, fileLocation)
-deactivate UI
-|||
-
-ADM -> UI : types requested data
-activate UI
-UI -> CTRL : csvToArray(fileType, fileName, fileLocation)
-activate CTRL
-CTRL -> COMP : csvfr = getCSVFileReader()
-activate COMP
-deactivate COMP
-CTRL -> CSV : csvToArray(fileType, fileName, fileLocation)
+CTRL -> CSV : rcsvf = readCSVFile(fileLocation)
 activate CSV
-CSV -> CSV : validateArray()
+CSV -> CSV : validateHeader(line)
+activate CSV
 deactivate CSV
+CSV -> CSV : getCompleteHeader()
+activate CSV
+deactivate CSV
+loop line != null
+    CSV -> SU **: create(name, sex, birthDate, homeAddress,\nphoneNumber, emailAddress, snsUserNumber,\ncitizenCardNumber)
+    CSV -> CSV : saveSNSUser()
+    activate CSV
+    deactivate CSV
 
-CTRL -> COMP : lsu = getLoadSNSUser()
-activate COMP
-deactivate COMP
-CTRL -> LSU : loadUsers(array)
-activate LSU
+end
 
-
-LSU -> SU ** : create(name, address, gender, phoneNumber, birthDate,\nemailAddress, snsUserNumber,citizenCardNumber)
-LSU -> LSU : validateUsers(user)
+deactivate CSV
 deactivate CTRL
-UI --> ADM: shows all data and requests confirmation
-deactivate LSU
-
-deactivate CTRL
+UI --> ADM : shows all data and requests confirmation
 deactivate UI
+|||
 
 ADM -> UI : confirms the data
 activate UI
-UI -> CTRL : saveUsers()
+UI -> CTRL: importSNSUserCSV()
 activate CTRL
-|||
-CTRL -> LSU : saveUsers(user)
-activate LSU
-LSU -> SU ** : saveUsers(user)
-LSU -> LSU : validateUsers(user)
-LSU -> LSU : addUser(user)
-UI --> ADM : informs operation success
-CTRL --> UI : result
-deactivate LSU
+CTRL -> COMP: store = getSNSUserStore()
+activate COMP
+deactivate COMP
+CTRL -> STORE: vtl = validateTempList()
+loop
+    activate STORE
+    STORE -> STORE: validateTempList()
+    activate STORE
+    deactivate STORE
+    deactivate STORE
+end
+CTRL -> STORE: isnsu = importSNSUserCSV(tempSave)
+activate STORE
+loop
+    activate STORE
+    STORE -> STORE: validateSNSUser()
+    activate STORE
+    deactivate STORE
+    STORE -> STORE: addSNSUser()
+    activate STORE
+    deactivate STORE
+    deactivate STORE
+end
+activate STORE
+deactivate STORE
+UI -> CTRL : clearTempArray()
 deactivate CTRL
+UI --> ADM : informs operation success
 deactivate UI
 @enduml
