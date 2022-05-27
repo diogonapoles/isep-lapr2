@@ -93,9 +93,9 @@ public class App {
         this.authFacade.addUserRole(Constants.ROLE_NURSE, Constants.ROLE_NURSE);
         this.authFacade.addUserRole(Constants.ROLE_CENTER_COORDINATOR, Constants.ROLE_CENTER_COORDINATOR);
 
-        this.authFacade.addUserWithRole("Nurse", "nurse@lei.sem2.pt", "123456", Constants.ROLE_NURSE);
+      //  this.authFacade.addUserWithRole("Nurse", "nurse@lei.sem2.pt", "123456", Constants.ROLE_NURSE);
         this.authFacade.addUserWithRole("Main Administrator", "admin@lei.sem2.pt", "123456", Constants.ROLE_ADMIN);
-        this.authFacade.addUserWithRole("Receptionist", "receptionist@lei.sem2.pt", "123456", Constants.ROLE_RECEPTIONIST);
+      //  this.authFacade.addUserWithRole("Receptionist", "receptionist@lei.sem2.pt", "123456", Constants.ROLE_RECEPTIONIST);
 
         this.getCompany().defaultRegister(this.authFacade);
 
@@ -177,6 +177,14 @@ public class App {
         Employee employee3 = getCompany().getEmployeeStore().newEmployee("fernando", "913434572", "avenue 3",
                 "nando23@gmail.com", "12349876", 2);
         getCompany().getEmployeeStore().registerEmployee(employee3);
+
+        Employee employee4 = getCompany().getEmployeeStore().newEmployee("Receptionist","912333121","street 21",
+                "receptionist@lei.sem2.pt", "12344321", 0);
+        getCompany().getEmployeeStore().registerEmployee(employee4);
+
+        Employee employee5 = getCompany().getEmployeeStore().newEmployee("Nurse","918564321","avenue 21",
+                "nurse@lei.sem2.pt", "10293847", 2);
+        getCompany().getEmployeeStore().registerEmployee(employee5);
 
     }
 

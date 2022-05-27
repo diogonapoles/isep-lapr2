@@ -10,9 +10,9 @@ public class SNSUserStore {
     private final List<SNSUser> listSNSUser = new ArrayList<>();
     private final AuthFacade authFacade;
 
-
     public SNSUserStore(AuthFacade authFacade) {
         this.authFacade = authFacade;
+
     }
 
     public boolean importSNSUserCSV(List<SNSUser> list) {
@@ -69,4 +69,9 @@ public class SNSUserStore {
     public List<SNSUser> getSnsUserList(){
         return this.listSNSUser;
     }
+
+
+
+
+
 }

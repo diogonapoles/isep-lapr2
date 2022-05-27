@@ -7,14 +7,14 @@ import java.util.List;
 
 public class SNSUser {
 
-    String name;
+    static String name;
     String gender;
-    String birthDate;
-    String homeAddress;
-    String phoneNumber;
-    String emailAddress;
+    static String birthDate;
+    static String homeAddress;
+    static String phoneNumber;
+    static String emailAddress;
     String snsUserNumber;
-    String citizenCardNumber;
+    static String citizenCardNumber;
     String vaccineScheduleDate;
 
 
@@ -47,13 +47,18 @@ public class SNSUser {
         }
     }
 
-    public SNSUser(String snsUserNumber) {
+    public SNSUser(String name, String homeAddress, String phoneNumber, String birthDate, String emailAddress, String snsUserNumber, String citizenCardNumber) {
 
         try {
             if ((snsUserNumber == null) || snsUserNumber.length() != 9 || !StringUtils.isNumeric(snsUserNumber)) {
                 throw new IllegalArgumentException();
             } else {
+                this.name = name;
+                this.phoneNumber = phoneNumber;
+                this.birthDate = birthDate;
+                this.emailAddress = emailAddress;
                 this.snsUserNumber = snsUserNumber;
+
             }
         } catch (IllegalArgumentException e) {
             System.out.println("Not a valid SNS Number");
@@ -71,44 +76,44 @@ public class SNSUser {
         this.gender = gender;
     }
 
-    public String getName() {
+    public static String getName() {
         return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        SNSUser.name = name;
     }
 
-    public String getHomeAddress() {
+    public static String getHomeAddress() {
         return homeAddress;
     }
 
     public void setHomeAddress(String address) {
-        this.homeAddress = address;
+        homeAddress = address;
     }
 
-    public String getPhoneNumber() {
+    public static String getPhoneNumber() {
         return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+        SNSUser.phoneNumber = phoneNumber;
     }
 
-    public String getBirthDate() {
+    public static String getBirthDate() {
         return birthDate;
     }
 
     public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
+        SNSUser.birthDate = birthDate;
     }
 
-    public String getEmailAddress() {
+    public static String getEmailAddress() {
         return emailAddress;
     }
 
     public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+        SNSUser.emailAddress = emailAddress;
     }
 
     public String getSnsUserNumber() {
@@ -119,12 +124,12 @@ public class SNSUser {
         this.snsUserNumber = snsUserNumber;
     }
 
-    public String getCitizenCardNumber() {
+    public static String getCitizenCardNumber() {
         return citizenCardNumber;
     }
 
     public void setCitizenCardNumber(String citizenCardNumber) {
-        this.citizenCardNumber = citizenCardNumber;
+        SNSUser.citizenCardNumber = citizenCardNumber;
     }
 
     public String getVaccineScheduleDate() {
@@ -151,7 +156,7 @@ public class SNSUser {
                 '}';
     }
 
-    public String toStringArrival() {
+    public String toStringWaitingRoom() {
         return "SNSUser{" +
                 "name='" + name + '\'' +
                 ", snsUserNumber='" + snsUserNumber + '\'' +

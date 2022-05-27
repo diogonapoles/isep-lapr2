@@ -80,6 +80,6 @@ public class UserArrivalController {
      * @return the user arrival string
      */
     public String getUserArrivalString() {
-        return this.oSNSUser.toStringArrival();
+        return this.oSNSUser.toStringWaitingRoom();
     }
 }
