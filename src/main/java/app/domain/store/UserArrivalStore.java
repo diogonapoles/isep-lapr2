@@ -2,6 +2,8 @@ package app.domain.store;
 
 import app.controller.UserArrivalController;
 import app.domain.model.ScheduleVaccine;
+import app.domain.model.UserArrival;
+import app.domain.model.VaccinationCenter;
 import app.domain.systemUsers.SNSUser;
 
 
@@ -10,7 +12,7 @@ import java.util.List;
 
 public class UserArrivalStore {
 
-    private final List<SNSUser> listUserToWaitingRoom = new ArrayList<>();
+    private final List<UserArrival> listUserToWaitingRoom = new ArrayList<>();
 
     private final ScheduleVaccineStore scheduleVaccineStore;
 
@@ -19,41 +21,45 @@ public class UserArrivalStore {
 
     }
 
-    public SNSUser newUserArrival(String snsUserNumber) {
+    public UserArrival newUserArrival(SNSUser snsUser, String snsUserNumber, VaccinationCenter vc) {
 
-        if (validateUserSchedule(snsUserNumber))
-            return new SNSUser(SNSUser.getName(), SNSUser.getHomeAddress(), SNSUser.getPhoneNumber(), SNSUser.getBirthDate(), SNSUser.getEmailAddress(), snsUserNumber, SNSUser.getCitizenCardNumber());
-
+        if (validateUserSchedule(snsUser))
+            return new UserArrival(snsUser, vc);
 
         return null;
     }
 
 
-    private boolean validateUserSchedule(String snsUserNumber) {
+    private boolean validateUserSchedule(SNSUser snsUser) {
         for (ScheduleVaccine sv : scheduleVaccineStore.getListScheduleVaccine()) {
-            if (sv.getSNSUserNumber().equals(snsUserNumber))
+            if (sv.getSNSUserNumber().equals(snsUser.getSnsUserNumber()))
                 if (listUserToWaitingRoom.isEmpty())
                     return true;
                 else
-                    for (SNSUser snsU : listUserToWaitingRoom)
-                        if (!snsU.getSnsUserNumber().equals(snsUserNumber))
+                    for (UserArrival userArrival : listUserToWaitingRoom)
+                        if (!userArrival.getSnsUser().equals(snsUser))
                             return true;
         }
         return false;
     }
 
 
-    public boolean registerUserArrival(SNSUser snsUser) {
-        return addUserToWaitingRoom(snsUser);
+    public boolean registerUserArrival(UserArrival userArrival) {
+        return addUserToWaitingRoom(userArrival);
     }
 
-    private boolean addUserToWaitingRoom(SNSUser snsUser) {
-        return this.listUserToWaitingRoom.add(snsUser);
+    private boolean addUserToWaitingRoom(UserArrival userArrival) {
+        return this.listUserToWaitingRoom.add(userArrival);
     }
 
 
-    public List<SNSUser> getListUserToWaitingRoom() {
-        return listUserToWaitingRoom;
+    public List<SNSUser> getListUserToWaitingRoom(VaccinationCenter vaccinationCenter) {
+        List<SNSUser> list = new ArrayList<>();
+        for(UserArrival userArrival : listUserToWaitingRoom){
+            if (userArrival.getVaccinationCenter().equals(vaccinationCenter))
+                list.add(userArrival.getSnsUser());
+        }
+        return list;
     }
 
 

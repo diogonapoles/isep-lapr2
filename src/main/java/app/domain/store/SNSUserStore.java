@@ -70,6 +70,13 @@ public class SNSUserStore {
         return this.listSNSUser;
     }
 
+    public SNSUser getSNSUserByNumber(String snsUserNumber){
+        for (SNSUser user : listSNSUser) {
+            if (user.getSnsUserNumber().contains(snsUserNumber))
+                return user;
+        }
+        return null;
+    }
 
 
 

@@ -1,12 +1,9 @@
 package app.controller;
 
-import app.domain.model.Company;
-import app.domain.model.ScheduleVaccine;
-import app.domain.model.VaccineType;
+import app.domain.model.*;
 import app.domain.store.ScheduleVaccineStore;
 import app.domain.store.VaccineTypeStore;
 import app.domain.systemUsers.SNSUser;
-import app.domain.model.VaccinationCenter;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -19,8 +16,11 @@ public class UserArrivalController {
     private final App oApp;
     private final Company oCompany;
     private SNSUser oSNSUser;
+    private UserArrival userArrival;
     private VaccineTypeStore vaccineTypeStore;
     private ScheduleVaccineStore vaccineScheduleStore;
+    private VaccinationCenter vaccinationCenter;
+
 
     /**
      * Instantiates a new User arrival controller.
@@ -38,7 +38,8 @@ public class UserArrivalController {
      * @return the vaccination center
      */
     public VaccinationCenter getWorking() {
-        return oCompany.getEmployeeStore().getWorking(oApp.getCurrentUserSession().getUserId().getEmail());
+        vaccinationCenter = oCompany.getEmployeeStore().getWorking(oApp.getCurrentUserSession().getUserId().getEmail());
+        return vaccinationCenter;
     }
 
     public List<VaccineType> getVaccineTypeList() {
@@ -52,9 +53,9 @@ public class UserArrivalController {
      * @return the boolean
      */
     public boolean newUserArrival(String snsUserNumber) {
-        this.oSNSUser = oCompany.getUserArrivalStore().newUserArrival(snsUserNumber);
+        this.userArrival = oCompany.getUserArrivalStore().newUserArrival(oCompany.getSNSUserStore().getSNSUserByNumber(snsUserNumber), snsUserNumber, vaccinationCenter);
 
-        if (this.oSNSUser != null)
+        if (this.userArrival != null)
             return true;
         else
             return false;
@@ -70,7 +71,7 @@ public class UserArrivalController {
      * @return the boolean
      */
     public boolean registerUserArrival() {
-        return this.oCompany.getUserArrivalStore().registerUserArrival(this.oSNSUser);
+        return this.oCompany.getUserArrivalStore().registerUserArrival(this.userArrival);
     }
 
 

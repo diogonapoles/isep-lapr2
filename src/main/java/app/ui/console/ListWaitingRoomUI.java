@@ -1,6 +1,7 @@
 package app.ui.console;
 
 import app.controller.ListWaitingRoomController;
+import app.domain.model.Employee;
 import app.ui.console.utils.Utils;
 
 /**

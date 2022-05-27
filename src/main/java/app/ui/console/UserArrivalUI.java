@@ -39,7 +39,7 @@ public class UserArrivalUI implements Runnable {
 
                 //if (Utils.confirm("Confirms data?(s/n)")) {
                     controller.registerUserArrival();
-                    System.out.println("SNS User registered successfully");
+                    System.out.println("SNS User arrival registered successfully");
                 //} else
                     //run();
 
