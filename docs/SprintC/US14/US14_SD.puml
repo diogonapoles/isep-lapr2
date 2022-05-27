@@ -72,7 +72,7 @@ loop
     deactivate STORE
     deactivate STORE
 end
-CTRL -> STORE: isnsu = importSNSUserCSV(tempSave)
+CTRL -> STORE: isuc = importSNSUserCSV(tempSave)
 activate STORE
 loop
     activate STORE
