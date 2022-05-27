@@ -1,8 +1,6 @@
 package app.domain.store;
 
-import app.controller.UserArrivalController;
 import app.domain.model.ScheduleVaccine;
-import app.domain.model.ScheduleVaccineStore;
 import app.domain.systemUsers.SNSUser;
 
 
@@ -30,8 +28,8 @@ public class UserArrivalStore {
 
 
     private boolean validateUserSchedule(String snsUserNumber) {
-        for (ScheduleVaccine sb: scheduleVaccineStore.getListScheduleVaccine()) {
-            if (sb.getSNSUserNumber().compareTo(snsUserNumber)==0)
+        for (ScheduleVaccine sv: scheduleVaccineStore.getListScheduleVaccine()) {
+            if (sv.getSNSUserNumber().compareTo(snsUserNumber)==0)
                 return true;
         }
         return false;

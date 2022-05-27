@@ -1,58 +1,68 @@
 package app.domain.model;
 
+import java.time.LocalDateTime;
+
 public class ScheduleVaccine {
 
-    private String SNSUserNumber;
-    private String vaccinationCenter;
-    private String date;
-    private String time;
+    private String snsUserNumber;
+    private VaccinationCenter vaccinationCenter;
+    private VaccineType vaccineType;
+    private LocalDateTime localDateTime;
 
-    public ScheduleVaccine(String SNSUserNumber, String vaccinationCenter, String date, String time) {
-        if((vaccinationCenter == null) || (vaccinationCenter.isEmpty()) ||
-                (SNSUserNumber == null) ||
-                (date == null) || (date.isEmpty()) ||
-                (time == null) || (time.isEmpty()) )
+    public ScheduleVaccine(String snsUserNumber, VaccinationCenter vaccinationCenter,VaccineType vaccineType, LocalDateTime localDateTime) {
+
+        if((vaccinationCenter == null)  ||
+                (snsUserNumber == null) )
+
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
 
-        this.SNSUserNumber = SNSUserNumber;
-        this.vaccinationCenter = vaccinationCenter;
-        this.date = date;
-        this.time = time;
+
+
+        setSNSUserNumber(snsUserNumber);
+        setVaccineType(vaccineType);
+        setVaccinationCenter(vaccinationCenter);
+        setLocalDateTime(localDateTime);
+
+
+
     }
 
+    public void setVaccineType(VaccineType vaccineType) {
+        this.vaccineType = vaccineType;
+    }
+
+    public LocalDateTime getLocalDateTime() {
+        return localDateTime;
+    }
+
+    public void setLocalDateTime(LocalDateTime localDateTime) {
+        this.localDateTime = localDateTime;
+    }
+
+
+
     public String getSNSUserNumber() {
-        return SNSUserNumber;
+        return snsUserNumber;
     }
 
     public void setSNSUserNumber(String SNSUserNumber) {
-        this.SNSUserNumber = SNSUserNumber;
+        this.snsUserNumber = SNSUserNumber;
     }
 
-    public String getVaccinationCenter() {
+    public VaccinationCenter getVaccinationCenter() {
         return vaccinationCenter;
     }
 
-    public void setVaccinationCenter(String vaccinationCenter) {
+    public void setVaccinationCenter(VaccinationCenter vaccinationCenter) {
         this.vaccinationCenter = vaccinationCenter;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
 
     public String toString() {
-        return "The SNS User number " + SNSUserNumber + " vaccine appointment is at " + vaccinationCenter + ", at " + time + ", of " + date + ".";
+        return "The SNS User number " + snsUserNumber + " vaccine appointment is at " + vaccinationCenter + ", at " + localDateTime +  ".";
+    }
+
+    public VaccineType getVaccineType() {
+        return vaccineType;
     }
 }

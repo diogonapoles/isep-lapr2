@@ -1,6 +1,11 @@
 package app.ui.console;
 
+import app.controller.App;
 import app.controller.UserArrivalController;
+import app.domain.model.ScheduleVaccine;
+import app.domain.model.VaccinationCenter;
+import app.domain.model.VaccineType;
+import app.domain.store.VaccineTypeStore;
 import app.ui.console.utils.Utils;
 
 
@@ -11,10 +16,12 @@ public class UserArrivalUI implements Runnable {
 
     private UserArrivalController controller;
 
+
     /**
      * Instantiates a new User arrival ui.
      */
     public UserArrivalUI() {
+
         this.controller = new UserArrivalController();
     }
 
@@ -23,15 +30,18 @@ public class UserArrivalUI implements Runnable {
         if (controller.getWorking() == null) {
             System.out.println("Doesn't exist");
         } else {
+            String snsUserNumber = Utils.readLineFromConsole("SNS User Number");
+            if (inputData(snsUserNumber)) {
 
-            if (inputData()) {
-                getData();
+            //    Object o = Utils.showAndSelectOne(controller.getVaccineTypeList(), "\nVaccineTypes: ");
+              //  ScheduleVaccine scheduleVaccine = controller.getScheduleVaccine(snsUserNumber, (VaccineType) o);
+              //  getData();
 
-                if (Utils.confirm("Confirms data?(s/n)")) {
+                //if (Utils.confirm("Confirms data?(s/n)")) {
                     controller.registerUserArrival();
                     System.out.println("SNS User registered successfully");
-                } else
-                    run();
+                //} else
+                    //run();
 
 
             } else {
@@ -41,11 +51,7 @@ public class UserArrivalUI implements Runnable {
 
     }
 
-    private boolean inputData() {
-
-        String snsUserNumber = Utils.readLineFromConsole("SNS User Number");
-        String arrivalTime = Utils.readLineFromConsole("Arrival Time:");
-
+    private boolean inputData(String snsUserNumber) {
 
         return controller.newUserArrival(snsUserNumber);
     }

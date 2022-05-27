@@ -9,6 +9,8 @@ import pt.isep.lei.esoft.auth.UserSession;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 
 /**
@@ -99,15 +101,51 @@ public class App {
 
         createEmployee();
         createSnsUser();
-        createVaccinnationCenter();
-        //createStrap
+        //createVaccinnationCenter();
+        //createSnsUserWithAppointment();
+        createVaccineType();
+
+        VaccinationCenter vc1 = this.company.getVaccinationCenterStore().newVaccinationCenter(1, "Healthcare", "917876321", "493782",
+                "TestRua1", "teste1@gmail.com", "healthcare.com",
+                "10", "20", "3", "20");
+        this.company.getVaccinationCenterStore().registerVaccinationCenter(vc1);
+        VaccinationCenter vc2 = this.company.getVaccinationCenterStore().newVaccinationCenter(0, "Community", "917312756", "654253",
+                "TestRua2", "teste2@gmail.com", "community.com",
+                "8", "22", "5", "40");
+        this.company.getVaccinationCenterStore().registerVaccinationCenter(vc2);
+
+        VaccineType vt1 = this.company.getVaccineTypeStore().newVaccineType(0,"12341","COVID-19");
+        LocalDateTime dateTime = LocalDateTime.of(2022,1,14,10,34);
+
+        ScheduleVaccine snsU10 = this.company.getScheduleVaccineStore().newScheduleVaccine(new ScheduleVaccine(
+                "123444333", vc1,vt1,dateTime));
+        this.company.getScheduleVaccineStore().registerScheduleVaccine(snsU10);
+
 
     }
 
+    private void createVaccineType() {
+        VaccineType vt1 = this.company.getVaccineTypeStore().newVaccineType(0, "12345", "COVID-19");
+        this.company.getVaccineTypeStore().registerVaccineType(vt1);
+    }
+
+    private void createSnsUserWithAppointment() {
+        VaccinationCenter vc1 = this.company.getVaccinationCenterStore().newVaccinationCenter(1, "Healthcare", "917876321", "493782",
+                "TestRua1", "teste1@gmail.com", "healthcare.com",
+                "10", "20", "3", "20");
+        this.company.getVaccinationCenterStore().registerVaccinationCenter(vc1);
+        VaccineType vt1 = this.company.getVaccineTypeStore().newVaccineType(0,"12341","COVID-19");
+        LocalDateTime dateTime = LocalDateTime.of(2022,1,14,10,34);
+
+        ScheduleVaccine snsU10 = this.company.getScheduleVaccineStore().newScheduleVaccine(new ScheduleVaccine(
+                "12344433", vc1,vt1,dateTime));
+        this.company.getScheduleVaccineStore().registerScheduleVaccine(snsU10);
+    }
+
     private void createSnsUser() {
-        SNSUser snsU1 = this.company.getSNSUserStore().newSNSUser("maria", "feminine", "09/03/1998", "street 21", "912245654", "maria12@gmail.com", "123476432", "34566543");
+        SNSUser snsU1 = this.company.getSNSUserStore().newSNSUser("maria", "feminine", "09/03/1998", "street 21", "912245654", "maria12@gmail.com", "123459876", "34566543");
         this.company.getSNSUserStore().registerSNSUser(snsU1);
-        SNSUser snsU2 = this.company.getSNSUserStore().newSNSUser("tomas", "masculine", "07/10/1999", "avenue 45", "915654723", "tomas23@gmail.com", "123761231", "76342123");
+        SNSUser snsU2 = this.company.getSNSUserStore().newSNSUser("tomas", "masculine", "07/10/1999", "avenue 45", "915654723", "tomas23@gmail.com", "12344433", "76342123");
         this.company.getSNSUserStore().registerSNSUser(snsU2);
 
 

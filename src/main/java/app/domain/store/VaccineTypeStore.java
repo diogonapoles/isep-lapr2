@@ -2,6 +2,7 @@ package app.domain.store;
 
 import app.domain.model.*;
 
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,12 +10,13 @@ import java.util.List;
  * The type Vaccine type store.
  */
 public class VaccineTypeStore {
-    private final List<VaccineType> listVaccineType = new ArrayList<>();
+    private List<VaccineType> listVaccineType = new ArrayList<>();
 
     /**
      * Instantiates a new Vaccine type store.
      */
     public VaccineTypeStore() {
+        this.listVaccineType = new ArrayList<>();
     }
 
     /**
@@ -91,5 +93,9 @@ public class VaccineTypeStore {
         listOfVaccineType.add("Messenger RNA (mRNA) Vaccine");
 
         return listOfVaccineType;
+    }
+
+    public List<VaccineType> getListVaccineType(){
+        return listVaccineType;
     }
 }
