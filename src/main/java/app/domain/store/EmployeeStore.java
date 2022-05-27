@@ -50,7 +50,7 @@ public class EmployeeStore {
                 this.authFacade.addUserWithRole(name, emailAddress, "123456", Constants.ROLE_CENTER_COORDINATOR);
                 return new CenterCoordinator(name, phoneNumber, address, emailAddress, citizenCardNumber);
             } else if (roleSelection == 2) {
-                this.authFacade.addUserWithRole(name, emailAddress, "123456", Constants.ROLE_RECEPTIONIST);
+                this.authFacade.addUserWithRole(name, emailAddress, "123456", Constants.ROLE_NURSE);
                 return new Nurse(name, phoneNumber, address, emailAddress, citizenCardNumber);
             }
 
