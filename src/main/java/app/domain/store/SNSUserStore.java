@@ -34,7 +34,7 @@ public class SNSUserStore {
             if (validateSNSUser(oSNSUser.getPhoneNumber(), oSNSUser.getHomeAddress(), oSNSUser.getEmailAddress())) {
                 listCopy.add(oSNSUser);
             } else {
-                System.out.println("O " + oSNSUser + " já existe no sistema!");
+                System.out.println("SNS USER WITH THE E-MAIL: " + oSNSUser.getEmailAddress() + " IS ALREADY REGISTERED IN THE SYSTEM!");
             }
         }
         return listCopy;

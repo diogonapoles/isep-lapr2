@@ -18,23 +18,23 @@ public class NewVaccineUI implements Runnable {
     }
 
     public void run() {
-            if(inputData())
-            {
+        if (this.controller.getVaccineTypes() == null)
+            throw new IllegalArgumentException("No Vaccine Types were found");
+        int selection = Utils.showAndSelectIndex(this.controller.getVaccineTypes(), "Vaccine Types:");
+        if(selection >= 0 && selection < this.controller.getVaccineTypes().size()) {
+            if (inputData()) {
                 getData();
 
-                if(Utils.confirm("Confirm data?(s/n)"))
-                {
+                if (Utils.confirm("Confirm data?(s/n)")) {
                     controller.registerVaccine();
                     System.out.println("Vaccine registered successfully.");
-                }
-                else
+                } else
                     run();
-            }
-            else
-            {
+            } else {
                 System.out.println("Not a valid Vaccine or already exists");
             }
         }
+    }
 
         private boolean inputData () {
             String name = Utils.readLineFromConsole("Name:");

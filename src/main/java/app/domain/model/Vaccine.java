@@ -1,5 +1,6 @@
 package app.domain.model;
 
+import app.domain.store.VaccineTypeStore;
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -7,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class Vaccine {
 
+    VaccineTypeStore vaccineTypeList;
     private String name;
     private String brand;
     private String ageGroup;

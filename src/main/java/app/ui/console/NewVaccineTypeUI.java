@@ -50,7 +50,7 @@ public class NewVaccineTypeUI implements Runnable{
 
     private boolean inputData(int techSelection)
     {
-        String code = Utils.readLineFromConsole("Code:");
+        String code = Utils.readLineFromConsole("Code (5 digits):");
         String designation = Utils.readLineFromConsole("Short Description:");
 
         return controller.newVaccineType(techSelection, code, designation);

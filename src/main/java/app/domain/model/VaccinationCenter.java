@@ -41,9 +41,27 @@ public abstract class VaccinationCenter {
                 (emailAddress.isEmpty()) || (websiteAddress == null) || (websiteAddress.isEmpty()) ||
                 (openingHours == null) || (openingHours.isEmpty()) || (closingHours == null) || (closingHours.isEmpty()) ||
                 (slotDuration == null) || (slotDuration.isEmpty()) ||
-                (maxNumVaccinesPerSlot == null) || (maxNumVaccinesPerSlot.isEmpty()) ||
-                (phoneNumber.length() != 9) || !StringUtils.isNumeric(phoneNumber))
-            throw new IllegalArgumentException("None of the arguments can be null or empty. Phone number must be in PT format");
+                (maxNumVaccinesPerSlot == null) || (maxNumVaccinesPerSlot.isEmpty()))
+            throw new IllegalArgumentException("None of the arguments can be null or empty.");
+
+        if ((phoneNumber.length() != 9) || !StringUtils.isNumeric(phoneNumber))
+            throw new IllegalArgumentException("Phone number must be in PT format");
+
+        if (!emailAddress.contains("@"))
+            throw new IllegalArgumentException("Not a valid e-mail address");
+
+        if (StringUtils.isNumeric(openingHours) && StringUtils.isNumeric(closingHours) &&
+                StringUtils.isNumeric(slotDuration) && StringUtils.isNumeric(maxNumVaccinesPerSlot)){
+            if (Integer.parseInt(openingHours) < 0 || Integer.parseInt(closingHours) < 0 )
+                throw new IllegalArgumentException("Time can't be less than 0");
+            if (Integer.parseInt(openingHours) > 24 || Integer.parseInt(closingHours) > 24)
+                throw new IllegalArgumentException("You can't exceed the 24h of a day");
+            if (openingHours.equals(closingHours))
+                throw new IllegalArgumentException("Opening time can't be the same as closing time");
+        }else{
+            throw new IllegalArgumentException("Time must be a numeric value");
+        }
+
 
         this.name = name;
         this.phoneNumber = phoneNumber;

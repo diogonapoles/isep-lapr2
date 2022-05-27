@@ -2,6 +2,9 @@ package app.controller;
 
 import app.domain.model.Company;
 import app.domain.model.Vaccine;
+import app.domain.model.VaccineType;
+
+import java.util.List;
 
 
 /**
@@ -55,4 +58,6 @@ public class NewVaccineController {
      * @return the boolean
      */
     public boolean registerVaccine(){return this.oCompany.getVaccineStore().registerVaccine(oNewVaccine);}
+
+    public List<VaccineType> getVaccineTypes(){return this.oCompany.getVaccineTypeStore().getListVaccineType();}
 }

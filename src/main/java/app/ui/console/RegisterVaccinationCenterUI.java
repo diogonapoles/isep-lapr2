@@ -52,7 +52,7 @@ public class RegisterVaccinationCenterUI implements Runnable{
     private boolean inputData(int typeSelection)
     {
         String name = Utils.readLineFromConsole("Name:");
-        String phoneNumber = Utils.readLineFromConsole("Phone Number:");
+        String phoneNumber = Utils.readLineFromConsole("Phone Number (Portuguese format, 9 digits):");
         String faxNumber = Utils.readLineFromConsole("Fax Number:");
         String homeAddress = Utils.readLineFromConsole("Home Address:");
         String emailAddress = Utils.readLineFromConsole("Email Address:");

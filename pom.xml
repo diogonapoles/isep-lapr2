@@ -23,10 +23,15 @@
 				<version>2.22.0</version>
 				<dependencies>
 					<dependency>
+						<groupId>org.junit.platform</groupId>
+						<artifactId>junit-platform-surefire-provider</artifactId>
+						<version>1.2.0</version>
+					</dependency>
+					<!--dependency>
 						<groupId>org.apache.maven.surefire</groupId>
 						<artifactId>surefire-junit4</artifactId>
 						<version>2.22.0</version>
-					</dependency>
+					</dependency>-->
 				</dependencies>
 				<configuration>
 					<!-- new configuration needed for coverage per test -->
@@ -108,8 +113,41 @@
 							<classpathPrefix>lib/</classpathPrefix>
 							<mainClass>app.ui.Main</mainClass>
 						</manifest>
+						<!--excludes>
+							<exclude>META-INF/*.SF</exclude>
+							<exclude>META-INF/*.DSA</exclude>
+							<exclude>META-INF/*.RSA</exclude>
+						</excludes-->
 					</archive>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.2.4</version>
+				<configuration>
+					<createDependencyReducedPom>false</createDependencyReducedPom>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<filters>
+								<filter>
+									<artifact>*:*</artifact>
+									<excludes>
+										<exclude>META-INF/*.SF</exclude>
+										<exclude>META-INF/*.DSA</exclude>
+										<exclude>META-INF/*.RSA</exclude>
+									</excludes>
+								</filter>
+							</filters>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

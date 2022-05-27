@@ -24,12 +24,12 @@ public class CSVReader {
          */
         HEADER0("name"),
         HEADER1("sex", "gender"),
-        HEADER2("birth date", "birthdate", "birth-date"),
-        HEADER3("homeaddress", "home-address", "home address", "address"),
+        HEADER2("birthdate", "birth date", "birth-date"),
+        HEADER3("address", "home-address", "home address", "homeaddress"),
         HEADER4("phonenumber", "phone-number", "phone number"),
         HEADER5("e-mail", "email", "e-mail address", "email address"),
-        HEADER6("sns user number", "snsusernumber", "sns-user-number"),
-        HEADER7("citizen card number", "citizencardnumber", "citizen-card-number");
+        HEADER6("snsusernumber", "sns user number", "sns-user-number"),
+        HEADER7("citizencardnumber", "citizen card number", "citizen-card-number");
         private String columnValue;
         private HashSet<String> similarValues;
         HEADER_COLUMNS(String... similarValues){
@@ -92,7 +92,7 @@ public class CSVReader {
                 return null;
             }
 
-            if (separator.equals(SEPARATOR_B)) {
+            if (separator.equals(SEPARATOR_A)) {
                 line = br.readLine();
             }
 
@@ -119,11 +119,12 @@ public class CSVReader {
     public int validateHeader(String line){
         try {
             line = line.toLowerCase();
+            line = line.replaceAll(" ", "");
             if (line.contains(SEPARATOR_A)) {
                 separator = SEPARATOR_A;
                 // Validating if header is in the expected format
                 try {
-                    if (!line.equals(getCompleteHeader()))
+                    if (line.equals(getCompleteHeader()))
                         throw new IllegalArgumentException("Invalid header. Should be: " + getCompleteHeader());
                 } catch (Exception e) {
                     System.out.println(e);
