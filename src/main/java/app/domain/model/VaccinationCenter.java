@@ -33,8 +33,8 @@ public abstract class VaccinationCenter {
      * @param slotDuration          the slot duration
      * @param maxNumVaccinesPerSlot the max num vaccines per slot
      */
-    public VaccinationCenter(String name, String phoneNumber, String faxNumber, String homeAddress, String emailAddress, String websiteAddress, String openingHours, String closingHours, String slotDuration, String maxNumVaccinesPerSlot){
-        if((name == null) || (name.isEmpty()) ||
+    public VaccinationCenter(String name, String phoneNumber, String faxNumber, String homeAddress, String emailAddress, String websiteAddress, String openingHours, String closingHours, String slotDuration, String maxNumVaccinesPerSlot) {
+        if ((name == null) || (name.isEmpty()) ||
                 (phoneNumber == null) || (phoneNumber.isEmpty()) || (faxNumber == null) ||
                 (faxNumber.isEmpty()) || (homeAddress == null) ||
                 (homeAddress.isEmpty()) || (emailAddress == null) ||
@@ -51,14 +51,14 @@ public abstract class VaccinationCenter {
             throw new IllegalArgumentException("Not a valid e-mail address");
 
         if (StringUtils.isNumeric(openingHours) && StringUtils.isNumeric(closingHours) &&
-                StringUtils.isNumeric(slotDuration) && StringUtils.isNumeric(maxNumVaccinesPerSlot)){
-            if (Integer.parseInt(openingHours) < 0 || Integer.parseInt(closingHours) < 0 )
+                StringUtils.isNumeric(slotDuration) && StringUtils.isNumeric(maxNumVaccinesPerSlot)) {
+            if (Integer.parseInt(openingHours) < 0 || Integer.parseInt(closingHours) < 0)
                 throw new IllegalArgumentException("Time can't be less than 0");
             if (Integer.parseInt(openingHours) > 24 || Integer.parseInt(closingHours) > 24)
                 throw new IllegalArgumentException("You can't exceed the 24h of a day");
             if (openingHours.equals(closingHours))
                 throw new IllegalArgumentException("Opening time can't be the same as closing time");
-        }else{
+        } else {
             throw new IllegalArgumentException("Time must be a numeric value");
         }
 
@@ -264,7 +264,7 @@ public abstract class VaccinationCenter {
 
     @Override
     public String toString() {
-        return "name: " + name +
+        return "\nname: " + name +
                 "\nphoneNumber: " + phoneNumber +
                 "\nfaxNumber: " + faxNumber +
                 "\nhomeAddress: " + homeAddress +
@@ -274,7 +274,17 @@ public abstract class VaccinationCenter {
                 "\nclosingHours: " + closingHours +
                 "\nslotDuration: " + slotDuration +
                 "\nmaxNumVaccinesPerSlot: " + maxNumVaccinesPerSlot +
-                "\n\n" ;
+                "\n\n";
+    }
+
+    public String toStringScheduleVaccine() {
+        return "\nname: " + name +
+                "\nphoneNumber: " + phoneNumber +
+                "\nfaxNumber: " + faxNumber +
+                "\nhomeAddress: " + homeAddress +
+                "\nemailAddress: " + emailAddress +
+                "\nwebsiteAddress: " + websiteAddress +
+                "\n\n";
     }
 }
 

@@ -60,7 +60,7 @@ public class ScheduleVaccine {
 
 
     public String toString() {
-        return "The SNS User number " + snsUserNumber + " vaccine appointment is at " + vaccinationCenter + ", at " + dateTime +  ".";
+        return "The SNS User number " + snsUserNumber + "has his vaccine appointment schedule at " +dateTime+" at "+vaccinationCenter+".";
     }
 
     public VaccineType getVaccineType() {

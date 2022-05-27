@@ -23,13 +23,13 @@ public class ScheduleVaccineStore {
         return listScheduleVaccine;
     }
 
-    public ScheduleVaccine getScheduleVaccine(String snsUserNumber, LocalDate date, VaccineType vaccineType) {
+    public ScheduleVaccine getScheduleVaccine(String snsUserNumber, Date dateTime, VaccineType vaccineType) {
         ScheduleVaccine result = null, test;
         boolean flag = true;
         int row = 0;
         while (row < listScheduleVaccine.size() && flag) {
             test = listScheduleVaccine.get(row);
-            if (Objects.equals(test.getSNSUserNumber(), snsUserNumber) && (test.getDateTime().equals(date))
+            if (Objects.equals(test.getSNSUserNumber(), snsUserNumber) && (test.getDateTime().equals(dateTime))
                     && test.getVaccineType().equals(vaccineType)) {
                 result = test;
                 flag = false;

@@ -6,6 +6,7 @@ import app.domain.store.VaccineTypeStore;
 import app.domain.systemUsers.SNSUser;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -62,7 +63,7 @@ public class UserArrivalController {
     }
 
     public ScheduleVaccine getScheduleVaccine(String snsUserNumber, VaccineType vaccineType) {
-        return vaccineScheduleStore.getScheduleVaccine(snsUserNumber, LocalDate.now(), vaccineType);
+        return vaccineScheduleStore.getScheduleVaccine(snsUserNumber, new Date(), vaccineType);
     }
 
     /**
