@@ -1,5 +1,6 @@
 package app.domain.store;
 
+import app.domain.shared.Constants;
 import app.domain.systemUsers.SNSUser;
 import pt.isep.lei.esoft.auth.AuthFacade;
 
@@ -63,6 +64,7 @@ public class SNSUserStore {
 
 
     public SNSUser newSNSUser(String name, String gender, String birthDate, String homeAddress, String phoneNumber, String emailAddress, String snsUserNumber, String citizenCardNumber) {
+        this.authFacade.addUserWithRole(name, emailAddress, "123456", Constants.ROLE_SNS_USER);
         return new SNSUser(name, gender, birthDate, homeAddress, phoneNumber, emailAddress, snsUserNumber, citizenCardNumber);
     }
 

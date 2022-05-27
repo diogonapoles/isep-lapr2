@@ -1,6 +1,6 @@
 package app.domain.store;
 
-import app.controller.UserArrivalController;
+
 import app.domain.model.ScheduleVaccine;
 import app.domain.model.UserArrival;
 import app.domain.model.VaccinationCenter;

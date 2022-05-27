@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Properties;
 
 /**
@@ -115,10 +116,9 @@ public class App {
         this.company.getVaccinationCenterStore().registerVaccinationCenter(vc2);
 
         VaccineType vt1 = this.company.getVaccineTypeStore().newVaccineType(0,"12341","COVID-19");
-        LocalDateTime dateTime = LocalDateTime.of(2022,1,14,10,34);
+        Date dateTime = new Date(2022, 11, 21, 9,32);
 
-        ScheduleVaccine snsU10 = this.company.getScheduleVaccineStore().newScheduleVaccine(new ScheduleVaccine(
-                "123444333", vc1,vt1,dateTime));
+        ScheduleVaccine snsU10 = this.company.getScheduleVaccineStore().newScheduleVaccine(new ScheduleVaccineDTO("123444333", vc1,vt1,dateTime));
         this.company.getScheduleVaccineStore().registerScheduleVaccine(snsU10);
 
 
@@ -135,9 +135,9 @@ public class App {
                 "10", "20", "3", "20");
         this.company.getVaccinationCenterStore().registerVaccinationCenter(vc1);
         VaccineType vt1 = this.company.getVaccineTypeStore().newVaccineType(0,"12341","COVID-19");
-        LocalDateTime dateTime = LocalDateTime.of(2022,1,14,10,34);
+        Date dateTime = new Date(2022,10,12,14,7);
 
-        ScheduleVaccine snsU10 = this.company.getScheduleVaccineStore().newScheduleVaccine(new ScheduleVaccine(
+        ScheduleVaccine snsU10 = this.company.getScheduleVaccineStore().newScheduleVaccine(new ScheduleVaccineDTO(
                 "12344433", vc1,vt1,dateTime));
         this.company.getScheduleVaccineStore().registerScheduleVaccine(snsU10);
     }

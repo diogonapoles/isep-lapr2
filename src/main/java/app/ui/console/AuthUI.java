@@ -5,6 +5,7 @@ import app.domain.shared.Constants;
 import app.ui.console.utils.Utils;
 import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
 
+import java.lang.management.MemoryNotificationInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -50,6 +51,7 @@ public class AuthUI implements Runnable {
         rolesUI.add(new MenuItem(Constants.ROLE_ADMIN, new AdminUI()));
         rolesUI.add(new MenuItem(Constants.ROLE_RECEPTIONIST, new ReceptionistUI()));
         rolesUI.add(new MenuItem(Constants.ROLE_NURSE , new NurseUI()));
+        rolesUI.add(new MenuItem(Constants.ROLE_SNS_USER, new SnsUserUI()));
         // To complete with other user roles and related RoleUI
 
         //

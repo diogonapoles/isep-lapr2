@@ -1,5 +1,6 @@
 package app.domain.store;
 
+import app.controller.ScheduleVaccineDTO;
 import app.domain.model.ScheduleVaccine;
 import app.domain.model.VaccinationCenter;
 import app.domain.model.VaccineType;
@@ -7,6 +8,7 @@ import app.domain.model.VaccineType;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -27,7 +29,7 @@ public class ScheduleVaccineStore {
         int row = 0;
         while (row < listScheduleVaccine.size() && flag) {
             test = listScheduleVaccine.get(row);
-            if (Objects.equals(test.getSNSUserNumber(), snsUserNumber) && test.getLocalDateTime().toLocalDate().compareTo(date) == 0
+            if (Objects.equals(test.getSNSUserNumber(), snsUserNumber) && (test.getDateTime().equals(date))
                     && test.getVaccineType().equals(vaccineType)) {
                 result = test;
                 flag = false;
@@ -38,14 +40,13 @@ public class ScheduleVaccineStore {
     }
 
 
-
     public boolean validateScheduleVaccine(ScheduleVaccine oScheduleVaccine) {
         if (oScheduleVaccine != null) {
             String snsUserNumber = oScheduleVaccine.getSNSUserNumber();
             VaccinationCenter vaccinationCenter = oScheduleVaccine.getVaccinationCenter();
-            LocalDateTime localDateTime = oScheduleVaccine.getLocalDateTime();
+            Date dateTime = oScheduleVaccine.getDateTime();
 
-            if (existsScheduleVaccine(snsUserNumber, vaccinationCenter, localDateTime))
+            if (existsScheduleVaccine(snsUserNumber, vaccinationCenter, dateTime))
                 throw new IllegalArgumentException("A vaccine with those data already exists.");
         } else {
             return false;
@@ -53,10 +54,10 @@ public class ScheduleVaccineStore {
         return true;
     }
 
-    private boolean existsScheduleVaccine(String snsUserNumber, VaccinationCenter vaccinationCenter, LocalDateTime localDateTime) {
+    private boolean existsScheduleVaccine(String snsUserNumber, VaccinationCenter vaccinationCenter, Date dateTime) {
         for (ScheduleVaccine scheduleVaccine : listScheduleVaccine) {
             if (snsUserNumber.equals(scheduleVaccine.getSNSUserNumber()) &&
-                    localDateTime.equals(scheduleVaccine.getLocalDateTime()) &&
+                    dateTime.equals(scheduleVaccine.getDateTime()) &&
                     vaccinationCenter.equals(scheduleVaccine.getVaccinationCenter())) {
                 return true;
             }
@@ -64,13 +65,13 @@ public class ScheduleVaccineStore {
         return false;
     }
 
-    public ScheduleVaccine newScheduleVaccine(ScheduleVaccine scheduleVaccine){
-        String snsUserNumber = scheduleVaccine.getSNSUserNumber();
-        VaccinationCenter vaccinationCenter = scheduleVaccine.getVaccinationCenter();
-        VaccineType vaccineType = scheduleVaccine.getVaccineType();
-        LocalDateTime localDateTime = scheduleVaccine.getLocalDateTime();
+    public ScheduleVaccine newScheduleVaccine(ScheduleVaccineDTO scheduleVaccineDTO) {
+        String snsUserNumber = scheduleVaccineDTO.getSnsUserNumber();
+        VaccinationCenter vaccinationCenter = scheduleVaccineDTO.getVaccinationCenter();
+        VaccineType vaccineType = scheduleVaccineDTO.getVaccineType();
+        Date dateTime = scheduleVaccineDTO.getDateTime();
 
-        ScheduleVaccine scheduleUserVaccine = new ScheduleVaccine(snsUserNumber,vaccinationCenter,vaccineType,localDateTime);
+        ScheduleVaccine scheduleUserVaccine = new ScheduleVaccine(snsUserNumber, vaccinationCenter, vaccineType, dateTime);
 
         if (validateScheduleVaccine(scheduleUserVaccine))
             return scheduleUserVaccine;
@@ -86,6 +87,7 @@ public class ScheduleVaccineStore {
         } else
             return false;
     }
+
     private boolean addScheduleVaccine(ScheduleVaccine schedule) {
         return this.listScheduleVaccine.add(schedule);
     }

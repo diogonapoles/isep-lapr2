@@ -1,15 +1,16 @@
 package app.domain.model;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class ScheduleVaccine {
 
     private String snsUserNumber;
     private VaccinationCenter vaccinationCenter;
     private VaccineType vaccineType;
-    private LocalDateTime localDateTime;
+    private Date dateTime;
 
-    public ScheduleVaccine(String snsUserNumber, VaccinationCenter vaccinationCenter,VaccineType vaccineType, LocalDateTime localDateTime) {
+    public ScheduleVaccine(String snsUserNumber, VaccinationCenter vaccinationCenter,VaccineType vaccineType, Date dateTime) {
 
         if((vaccinationCenter == null)  ||
                 (snsUserNumber == null) )
@@ -21,7 +22,7 @@ public class ScheduleVaccine {
         setSNSUserNumber(snsUserNumber);
         setVaccineType(vaccineType);
         setVaccinationCenter(vaccinationCenter);
-        setLocalDateTime(localDateTime);
+        setDateTime(dateTime);
 
 
 
@@ -31,12 +32,12 @@ public class ScheduleVaccine {
         this.vaccineType = vaccineType;
     }
 
-    public LocalDateTime getLocalDateTime() {
-        return localDateTime;
+    public Date getDateTime() {
+        return dateTime;
     }
 
-    public void setLocalDateTime(LocalDateTime localDateTime) {
-        this.localDateTime = localDateTime;
+    public void setDateTime(Date dateTime) {
+        this.dateTime = dateTime;
     }
 
 
@@ -59,10 +60,12 @@ public class ScheduleVaccine {
 
 
     public String toString() {
-        return "The SNS User number " + snsUserNumber + " vaccine appointment is at " + vaccinationCenter + ", at " + localDateTime +  ".";
+        return "The SNS User number " + snsUserNumber + " vaccine appointment is at " + vaccinationCenter + ", at " + dateTime +  ".";
     }
 
     public VaccineType getVaccineType() {
         return vaccineType;
     }
+
+
 }

@@ -1,41 +1,78 @@
-/*
-
 package app.controller;
 
 import app.domain.model.Company;
 import app.domain.model.ScheduleVaccine;
+import app.domain.model.VaccinationCenter;
+import app.domain.model.VaccineType;
+import app.domain.store.SNSUserStore;
+import app.domain.store.ScheduleVaccineStore;
+import app.domain.store.VaccinationCenterStore;
+import app.domain.store.VaccineTypeStore;
+import pt.isep.lei.esoft.auth.AuthFacade;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 public class ScheduleVaccineController {
 
-        private App oApp;
-        private Company oCompany;
-        private ScheduleVaccine oScheduleVaccine;
+    private App oApp;
+    private Company oCompany;
+    private ScheduleVaccine oScheduleVaccine;
+    private final AuthFacade authFacade;
+    private final ScheduleVaccineStore scheduleVaccineStore;
+    private final VaccinationCenterStore vaccinationCenterStore;
+    private final VaccineTypeStore vaccineTypeStore;
+    private final SNSUserStore snsUserStore;
 
-    public ScheduleVaccineController(){
-            this.oApp = App.getInstance();
-            this.oCompany = oApp.getCompany();
+    public ScheduleVaccineController() {
+        this.oApp = App.getInstance();
+        this.oCompany = oApp.getCompany();
+        this.authFacade = this.oCompany.getAuthFacade();
+        this.scheduleVaccineStore = oCompany.getScheduleVaccineStore();
+        this.vaccinationCenterStore = oCompany.getVaccinationCenterStore();
+        this.vaccineTypeStore = oCompany.getVaccineTypeStore();
+        this.snsUserStore = oCompany.getSNSUserStore();
+    }
+
+    public boolean newScheduleVaccine(ScheduleVaccineDTO scheduleVaccineDTO) {
+        this.oScheduleVaccine = oCompany.getScheduleVaccineStore().newScheduleVaccine(scheduleVaccineDTO);
+        if (this.oScheduleVaccine != null) {
+            return true;
+        } else {
+            return false;
         }
+    }
 
-    public boolean newScheduleVaccine(int SNSUserNumber, String vaccinationCenter, String date, String time){
-            this.oScheduleVaccine = oCompany.getScheduleVaccineStore().newScheduleVaccine(SNSUserNumber, vaccinationCenter, date, time);
-            if (this.oScheduleVaccine != null){
-                return true;
-            }else{
-                return false;
-            }
-        }
-
-    public List<String> getScheduleVaccine() {return this.oCompany.getScheduleVaccineStore().listScheduleVaccine();}
+  //  public List<String> getScheduleVaccine() {
+    //    return this.oCompany.getScheduleVaccineStore().listScheduleVaccine();
+    //}
 
 
-    public String getScheduleVaccineString(){return this.oScheduleVaccine.toString();}
+    public String getScheduleVaccineString() {
+        return this.oScheduleVaccine.toString();
+    }
 
 
-        public boolean newScheduleVaccine(){return this.oCompany.getScheduleVaccineStore().newScheduleVaccine(oScheduleVaccine);}
+    //    public boolean newScheduleVaccine(){return this.oCompany.getScheduleVaccineStore().newScheduleVaccine(oScheduleVaccine);}
 
-    public boolean newScheduleVaccine(){return this.oCompany.getScheduleVaccineStore().newScheduleVaccine(oScheduleVaccine);}
+    //public boolean newScheduleVaccine(){return this.oCompany.getScheduleVaccineStore().newScheduleVaccine(oScheduleVaccine);}
+
+    public List<VaccinationCenter> getVaccinationCenter() {
+        return this.vaccinationCenterStore.getVaccinationCenters();
+    }
+
+    public List<VaccineType> getVaccineTypes() {
+        return this.vaccineTypeStore.getListVaccineType();
+    }
+
+    public boolean registerScheduleVaccine() {
+        return this.oCompany.getScheduleVaccineStore().registerScheduleVaccine(this.oScheduleVaccine);
+    }
+    public ScheduleVaccine getScheduleVaccine(){
+        return oScheduleVaccine;
+    }
+
 }
-*/
+
 
