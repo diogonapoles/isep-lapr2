@@ -33,7 +33,7 @@ As a **Nurse** e, I intend to consult the **users** in the waiting room of a vac
 ### 1.4. Found out Dependencies
 
 * There is a dependency to "US4 register the arrival of a SNS user
-  to take the vaccine." because in order to list the Users in the waiting room, the receptionist has to register their arrival.
+  to take the vaccine." because in order to list the Users in the waiting room, the receptionist has to register their arrival in the UserArrivalStore.
 
 ### 1.5 Input and Output Data
 
@@ -58,7 +58,9 @@ As a **Nurse** e, I intend to consult the **users** in the waiting room of a vac
 
 ### 1.7 Other Relevant Remarks
 
-n/a
+![US5_SSDv2](US5_SSDv2.svg)
+
+* Before Showing the Options list for the employee (Nurse), the system asks where the Employee works.
 
 ## 2. OO Analysis
 
@@ -80,15 +82,12 @@ n/a
 |:---------------|:---------------------------------------------------|:----------------------|:--------------------------------------------------------------------------------------------------------------|
 | Step 1  		     | 	... interacting with the actor?                   | ListWaitingRoomUI         | Pure Fabrication: there is no reason to assign this responsibility to any existing class in the Domain Model. |
 | 			  		        | 	... coordinating the US?                          | ListWaitingRoomController | Controller                                                                                                    |                                                           |
-| Step 2  		     | 							                                            |                       |                                                                                                               |
-| Step 3  		     | 	... creating the instance of the sns user arrival | Company               | Creator: in the DM Company has a Task.                                                                        | IE: object created in step 1 has its own data.                                                                |
-| Step 4  		     | 	...knowing the task categories to show?           | Platform              | IE: Task Categories are defined by the Platform.                                                              |
-| Step 5  		     | 	... saving the selected category?                 | Task                  | IE: object created in step 1 is classified in one Category.                                                   |
-| Step 6  		     | 							                                            |                       |                                                                                                               |              
-| Step 7  		     | 	... validating all data (local validation)?       | UserArrivalStore      | IE: owns its data.                                                                                            | 
-| 			  		        | 	... validating all data (global validation)?      | UserArrivalStore      | IE: knows all its tasks.                                                                                      | 
-| 			  		        | 	... saving the created task?                      | UserArrivalStore      | IE: owns all its tasks.                                                                                       | 
-| Step 8  		     | 	... informing operation success?                  | UserArrivalUI         | IE: is responsible for user interactions.                                                                     | 
+| 		     | 	... creating the instance of the sns user arrival | Company               | Creator: in the DM Company has a Task.                                                                        | IE: object created in step 1 has its own data.                                                                |
+|  		     | 	...knowing the task categories to show?           | Company              | IE: Task Categories are defined by the Platform.                                                              |
+| 		     | 	... returning the Users In Waiting Room List              | UserArrivalStore                  | IE: object created in step 2 is classified as Store.                                                  |
+| 		     | 							                                            |                       |                                                                                                               |              
+| Step 2		     | 	... Listing the Users (Final Step)      | ListWaitingRoomUI     | IE: UI is responsible for the interactions with the user.                                                                                          |
+
 
 
 ### Systematization ##
@@ -105,13 +104,14 @@ Other software classes (i.e. Pure Fabrication) identified:
 
 ## 3.2. Sequence Diagram (SD)
 
-*In this section, it is suggested to present an UML dynamic view stating the sequence of domain related software objects' interactions that allows to fulfill the requirement.* 
-
+*Note: The first Sequence Diagram IS about the US5. The second Sequence Diagram Was made to explain the process before the beginning of the US (where the Employee that logged in selects the vaccination center that he/she works.)*
 ![US5_SD](US5_SD.svg)
 
-## 3.3. Class Diagram (CD)
+### 3.2.2 Second Sequence Diagram (SDv2)
 
-*In this section, it is suggested to present an UML static view representing the main domain related software classes that are involved in fulfilling the requirement as well as and their relations, attributes and methods.*
+![US5_SDv2](US5_SDv2.svg)
+
+## 3.3. Class Diagram (CD)
 
 ![US5_CD](US5_CD.svg)
 
