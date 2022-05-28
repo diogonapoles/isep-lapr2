@@ -1,6 +1,10 @@
 package app.domain.model;
 
+import app.domain.Slot;
 import org.apache.commons.lang3.StringUtils;
+
+import java.util.Date;
+import java.util.List;
 
 /**
  * The type Vaccination center.
@@ -280,12 +284,13 @@ public abstract class VaccinationCenter {
     public String toStringScheduleVaccine() {
         return "\nname: " + name +
                 "\nphoneNumber: " + phoneNumber +
-                "\nfaxNumber: " + faxNumber +
                 "\nhomeAddress: " + homeAddress +
                 "\nemailAddress: " + emailAddress +
                 "\nwebsiteAddress: " + websiteAddress +
                 "\n\n";
     }
+
+
 }
 
 

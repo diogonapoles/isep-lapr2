@@ -61,6 +61,11 @@ public class VaccineTypeStore {
         return true;
     }
 
+    public VaccineType getCurrentOutbreak(){
+        VaccineType vaccineType=listVaccineType.get(0);;
+        return vaccineType;
+    }
+
     /**
      * Register vaccine type boolean.
      *

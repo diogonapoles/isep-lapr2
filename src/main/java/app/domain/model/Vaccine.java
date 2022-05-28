@@ -125,6 +125,9 @@ public class Vaccine {
         this.timeSinceLastDose = timeSinceLastDose;
     }
 
+
+
+
     /**
      * Instantiates a new Vaccine.
      *

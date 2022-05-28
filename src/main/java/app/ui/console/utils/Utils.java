@@ -76,7 +76,7 @@ public class Utils {
             {
                 String strDate = readLineFromConsole(prompt);
 
-                SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+                SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 
                 Date date = df.parse(strDate);
 

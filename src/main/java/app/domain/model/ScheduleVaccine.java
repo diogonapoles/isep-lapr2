@@ -32,6 +32,7 @@ public class ScheduleVaccine {
         this.vaccineType = vaccineType;
     }
 
+
     public Date getDateTime() {
         return dateTime;
     }
@@ -60,7 +61,7 @@ public class ScheduleVaccine {
 
 
     public String toString() {
-        return "The SNS User number " + snsUserNumber + "has his vaccine appointment schedule at " +dateTime+" at "+vaccinationCenter+".";
+        return "The SNS User number " + snsUserNumber + " has his vaccine appointment schedule at " +dateTime+" at: "+vaccinationCenter.toStringScheduleVaccine();
     }
 
     public VaccineType getVaccineType() {

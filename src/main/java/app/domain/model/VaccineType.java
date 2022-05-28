@@ -67,6 +67,7 @@ public abstract class VaccineType {
         this.designation = designation;
     }
 
+
     @Override
     public String toString() {
         return "VaccineType [" +

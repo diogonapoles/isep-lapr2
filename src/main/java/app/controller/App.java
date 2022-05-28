@@ -137,7 +137,7 @@ public class App {
     private void createSnsUserWithAppointment() {
         VaccinationCenter vc1 = this.company.getVaccinationCenterStore().newVaccinationCenter(1, "Healthcare", "917876321", "493782",
                 "TestRua1", "teste1@gmail.com", "healthcare.com",
-                "10", "20", "3", "20");
+                "10:00", "20:00", "3", "20");
         this.company.getVaccinationCenterStore().registerVaccinationCenter(vc1);
         VaccineType vt1 = this.company.getVaccineTypeStore().newVaccineType(0,"12341","COVID-19");
         Date dateTime = new Date(2022,10,12,14,7);

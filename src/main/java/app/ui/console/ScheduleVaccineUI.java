@@ -4,12 +4,13 @@ package app.ui.console;
 import app.controller.App;
 import app.controller.ScheduleVaccineController;
 import app.controller.ScheduleVaccineDTO;
-import app.domain.model.Company;
-import app.domain.model.VaccinationCenter;
-import app.domain.model.VaccineType;
+import app.domain.model.*;
+import app.domain.shared.Constants;
 import app.ui.console.utils.Utils;
+import jdk.jshell.execution.Util;
 import pt.isep.lei.esoft.auth.AuthFacade;
 
+import javax.xml.validation.Validator;
 import java.util.Date;
 import java.util.List;
 
@@ -24,26 +25,103 @@ public class ScheduleVaccineUI implements Runnable {
         this.company = App.getInstance().getCompany();
         this.controller = new ScheduleVaccineController();
         this.authFacade = this.company.getAuthFacade();
+
+
     }
 
 
     @Override
     public void run() {
+
         //try {
         if (getVaccinationCenter().size() < 0) {
             throw new IllegalArgumentException("there are none vaccination centers registered to schedule vaccines");
-        } else if (inputData()) {
+        } else {
+            String snsUserNumber = null;
+            VaccinationCenter vaccinationCenter = null;
+            VaccineType vaccineType = null;
+            Date date = null;
+
+            if (this.authFacade.getCurrentUserSession().getUserRoles().get(0).getId().equals(Constants.ROLE_SNS_USER)) {
+                snsUserNumber = Utils.readLineFromConsole("SNS Number:");
+            } else {
+                //not a receptionist
+            }
+
+            vaccinationCenter = (VaccinationCenter) Utils.showAndSelectOne(this.controller.getVaccinationCenter(), "Vaccination Centers:");
+
+            if (!(vaccinationCenter instanceof HealthcareCenter)) {
+                vaccineType = (VaccineType) Utils.showAndSelectOne(this.controller.getVaccineTypes(), "vaccine Types:");
+            }
+               vaccineType = company.getVaccineTypeStore().getCurrentOutbreak();
+
+
+            date = Utils.readDateFromConsole("Date:(day-month-year hour:minute)");
+
+
+
+
+     /*   if (getVaccinationCenter().size() < 0) {
+            throw new IllegalArgumentException("there are none vaccination centers registered to schedule vaccines");
+        } else {
+            String snsUserNumber = Utils.readLineFromConsole("SNS Number:");
+            VaccinationCenter vaccinationCenter = (VaccinationCenter) Utils.showAndSelectOne(this.controller.getVaccinationCenter(), "Vaccination Centers:");
+            try {
+                VaccineType vaccineType = (VaccineType) Utils.showAndSelectOne(this.controller.getVaccineTypes(), "Vaccine Type:");
+            } catch (Exception ex) {
+                System.out.printf("outbreak\n\n");
+                //vaccineType = company.getCurrentOutBreak();
+            }
+            Date date = Utils.readDateFromConsole("Date:(day-month-year)");
             getData();
             if (Utils.confirm("Confirms data?(s/n)")) {
+                if (controller.getAvailableSlot(getVaccinationCenter(), date) == null) {
+                    System.out.printf("No slots available for that date");
+                    return;
+                }
+
+
                 controller.registerScheduleVaccine();
+
+
                 System.out.println("Schedule registered successfully");
             } else
                 run();
-        } else {
+        } else{
 
             System.out.println("Cannot Schedule the Vaccine");
         }
 
+
+      */
+
+            ScheduleVaccineDTO scheduleVaccineDTO = new ScheduleVaccineDTO(snsUserNumber, vaccinationCenter, vaccineType, date);
+
+            try {
+                this.controller.newScheduleVaccine(scheduleVaccineDTO);
+                getData();
+                if (Utils.confirm("Confirms data?(s/n)")) {
+
+                  /*  if (controller.validateWithinWorkingHours(vaccinationCenter, date)) {
+                        System.out.println("Outside center working hours");
+                        return;
+                    }
+
+                   */
+
+                    controller.registerScheduleVaccine();
+
+                    System.out.println("Schedule registered successfully");
+                } else
+                    run();
+
+
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
+
+        }
 
     }
 
@@ -54,16 +132,17 @@ public class ScheduleVaccineUI implements Runnable {
 
     private boolean inputData() {
         VaccineType vaccineType = null;
+
         String snsUserNumber = Utils.readLineFromConsole("SNS Number:");
         VaccinationCenter vaccinationCenter = (VaccinationCenter) Utils.showAndSelectOne(this.controller.getVaccinationCenter(), "Vaccination Centers:");
-        Date dateTime = Utils.readDateFromConsole("Date and Time:");
         try {
             vaccineType = (VaccineType) Utils.showAndSelectOne(this.controller.getVaccineTypes(), "Vaccine Type:");
         } catch (Exception ex) {
             System.out.printf("outbreak\n\n\n\n");
             //vaccineType = company.getCurrentOutBreak();
         }
-        ScheduleVaccineDTO scheduleVaccineDTO = new ScheduleVaccineDTO(snsUserNumber, vaccinationCenter, vaccineType, dateTime);
+        Date date = Utils.readDateFromConsole("Date:");
+        ScheduleVaccineDTO scheduleVaccineDTO = new ScheduleVaccineDTO(snsUserNumber, vaccinationCenter, vaccineType, date);
         return this.controller.newScheduleVaccine(scheduleVaccineDTO);
 
 

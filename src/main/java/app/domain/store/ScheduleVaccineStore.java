@@ -5,8 +5,6 @@ import app.domain.model.ScheduleVaccine;
 import app.domain.model.VaccinationCenter;
 import app.domain.model.VaccineType;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

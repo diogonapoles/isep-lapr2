@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.domain.Slot;
 import app.domain.model.Company;
 import app.domain.model.ScheduleVaccine;
 import app.domain.model.VaccinationCenter;
@@ -10,6 +11,8 @@ import app.domain.store.VaccinationCenterStore;
 import app.domain.store.VaccineTypeStore;
 import pt.isep.lei.esoft.auth.AuthFacade;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
@@ -44,7 +47,7 @@ public class ScheduleVaccineController {
         }
     }
 
-  //  public List<String> getScheduleVaccine() {
+    //  public List<String> getScheduleVaccine() {
     //    return this.oCompany.getScheduleVaccineStore().listScheduleVaccine();
     //}
 
@@ -58,6 +61,7 @@ public class ScheduleVaccineController {
 
     //public boolean newScheduleVaccine(){return this.oCompany.getScheduleVaccineStore().newScheduleVaccine(oScheduleVaccine);}
 
+
     public List<VaccinationCenter> getVaccinationCenter() {
         return this.vaccinationCenterStore.getVaccinationCenters();
     }
@@ -69,9 +73,25 @@ public class ScheduleVaccineController {
     public boolean registerScheduleVaccine() {
         return this.oCompany.getScheduleVaccineStore().registerScheduleVaccine(this.oScheduleVaccine);
     }
-    public ScheduleVaccine getScheduleVaccine(){
+
+    public ScheduleVaccine getScheduleVaccine() {
         return oScheduleVaccine;
     }
+
+   /* public boolean validateWithinWorkingHours(VaccinationCenter vaccinationCenter, Date date) throws ParseException {
+        String oh = vaccinationCenter.getOpeningHours();
+        Date o = new SimpleDateFormat("HH:mm").parse(oh);
+        String ch = vaccinationCenter.getClosingHours();
+        Date c = new SimpleDateFormat("HH:mm").parse(ch);
+        if (o.toInstant().isBefore(date)) {
+            if (c.isBefore(date)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    */
 
 }
 
