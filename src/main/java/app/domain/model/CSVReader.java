@@ -101,9 +101,13 @@ public class CSVReader {
 
             while (line != null) {
                 String[] user = line.split(separator);
-                SNSUser tempUser = new SNSUser(user[0], user[1], stringToDate(user[2]), user[3], user[4], user[5], user[6], user[7]);
-                if(tempUser.getName() != null)
-                    tempSave.add(tempUser);
+                if(stringToDate(user[2]) != null) {
+                    SNSUser tempUser = new SNSUser(user[0], user[1], stringToDate(user[2]), user[3], user[4], user[5], user[6], user[7]);
+                    if(tempUser.getName() != null)
+                        tempSave.add(tempUser);
+                }else{
+                    System.out.println(user[2] + " is not a valid date, it should be in the dd/MM/yyyy format");
+                }
                 line = br.readLine();
             }
         } catch (IOException e) {
@@ -174,7 +178,6 @@ public class CSVReader {
     {
             try {
                 if (!birthDate.matches("\\d{2}/\\d{2}/\\d{4}")){
-                    System.out.println("Date format is incorrect");
                     return null;
                 }
 

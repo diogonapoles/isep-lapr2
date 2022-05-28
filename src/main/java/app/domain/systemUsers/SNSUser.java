@@ -52,7 +52,7 @@ public class SNSUser {
             this.snsUserNumber = snsUserNumber;
             this.citizenCardNumber = citizenCardNumber;
         }catch (IllegalArgumentException e){
-            System.out.println(e);
+            System.out.println();
         }
     }
 
