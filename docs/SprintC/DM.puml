@@ -120,14 +120,14 @@ VaccinationCenter <|-up- HealthcareCenter
 VaccinationCenter <|-- CommunityCenter
 VaccinationCenter "1" -down-- "*"Vaccine : applies >
 VaccinationCenter "1" -up-- "*" Report : reports >
-VaccinationCenter "1"--"*" VaccineType
+VaccinationCenter "1"--"*" VaccineType : has >
 
 Vaccine "1" --"*" Dosage
 Vaccine "*" -down--- "1" VaccineType : is >
 Vaccine "1" -down-- "*" VaccineAdministration : of <
 Vaccine "*" -down-- "1" SNSUser : > administrated on
 VaccinationCenter "0..1" -right- "0..1" VaccineSchedule : > fulfilling
-VaccineType "1" -- "*" Vaccine
+VaccineType "1" -- "*" Vaccine : has >
 
 VaccineAdministration "1" -up- "*" Nurse : executed by >
 VaccineAdministration "1" -down- "1" VaccinationCenter
@@ -151,17 +151,17 @@ VaccinationCertificate "1"--"1" VaccineAdministration
 
 VaccineSchedule "*" -down-- "1" SNSUser : made for >
 VaccineSchedule "1" -up-- "0..1" VaccineType : administers >
-VaccineSchedule "0" -- "1" VaccineAdministration
+VaccineSchedule "0" -- "1" VaccineAdministration : has >
 
-Receptionist "*" -up-- "*" SNSUser : registers arrival of >
+Receptionist "*" -down-- "*" SNSUser : registers arrival of >
 Receptionist "*" -down--- "*" VaccineSchedule : confirms >
 Receptionist "1..*"-right-- "1..*"WaitingRoom : sends SNS user to >
 
-Nurse "*" -down--- "1..*" WaitingRoom : Consults Users in Waiting room >
+Nurse "*" -down- "1..*" WaitingRoom : consults users in >
 (Nurse, WaitingRoom) .. UserHealthHistoric
 Nurse "1" -up-- "*" VaccinationCertificate : issues and delivers >
 VaccineAdministration "*" -down-- "1" RecoveryRoom : sends user to >
-VaccineAdministration -up-- WaitingRoom
+VaccineAdministration -up-- WaitingRoom : sends users to >
 
 VaccineSchedule "1" -up-- "0..1" Notification : emits >
 

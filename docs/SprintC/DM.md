@@ -166,28 +166,37 @@ An association is a relationship between instances of objects that indicates a r
 | Concept (A) 		|  Association   	|  Concept (B) |
 |----------	   		|:-------------:		|------:       |
 | Administrator  	| registers and configures    		 	| Employee  |
+|   	| registers and configures    		 	| SNSUser  |
+|   	| registers and configures    		 	| VaccinationCenter  |
 | CenterCoordinator  	| coordinates    		 	| VaccinationCenter  |
 |   	| analyses    		 	| Report  |
 | CommunityCenter  	| can administer    		 	| VaccineType  |
 | Company  	| manages    		 	| VaccinationCenter  |
+|   	| administers    		 	| VaccineType  |
 | HealthcareCenter  	| can administer    		 	| VaccineType  |
 | Nurse  	| sends SNS user to    		 	| WaitingRoom  |
+|   	| consults SNSUser in    		 	| WaitingRoom  |
 |   	| issues and delivers    		 	| VaccinationCertificate  |
-|   	| sends user to    		 	| RecoveryRoom  |
 | Receptionist  	| registers arrival of    		 	| SNSUser  |
 |   	| confirms    		 	| VaccineSchedule  |
 |   	| sends SNS user to    		 	| WaitingRoom  |
-| ScheduleVerification  	| confirms    		 	| VaccineSchedule  |
-|   	| emits    		 	| Notification  |
 | SNSUser  	| requests    		 	| VaccinationCertificate  |
 | VaccinationCenter  	| applies    		 	| Vaccine  |
+|   	| has    		 	| VaccineType  |
 |   	| reports    		 	| Report  |
+|   	| fulfilling    		 	| VaccineSchedule  |
 | Vaccine  	| is    		 	| VaccineType  |
+|   	| administrated on    		 	| SNSUser  |
+|   	| has		 	| Dosage  |
 | VaccineAdministration  	| of    		 	| Vaccine  |
+|   	| has    		 	| WaitingRoom  |
+|   	| sends user to    		 	| RecoveryRoom  |
 |   	| administrated on    		 	| SNSUser  |
 |   	| has    		 	| Dose  |
 |   	| executed by    		 	| Nurse  |
 | VaccineSchedule  	| made for    		 	| SNSUser  |
+|   	| has    		 	| VaccineAdministration  |
+|   	| administers    		 	| VaccineType  |
 
 
 
