@@ -83,7 +83,6 @@ public class SNSUser {
         return name;
     }
 
-
     public String getHomeAddress() {
         return homeAddress;
     }
