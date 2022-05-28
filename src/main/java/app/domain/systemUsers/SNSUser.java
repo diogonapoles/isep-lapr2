@@ -3,55 +3,63 @@ package app.domain.systemUsers;
 import app.domain.store.SNSUserStore;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Date;
 import java.util.List;
 
 public class SNSUser {
 
-    static String name;
-    String gender;
-    static String birthDate;
-    static String homeAddress;
-    static String phoneNumber;
-    static String emailAddress;
-    String snsUserNumber;
-    static String citizenCardNumber;
-    String vaccineScheduleDate;
+    private String name;
+    private String gender;
+    private Date birthDate;
+    private String homeAddress;
+    private String phoneNumber;
+    private String emailAddress;
+    private String snsUserNumber;
+    private String citizenCardNumber;
+    private String vaccineScheduleDate;
 
 
-    public SNSUser(String name, String gender, String birthDate, String homeAddress, String phoneNumber, String emailAddress, String snsUserNumber, String citizenCardNumber) {
+    public SNSUser(String name, String gender, Date birthDate, String homeAddress, String phoneNumber, String emailAddress, String snsUserNumber, String citizenCardNumber) {
         try {
             if ((name == null) || (name.isEmpty())
                     || (gender == null) || (gender.isEmpty())
-                    || (birthDate == null) || (birthDate.isEmpty())
+                    || (birthDate == null)
                     || (homeAddress == null) || (homeAddress.isEmpty())
                     || (phoneNumber == null) || (phoneNumber.isEmpty())
                     || (emailAddress == null) || (emailAddress.isEmpty())
                     || (snsUserNumber == null) || (snsUserNumber.isEmpty())
-                    || (citizenCardNumber == null) || (citizenCardNumber.isEmpty())
-                    || (phoneNumber.length() != 9) || !StringUtils.isNumeric(phoneNumber)
-                    || (citizenCardNumber.length() != 8) || !StringUtils.isNumeric(citizenCardNumber)) {
-                throw new IllegalArgumentException("All attributes are mandatory!" +
-                        " Phone Number and Citizen Card Number must have 9 and 8 numbers respectively!");
-            } else {
-                this.name = name;
-                this.gender = gender;
-                this.birthDate = birthDate;
-                this.homeAddress = homeAddress;
-                this.phoneNumber = phoneNumber;
-                this.emailAddress = emailAddress;
-                this.snsUserNumber = snsUserNumber;
-                this.citizenCardNumber = citizenCardNumber;
-            }
-        } catch (Exception e) {
+                    || (citizenCardNumber == null) || (citizenCardNumber.isEmpty()))
+                throw new IllegalArgumentException("None of the arguments can be null or empty.");
+
+            if ((phoneNumber.length() != 9) || !StringUtils.isNumeric(phoneNumber))
+                throw new IllegalArgumentException("Phone number must be in PT format.");
+
+            if ((citizenCardNumber.length() != 8) || !StringUtils.isNumeric(citizenCardNumber))
+                throw new IllegalArgumentException("Citizen card must have 8 digits.");
+
+            if ((snsUserNumber.length() != 9) || !StringUtils.isNumeric(snsUserNumber))
+                throw new IllegalArgumentException("SNS User number must have 9 digits.");
+
+            if (!emailAddress.contains("@"))
+                throw new IllegalArgumentException("Not a valid e-mail address.");
+
+            this.name = name;
+            this.gender = gender;
+            this.birthDate = birthDate;
+            this.homeAddress = homeAddress;
+            this.phoneNumber = phoneNumber;
+            this.emailAddress = emailAddress;
+            this.snsUserNumber = snsUserNumber;
+            this.citizenCardNumber = citizenCardNumber;
+        }catch (IllegalArgumentException e){
             System.out.println(e);
         }
     }
 
-    public SNSUser(String name, String homeAddress, String phoneNumber, String birthDate, String emailAddress, String snsUserNumber, String citizenCardNumber) {
+    public SNSUser(String name, String homeAddress, String phoneNumber, Date birthDate, String emailAddress, String snsUserNumber, String citizenCardNumber) {
 
-        try {
             if ((snsUserNumber == null) || snsUserNumber.length() != 9 || !StringUtils.isNumeric(snsUserNumber)) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("Not a valid SNS Number");
             } else {
                 this.name = name;
                 this.phoneNumber = phoneNumber;
@@ -60,11 +68,6 @@ public class SNSUser {
                 this.snsUserNumber = snsUserNumber;
 
             }
-        } catch (IllegalArgumentException e) {
-            System.out.println("Not a valid SNS Number");
-        }
-
-
     }
 
 
@@ -76,15 +79,12 @@ public class SNSUser {
         this.gender = gender;
     }
 
-    public static String getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        SNSUser.name = name;
-    }
 
-    public static String getHomeAddress() {
+    public String getHomeAddress() {
         return homeAddress;
     }
 
@@ -92,28 +92,16 @@ public class SNSUser {
         homeAddress = address;
     }
 
-    public static String getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        SNSUser.phoneNumber = phoneNumber;
-    }
-
-    public static String getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
-        SNSUser.birthDate = birthDate;
-    }
-
-    public static String getEmailAddress() {
+    public String getEmailAddress() {
         return emailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress) {
-        SNSUser.emailAddress = emailAddress;
     }
 
     public String getSnsUserNumber() {
@@ -124,12 +112,8 @@ public class SNSUser {
         this.snsUserNumber = snsUserNumber;
     }
 
-    public static String getCitizenCardNumber() {
+    public String getCitizenCardNumber() {
         return citizenCardNumber;
-    }
-
-    public void setCitizenCardNumber(String citizenCardNumber) {
-        SNSUser.citizenCardNumber = citizenCardNumber;
     }
 
     public String getVaccineScheduleDate() {

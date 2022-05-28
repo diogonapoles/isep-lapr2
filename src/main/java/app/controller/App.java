@@ -9,6 +9,7 @@ import pt.isep.lei.esoft.auth.UserSession;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -28,7 +29,11 @@ public class App {
         Properties props = getProperties();
         this.company = new Company(props.getProperty(Constants.PARAMS_COMPANY_DESIGNATION));
         this.authFacade = this.company.getAuthFacade();
-        bootstrap();
+        try {
+            bootstrap();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -87,7 +92,7 @@ public class App {
     }
 
 
-    private void bootstrap() {
+    private void bootstrap() throws ParseException {
         this.authFacade.addUserRole(Constants.ROLE_ADMIN, Constants.ROLE_ADMIN);
         this.authFacade.addUserRole(Constants.ROLE_SNS_USER, Constants.ROLE_SNS_USER);
         this.authFacade.addUserRole(Constants.ROLE_RECEPTIONIST, Constants.ROLE_RECEPTIONIST);
@@ -142,7 +147,7 @@ public class App {
         this.company.getScheduleVaccineStore().registerScheduleVaccine(snsU10);
     }
 
-    private void createSnsUser() {
+    private void createSnsUser() throws ParseException {
         SNSUser snsU1 = this.company.getSNSUserStore().newSNSUser("maria", "feminine", "09/03/1998", "street 21", "912245654", "maria12@gmail.com", "123459876", "34566543");
         this.company.getSNSUserStore().registerSNSUser(snsU1);
         SNSUser snsU2 = this.company.getSNSUserStore().newSNSUser("tomas", "masculine", "07/10/1999", "avenue 45", "915654723", "tomas23@gmail.com", "123444333", "76342123");

@@ -1,12 +1,15 @@
 package app.domain.model;
 
 import app.domain.systemUsers.SNSUser;
+import app.ui.console.utils.Utils;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * The type Csv reader.
@@ -97,8 +100,8 @@ public class CSVReader {
             }
 
             while (line != null) {
-                String[] SNSUser = line.split(separator);
-                SNSUser tempUser = new SNSUser(SNSUser[0], SNSUser[1], SNSUser[2], SNSUser[3], SNSUser[4], SNSUser[5], SNSUser[6], SNSUser[7]);
+                String[] user = line.split(separator);
+                SNSUser tempUser = new SNSUser(user[0], user[1], stringToDate(user[2]), user[3], user[4], user[5], user[6], user[7]);
                 if(tempUser.getName() != null)
                     tempSave.add(tempUser);
                 line = br.readLine();
@@ -124,7 +127,7 @@ public class CSVReader {
                 separator = SEPARATOR_A;
                 // Validating if header is in the expected format
                 try {
-                    if (line.equals(getCompleteHeader()))
+                    if (!line.equals(getCompleteHeader()))
                         throw new IllegalArgumentException("Invalid header. Should be: " + getCompleteHeader());
                 } catch (Exception e) {
                     System.out.println(e);
@@ -165,5 +168,24 @@ public class CSVReader {
         }
         expectedHeader = expectedHeader.substring(0, expectedHeader.length()-1);
         return expectedHeader;
+    }
+
+    private static Date stringToDate(String birthDate)
+    {
+            try {
+                if (!birthDate.matches("\\d{2}/\\d{2}/\\d{4}")){
+                    System.out.println("Date format is incorrect");
+                    return null;
+                }
+
+                SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+
+                Date date = df.parse(birthDate);
+
+                return date;
+            } catch (ParseException ex){
+                System.out.println("Couldn't read birthdate");
+                return null;
+            }
     }
 }

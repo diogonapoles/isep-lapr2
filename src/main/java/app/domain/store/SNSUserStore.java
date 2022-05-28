@@ -4,7 +4,10 @@ import app.domain.shared.Constants;
 import app.domain.systemUsers.SNSUser;
 import pt.isep.lei.esoft.auth.AuthFacade;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class SNSUserStore {
@@ -63,9 +66,10 @@ public class SNSUserStore {
     }
 
 
-    public SNSUser newSNSUser(String name, String gender, String birthDate, String homeAddress, String phoneNumber, String emailAddress, String snsUserNumber, String citizenCardNumber) {
+    public SNSUser newSNSUser(String name, String gender, String birthDate, String homeAddress, String phoneNumber, String emailAddress, String snsUserNumber, String citizenCardNumber) throws ParseException {
         this.authFacade.addUserWithRole(name, emailAddress, "123456", Constants.ROLE_SNS_USER);
-        return new SNSUser(name, gender, birthDate, homeAddress, phoneNumber, emailAddress, snsUserNumber, citizenCardNumber);
+        Date birth = new SimpleDateFormat("dd/MM/yyyy").parse(birthDate);
+        return new SNSUser(name, gender, birth, homeAddress, phoneNumber, emailAddress, snsUserNumber, citizenCardNumber);
     }
 
     public List<SNSUser> getSnsUserList(){
