@@ -108,7 +108,6 @@ public class App {
         createEmployee();
         createSnsUser();
         createVaccineType();
-        createVaccine();
 
         VaccinationCenter vc1 = this.company.getVaccinationCenterStore().newVaccinationCenter(1, "Healthcare", "917876321", "493782",
                 "TestRua1", "teste1@gmail.com", "healthcare.com",
@@ -119,12 +118,10 @@ public class App {
                 "8", "22", "5", "40");
         this.company.getVaccinationCenterStore().registerVaccinationCenter(vc2);
 
-        VaccineType vt1 = this.company.getVaccineTypeStore().newVaccineType(0, "12341", "COVID-19");
-        Date dateTime = new Date(2022, 11, 21, 9, 32);
+        VaccineType vt1 = this.company.getVaccineTypeStore().newVaccineType(0,"12341","COVID-19");
+        Date dateTime = new Date(2022, 11, 21, 9,32);
 
-        Vaccine v1 = this.company.getVaccineStore().newVaccine(company.getVaccineTypeStore().getCurrentOutbreak(), "COVID-19 (Ongoing Outbreak)", "Pfizer", "18", "2", 15, 1);
-
-        ScheduleVaccine snsU10 = this.company.getScheduleVaccineStore().newScheduleVaccine(new ScheduleVaccineDTO("123444333", vc1, vt1, dateTime));
+        ScheduleVaccine snsU10 = this.company.getScheduleVaccineStore().newScheduleVaccine(new ScheduleVaccineDTO("123444333", vc1,vt1,dateTime));
         this.company.getScheduleVaccineStore().registerScheduleVaccine(snsU10);
 
 
@@ -135,66 +132,61 @@ public class App {
         this.company.getVaccineTypeStore().registerVaccineType(vt1);
     }
 
-    private void createSnsUserWithAppointment() {
-        VaccinationCenter vc1 = this.company.getVaccinationCenterStore().newVaccinationCenter(1, "Healthcare", "917876321", "493782",
-                "TestRua1", "teste1@gmail.com", "healthcare.com",
-                "10:00", "20:00", "3", "20");
-        this.company.getVaccinationCenterStore().registerVaccinationCenter(vc1);
-        VaccineType vt1 = this.company.getVaccineTypeStore().newVaccineType(0, "12341", "COVID-19");
-        Date dateTime = new Date(2022, 10, 12, 14, 7);
 
 
-        private void createSnsUser () throws ParseException {
-            SNSUser snsU1 = this.company.getSNSUserStore().newSNSUser("maria", "feminine", "09/03/1998", "street 21", "912245654", "maria12@gmail.com", "123459876", "34566543");
-            this.company.getSNSUserStore().registerSNSUser(snsU1);
-            SNSUser snsU2 = this.company.getSNSUserStore().newSNSUser("tomas", "masculine", "07/10/1999", "avenue 45", "915654723", "tomas23@gmail.com", "123444333", "76342123");
-            this.company.getSNSUserStore().registerSNSUser(snsU2);
-            SNSUser snsU3 = this.company.getSNSUserStore().newSNSUser("snsUser", "masculine", "09/10/2016", "avenue 45", "917774723", "snsuser@lei.sem2.pt", "977642231", "11177744");
-            this.company.getSNSUserStore().registerSNSUser(snsU3);
+    private void createSnsUser() throws ParseException {
+        SNSUser snsU1 = this.company.getSNSUserStore().newSNSUser("maria", "feminine", "09/03/1998", "street 21", "912245654", "maria12@gmail.com", "123459876", "34566543");
+        this.company.getSNSUserStore().registerSNSUser(snsU1);
+        SNSUser snsU2 = this.company.getSNSUserStore().newSNSUser("tomas", "masculine", "07/10/1999", "avenue 45", "915654723", "tomas23@gmail.com", "123444333", "76342123");
+        this.company.getSNSUserStore().registerSNSUser(snsU2);
+        SNSUser snsU3 = this.company.getSNSUserStore().newSNSUser("snsUser", "masculine", "09/10/2016", "avenue 45", "917774723", "snsuser@lei.sem2.pt", "977642231", "11177744");
+        this.company.getSNSUserStore().registerSNSUser(snsU3);
 
 
-        }
+    }
 
 
-        private void createEmployee () {
-
-            Employee employee1 = getCompany().getEmployeeStore().newEmployee("maria", "123456789", "avenue 1",
-                    "tgr@gmail.com", "12341234", 0);
-            getCompany().getEmployeeStore().registerEmployee(employee1);
-
-            Employee employee2 = getCompany().getEmployeeStore().newEmployee("tiago", "912234572", "Street 2",
-                    "tiago11@gmail.com", "12347623", 1);
-            getCompany().getEmployeeStore().registerEmployee(employee2);
-
-            Employee employee3 = getCompany().getEmployeeStore().newEmployee("fernando", "913434572", "avenue 3",
-                    "nando23@gmail.com", "12349876", 2);
-            getCompany().getEmployeeStore().registerEmployee(employee3);
-
-            Employee employee4 = getCompany().getEmployeeStore().newEmployee("Receptionist", "912333121", "street 21",
-                    "receptionist@lei.sem2.pt", "12344321", 0);
-            getCompany().getEmployeeStore().registerEmployee(employee4);
-
-            Employee employee5 = getCompany().getEmployeeStore().newEmployee("Nurse", "918564321", "avenue 21",
-                    "nurse@lei.sem2.pt", "10293847", 2);
-            getCompany().getEmployeeStore().registerEmployee(employee5);
-
-        }
 
 
-        private static App singleton = null;
 
-        /**
-         * Gets instance.
-         *
-         * @return the instance
-         */
-        public static App getInstance() {
-            if (singleton == null) {
-                synchronized (App.class) {
-                    singleton = new App();
-                }
+    private void createEmployee() {
+
+        Employee employee1 = getCompany().getEmployeeStore().newEmployee("maria", "123456789", "avenue 1",
+                "tgr@gmail.com", "12341234", 0);
+        getCompany().getEmployeeStore().registerEmployee(employee1);
+
+        Employee employee2 = getCompany().getEmployeeStore().newEmployee("tiago", "912234572", "Street 2",
+                "tiago11@gmail.com", "12347623", 1);
+        getCompany().getEmployeeStore().registerEmployee(employee2);
+
+        Employee employee3 = getCompany().getEmployeeStore().newEmployee("fernando", "913434572", "avenue 3",
+                "nando23@gmail.com", "12349876", 2);
+        getCompany().getEmployeeStore().registerEmployee(employee3);
+
+        Employee employee4 = getCompany().getEmployeeStore().newEmployee("Receptionist","912333121","street 21",
+                "receptionist@lei.sem2.pt", "12344321", 0);
+        getCompany().getEmployeeStore().registerEmployee(employee4);
+
+        Employee employee5 = getCompany().getEmployeeStore().newEmployee("Nurse","918564321","avenue 21",
+                "nurse@lei.sem2.pt", "10293847", 2);
+        getCompany().getEmployeeStore().registerEmployee(employee5);
+
+    }
+
+
+    private static App singleton = null;
+
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
+    public static App getInstance() {
+        if (singleton == null) {
+            synchronized (App.class) {
+                singleton = new App();
             }
-            return singleton;
         }
+        return singleton;
     }
 }
