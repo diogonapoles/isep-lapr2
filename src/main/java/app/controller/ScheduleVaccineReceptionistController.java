@@ -1,21 +1,19 @@
 package app.controller;
 
-import app.domain.Slot;
 import app.domain.model.*;
-import app.domain.store.SNSUserStore;
-import app.domain.store.ScheduleVaccineStore;
-import app.domain.store.VaccinationCenterStore;
-import app.domain.store.VaccineTypeStore;
+import app.domain.store.*;
 import app.domain.systemUsers.SNSUser;
 import pt.isep.lei.esoft.auth.AuthFacade;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class ScheduleVaccineController {
+public class ScheduleVaccineReceptionistController {
 
     private App oApp;
     private Company oCompany;
@@ -24,23 +22,25 @@ public class ScheduleVaccineController {
     private final ScheduleVaccineStore scheduleVaccineStore;
     private final VaccinationCenterStore vaccinationCenterStore;
     private final VaccineTypeStore vaccineTypeStore;
+    private final VaccineStore vaccineStore;
     private final SNSUserStore snsUserStore;
 
-    public ScheduleVaccineController() {
+    public ScheduleVaccineReceptionistController() {
         this.oApp = App.getInstance();
         this.oCompany = oApp.getCompany();
         this.authFacade = this.oCompany.getAuthFacade();
         this.scheduleVaccineStore = oCompany.getScheduleVaccineStore();
         this.vaccinationCenterStore = oCompany.getVaccinationCenterStore();
         this.vaccineTypeStore = oCompany.getVaccineTypeStore();
+        this.vaccineStore = oCompany.getVaccineStore();
         this.snsUserStore = oCompany.getSNSUserStore();
     }
 
-    public boolean newScheduleVaccine(ScheduleVaccineDTO scheduleVaccineDTO) {
+    public boolean newScheduleVaccine(ScheduleVaccineDTO scheduleVaccineDTO, Vaccine vaccine) {
         String snsUserNumber = scheduleVaccineDTO.getSnsUserNumber();
         SNSUser user = oCompany.getSNSUserStore().getSNSUserByNumber(snsUserNumber);
 
-        this.oScheduleVaccine = oCompany.getScheduleVaccineStore().newScheduleVaccine(scheduleVaccineDTO);
+        this.oScheduleVaccine = oCompany.getScheduleVaccineStore().newScheduleVaccineReceptionist(scheduleVaccineDTO, user, vaccine);
         if (this.oScheduleVaccine != null) {
             return true;
         } else {
@@ -71,29 +71,33 @@ public class ScheduleVaccineController {
         return this.vaccineTypeStore.getListVaccineType();
     }
 
-    public boolean registerScheduleVaccine() {
-        return this.oCompany.getScheduleVaccineStore().registerScheduleVaccine(this.oScheduleVaccine);
+    public List<Vaccine> getVaccines() {
+        return this.vaccineStore.getListVaccines();
+    }
+
+    public boolean registerScheduleVaccine(ScheduleVaccineDTO scheduleVaccineDTO, Vaccine vaccine) {
+        String snsUserNumber = scheduleVaccineDTO.getSnsUserNumber();
+        SNSUser user = oCompany.getSNSUserStore().getSNSUserByNumber(snsUserNumber);
+
+        return this.oCompany.getScheduleVaccineStore().registerScheduleVaccineReceptionist(this.oScheduleVaccine, user, vaccine);
     }
 
     public ScheduleVaccine getScheduleVaccine() {
         return oScheduleVaccine;
     }
 
-   /* public boolean validateWithinWorkingHours(VaccinationCenter vaccinationCenter, Date date) throws ParseException {
-        String oh = vaccinationCenter.getOpeningHours();
-        Date o = new SimpleDateFormat("HH:mm").parse(oh);
-        String ch = vaccinationCenter.getClosingHours();
-        Date c = new SimpleDateFormat("HH:mm").parse(ch);
-        if (o.toInstant().isBefore(date)) {
-            if (c.isBefore(date)) {
-                return true;
-            }
-        }
-        return false;
+    public VaccinationCenter getWorking() {
+        VaccinationCenter vc = oCompany.getEmployeeStore().getWorking(oApp.getCurrentUserSession().getUserId().getEmail());
+        return vc;
     }
 
-    */
+    public boolean validateDate(Date d) {
+        LocalDate date = d.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate today = LocalDate.now(ZoneId.systemDefault());
 
+        if (date.isBefore(today)) {
+            return false;
+        }
+        return true;
+    }
 }
-
-

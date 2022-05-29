@@ -96,6 +96,18 @@ class SNSUserTest {
         assertEquals("123453678", user.getSnsUserNumber());
     }
 
+    @Test
+    void setSnsUserNumber() throws ParseException   {
+        Date dtest = new SimpleDateFormat("dd/MM/yyyy").parse("02/05/2003");
+        SNSUser user = new SNSUser("Test","male",dtest ,"street test", "923456789","user@test.com","123453678","12345342");
+
+        user.setSnsUserNumber("123456789");
+
+        String result = user.getSnsUserNumber();
+
+        assertEquals("123456789", result);
+    }
+
 
     @Test
     void getCitizenCardNumber() throws ParseException   {

@@ -1,6 +1,7 @@
 package app.controller;
 
 import app.domain.model.VaccinationCenter;
+import app.domain.model.Vaccine;
 import app.domain.model.VaccineType;
 
 import java.util.Date;
@@ -17,6 +18,7 @@ public class ScheduleVaccineDTO {
         this.vaccineType= vaccineType;
         this.dateTime=dateTime;
     }
+
     
     public String getSnsUserNumber(){
         return snsUserNumber;

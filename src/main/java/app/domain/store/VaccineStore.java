@@ -1,6 +1,7 @@
 package app.domain.store;
 
 import app.domain.model.Vaccine;
+import app.domain.model.VaccineType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,11 +56,13 @@ public class VaccineStore {
      * @param timeSinceLastDose the time since last dose
      * @return the vaccine
      */
-    public Vaccine newVaccine(String name, String brand, String ageGroup, String doseNumber, double dosage, int timeSinceLastDose){
-        return new Vaccine(name, brand, ageGroup, doseNumber, dosage, timeSinceLastDose);
+    public Vaccine newVaccine(VaccineType type, String name, String brand, String ageGroup, String doseNumber, double dosage, int timeSinceLastDose){
+        return new Vaccine(type, name, brand, ageGroup, doseNumber, dosage, timeSinceLastDose);
     }
 
-
+    public List<Vaccine> getListVaccines(){
+        return listVaccine;
+    }
 
 }
 

@@ -3,6 +3,9 @@ package app.domain.systemUsers;
 import app.domain.store.SNSUserStore;
 import org.apache.commons.lang3.StringUtils;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -115,15 +118,6 @@ public class SNSUser {
         return citizenCardNumber;
     }
 
-    public String getVaccineScheduleDate() {
-        return vaccineScheduleDate;
-    }
-
-    public void setVaccineScheduleDate(String vaccineScheduleDate) {
-        this.vaccineScheduleDate = vaccineScheduleDate;
-    }
-
-
 
 
     @Override
@@ -148,4 +142,16 @@ public class SNSUser {
                 '}';
     }
 
+    public int getAge(){
+        Calendar c = Calendar.getInstance();
+        c.setTime(birthDate);
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH) + 1;
+        int date = c.get(Calendar.DATE);
+        LocalDate l1 = LocalDate.of(year, month, date);
+        LocalDate today = LocalDate.now();
+        Period period = Period.between(l1, today);
+
+        return period.getYears();
+    }
 }

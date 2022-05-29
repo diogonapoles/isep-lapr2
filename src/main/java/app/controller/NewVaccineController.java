@@ -36,8 +36,8 @@ public class NewVaccineController {
      * @param timeSinceLastDose the time since last dose
      * @return the boolean
      */
-    public boolean newVaccine(String name, String brand, String ageGroup, String doseNumber, double dosage, int timeSinceLastDose ){
-        this.oNewVaccine = oCompany.getVaccineStore().newVaccine(name, brand, ageGroup, doseNumber, dosage, timeSinceLastDose);
+    public boolean newVaccine(VaccineType type, String name, String brand, String ageGroup, String doseNumber, double dosage, int timeSinceLastDose ){
+        this.oNewVaccine = oCompany.getVaccineStore().newVaccine(type, name, brand, ageGroup, doseNumber, dosage, timeSinceLastDose);
         if (this.oNewVaccine != null)
             return true;
         else

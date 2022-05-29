@@ -23,9 +23,6 @@ public class ScheduleVaccine {
         setVaccineType(vaccineType);
         setVaccinationCenter(vaccinationCenter);
         setDateTime(dateTime);
-
-
-
     }
 
     public void setVaccineType(VaccineType vaccineType) {

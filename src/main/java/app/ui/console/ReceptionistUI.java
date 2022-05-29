@@ -17,6 +17,7 @@ public class ReceptionistUI implements Runnable{
         new ChoosingVaccinationCenterUI().run();
 
         options.add(new MenuItem("Register User Arrival ", new UserArrivalUI()));
+        options.add(new MenuItem("Schedule Vaccine ", new ScheduleVaccineReceptionistUI()));
 
 
 

@@ -3,7 +3,9 @@ package app.domain.store;
 import app.controller.ScheduleVaccineDTO;
 import app.domain.model.ScheduleVaccine;
 import app.domain.model.VaccinationCenter;
+import app.domain.model.Vaccine;
 import app.domain.model.VaccineType;
+import app.domain.systemUsers.SNSUser;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -46,6 +48,25 @@ public class ScheduleVaccineStore {
 
             if (existsScheduleVaccine(snsUserNumber, vaccinationCenter, dateTime))
                 throw new IllegalArgumentException("A vaccine with those data already exists.");
+
+        } else {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validateScheduleVaccineReceptionist(ScheduleVaccine oScheduleVaccine, SNSUser user, Vaccine vaccine) {
+        if (oScheduleVaccine != null) {
+            String snsUserNumber = user.getSnsUserNumber();
+            VaccinationCenter vaccinationCenter = oScheduleVaccine.getVaccinationCenter();
+            Date dateTime = oScheduleVaccine.getDateTime();
+
+            if (existsScheduleVaccine(snsUserNumber, vaccinationCenter, dateTime))
+                throw new IllegalArgumentException("A vaccine with those data already exists.");
+
+            if (!verifyAgeAndTimeSinceLastDose(oScheduleVaccine, user, vaccine))
+                throw new IllegalArgumentException("User does not belong to this vaccine age group.");
+
         } else {
             return false;
         }
@@ -75,11 +96,32 @@ public class ScheduleVaccineStore {
             return scheduleUserVaccine;
         else
             return null;
+    }
 
+    public ScheduleVaccine newScheduleVaccineReceptionist(ScheduleVaccineDTO scheduleVaccineDTO, SNSUser user, Vaccine vaccine) {
+        String snsUserNumber = scheduleVaccineDTO.getSnsUserNumber();
+        VaccinationCenter vaccinationCenter = scheduleVaccineDTO.getVaccinationCenter();
+        VaccineType vaccineType = scheduleVaccineDTO.getVaccineType();
+        Date dateTime = scheduleVaccineDTO.getDateTime();
+
+        ScheduleVaccine scheduleUserVaccine = new ScheduleVaccine(snsUserNumber, vaccinationCenter, vaccineType, dateTime);
+
+        if (validateScheduleVaccineReceptionist(scheduleUserVaccine, user, vaccine))
+            return scheduleUserVaccine;
+        else
+            return null;
     }
 
     public boolean registerScheduleVaccine(ScheduleVaccine oScheduleVaccine) {
         if (validateScheduleVaccine(oScheduleVaccine)) {
+            addScheduleVaccine(oScheduleVaccine);
+            return true;
+        } else
+            return false;
+    }
+
+    public boolean registerScheduleVaccineReceptionist(ScheduleVaccine oScheduleVaccine, SNSUser user, Vaccine vaccine) {
+        if (validateScheduleVaccineReceptionist(oScheduleVaccine,  user,  vaccine)) {
             addScheduleVaccine(oScheduleVaccine);
             return true;
         } else
@@ -91,6 +133,14 @@ public class ScheduleVaccineStore {
     }
 
 
+    public boolean verifyAgeAndTimeSinceLastDose(ScheduleVaccine sv, SNSUser user, Vaccine vaccine) {
+        int userAge = user.getAge();
+
+        if (Integer.parseInt(vaccine.getAgeGroup()) == userAge){
+            return true;
+        }
+        return false;
+    }
 }
 
 

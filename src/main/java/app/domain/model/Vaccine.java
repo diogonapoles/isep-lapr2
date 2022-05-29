@@ -15,7 +15,11 @@ public class Vaccine {
     private String doseNumber;
     private double dosage;
     private  int timeSinceLastDose;
+    private VaccineType type;
 
+    public VaccineType getType() {
+        return type;
+    }
 
     /**
      * Gets name.
@@ -138,7 +142,7 @@ public class Vaccine {
      * @param dosage            the dosage
      * @param timeSinceLastDose the time since last dose
      */
-    public Vaccine(String name, String brand, String ageGroup, String doseNumber, double dosage, int timeSinceLastDose){
+    public Vaccine(VaccineType type, String name, String brand, String ageGroup, String doseNumber, double dosage, int timeSinceLastDose){
         if ((name == null) || (name.isEmpty())
                 || (brand == null) || (brand.isEmpty())
                 || (ageGroup == null) || (ageGroup.isEmpty())
@@ -148,6 +152,7 @@ public class Vaccine {
             throw new IllegalArgumentException("All attributes are mandatory!" +
                     " Write number of days since last dose on the last field.");
         } else {
+            this.type = type;
             this.name = name;
             this.brand = brand;
             this.ageGroup = ageGroup;
