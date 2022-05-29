@@ -17,11 +17,6 @@ class ScheduleVaccineReceptionistControllerTest {
 
     @Test
     void newScheduleVaccine() {
-        ScheduleVaccineReceptionistControllerTest controller = new ScheduleVaccineReceptionistControllerTest();
-        Date dateTime = new Date(2022,10,12,14,7);
-        ScheduleVaccineDTO dto = new ScheduleVaccineDTO("123444333", hc, vt1, dateTime);
-
-        controller.newScheduleVaccine(dto, v1);
     }
 
     @Test
