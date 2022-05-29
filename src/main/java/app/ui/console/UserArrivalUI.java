@@ -1,11 +1,7 @@
 package app.ui.console;
 
-import app.controller.App;
+
 import app.controller.UserArrivalController;
-import app.domain.model.ScheduleVaccine;
-import app.domain.model.VaccinationCenter;
-import app.domain.model.VaccineType;
-import app.domain.store.VaccineTypeStore;
 import app.ui.console.utils.Utils;
 
 

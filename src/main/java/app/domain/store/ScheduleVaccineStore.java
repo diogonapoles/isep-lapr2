@@ -12,17 +12,36 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * The type Schedule vaccine store.
+ */
 public class ScheduleVaccineStore {
 
     private final List<ScheduleVaccine> listScheduleVaccine = new ArrayList<>();
 
+    /**
+     * Instantiates a new Schedule vaccine store.
+     */
     public ScheduleVaccineStore() {
     }
 
+    /**
+     * Gets list schedule vaccine.
+     *
+     * @return the list schedule vaccine
+     */
     public List<ScheduleVaccine> getListScheduleVaccine() {
         return listScheduleVaccine;
     }
 
+    /**
+     * Gets schedule vaccine.
+     *
+     * @param snsUserNumber the sns user number
+     * @param dateTime      the date time
+     * @param vaccineType   the vaccine type
+     * @return the schedule vaccine
+     */
     public ScheduleVaccine getScheduleVaccine(String snsUserNumber, Date dateTime, VaccineType vaccineType) {
         ScheduleVaccine result = null, test;
         boolean flag = true;
@@ -40,6 +59,12 @@ public class ScheduleVaccineStore {
     }
 
 
+    /**
+     * Validate schedule vaccine boolean.
+     *
+     * @param oScheduleVaccine the o schedule vaccine
+     * @return the boolean
+     */
     public boolean validateScheduleVaccine(ScheduleVaccine oScheduleVaccine) {
         if (oScheduleVaccine != null) {
             String snsUserNumber = oScheduleVaccine.getSNSUserNumber();
@@ -55,6 +80,14 @@ public class ScheduleVaccineStore {
         return true;
     }
 
+    /**
+     * Validate schedule vaccine receptionist boolean.
+     *
+     * @param oScheduleVaccine the o schedule vaccine
+     * @param user             the user
+     * @param vaccine          the vaccine
+     * @return the boolean
+     */
     public boolean validateScheduleVaccineReceptionist(ScheduleVaccine oScheduleVaccine, SNSUser user, Vaccine vaccine) {
         if (oScheduleVaccine != null) {
             String snsUserNumber = user.getSnsUserNumber();
@@ -84,6 +117,12 @@ public class ScheduleVaccineStore {
         return false;
     }
 
+    /**
+     * New schedule vaccine schedule vaccine.
+     *
+     * @param scheduleVaccineDTO the schedule vaccine dto
+     * @return the schedule vaccine
+     */
     public ScheduleVaccine newScheduleVaccine(ScheduleVaccineDTO scheduleVaccineDTO) {
         String snsUserNumber = scheduleVaccineDTO.getSnsUserNumber();
         VaccinationCenter vaccinationCenter = scheduleVaccineDTO.getVaccinationCenter();
@@ -98,6 +137,14 @@ public class ScheduleVaccineStore {
             return null;
     }
 
+    /**
+     * New schedule vaccine receptionist schedule vaccine.
+     *
+     * @param scheduleVaccineDTO the schedule vaccine dto
+     * @param user               the user
+     * @param vaccine            the vaccine
+     * @return the schedule vaccine
+     */
     public ScheduleVaccine newScheduleVaccineReceptionist(ScheduleVaccineDTO scheduleVaccineDTO, SNSUser user, Vaccine vaccine) {
         String snsUserNumber = scheduleVaccineDTO.getSnsUserNumber();
         VaccinationCenter vaccinationCenter = scheduleVaccineDTO.getVaccinationCenter();
@@ -112,6 +159,12 @@ public class ScheduleVaccineStore {
             return null;
     }
 
+    /**
+     * Register schedule vaccine boolean.
+     *
+     * @param oScheduleVaccine the o schedule vaccine
+     * @return the boolean
+     */
     public boolean registerScheduleVaccine(ScheduleVaccine oScheduleVaccine) {
         if (validateScheduleVaccine(oScheduleVaccine)) {
             addScheduleVaccine(oScheduleVaccine);
@@ -120,6 +173,14 @@ public class ScheduleVaccineStore {
             return false;
     }
 
+    /**
+     * Register schedule vaccine receptionist boolean.
+     *
+     * @param oScheduleVaccine the o schedule vaccine
+     * @param user             the user
+     * @param vaccine          the vaccine
+     * @return the boolean
+     */
     public boolean registerScheduleVaccineReceptionist(ScheduleVaccine oScheduleVaccine, SNSUser user, Vaccine vaccine) {
         if (validateScheduleVaccineReceptionist(oScheduleVaccine,  user,  vaccine)) {
             addScheduleVaccine(oScheduleVaccine);
@@ -133,6 +194,14 @@ public class ScheduleVaccineStore {
     }
 
 
+    /**
+     * Verify age and time since last dose boolean.
+     *
+     * @param sv      the sv
+     * @param user    the user
+     * @param vaccine the vaccine
+     * @return the boolean
+     */
     public boolean verifyAgeAndTimeSinceLastDose(ScheduleVaccine sv, SNSUser user, Vaccine vaccine) {
         int userAge = user.getAge();
 

@@ -8,6 +8,9 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class Vaccine {
 
+    /**
+     * The Vaccine type list.
+     */
     VaccineTypeStore vaccineTypeList;
     private String name;
     private String brand;
@@ -17,6 +20,11 @@ public class Vaccine {
     private  int timeSinceLastDose;
     private VaccineType type;
 
+    /**
+     * Gets type.
+     *
+     * @return the type
+     */
     public VaccineType getType() {
         return type;
     }
@@ -130,11 +138,10 @@ public class Vaccine {
     }
 
 
-
-
     /**
      * Instantiates a new Vaccine.
      *
+     * @param type              the type
      * @param name              the name
      * @param brand             the brand
      * @param ageGroup          the age group

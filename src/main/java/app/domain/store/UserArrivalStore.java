@@ -10,17 +10,33 @@ import app.domain.systemUsers.SNSUser;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type User arrival store.
+ */
 public class UserArrivalStore {
 
     private final List<UserArrival> listUserToWaitingRoom = new ArrayList<>();
 
     private final ScheduleVaccineStore scheduleVaccineStore;
 
+    /**
+     * Instantiates a new User arrival store.
+     *
+     * @param scheduleVaccineStore the schedule vaccine store
+     */
     public UserArrivalStore(ScheduleVaccineStore scheduleVaccineStore) {
         this.scheduleVaccineStore = scheduleVaccineStore;
 
     }
 
+    /**
+     * New user arrival user arrival.
+     *
+     * @param snsUser       the sns user
+     * @param snsUserNumber the sns user number
+     * @param vc            the vc
+     * @return the user arrival
+     */
     public UserArrival newUserArrival(SNSUser snsUser, String snsUserNumber, VaccinationCenter vc) {
 
         if (validateUserSchedule(snsUser))
@@ -48,6 +64,12 @@ public class UserArrivalStore {
     }
 
 
+    /**
+     * Register user arrival boolean.
+     *
+     * @param userArrival the user arrival
+     * @return the boolean
+     */
     public boolean registerUserArrival(UserArrival userArrival) {
         return addUserToWaitingRoom(userArrival);
     }
@@ -57,6 +79,12 @@ public class UserArrivalStore {
     }
 
 
+    /**
+     * Gets list user to waiting room.
+     *
+     * @param vaccinationCenter the vaccination center
+     * @return the list user to waiting room
+     */
     public List<SNSUser> getListUserToWaitingRoom(VaccinationCenter vaccinationCenter) {
         List<SNSUser> list = new ArrayList<>();
         for(UserArrival userArrival : listUserToWaitingRoom){

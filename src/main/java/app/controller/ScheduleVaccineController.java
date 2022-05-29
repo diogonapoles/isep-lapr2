@@ -15,6 +15,9 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * The type Schedule vaccine controller.
+ */
 public class ScheduleVaccineController {
 
     private App oApp;
@@ -26,6 +29,9 @@ public class ScheduleVaccineController {
     private final VaccineTypeStore vaccineTypeStore;
     private final SNSUserStore snsUserStore;
 
+    /**
+     * Instantiates a new Schedule vaccine controller.
+     */
     public ScheduleVaccineController() {
         this.oApp = App.getInstance();
         this.oCompany = oApp.getCompany();
@@ -36,6 +42,12 @@ public class ScheduleVaccineController {
         this.snsUserStore = oCompany.getSNSUserStore();
     }
 
+    /**
+     * New schedule vaccine boolean.
+     *
+     * @param scheduleVaccineDTO the schedule vaccine dto
+     * @return the boolean
+     */
     public boolean newScheduleVaccine(ScheduleVaccineDTO scheduleVaccineDTO) {
         String snsUserNumber = scheduleVaccineDTO.getSnsUserNumber();
         SNSUser user = oCompany.getSNSUserStore().getSNSUserByNumber(snsUserNumber);
@@ -53,6 +65,11 @@ public class ScheduleVaccineController {
     //}
 
 
+    /**
+     * Gets schedule vaccine string.
+     *
+     * @return the schedule vaccine string
+     */
     public String getScheduleVaccineString() {
         return this.oScheduleVaccine.toString();
     }
@@ -63,18 +80,38 @@ public class ScheduleVaccineController {
     //public boolean newScheduleVaccine(){return this.oCompany.getScheduleVaccineStore().newScheduleVaccine(oScheduleVaccine);}
 
 
+    /**
+     * Gets vaccination center.
+     *
+     * @return the vaccination center
+     */
     public List<VaccinationCenter> getVaccinationCenter() {
         return this.vaccinationCenterStore.getVaccinationCenters();
     }
 
+    /**
+     * Gets vaccine types.
+     *
+     * @return the vaccine types
+     */
     public List<VaccineType> getVaccineTypes() {
         return this.vaccineTypeStore.getListVaccineType();
     }
 
+    /**
+     * Register schedule vaccine boolean.
+     *
+     * @return the boolean
+     */
     public boolean registerScheduleVaccine() {
         return this.oCompany.getScheduleVaccineStore().registerScheduleVaccine(this.oScheduleVaccine);
     }
 
+    /**
+     * Gets schedule vaccine.
+     *
+     * @return the schedule vaccine
+     */
     public ScheduleVaccine getScheduleVaccine() {
         return oScheduleVaccine;
     }

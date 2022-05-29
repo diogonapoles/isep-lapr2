@@ -26,12 +26,33 @@ public class CSVReader {
          * Atributes of the header.
          */
         HEADER0("name"),
+        /**
+         * Header 1 header columns.
+         */
         HEADER1("sex", "gender"),
+        /**
+         * The Header 2.
+         */
         HEADER2("birthdate", "birth date", "birth-date"),
+        /**
+         * The Header 3.
+         */
         HEADER3("address", "home-address", "home address", "homeaddress"),
+        /**
+         * The Header 4.
+         */
         HEADER4("phonenumber", "phone-number", "phone number"),
+        /**
+         * The Header 5.
+         */
         HEADER5("e-mail", "email", "e-mail address", "email address"),
+        /**
+         * The Header 6.
+         */
         HEADER6("snsusernumber", "sns user number", "sns-user-number"),
+        /**
+         * The Header 7.
+         */
         HEADER7("citizencardnumber", "citizen card number", "citizen-card-number");
         private String columnValue;
         private HashSet<String> similarValues;

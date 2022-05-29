@@ -133,6 +133,12 @@ public class EmployeeStore {
 
     }
 
+    /**
+     * Gets employee using email.
+     *
+     * @param email the email
+     * @return the employee using email
+     */
     public Employee getEmployeeUsingEmail(String email) {
         for (Employee employee : listEmployee)
             if (employee.getEmailAddress().equals(email))
@@ -141,6 +147,12 @@ public class EmployeeStore {
         return null;
     }
 
+    /**
+     * Gets working.
+     *
+     * @param email the email
+     * @return the working
+     */
     public VaccinationCenter getWorking(String email) {
         for (Employee employee : listEmployee)
             if (employee.getEmailAddress().equals(email))

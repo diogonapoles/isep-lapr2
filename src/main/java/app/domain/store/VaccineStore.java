@@ -48,6 +48,7 @@ public class VaccineStore {
     /**
      * New vaccine vaccine.
      *
+     * @param type              the type
      * @param name              the name
      * @param brand             the brand
      * @param ageGroup          the age group
@@ -60,6 +61,11 @@ public class VaccineStore {
         return new Vaccine(type, name, brand, ageGroup, doseNumber, dosage, timeSinceLastDose);
     }
 
+    /**
+     * Get list vaccines list.
+     *
+     * @return the list
+     */
     public List<Vaccine> getListVaccines(){
         return listVaccine;
     }
