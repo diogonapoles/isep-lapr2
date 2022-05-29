@@ -155,29 +155,29 @@ public class VaccinationCenterTest {
 
     @Test
     public void testToString() {
-        assertEquals("RegisterVaccinationCenter [" +
-                "name: " + "Healthcare" +
-                ", phoneNumber: " + "917876321" +
-                ", faxNumber: " + "493782" +
-                ", homeAddress: " + "TesteRua1" +
-                ", emailAddress: " + "teste1@gmail.com" +
-                ", websiteAddress: " + "healthcare.com" +
-                ", openingHours: " + "10" +
-                ", closingHours: " + "20" +
-                ", slotDuration: " + "3" +
-                ", maxNumVaccinesPerSlot: " + "20" +
-                "]", hc.toString());
-        assertEquals("RegisterVaccinationCenter [" +
-                "name: " + "Community" +
-                ", phoneNumber: " + "917312756" +
-                ", faxNumber: " + "654253" +
-                ", homeAddress: " + "TesteRua2" +
-                ", emailAddress: " + "teste2@gmail.com" +
-                ", websiteAddress: " + "community.com" +
-                ", openingHours: " + "8" +
-                ", closingHours: " + "22" +
-                ", slotDuration: " + "5" +
-                ", maxNumVaccinesPerSlot: " + "40" +
-                "]", cc.toString());
+        assertEquals("\n" +
+                "name: Healthcare\n" +
+                "phoneNumber: 917876321\n" +
+                "faxNumber: 493782\n" +
+                "homeAddress: TesteRua1\n" +
+                "emailAddress: teste1@gmail.com\n" +
+                "websiteAddress: healthcare.com\n" +
+                "openingHours: 10\n" +
+                "closingHours: 20\n" +
+                "slotDuration: 3\n" +
+                "maxNumVaccinesPerSlot: 20\n" +
+                "\n", hc.toString());
+        assertEquals("\n" +
+                "name: Community\n" +
+                "phoneNumber: 917312756\n" +
+                "faxNumber: 654253\n" +
+                "homeAddress: TesteRua2\n" +
+                "emailAddress: teste2@gmail.com\n" +
+                "websiteAddress: community.com\n" +
+                "openingHours: 8\n" +
+                "closingHours: 22\n" +
+                "slotDuration: 5\n" +
+                "maxNumVaccinesPerSlot: 40\n" +
+                "\n", cc.toString());
     }
 }
