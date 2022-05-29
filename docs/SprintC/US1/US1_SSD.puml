@@ -8,15 +8,15 @@ actor "SNS User" as User
 activate User
 User -> ":System" : wants to schedule a vaccine
 activate ":System"
-":System" --> User : requests SNS user number
+":System" --> User : shows and asks to select the vaccination center and the vaccine type
 deactivate ":System"
 
-User -> ":System" : types SNS user number
+User -> ":System" : selects vaccination center and vaccine type
 activate ":System"
-":System" --> User : shows and asks to select the vaccination center, date and time
+":System" --> User : asks to introduce date and time
 deactivate ":System"
 
-User -> ":System" : chooses vaccination center, date and time
+User -> ":System" : introduces date and time
 activate ":System"
 ":System" --> User : shows all data and requests confirmation
 deactivate ":System"

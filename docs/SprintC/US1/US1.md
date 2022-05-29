@@ -17,10 +17,14 @@ As a SNS user, I intend to use the application to schedule a vaccine.
 
 **From the client clarifications:**
 
-> **Question:** Should the application send the SMS with the confirmation of the schedule or will it be other user story in the future?
->
-> **Answer:**
+> **Question:** Does the user have to enter the date and time they want or does the system have to show the available dates and times for the user to select?
+> 
+> **Answer:**  In this sprint the actor should introduce (using the keyboard) the date and time (s)he wants to be vaccinated.
 
+> **Question:** We are unsure if it's in this user stories that's asked to implement the "send a SMS message with information about the scheduled appointment" found on the Project Description available in moodle. Could you clarify?
+> 
+> **Answer:** In a previous clarification that I made on this forum, I said: "The user should receive a SMS Message to warn of a scheduling [and the message] should include: Date, Time and vaccination center". Teams must record the answers!
+A file named SMS.txt should be used to receive/record the SMS messages. We will not use a real word service to send SMSs
 
 ### 1.3. Acceptance Criteria
 
@@ -41,12 +45,10 @@ As a SNS user, I intend to use the application to schedule a vaccine.
 **Input Data:**
 
 * Typed data:
-  * SNS user number
+  * Date and time
 
 * Selected data:
   * Vaccination Center
-  * Date
-  * Time
   * Vaccine Type
 
 
@@ -64,7 +66,7 @@ As a SNS user, I intend to use the application to schedule a vaccine.
 
 ### 1.7 Other Relevant Remarks
 
-* The created task stays in a "not published" state in order to distinguish from "published" tasks.
+n/a
 
 
 ## 2. OO Analysis
@@ -129,12 +131,14 @@ Other software classes (i.e. Pure Fabrication) identified:
 
 # 4. Tests
 
-**Test 1:** Check that it is not possible to create an instance of the Task class with null values.
+**Test 1:** Check the program knows the SNS User gender.
 
-	@Test(expected = IllegalArgumentException.class)
-		public void ensureNullIsNotAllowed() {
-		Task instance = new Task(null, null, null, null, null, null, null);
-	}
+	void getGender() throws ParseException {
+        Date dtest = new SimpleDateFormat("dd/MM/yyyy").parse("02/05/2003");
+        SNSUser user = new SNSUser("Test","male",dtest ,"street test", "923456789","user@test.com","123453678","12345342");
+
+        assertEquals("male", user.getGender());
+    }
 
 
 
@@ -143,45 +147,135 @@ Other software classes (i.e. Pure Fabrication) identified:
 
 ## Class ScheduleVaccineController
 
-		public boolean createTask(String ref, String designation, String informalDesc, 
-			String technicalDesc, Integer duration, Double cost, Integer catId)() {
-		
-			Category cat = this.platform.getCategoryById(catId);
-			
-			Organization org;
-			// ... (omitted)
-			
-			this.task = org.createTask(ref, designation, informalDesc, technicalDesc, duration, cost, cat);
-			
-			return (this.task != null);
-		}
+    public class ScheduleVaccineController {
+
+      private App oApp;
+      private Company oCompany;
+      private ScheduleVaccine oScheduleVaccine;
+      private final AuthFacade authFacade;
+      private final ScheduleVaccineStore scheduleVaccineStore;
+      private final VaccinationCenterStore vaccinationCenterStore;
+      private final VaccineTypeStore vaccineTypeStore;
+      private final SNSUserStore snsUserStore;
+
+    public ScheduleVaccineController() {
+        this.oApp = App.getInstance();
+        this.oCompany = oApp.getCompany();
+        this.authFacade = this.oCompany.getAuthFacade();
+        this.scheduleVaccineStore = oCompany.getScheduleVaccineStore();
+        this.vaccinationCenterStore = oCompany.getVaccinationCenterStore();
+        this.vaccineTypeStore = oCompany.getVaccineTypeStore();
+        this.snsUserStore = oCompany.getSNSUserStore();
+    }
+
+    public boolean newScheduleVaccine(ScheduleVaccineDTO scheduleVaccineDTO) {
+        this.oScheduleVaccine = oCompany.getScheduleVaccineStore().newScheduleVaccine(scheduleVaccineDTO);
+        if (this.oScheduleVaccine != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public String getScheduleVaccineString() {
+        return this.oScheduleVaccine.toString();
+    }
+
+    public List<VaccinationCenter> getVaccinationCenter() {
+        return this.vaccinationCenterStore.getVaccinationCenters();
+    }
+
+    public List<VaccineType> getVaccineTypes() {
+        return this.vaccineTypeStore.getListVaccineType();
+    }
+
+    public boolean registerScheduleVaccine() {
+        return this.oCompany.getScheduleVaccineStore().registerScheduleVaccine(this.oScheduleVaccine);
+    }
+
+    public ScheduleVaccine getScheduleVaccine() {
+        return oScheduleVaccine;
+    }
+
 
 
 ## Class ScheduleVaccine
 
 
-		public Task createTask(String ref, String designation, String informalDesc, 
-			String technicalDesc, Integer duration, Double cost, Category cat)() {
-		
-	
-			Task task = new Task(ref, designation, informalDesc, technicalDesc, duration, cost, cat);
-			if (this.validateTask(task))
-				return task;
-			return null;
-		}
+	public class ScheduleVaccine {
 
+      private String snsUserNumber;
+      private VaccinationCenter vaccinationCenter;
+      private VaccineType vaccineType;
+      private Date dateTime;
+
+    public ScheduleVaccine(String snsUserNumber, VaccinationCenter vaccinationCenter,VaccineType vaccineType, Date dateTime) {
+
+        if((vaccinationCenter == null)  ||
+                (snsUserNumber == null) )
+
+            throw new IllegalArgumentException("None of the arguments can be null or empty.");
+
+
+
+        setSNSUserNumber(snsUserNumber);
+        setVaccineType(vaccineType);
+        setVaccinationCenter(vaccinationCenter);
+        setDateTime(dateTime);
+
+
+
+    }
+
+    public void setVaccineType(VaccineType vaccineType) {
+        this.vaccineType = vaccineType;
+    }
+
+
+    public Date getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(Date dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public String getSNSUserNumber() {
+        return snsUserNumber;
+    }
+
+    public void setSNSUserNumber(String SNSUserNumber) {
+        this.snsUserNumber = SNSUserNumber;
+    }
+
+    public VaccinationCenter getVaccinationCenter() {
+        return vaccinationCenter;
+    }
+
+    public void setVaccinationCenter(VaccinationCenter vaccinationCenter) {
+        this.vaccinationCenter = vaccinationCenter;
+    }
+
+
+    public String toString() {
+        return "The SNS User number " + snsUserNumber + " has his vaccine appointment schedule at " +dateTime+" at: "+vaccinationCenter.toStringScheduleVaccine();
+    }
+
+    public VaccineType getVaccineType() {
+        return vaccineType;
+    }
+}
 
 
 # 6. Integration and Demo
 
-* A new option on the Employee menu options was added.
+* A SNS User menu was added.
 
-* Some demo purposes some tasks are bootstrapped while system starts.
+* For some demonstration purposes some SNS Users and its schedules are bootstrapped while system starts.
 
 
 # 7. Observations
 
-Platform and Organization classes are getting too many responsibilities due to IE pattern and, therefore, they are becoming huge and harder to maintain.
 
 
 

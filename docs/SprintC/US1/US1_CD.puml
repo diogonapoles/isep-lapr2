@@ -2,37 +2,36 @@
 'https://plantuml.com/sequence-diagram
 
 class ScheduleVaccineController{
-+createAppointment(SNSUserNumber, vaccinationCenter, date, time)
-+getAvailableDate()
-+getAvailableTime()
-+getListVaccinationCenter()
++getVaccinationCenter()
++getVaccineTypes()
++newScheduleVaccine(snsUserNumber, vaccinationCenter, dateTime, vaccineType)
 }
 
 class ScheduleVaccineUI{
 }
 
 class ScheduleVaccine{
-+SNSUserNumber
++snsUserNumber
 + vaccinationCenter
-+date
-+time
-+create(SNSUserNumber, vaccinationCenter, date, time)
-
++dateTime
++vaccineType
++create(snsUserNumber, vaccinationCenter, dateTime, vaccineType)
 }
 
 class Company{
 -designation
-+getListVaccinationCenter()
-+getVaccineScheduleStore()
-+getAppointments()
-
++getVaccinationCenter()
++getVaccineTypes()
++getScheduleVaccineStore()
++listScheduleVaccine()
 }
 
 class ScheduleVaccineStore{
-+getAvailableDate()
-+getAvailableTime()
-+createAppointment(SNSUserNumber, vaccinationCenter, date, time)
-+addAppointment()
++newScheduleVaccine(snsUserNumber, vaccinationCenter, dateTime, vaccineType)
++registerScheduleVaccine(scheduleVaccine)
++validateScheduleVaccine(scheduleVaccine)
++existsScheduleVaccine(scheduleVaccine)
++addScheduleVaccine(scheduleVaccine)
 }
 
 class App{

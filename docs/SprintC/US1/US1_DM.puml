@@ -41,6 +41,11 @@ slotDuration
 maxNumVaccinesPerSlot
 }
 
+class VaccineAdministration{
+designation
+ageGroup
+}
+
 
 VaccinationCenter "0..1" -right- "0..1" VaccineSchedule : > fulfilling
 
@@ -48,4 +53,6 @@ VaccineSchedule "1" -up-- "0..1" Notification : emits >
 
 VaccineSchedule "*" -down-- "1" SNSUser : made for >
 VaccineSchedule "1" -up-- "0..1" VaccineType : administers >
+
+VaccineSchedule "0" -- "1" VaccineAdministration : has >
 @enduml
