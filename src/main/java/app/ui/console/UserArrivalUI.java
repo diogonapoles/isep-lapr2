@@ -56,9 +56,6 @@ public class UserArrivalUI implements Runnable {
         return controller.newUserArrival(snsUserNumber);
     }
 
-    private void getData() {
-        System.out.println(controller.getUserArrivalString());
-    }
 
 
 }
