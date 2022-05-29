@@ -5,15 +5,25 @@ autonumber
 
 actor "Receptionist" as RCP
 
+
 activate RCP
+RCP -> ":System" :  login as receptionist
+activate ":System"
+":System" --> RCP : show list of vaccination centers to select
+deactivate ":System"
+RCP -> ":System" :  select the current vaccination center
+activate ":System"
+":System" --> RCP : continue with the arrival process
+
+deactivate ":System"
 RCP -> ":System" : starts registering the arrival of the user
 activate ":System"
-":System" --> RCP : request data (name, snsUserNumber, \ncitizenCardNumber, vaccineScheduleDate)
+":System" --> RCP : request data (snsUserNumber)
 deactivate ":System"
 
 RCP -> ":System" : types requested data
 activate ":System"
-":System" --> RCP : shows the data and requests a confirmation
+":System" --> RCP : ask to send the User to the waiting room
 deactivate ":System"
 
 RCP -> ":System" : confirms the data

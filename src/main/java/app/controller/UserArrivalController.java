@@ -5,7 +5,6 @@ import app.domain.store.ScheduleVaccineStore;
 import app.domain.store.VaccineTypeStore;
 import app.domain.systemUsers.SNSUser;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -43,9 +42,6 @@ public class UserArrivalController {
         return vaccinationCenter;
     }
 
-    public List<VaccineType> getVaccineTypeList() {
-        return vaccineTypeStore.getListVaccineType();
-    }
 
     /**
      * New user arrival boolean.
@@ -62,9 +58,6 @@ public class UserArrivalController {
             return false;
     }
 
-    public ScheduleVaccine getScheduleVaccine(String snsUserNumber, VaccineType vaccineType) {
-        return vaccineScheduleStore.getScheduleVaccine(snsUserNumber, new Date(), vaccineType);
-    }
 
     /**
      * Register user arrival boolean.

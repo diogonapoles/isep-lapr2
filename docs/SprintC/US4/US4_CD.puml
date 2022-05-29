@@ -4,6 +4,7 @@ skinparam classAttributeIconSize 0
 class Application {
   +static getInstance()
   +getCompany()
+  +getCurrentUserSession()
 
 }
 
@@ -16,16 +17,41 @@ class UserArrivalStore {
 
 
 class Company {
++getUserArrivalStore()
 +getUsersVaccineSchedule()
 
+}
+
+class SNSUser{
+-name
+-gender
+-email
+-birthdate
+-snsUserNumber
+-citizenCardNumber
+}
+
+class WaitingRoom{
++registerUserArrival(snsU)
+}
+
+
+class Constants{
++ROLE_RECEPTIONIST
+}
+
+class ChoosingVaccinationCenter{
++getVaccinationCenters()
 }
 
 
 
 class UserArrivalController {
-+getUsersVaccineSchedule()
-+createUser (name, vaccineScheduleDate, \narrivalTime,  citizenCardNumber, snsNumber)
-+saveUser()
++getWorking()
++newUserArrival()
++registerUserArrival(snsUserNumber)
++getUserArrivalString()
+
 }
 
 class UserArrivalUI {
@@ -35,8 +61,13 @@ class UserArrivalUI {
 
 UserArrivalUI ..> UserArrivalController
 UserArrivalController ..> Company
+UserArrivalController ..> Constants
+UserArrivalStore "1"-->"1" WaitingRoom:has
+WaitingRoom "1"-->"*" SNSUser: contains
 UserArrivalController ..> Application
 Application ..> Company
+Company "1"-->"1" ChoosingVaccinationCenter: has
+ChoosingVaccinationCenter "1"-->"*"VaccinationCenter :knows
 UserArrivalController ..> UserArrivalStore
 Company "1" --> "1" UserArrivalStore : has
 

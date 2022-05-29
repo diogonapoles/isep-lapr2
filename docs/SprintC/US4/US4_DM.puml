@@ -4,17 +4,47 @@ class Receptionist
 
 class WaitingRoom
 
-class SNSUser{
-name
-address
-gender
-phoneNumber
-birthDate
-emailAddress
-snsUserNumber
-citizenCardNumber
+class VaccinationCenter{
+-name
+-address
+-phoneNumber
+-emailAddress
+-faxNumber
+-Website
+-openingHours
+-closingHours
+-slotDuration
+-maxNumberVaccines
 }
 
+class SNSUser{
+-name
+-address
+-gender
+-phoneNumber
+-birthDate
+-emailAddress
+-snsUserNumber
+-citizenCardNumber
+}
+
+class Company{
+-designation
+}
+
+class Employee{
+-name
+-phoneNumber
+-address
+-emailAddress
+-citizenCardNumber
+-id
+}
+
+Receptionist --> Employee:is a
+WaitingRoom "1"--"*"SNSUser: contains >
+Company "1"--"*"VaccinationCenter: has >
+VaccinationCenter "1"--"1" WaitingRoom: has >
 Receptionist "*" -up-- "*" SNSUser : registers arrival of >
 Receptionist "1..*"-right-- "1..*"WaitingRoom : sends SNS user to >
 @enduml

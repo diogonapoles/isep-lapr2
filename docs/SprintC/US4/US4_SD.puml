@@ -10,47 +10,51 @@ participant "app\n:App" as App
 participant "comp:Company" as COMP
 participant "uas\n:UserArrivalStore" as UAS
 participant "snsU: SNSUser" as snsU
+participant "svs\n:ScheduleVaccineStore" as SVS
 participant "auth\n:AuthFacade" as AF
 
 
 
-activate RCP
+
 RCP -> UI : starts registering the arrival of the user
 activate UI
-UI -> CTRL : getUsersVaccineSchedule()
+UI -> CTRL : controller = UserArrivalController()
 activate CTRL
 CTRL -> APP : app = getInstance()
 activate APP
 deactivate APP
-CTRL -> App : comp = getCompany()
+CTRL -> App : company = getCompany()
 activate App
 deactivate App
-CTRL -> COMP : guvs = getUsersVaccineSchedule()
-activate COMP
-deactivate COMP
+
 deactivate CTRL
 
 
-UI --> RCP : request data (name, snsUserNumber, \ncitizenCardNumber, vaccineScheduleDate)
+UI --> RCP : request data (snsUserNumber)
 
 deactivate UI
 
 RCP -> UI : types requested data
 activate UI
 
-UI -> CTRL : createUser (name, snsUserNumber, \ncitizenCardNumber, vaccineScheduleDate)
+UI -> CTRL : newUserArrival (snsUserNumber)
 activate CTRL
 
-CTRL -> UAS : snsU = createUser (name, snsUserNumber, \ncitizenCardNumber, vaccineScheduleDate)
+CTRL -> UAS : snsU = newUserArrival (snsUserNumber)
 activate UAS
 
-UAS --> snsU** : createUser (name, snsUserNumber, \ncitizenCardNumber, vaccineScheduleDate)
+UAS --> snsU** : snsU = newUserArrival (snsUserNumber)
 
-UAS -> UAS : validateUser(snsU)
+UAS -> SVS: listScheduleVaccine = getListScheduleVaccine()
+activate SVS
+deactivate SVS
+
+
+UAS -> UAS : validateUserSchedule(snsU)
 activate UAS
 deactivate UAS
 
-UI --> RCP : shows the data and requests a confirmation
+UI --> RCP : ask to send the User to the waiting room
 deactivate UI
 deactivate CTRL
 deactivate UAS
@@ -58,17 +62,13 @@ deactivate UAS
 RCP -> UI : confirms the data
 activate UI
 
-UI -> CTRL : saveUser()
+UI -> CTRL : registerUserArrival()
 activate CTRL
 
-CTRL -> UAS: saveUser(snsU)
+CTRL -> UAS: registerUserArrival(snsU)
 activate UAS
 
-UAS -> UAS : validateUser(snsU)
-activate UAS
-deactivate UAS
-
-UAS -> UAS : addUserToRoom(snsU)
+UAS -> UAS : addUserToWaitingRoom(snsU)
 activate UAS
 deactivate UAS
 

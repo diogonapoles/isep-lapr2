@@ -1,0 +1,74 @@
+@startuml
+@startuml
+autonumber
+actor "Receptionist" as RCP
+
+
+participant ":ChoosingVaccinationCenterUI" as UI
+participant ":ChoosingVaccinationCenterController" as CTRL
+participant "App" as APP
+participant "app\n:App" as App
+participant "comp:Company" as COMP
+participant "emps\n:EmployeeStore" as EMPS
+participant "vcs\n:VaccinationCenterStore" as VCS
+participant "us\n:UserSession" as US
+participant "snsU: SNSUser" as snsU
+participant "auth\n:AuthFacade" as AF
+participant "em\n:Email" as EM
+participant "emp\n:Employee" as EMP
+
+
+
+activate RCP
+RCP ->  UI :  login as receptionist
+activate UI
+UI -> CTRL : ChoosingVaccinationCenterController()
+activate CTRL
+CTRL -> APP : app = getInstance()
+activate APP
+deactivate APP
+CTRL -> App : comp = getCompany()
+activate App
+deactivate App
+deactivate CTRL
+
+
+UI->CTRL : getVaccinationCenters()
+activate CTRL
+CTRL -> VCS : getVaccinationCenters()
+activate VCS
+deactivate VCS
+deactivate CTRL
+
+
+
+
+UI --> RCP : show list of vaccination centers to select
+deactivate UI
+RCP ->  UI :  select the current vaccination center
+activate UI
+UI->CTRL : setWorking(vc)
+activate CTRL
+CTRL -> App : email = getCurrentUserSession()
+activate App
+App -> US : getUserId()
+activate US
+US-> EM : getEmail()
+activate EM
+deactivate EM
+deactivate US
+deactivate App
+CTRL->EMPS : employee = getEmployeeUsingEmail(email)
+activate EMPS
+deactivate EMPS
+CTRL->EMP : setWorking(vc)
+activate EMP
+deactivate EMP
+deactivate CTRL
+UI --> RCP : continue with the arrival process
+deactivate UI
+
+
+
+
+@enduml
