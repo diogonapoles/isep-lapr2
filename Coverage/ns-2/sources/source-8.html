@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > LiveAttenuatedVaccine</title>
+  <title>Coverage Report > ScheduleVaccine</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/highlight-idea.css";
@@ -20,7 +20,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">app.domain.model</a>
 </div>
 
-<h1>Coverage Summary for Class: LiveAttenuatedVaccine (app.domain.model)</h1>
+<h1>Coverage Summary for Class: ScheduleVaccine (app.domain.model)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -39,29 +39,29 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">LiveAttenuatedVaccine</td>
+  <td class="name">ScheduleVaccine</td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    0%
   </span>
   <span class="absValue">
-    (1/1)
+    (0/1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    0%
   </span>
   <span class="absValue">
-    (1/1)
+    (0/10)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    0%
   </span>
   <span class="absValue">
-    (1/1)
+    (0/16)
   </span>
 </td>
 </tr>
@@ -75,20 +75,123 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package app.domain.model;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;/**
-<i class="no-highlight">4</i>&nbsp; * The type Live attenuated vaccine.
-<i class="no-highlight">5</i>&nbsp; */
-<i class="no-highlight">6</i>&nbsp;public class LiveAttenuatedVaccine extends VaccineType{
-<i class="no-highlight">7</i>&nbsp;    /**
-<i class="no-highlight">8</i>&nbsp;     * Instantiates a new Live attenuated vaccine.
-<i class="no-highlight">9</i>&nbsp;     *
-<i class="no-highlight">10</i>&nbsp;     * @param code        the code
-<i class="no-highlight">11</i>&nbsp;     * @param designation the designation
-<i class="no-highlight">12</i>&nbsp;     */
-<i class="no-highlight">13</i>&nbsp;    public LiveAttenuatedVaccine(String code, String designation){
-<b class="fc"><i class="no-highlight">14</i>&nbsp;        super(code, designation);</b>
-<i class="no-highlight">15</i>&nbsp;    }
-<i class="no-highlight">16</i>&nbsp;}
+<i class="no-highlight">3</i>&nbsp;import java.time.LocalDateTime;
+<i class="no-highlight">4</i>&nbsp;import java.util.Date;
+<i class="no-highlight">5</i>&nbsp;
+<i class="no-highlight">6</i>&nbsp;/**
+<i class="no-highlight">7</i>&nbsp; * The type Schedule vaccine.
+<i class="no-highlight">8</i>&nbsp; */
+<i class="no-highlight">9</i>&nbsp;public class ScheduleVaccine {
+<i class="no-highlight">10</i>&nbsp;
+<i class="no-highlight">11</i>&nbsp;    private String snsUserNumber;
+<i class="no-highlight">12</i>&nbsp;    private VaccinationCenter vaccinationCenter;
+<i class="no-highlight">13</i>&nbsp;    private VaccineType vaccineType;
+<i class="no-highlight">14</i>&nbsp;    private Date dateTime;
+<i class="no-highlight">15</i>&nbsp;
+<i class="no-highlight">16</i>&nbsp;    /**
+<i class="no-highlight">17</i>&nbsp;     * Instantiates a new Schedule vaccine.
+<i class="no-highlight">18</i>&nbsp;     *
+<i class="no-highlight">19</i>&nbsp;     * @param snsUserNumber     the sns user number
+<i class="no-highlight">20</i>&nbsp;     * @param vaccinationCenter the vaccination center
+<i class="no-highlight">21</i>&nbsp;     * @param vaccineType       the vaccine type
+<i class="no-highlight">22</i>&nbsp;     * @param dateTime          the date time
+<i class="no-highlight">23</i>&nbsp;     */
+<b class="nc"><i class="no-highlight">24</i>&nbsp;    public ScheduleVaccine(String snsUserNumber, VaccinationCenter vaccinationCenter,VaccineType vaccineType, Date dateTime) {</b>
+<i class="no-highlight">25</i>&nbsp;
+<b class="nc"><i class="no-highlight">26</i>&nbsp;        if((vaccinationCenter == null)  ||</b>
+<i class="no-highlight">27</i>&nbsp;                (snsUserNumber == null) )
+<i class="no-highlight">28</i>&nbsp;
+<b class="nc"><i class="no-highlight">29</i>&nbsp;            throw new IllegalArgumentException(&quot;None of the arguments can be null or empty.&quot;);</b>
+<i class="no-highlight">30</i>&nbsp;
+<i class="no-highlight">31</i>&nbsp;
+<i class="no-highlight">32</i>&nbsp;
+<b class="nc"><i class="no-highlight">33</i>&nbsp;        setSNSUserNumber(snsUserNumber);</b>
+<b class="nc"><i class="no-highlight">34</i>&nbsp;        setVaccineType(vaccineType);</b>
+<b class="nc"><i class="no-highlight">35</i>&nbsp;        setVaccinationCenter(vaccinationCenter);</b>
+<b class="nc"><i class="no-highlight">36</i>&nbsp;        setDateTime(dateTime);</b>
+<i class="no-highlight">37</i>&nbsp;    }
+<i class="no-highlight">38</i>&nbsp;
+<i class="no-highlight">39</i>&nbsp;    /**
+<i class="no-highlight">40</i>&nbsp;     * Sets vaccine type.
+<i class="no-highlight">41</i>&nbsp;     *
+<i class="no-highlight">42</i>&nbsp;     * @param vaccineType the vaccine type
+<i class="no-highlight">43</i>&nbsp;     */
+<i class="no-highlight">44</i>&nbsp;    public void setVaccineType(VaccineType vaccineType) {
+<b class="nc"><i class="no-highlight">45</i>&nbsp;        this.vaccineType = vaccineType;</b>
+<i class="no-highlight">46</i>&nbsp;    }
+<i class="no-highlight">47</i>&nbsp;
+<i class="no-highlight">48</i>&nbsp;
+<i class="no-highlight">49</i>&nbsp;    /**
+<i class="no-highlight">50</i>&nbsp;     * Gets date time.
+<i class="no-highlight">51</i>&nbsp;     *
+<i class="no-highlight">52</i>&nbsp;     * @return the date time
+<i class="no-highlight">53</i>&nbsp;     */
+<i class="no-highlight">54</i>&nbsp;    public Date getDateTime() {
+<b class="nc"><i class="no-highlight">55</i>&nbsp;        return dateTime;</b>
+<i class="no-highlight">56</i>&nbsp;    }
+<i class="no-highlight">57</i>&nbsp;
+<i class="no-highlight">58</i>&nbsp;    /**
+<i class="no-highlight">59</i>&nbsp;     * Sets date time.
+<i class="no-highlight">60</i>&nbsp;     *
+<i class="no-highlight">61</i>&nbsp;     * @param dateTime the date time
+<i class="no-highlight">62</i>&nbsp;     */
+<i class="no-highlight">63</i>&nbsp;    public void setDateTime(Date dateTime) {
+<b class="nc"><i class="no-highlight">64</i>&nbsp;        this.dateTime = dateTime;</b>
+<i class="no-highlight">65</i>&nbsp;    }
+<i class="no-highlight">66</i>&nbsp;
+<i class="no-highlight">67</i>&nbsp;
+<i class="no-highlight">68</i>&nbsp;    /**
+<i class="no-highlight">69</i>&nbsp;     * Gets sns user number.
+<i class="no-highlight">70</i>&nbsp;     *
+<i class="no-highlight">71</i>&nbsp;     * @return the sns user number
+<i class="no-highlight">72</i>&nbsp;     */
+<i class="no-highlight">73</i>&nbsp;    public String getSNSUserNumber() {
+<b class="nc"><i class="no-highlight">74</i>&nbsp;        return snsUserNumber;</b>
+<i class="no-highlight">75</i>&nbsp;    }
+<i class="no-highlight">76</i>&nbsp;
+<i class="no-highlight">77</i>&nbsp;    /**
+<i class="no-highlight">78</i>&nbsp;     * Sets sns user number.
+<i class="no-highlight">79</i>&nbsp;     *
+<i class="no-highlight">80</i>&nbsp;     * @param SNSUserNumber the sns user number
+<i class="no-highlight">81</i>&nbsp;     */
+<i class="no-highlight">82</i>&nbsp;    public void setSNSUserNumber(String SNSUserNumber) {
+<b class="nc"><i class="no-highlight">83</i>&nbsp;        this.snsUserNumber = SNSUserNumber;</b>
+<i class="no-highlight">84</i>&nbsp;    }
+<i class="no-highlight">85</i>&nbsp;
+<i class="no-highlight">86</i>&nbsp;    /**
+<i class="no-highlight">87</i>&nbsp;     * Gets vaccination center.
+<i class="no-highlight">88</i>&nbsp;     *
+<i class="no-highlight">89</i>&nbsp;     * @return the vaccination center
+<i class="no-highlight">90</i>&nbsp;     */
+<i class="no-highlight">91</i>&nbsp;    public VaccinationCenter getVaccinationCenter() {
+<b class="nc"><i class="no-highlight">92</i>&nbsp;        return vaccinationCenter;</b>
+<i class="no-highlight">93</i>&nbsp;    }
+<i class="no-highlight">94</i>&nbsp;
+<i class="no-highlight">95</i>&nbsp;    /**
+<i class="no-highlight">96</i>&nbsp;     * Sets vaccination center.
+<i class="no-highlight">97</i>&nbsp;     *
+<i class="no-highlight">98</i>&nbsp;     * @param vaccinationCenter the vaccination center
+<i class="no-highlight">99</i>&nbsp;     */
+<i class="no-highlight">100</i>&nbsp;    public void setVaccinationCenter(VaccinationCenter vaccinationCenter) {
+<b class="nc"><i class="no-highlight">101</i>&nbsp;        this.vaccinationCenter = vaccinationCenter;</b>
+<i class="no-highlight">102</i>&nbsp;    }
+<i class="no-highlight">103</i>&nbsp;
+<i class="no-highlight">104</i>&nbsp;
+<i class="no-highlight">105</i>&nbsp;    public String toString() {
+<b class="nc"><i class="no-highlight">106</i>&nbsp;        return &quot;The SNS User number &quot; + snsUserNumber + &quot; has his vaccine appointment schedule at &quot; +dateTime+&quot; at: &quot;+vaccinationCenter.toStringScheduleVaccine();</b>
+<i class="no-highlight">107</i>&nbsp;    }
+<i class="no-highlight">108</i>&nbsp;
+<i class="no-highlight">109</i>&nbsp;    /**
+<i class="no-highlight">110</i>&nbsp;     * Gets vaccine type.
+<i class="no-highlight">111</i>&nbsp;     *
+<i class="no-highlight">112</i>&nbsp;     * @return the vaccine type
+<i class="no-highlight">113</i>&nbsp;     */
+<i class="no-highlight">114</i>&nbsp;    public VaccineType getVaccineType() {
+<b class="nc"><i class="no-highlight">115</i>&nbsp;        return vaccineType;</b>
+<i class="no-highlight">116</i>&nbsp;    }
+<i class="no-highlight">117</i>&nbsp;
+<i class="no-highlight">118</i>&nbsp;
+<i class="no-highlight">119</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -115,7 +218,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-05-08 19:04</div>
+    <div style="float:right;">generated on 2022-05-29 22:37</div>
 </div>
 </body>
 </html>

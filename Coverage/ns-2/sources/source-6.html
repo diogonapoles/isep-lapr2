@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > HealthcareCenter</title>
+  <title>Coverage Report > InactivatedVaccine</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/highlight-idea.css";
@@ -20,7 +20,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">app.domain.model</a>
 </div>
 
-<h1>Coverage Summary for Class: HealthcareCenter (app.domain.model)</h1>
+<h1>Coverage Summary for Class: InactivatedVaccine (app.domain.model)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -39,7 +39,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">HealthcareCenter</td>
+  <td class="name">InactivatedVaccine</td>
 <td class="coverageStat">
   <span class="percent">
     100%
@@ -76,30 +76,21 @@ Current scope:     <a href="../../index.html">all classes</a>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package app.domain.model;
 <i class="no-highlight">2</i>&nbsp;
 <i class="no-highlight">3</i>&nbsp;/**
-<i class="no-highlight">4</i>&nbsp; * The type Healthcare center.
+<i class="no-highlight">4</i>&nbsp; * The type Inactivated vaccine.
 <i class="no-highlight">5</i>&nbsp; */
-<i class="no-highlight">6</i>&nbsp;public class HealthcareCenter extends VaccinationCenter{
+<i class="no-highlight">6</i>&nbsp;public class InactivatedVaccine extends VaccineType{
 <i class="no-highlight">7</i>&nbsp;
 <i class="no-highlight">8</i>&nbsp;    /**
-<i class="no-highlight">9</i>&nbsp;     * Instantiates a new Healthcare center.
+<i class="no-highlight">9</i>&nbsp;     * Instantiates a new Inactivated vaccine.
 <i class="no-highlight">10</i>&nbsp;     *
-<i class="no-highlight">11</i>&nbsp;     * @param name                  the name
-<i class="no-highlight">12</i>&nbsp;     * @param phoneNumber           the phone number
-<i class="no-highlight">13</i>&nbsp;     * @param faxNumber             the fax number
-<i class="no-highlight">14</i>&nbsp;     * @param homeAddress           the home address
-<i class="no-highlight">15</i>&nbsp;     * @param emailAddress          the email address
-<i class="no-highlight">16</i>&nbsp;     * @param websiteAddress        the website address
-<i class="no-highlight">17</i>&nbsp;     * @param openingHours          the opening hours
-<i class="no-highlight">18</i>&nbsp;     * @param closingHours          the closing hours
-<i class="no-highlight">19</i>&nbsp;     * @param slotDuration          the slot duration
-<i class="no-highlight">20</i>&nbsp;     * @param maxNumVaccinesPerSlot the max num vaccines per slot
-<i class="no-highlight">21</i>&nbsp;     */
-<i class="no-highlight">22</i>&nbsp;    public HealthcareCenter(String name, String phoneNumber, String faxNumber, String homeAddress, String emailAddress, String websiteAddress, String openingHours, String closingHours, String slotDuration, String maxNumVaccinesPerSlot)
-<i class="no-highlight">23</i>&nbsp;    {
-<b class="fc"><i class="no-highlight">24</i>&nbsp;        super(name, phoneNumber, faxNumber, homeAddress, emailAddress, websiteAddress, openingHours, closingHours, slotDuration, maxNumVaccinesPerSlot);</b>
-<i class="no-highlight">25</i>&nbsp;
-<i class="no-highlight">26</i>&nbsp;    }
-<i class="no-highlight">27</i>&nbsp;}
+<i class="no-highlight">11</i>&nbsp;     * @param code        the code
+<i class="no-highlight">12</i>&nbsp;     * @param designation the designation
+<i class="no-highlight">13</i>&nbsp;     */
+<i class="no-highlight">14</i>&nbsp;    public InactivatedVaccine(String code, String designation){
+<b class="fc"><i class="no-highlight">15</i>&nbsp;        super(code, designation);</b>
+<i class="no-highlight">16</i>&nbsp;    }
+<i class="no-highlight">17</i>&nbsp;
+<i class="no-highlight">18</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -126,7 +117,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-05-08 19:04</div>
+    <div style="float:right;">generated on 2022-05-29 22:37</div>
 </div>
 </body>
 </html>

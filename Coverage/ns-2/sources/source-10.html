@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > VaccineStore</title>
+  <title>Coverage Report > mRNAVaccine</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/highlight-idea.css";
@@ -20,7 +20,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">app.domain.model</a>
 </div>
 
-<h1>Coverage Summary for Class: VaccineStore (app.domain.model)</h1>
+<h1>Coverage Summary for Class: mRNAVaccine (app.domain.model)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -39,29 +39,29 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">VaccineStore</td>
+  <td class="name">mRNAVaccine</td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    100%
   </span>
   <span class="absValue">
-    (0/1)
+    (1/1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    100%
   </span>
   <span class="absValue">
-    (0/5)
+    (1/1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    100%
   </span>
   <span class="absValue">
-    (0/12)
+    (1/1)
   </span>
 </td>
 </tr>
@@ -75,65 +75,21 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package app.domain.model;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;import java.util.ArrayList;
-<i class="no-highlight">4</i>&nbsp;import java.util.List;
-<i class="no-highlight">5</i>&nbsp;
-<i class="no-highlight">6</i>&nbsp;/**
-<i class="no-highlight">7</i>&nbsp; * The type Vaccine store.
-<i class="no-highlight">8</i>&nbsp; */
-<b class="nc"><i class="no-highlight">9</i>&nbsp;public class VaccineStore {</b>
-<i class="no-highlight">10</i>&nbsp;
-<b class="nc"><i class="no-highlight">11</i>&nbsp;    private final List&lt;Vaccine&gt; listVaccine = new ArrayList&lt;&gt;();</b>
-<i class="no-highlight">12</i>&nbsp;
-<i class="no-highlight">13</i>&nbsp;    /**
-<i class="no-highlight">14</i>&nbsp;     * Validate vaccine boolean.
-<i class="no-highlight">15</i>&nbsp;     *
-<i class="no-highlight">16</i>&nbsp;     * @param name the name
-<i class="no-highlight">17</i>&nbsp;     * @return the boolean
-<i class="no-highlight">18</i>&nbsp;     */
-<i class="no-highlight">19</i>&nbsp;    public boolean validateVaccine(String name){
-<b class="nc"><i class="no-highlight">20</i>&nbsp;        for(Vaccine lv: listVaccine)</b>
-<i class="no-highlight">21</i>&nbsp;        {
-<b class="nc"><i class="no-highlight">22</i>&nbsp;            if(lv.getName().contains(name))</b>
-<b class="nc"><i class="no-highlight">23</i>&nbsp;                return false;</b>
-<b class="nc"><i class="no-highlight">24</i>&nbsp;        }</b>
-<b class="nc"><i class="no-highlight">25</i>&nbsp;        return true;</b>
-<i class="no-highlight">26</i>&nbsp;    }
-<i class="no-highlight">27</i>&nbsp;
-<i class="no-highlight">28</i>&nbsp;    /**
-<i class="no-highlight">29</i>&nbsp;     * Register vaccine boolean.
-<i class="no-highlight">30</i>&nbsp;     *
-<i class="no-highlight">31</i>&nbsp;     * @param oVaccine the o vaccine
-<i class="no-highlight">32</i>&nbsp;     * @return the boolean
-<i class="no-highlight">33</i>&nbsp;     */
-<i class="no-highlight">34</i>&nbsp;    public boolean registerVaccine(Vaccine oVaccine)
-<i class="no-highlight">35</i>&nbsp;    {
-<b class="nc"><i class="no-highlight">36</i>&nbsp;        if(validateVaccine(oVaccine.getName()))</b>
-<b class="nc"><i class="no-highlight">37</i>&nbsp;            return addVaccine(oVaccine);</b>
-<i class="no-highlight">38</i>&nbsp;        else
-<b class="nc"><i class="no-highlight">39</i>&nbsp;            return false;</b>
-<i class="no-highlight">40</i>&nbsp;    }
-<i class="no-highlight">41</i>&nbsp;
-<b class="nc"><i class="no-highlight">42</i>&nbsp;    private boolean addVaccine(Vaccine lv){return this.listVaccine.add(lv);}</b>
-<i class="no-highlight">43</i>&nbsp;
-<i class="no-highlight">44</i>&nbsp;    /**
-<i class="no-highlight">45</i>&nbsp;     * New vaccine vaccine.
-<i class="no-highlight">46</i>&nbsp;     *
-<i class="no-highlight">47</i>&nbsp;     * @param name              the name
-<i class="no-highlight">48</i>&nbsp;     * @param brand             the brand
-<i class="no-highlight">49</i>&nbsp;     * @param ageGroup          the age group
-<i class="no-highlight">50</i>&nbsp;     * @param doseNumber        the dose number
-<i class="no-highlight">51</i>&nbsp;     * @param dosage            the dosage
-<i class="no-highlight">52</i>&nbsp;     * @param timeSinceLastDose the time since last dose
-<i class="no-highlight">53</i>&nbsp;     * @return the vaccine
-<i class="no-highlight">54</i>&nbsp;     */
-<i class="no-highlight">55</i>&nbsp;    public Vaccine newVaccine(String name, String brand, String ageGroup, String doseNumber, double dosage, int timeSinceLastDose){
-<b class="nc"><i class="no-highlight">56</i>&nbsp;        return new Vaccine(name, brand, ageGroup, doseNumber, dosage, timeSinceLastDose);</b>
-<i class="no-highlight">57</i>&nbsp;    }
-<i class="no-highlight">58</i>&nbsp;
-<i class="no-highlight">59</i>&nbsp;}
-<i class="no-highlight">60</i>&nbsp;
-<i class="no-highlight">61</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;/**
+<i class="no-highlight">4</i>&nbsp; * The type mRNA vaccine.
+<i class="no-highlight">5</i>&nbsp; */
+<i class="no-highlight">6</i>&nbsp;public class mRNAVaccine extends VaccineType{
+<i class="no-highlight">7</i>&nbsp;    /**
+<i class="no-highlight">8</i>&nbsp;     * Instantiates a new mRNA vaccine.
+<i class="no-highlight">9</i>&nbsp;     *
+<i class="no-highlight">10</i>&nbsp;     * @param code        the code
+<i class="no-highlight">11</i>&nbsp;     * @param designation the designation
+<i class="no-highlight">12</i>&nbsp;     */
+<i class="no-highlight">13</i>&nbsp;    public mRNAVaccine(String code, String designation){
+<b class="fc"><i class="no-highlight">14</i>&nbsp;        super(code, designation);</b>
+<i class="no-highlight">15</i>&nbsp;    }
+<i class="no-highlight">16</i>&nbsp;
+<i class="no-highlight">17</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -160,7 +116,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-05-08 19:04</div>
+    <div style="float:right;">generated on 2022-05-29 22:37</div>
 </div>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > MainMenuUI</title>
+  <title>Coverage Report > ListEmployeesUI</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/highlight-idea.css";
@@ -20,7 +20,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">app.ui.console</a>
 </div>
 
-<h1>Coverage Summary for Class: MainMenuUI (app.ui.console)</h1>
+<h1>Coverage Summary for Class: ListEmployeesUI (app.ui.console)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -39,7 +39,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">MainMenuUI</td>
+  <td class="name">ListEmployeesUI</td>
 <td class="coverageStat">
   <span class="percent">
     0%
@@ -53,7 +53,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/2)
+    (0/3)
   </span>
 </td>
 <td class="coverageStat">
@@ -61,7 +61,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/9)
+    (0/5)
   </span>
 </td>
 </tr>
@@ -75,52 +75,36 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package app.ui.console;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;import app.ui.console.utils.Utils;
-<i class="no-highlight">4</i>&nbsp;
-<i class="no-highlight">5</i>&nbsp;import java.io.IOException;
-<i class="no-highlight">6</i>&nbsp;import java.util.ArrayList;
-<i class="no-highlight">7</i>&nbsp;import java.util.List;
-<i class="no-highlight">8</i>&nbsp;
-<i class="no-highlight">9</i>&nbsp;
-<i class="no-highlight">10</i>&nbsp;/**
-<i class="no-highlight">11</i>&nbsp; * type Main menu ui.
-<i class="no-highlight">12</i>&nbsp; *
-<i class="no-highlight">13</i>&nbsp; * @author Paulo Maio &lt;pam@isep.ipp.pt&gt;
-<i class="no-highlight">14</i>&nbsp; */
-<i class="no-highlight">15</i>&nbsp;public class MainMenuUI {
-<i class="no-highlight">16</i>&nbsp;
-<i class="no-highlight">17</i>&nbsp;    /**
-<i class="no-highlight">18</i>&nbsp;     * Instantiates a new Main menu ui.
-<i class="no-highlight">19</i>&nbsp;     */
-<i class="no-highlight">20</i>&nbsp;    public MainMenuUI()
-<b class="nc"><i class="no-highlight">21</i>&nbsp;    {</b>
-<i class="no-highlight">22</i>&nbsp;    }
-<i class="no-highlight">23</i>&nbsp;
-<i class="no-highlight">24</i>&nbsp;    /**
-<i class="no-highlight">25</i>&nbsp;     * Run.
-<i class="no-highlight">26</i>&nbsp;     *
-<i class="no-highlight">27</i>&nbsp;     * @throws IOException the io exception
-<i class="no-highlight">28</i>&nbsp;     */
-<i class="no-highlight">29</i>&nbsp;    public void run() throws IOException
-<i class="no-highlight">30</i>&nbsp;    {
-<b class="nc"><i class="no-highlight">31</i>&nbsp;        List&lt;MenuItem&gt; options = new ArrayList&lt;MenuItem&gt;();</b>
-<b class="nc"><i class="no-highlight">32</i>&nbsp;        options.add(new MenuItem(&quot;Do Login&quot;, new AuthUI()));</b>
-<b class="nc"><i class="no-highlight">33</i>&nbsp;        options.add(new MenuItem(&quot;Know the Development Team&quot;,new DevTeamUI()));</b>
-<b class="nc"><i class="no-highlight">34</i>&nbsp;        int option = 0;</b>
-<i class="no-highlight">35</i>&nbsp;        do
-<i class="no-highlight">36</i>&nbsp;        {
-<b class="nc"><i class="no-highlight">37</i>&nbsp;            option = Utils.showAndSelectIndex(options, &quot;\n\nMain Menu&quot;);</b>
-<i class="no-highlight">38</i>&nbsp;
-<b class="nc"><i class="no-highlight">39</i>&nbsp;            if ( (option &gt;= 0) &amp;&amp; (option &lt; options.size()))</b>
-<i class="no-highlight">40</i>&nbsp;            {
-<b class="nc"><i class="no-highlight">41</i>&nbsp;                options.get(option).run();</b>
-<i class="no-highlight">42</i>&nbsp;            }
-<i class="no-highlight">43</i>&nbsp;        }
-<b class="nc"><i class="no-highlight">44</i>&nbsp;        while (option != -1 );</b>
-<i class="no-highlight">45</i>&nbsp;    }
-<i class="no-highlight">46</i>&nbsp;
-<i class="no-highlight">47</i>&nbsp;
-<i class="no-highlight">48</i>&nbsp;}
+<i class="no-highlight">3</i>&nbsp;import app.controller.ListEmployeesController;
+<i class="no-highlight">4</i>&nbsp;import app.ui.console.utils.Utils;
+<i class="no-highlight">5</i>&nbsp;
+<i class="no-highlight">6</i>&nbsp;/**
+<i class="no-highlight">7</i>&nbsp; * type List employees ui.
+<i class="no-highlight">8</i>&nbsp; */
+<i class="no-highlight">9</i>&nbsp;public class ListEmployeesUI implements Runnable{
+<i class="no-highlight">10</i>&nbsp;    private ListEmployeesController controller;
+<i class="no-highlight">11</i>&nbsp;
+<i class="no-highlight">12</i>&nbsp;    /**
+<i class="no-highlight">13</i>&nbsp;     * Instantiates a new List employees ui.
+<i class="no-highlight">14</i>&nbsp;     */
+<b class="nc"><i class="no-highlight">15</i>&nbsp;    public ListEmployeesUI(){</b>
+<b class="nc"><i class="no-highlight">16</i>&nbsp;        controller = new ListEmployeesController();</b>
+<i class="no-highlight">17</i>&nbsp;    }
+<i class="no-highlight">18</i>&nbsp;
+<i class="no-highlight">19</i>&nbsp;
+<i class="no-highlight">20</i>&nbsp;
+<i class="no-highlight">21</i>&nbsp;    public void run(){
+<i class="no-highlight">22</i>&nbsp;
+<b class="nc"><i class="no-highlight">23</i>&nbsp;        int selectionRole = Utils.showAndSelectIndex(controller.getEmployeeRoles(),&quot;Roles&quot;);</b>
+<b class="nc"><i class="no-highlight">24</i>&nbsp;        getListEmployees(selectionRole);</b>
+<i class="no-highlight">25</i>&nbsp;
+<i class="no-highlight">26</i>&nbsp;    }
+<i class="no-highlight">27</i>&nbsp;
+<i class="no-highlight">28</i>&nbsp;    private void getListEmployees(int selectionRole)
+<i class="no-highlight">29</i>&nbsp;    {
+<b class="nc"><i class="no-highlight">30</i>&nbsp;        Utils.showList(controller.getEmployeesByRole(selectionRole),&quot;List of Employees&quot;);</b>
+<i class="no-highlight">31</i>&nbsp;    }
+<i class="no-highlight">32</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -147,7 +131,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-05-08 19:04</div>
+    <div style="float:right;">generated on 2022-05-29 22:37</div>
 </div>
 </body>
 </html>

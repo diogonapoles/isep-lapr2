@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > NewVaccineController</title>
+  <title>Coverage Report > ListEmployeesController</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/highlight-idea.css";
@@ -20,7 +20,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">app.controller</a>
 </div>
 
-<h1>Coverage Summary for Class: NewVaccineController (app.controller)</h1>
+<h1>Coverage Summary for Class: ListEmployeesController (app.controller)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -39,29 +39,29 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">NewVaccineController</td>
+  <td class="name">ListEmployeesController</td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    0%
   </span>
   <span class="absValue">
-    (1/1)
+    (0/1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    50%
+    0%
   </span>
   <span class="absValue">
-    (2/4)
+    (0/3)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    44.4%
+    0%
   </span>
   <span class="absValue">
-    (4/9)
+    (0/4)
   </span>
 </td>
 </tr>
@@ -75,62 +75,43 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package app.controller;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;import app.domain.model.Company;
-<i class="no-highlight">4</i>&nbsp;import app.domain.model.Vaccine;
-<i class="no-highlight">5</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import app.domain.model.Employee;
+<i class="no-highlight">4</i>&nbsp;
+<i class="no-highlight">5</i>&nbsp;import java.util.List;
 <i class="no-highlight">6</i>&nbsp;
 <i class="no-highlight">7</i>&nbsp;/**
-<i class="no-highlight">8</i>&nbsp; * The type New vaccine controller.
+<i class="no-highlight">8</i>&nbsp; * The type List employees controller.
 <i class="no-highlight">9</i>&nbsp; */
-<i class="no-highlight">10</i>&nbsp;public class NewVaccineController {
+<i class="no-highlight">10</i>&nbsp;public class ListEmployeesController {
 <i class="no-highlight">11</i>&nbsp;
 <i class="no-highlight">12</i>&nbsp;    private App oApp;
-<i class="no-highlight">13</i>&nbsp;    private Company oCompany;
-<i class="no-highlight">14</i>&nbsp;    private Vaccine oNewVaccine;
-<i class="no-highlight">15</i>&nbsp;
-<i class="no-highlight">16</i>&nbsp;
-<i class="no-highlight">17</i>&nbsp;    /**
-<i class="no-highlight">18</i>&nbsp;     * Instantiates a new New vaccine controller.
-<i class="no-highlight">19</i>&nbsp;     */
-<b class="fc"><i class="no-highlight">20</i>&nbsp;    public NewVaccineController() {</b>
-<b class="fc"><i class="no-highlight">21</i>&nbsp;        this.oApp = App.getInstance();</b>
-<b class="fc"><i class="no-highlight">22</i>&nbsp;        this.oCompany = oApp.getCompany();</b>
-<i class="no-highlight">23</i>&nbsp;    }
-<i class="no-highlight">24</i>&nbsp;
-<i class="no-highlight">25</i>&nbsp;    /**
-<i class="no-highlight">26</i>&nbsp;     * New vaccine boolean.
-<i class="no-highlight">27</i>&nbsp;     *
-<i class="no-highlight">28</i>&nbsp;     * @param name              the name
-<i class="no-highlight">29</i>&nbsp;     * @param brand             the brand
-<i class="no-highlight">30</i>&nbsp;     * @param ageGroup          the age group
-<i class="no-highlight">31</i>&nbsp;     * @param doseNumber        the dose number
-<i class="no-highlight">32</i>&nbsp;     * @param dosage            the dosage
-<i class="no-highlight">33</i>&nbsp;     * @param timeSinceLastDose the time since last dose
-<i class="no-highlight">34</i>&nbsp;     * @return the boolean
+<i class="no-highlight">13</i>&nbsp;
+<i class="no-highlight">14</i>&nbsp;    /**
+<i class="no-highlight">15</i>&nbsp;     * Instantiates a new List employees controller.
+<i class="no-highlight">16</i>&nbsp;     */
+<b class="nc"><i class="no-highlight">17</i>&nbsp;    public ListEmployeesController() {</b>
+<b class="nc"><i class="no-highlight">18</i>&nbsp;        this.oApp = App.getInstance();</b>
+<i class="no-highlight">19</i>&nbsp;    }
+<i class="no-highlight">20</i>&nbsp;
+<i class="no-highlight">21</i>&nbsp;    /**
+<i class="no-highlight">22</i>&nbsp;     * Gets employee roles.
+<i class="no-highlight">23</i>&nbsp;     *
+<i class="no-highlight">24</i>&nbsp;     * @return the employee roles
+<i class="no-highlight">25</i>&nbsp;     */
+<i class="no-highlight">26</i>&nbsp;    public List&lt;String&gt; getEmployeeRoles() {
+<b class="nc"><i class="no-highlight">27</i>&nbsp;        return this.oApp.getCompany().getEmployeeStore().getEmployeeRoles();</b>
+<i class="no-highlight">28</i>&nbsp;    }
+<i class="no-highlight">29</i>&nbsp;
+<i class="no-highlight">30</i>&nbsp;    /**
+<i class="no-highlight">31</i>&nbsp;     * Gets employees by role.
+<i class="no-highlight">32</i>&nbsp;     *
+<i class="no-highlight">33</i>&nbsp;     * @param selectionRole the selection role
+<i class="no-highlight">34</i>&nbsp;     * @return the employees by role
 <i class="no-highlight">35</i>&nbsp;     */
-<i class="no-highlight">36</i>&nbsp;    public boolean newVaccine(String name, String brand, String ageGroup, String doseNumber, double dosage, int timeSinceLastDose ){
-<b class="fc"><i class="no-highlight">37</i>&nbsp;        this.oNewVaccine = oCompany.getVaccineStore().newVaccine(name, brand, ageGroup, doseNumber, dosage, timeSinceLastDose);</b>
-<b class="nc"><i class="no-highlight">38</i>&nbsp;        if (this.oNewVaccine != null)</b>
-<b class="nc"><i class="no-highlight">39</i>&nbsp;            return true;</b>
-<i class="no-highlight">40</i>&nbsp;        else
-<b class="nc"><i class="no-highlight">41</i>&nbsp;            return false;</b>
-<i class="no-highlight">42</i>&nbsp;    }
-<i class="no-highlight">43</i>&nbsp;
-<i class="no-highlight">44</i>&nbsp;
-<i class="no-highlight">45</i>&nbsp;    /**
-<i class="no-highlight">46</i>&nbsp;     * Get new vaccineto string string.
-<i class="no-highlight">47</i>&nbsp;     *
-<i class="no-highlight">48</i>&nbsp;     * @return the string
-<i class="no-highlight">49</i>&nbsp;     */
-<b class="nc"><i class="no-highlight">50</i>&nbsp;    public String getNewVaccinetoString(){return this.oNewVaccine.toString();}</b>
-<i class="no-highlight">51</i>&nbsp;
-<i class="no-highlight">52</i>&nbsp;    /**
-<i class="no-highlight">53</i>&nbsp;     * Register vaccine boolean.
-<i class="no-highlight">54</i>&nbsp;     *
-<i class="no-highlight">55</i>&nbsp;     * @return the boolean
-<i class="no-highlight">56</i>&nbsp;     */
-<b class="nc"><i class="no-highlight">57</i>&nbsp;    public boolean registerVaccine(){return this.oCompany.getVaccineStore().registerVaccine(oNewVaccine);}</b>
-<i class="no-highlight">58</i>&nbsp;}
+<i class="no-highlight">36</i>&nbsp;    public List&lt;Employee&gt; getEmployeesByRole(int selectionRole) {
+<b class="nc"><i class="no-highlight">37</i>&nbsp;        return this.oApp.getCompany().getEmployeeStore().getEmployeesByRole(selectionRole);</b>
+<i class="no-highlight">38</i>&nbsp;    }
+<i class="no-highlight">39</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -157,7 +138,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-05-08 19:04</div>
+    <div style="float:right;">generated on 2022-05-29 22:37</div>
 </div>
 </body>
 </html>

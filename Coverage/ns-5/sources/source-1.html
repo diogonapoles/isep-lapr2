@@ -61,7 +61,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/11)
+    (0/13)
   </span>
 </td>
 </tr>
@@ -100,21 +100,22 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="nc"><i class="no-highlight">25</i>&nbsp;        options.add(new MenuItem(&quot;Register Vaccination Center &quot;, new RegisterVaccinationCenterUI()));</b>
 <b class="nc"><i class="no-highlight">26</i>&nbsp;        options.add(new MenuItem(&quot;Register Employee &quot;, new RegisterEmployeeUI()));</b>
 <b class="nc"><i class="no-highlight">27</i>&nbsp;        options.add(new MenuItem(&quot;List Employees &quot;, new ListEmployeesUI()));</b>
-<i class="no-highlight">28</i>&nbsp;        //options.add(new MenuItem(&quot;New Vaccine&quot;, new NewVaccineUI()));
+<b class="nc"><i class="no-highlight">28</i>&nbsp;        options.add(new MenuItem(&quot;New Vaccine&quot;, new NewVaccineUI()));</b>
 <b class="nc"><i class="no-highlight">29</i>&nbsp;        options.add(new MenuItem(&quot;New Vaccine Type&quot;, new NewVaccineTypeUI()));</b>
-<i class="no-highlight">30</i>&nbsp;
+<b class="nc"><i class="no-highlight">30</i>&nbsp;        options.add(new MenuItem(&quot;Load CSV file with SNS Users&quot;, new LoadSNSUsersUI()));</b>
 <i class="no-highlight">31</i>&nbsp;
-<b class="nc"><i class="no-highlight">32</i>&nbsp;        int option = 0;</b>
-<i class="no-highlight">33</i>&nbsp;        do {
-<b class="nc"><i class="no-highlight">34</i>&nbsp;            option = Utils.showAndSelectIndex(options, &quot;\n\nAdmin Menu:&quot;);</b>
-<i class="no-highlight">35</i>&nbsp;
-<b class="nc"><i class="no-highlight">36</i>&nbsp;            if ((option &gt;= 0) &amp;&amp; (option &lt; options.size())) {</b>
-<b class="nc"><i class="no-highlight">37</i>&nbsp;                options.get(option).run();</b>
-<i class="no-highlight">38</i>&nbsp;            }
-<i class="no-highlight">39</i>&nbsp;        }
-<b class="nc"><i class="no-highlight">40</i>&nbsp;        while (option != -1);</b>
-<i class="no-highlight">41</i>&nbsp;    }
-<i class="no-highlight">42</i>&nbsp;}
+<i class="no-highlight">32</i>&nbsp;
+<b class="nc"><i class="no-highlight">33</i>&nbsp;        int option = 0;</b>
+<i class="no-highlight">34</i>&nbsp;        do {
+<b class="nc"><i class="no-highlight">35</i>&nbsp;            option = Utils.showAndSelectIndex(options, &quot;\n\nAdmin Menu:&quot;);</b>
+<i class="no-highlight">36</i>&nbsp;
+<b class="nc"><i class="no-highlight">37</i>&nbsp;            if ((option &gt;= 0) &amp;&amp; (option &lt; options.size())) {</b>
+<b class="nc"><i class="no-highlight">38</i>&nbsp;                options.get(option).run();</b>
+<i class="no-highlight">39</i>&nbsp;            }
+<i class="no-highlight">40</i>&nbsp;        }
+<b class="nc"><i class="no-highlight">41</i>&nbsp;        while (option != -1);</b>
+<i class="no-highlight">42</i>&nbsp;    }
+<i class="no-highlight">43</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -141,7 +142,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-05-08 19:04</div>
+    <div style="float:right;">generated on 2022-05-29 22:37</div>
 </div>
 </body>
 </html>

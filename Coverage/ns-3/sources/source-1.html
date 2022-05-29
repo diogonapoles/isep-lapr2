@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > Constants</title>
+  <title>Coverage Report > CenterCoordinator</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/highlight-idea.css";
@@ -17,10 +17,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">app.domain.shared</a>
+    <a href="../index.html">app.domain.systemUsers</a>
 </div>
 
-<h1>Coverage Summary for Class: Constants (app.domain.shared)</h1>
+<h1>Coverage Summary for Class: CenterCoordinator (app.domain.systemUsers)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -39,7 +39,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">Constants</td>
+  <td class="name">CenterCoordinator</td>
 <td class="coverageStat">
   <span class="percent">
     0%
@@ -73,23 +73,28 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package app.domain.shared;
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package app.domain.systemUsers;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;/**
-<i class="no-highlight">4</i>&nbsp; *
-<i class="no-highlight">5</i>&nbsp; * @author Paulo Maio &lt;pam@isep.ipp.pt&gt;
-<i class="no-highlight">6</i>&nbsp; */
-<b class="nc"><i class="no-highlight">7</i>&nbsp;public class Constants {</b>
-<i class="no-highlight">8</i>&nbsp;    public static final String ROLE_ADMIN = &quot;ADMINISTRATOR&quot;;
-<i class="no-highlight">9</i>&nbsp;    public static final String ROLE_NURSE = &quot;NURSE&quot;;
-<i class="no-highlight">10</i>&nbsp;    public static final String ROLE_RECEPTIONIST = &quot;RECEPTIONIST&quot;;
-<i class="no-highlight">11</i>&nbsp;    public static final String ROLE_CENTER_COORDINATOR = &quot;CENTER_COORDINATOR&quot;;
-<i class="no-highlight">12</i>&nbsp;    public static final String ROLE_SNS_USER = &quot;SNS_USER&quot;;
-<i class="no-highlight">13</i>&nbsp;
-<i class="no-highlight">14</i>&nbsp;
-<i class="no-highlight">15</i>&nbsp;    public static final String PARAMS_FILENAME = &quot;config.properties&quot;;
-<i class="no-highlight">16</i>&nbsp;    public static final String PARAMS_COMPANY_DESIGNATION = &quot;Company.Designation&quot;;
-<i class="no-highlight">17</i>&nbsp;}
+<i class="no-highlight">3</i>&nbsp;import app.domain.model.Employee;
+<i class="no-highlight">4</i>&nbsp;
+<i class="no-highlight">5</i>&nbsp;/**
+<i class="no-highlight">6</i>&nbsp; * The type Center coordinator.
+<i class="no-highlight">7</i>&nbsp; */
+<i class="no-highlight">8</i>&nbsp;public class CenterCoordinator extends Employee {
+<i class="no-highlight">9</i>&nbsp;
+<i class="no-highlight">10</i>&nbsp;    /**
+<i class="no-highlight">11</i>&nbsp;     * Instantiates a new Center coordinator.
+<i class="no-highlight">12</i>&nbsp;     *
+<i class="no-highlight">13</i>&nbsp;     * @param name              the name
+<i class="no-highlight">14</i>&nbsp;     * @param phoneNumber       the phone number
+<i class="no-highlight">15</i>&nbsp;     * @param address           the address
+<i class="no-highlight">16</i>&nbsp;     * @param emailAddress      the email address
+<i class="no-highlight">17</i>&nbsp;     * @param citizenCardNumber the citizen card number
+<i class="no-highlight">18</i>&nbsp;     */
+<i class="no-highlight">19</i>&nbsp;    public CenterCoordinator(String name, String phoneNumber, String address, String emailAddress, String citizenCardNumber) {
+<b class="nc"><i class="no-highlight">20</i>&nbsp;        super(name, phoneNumber, address, emailAddress, citizenCardNumber);</b>
+<i class="no-highlight">21</i>&nbsp;    }
+<i class="no-highlight">22</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -116,7 +121,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-05-08 19:04</div>
+    <div style="float:right;">generated on 2022-05-29 22:37</div>
 </div>
 </body>
 </html>
