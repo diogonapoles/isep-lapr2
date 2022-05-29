@@ -145,9 +145,101 @@ Other classes of the system:
 
 # 5. Construction (Implementation)
 
-*In this section, it is suggested to provide, if necessary, some evidence that the construction/implementation is in accordance with the previously carried out design. Furthermore, it is recommeded to mention/describe the existence of other relevant (e.g. configuration) files and highlight relevant commits.*
+## Class UserArrivalUI
 
-*It is also recommended to organize this content by subsections.* 
+    public UserArrivalUI() {
+
+        this.controller = new UserArrivalController();
+    }
+
+    public void run() {
+
+        if (controller.getWorking() == null) {
+            System.out.println("Doesn't exist");
+        } else {
+            String snsUserNumber = Utils.readLineFromConsole("SNS User Number");
+            if (inputData(snsUserNumber)) {
+
+            //    Object o = Utils.showAndSelectOne(controller.getVaccineTypeList(), "\nVaccineTypes: ");
+              //  ScheduleVaccine scheduleVaccine = controller.getScheduleVaccine(snsUserNumber, (VaccineType) o);
+              //  getData();
+
+                //if (Utils.confirm("Confirms data?(s/n)")) {
+                    controller.registerUserArrival();
+                    System.out.println("SNS User arrival registered successfully");
+                //} else
+                    //run();
+
+
+            } else {
+                System.out.println("not a valid user or already exists");
+            }
+        }
+
+    }
+
+    private boolean inputData(String snsUserNumber) {
+
+        return controller.newUserArrival(snsUserNumber);
+    }
+
+## Class UserArrivalController
+
+
+    public UserArrivalController() {
+        this.oApp = App.getInstance();
+        this.oCompany = oApp.getCompany();
+        this.vaccineTypeStore = oCompany.getVaccineTypeStore();
+        this.vaccineScheduleStore =oCompany.getScheduleVaccineStore();
+    }
+
+    /**
+     * Get working vaccination center.
+     *
+     * @return the vaccination center
+     */
+    public VaccinationCenter getWorking() {
+        vaccinationCenter = oCompany.getEmployeeStore().getWorking(oApp.getCurrentUserSession().getUserId().getEmail());
+        return vaccinationCenter;
+    }
+
+
+    /**
+     * New user arrival boolean.
+     *
+     * @param snsUserNumber the sns user number
+     * @return the boolean
+     */
+    public boolean newUserArrival(String snsUserNumber) {
+        this.userArrival = oCompany.getUserArrivalStore().newUserArrival(oCompany.getSNSUserStore().getSNSUserByNumber(snsUserNumber), snsUserNumber, vaccinationCenter);
+
+        if (this.userArrival != null)
+            return true;
+        else
+            return false;
+    }
+
+
+    /**
+     * Register user arrival boolean.
+     *
+     * @return the boolean
+     */
+    public boolean registerUserArrival() {
+        return this.oCompany.getUserArrivalStore().registerUserArrival(this.userArrival);
+    }
+
+
+    /**
+     * Gets user arrival string.
+     *
+     * @return the user arrival string
+     */
+    public String getUserArrivalString() {
+        return this.oSNSUser.toStringWaitingRoom();
+    }
+
+
 
 # 6. Integration and Demo 
 
