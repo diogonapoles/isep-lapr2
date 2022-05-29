@@ -120,29 +120,60 @@ Other software classes (i.e. Pure Fabrication) identified:
 
 **_DO NOT COPY ALL DEVELOPED TESTS HERE_**
 
-**Test 1:** Check that it is not possible to create an instance of the Example class with null values. 
+**Test 1:** Check that the Controller is listing correctly
 
-	@Test(expected = IllegalArgumentException.class)
-		public void ensureNullIsNotAllowed() {
-		Exemplo instance = new Exemplo(null, null);
-	}
+	@Test
+    public void getListUsersInWaitingRoom() throws ParseException {
+        Date dtest = new SimpleDateFormat("dd/MM/yyyy").parse("02/05/2003");
+        SNSUser user = new SNSUser("Test","male",dtest ,"street test", "923456789","user@test.com","123453678","12345342");
+        String numero = user.getSnsUserNumber();
+        cont.newUserArrival(numero);
+        List<SNSUser> Users = new ArrayList<>();
+        Users.add(user);
 
-*It is also recommended to organize this content by subsections.* 
+        assertEquals(Users , controller.getListUsersInWaitingRoom());
+
 
 # 5. Construction (Implementation)
 
-*In this section, it is suggested to provide, if necessary, some evidence that the construction/implementation is in accordance with the previously carried out design. Furthermore, it is recommeded to mention/describe the existence of other relevant (e.g. configuration) files and highlight relevant commits.*
+##Class ListWaitingRoomUI 
 
-*It is also recommended to organize this content by subsections.* 
+    public ListWaitingRoomUI() {controller = new ListWaitingRoomController();}
+
+
+
+    public void run() {
+        listUsersInWaitingRoom();
+    }
+
+    private void listUsersInWaitingRoom(){
+
+        Utils.showList(controller.getListUsersInWaitingRoom(),"List of SNS Users in the Waiting Room");
+    }
+}
+
+##Class ListWaitingRoomController
+
+
+    public ListWaitingRoomController() {
+    this.oApp = App.getInstance();
+    }
+
+  
+    public List<SNSUser>  getListUsersInWaitingRoom() {
+        return this.oApp.getCompany().getUserArrivalStore().getListUserToWaitingRoom(getWorking());
+    }
+
+
 
 # 6. Integration and Demo 
 
-*In this section, it is suggested to describe the efforts made to integrate this functionality with the other features of the system.*
+Employee's working place (vaccination center) was implemented in this Sprint to choose wich vaccination center to manage individually.
 
 
 # 7. Observations
 
-*In this section, it is suggested to present a critical perspective on the developed work, pointing, for example, to other alternatives and or future related work.*
+Harder sprint with some difficulties thanks to new concepts presented
 
 
 
