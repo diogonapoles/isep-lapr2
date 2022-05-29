@@ -281,6 +281,11 @@ public abstract class VaccinationCenter {
                 "\n\n";
     }
 
+    /**
+     * To string schedule vaccine string.
+     *
+     * @return the string
+     */
     public String toStringScheduleVaccine() {
         return "\nname: " + name +
                 "\nphoneNumber: " + phoneNumber +

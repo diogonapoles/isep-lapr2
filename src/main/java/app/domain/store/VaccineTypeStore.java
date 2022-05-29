@@ -61,6 +61,11 @@ public class VaccineTypeStore {
         return true;
     }
 
+    /**
+     * Get current outbreak vaccine type.
+     *
+     * @return the vaccine type
+     */
     public VaccineType getCurrentOutbreak(){
         VaccineType vaccineType=listVaccineType.get(0);;
         return vaccineType;
@@ -100,6 +105,11 @@ public class VaccineTypeStore {
         return listOfVaccineType;
     }
 
+    /**
+     * Get list vaccine type list.
+     *
+     * @return the list
+     */
     public List<VaccineType> getListVaccineType(){
         return listVaccineType;
     }

@@ -13,6 +13,9 @@ public class LoadSNSUsersController {
     private App oApp;
     private Company oCompany;
     private SNSUser oSNSUser;
+    /**
+     * The O sns user list.
+     */
     public List <SNSUser> oSNSUserList;
 
     /**
@@ -26,7 +29,7 @@ public class LoadSNSUsersController {
     /**
      * New CSV reader boolean.
      *
-     * @param fileLocation  the file location
+     * @param fileLocation the file location
      * @return the boolean
      */
     public boolean newCSVReader(String fileLocation) {
@@ -39,6 +42,8 @@ public class LoadSNSUsersController {
 
     /**
      * Clear temp array.
+     *
+     * @return the boolean
      */
 
 
@@ -51,10 +56,18 @@ public class LoadSNSUsersController {
         }
     }
 
+    /**
+     * Clear temp array.
+     */
     public void clearTempArray(){
         oSNSUserList.clear();
     }
 
+    /**
+     * Get csv file string string.
+     *
+     * @return the string
+     */
     public String getCSVFileString(){
         return this.oSNSUserList.toString();
     }

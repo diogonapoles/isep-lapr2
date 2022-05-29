@@ -28,6 +28,7 @@ public class NewVaccineController {
     /**
      * New vaccine boolean.
      *
+     * @param type              the type
      * @param name              the name
      * @param brand             the brand
      * @param ageGroup          the age group
@@ -59,5 +60,10 @@ public class NewVaccineController {
      */
     public boolean registerVaccine(){return this.oCompany.getVaccineStore().registerVaccine(oNewVaccine);}
 
+    /**
+     * Get vaccine types list.
+     *
+     * @return the list
+     */
     public List<VaccineType> getVaccineTypes(){return this.oCompany.getVaccineTypeStore().getListVaccineType();}
 }

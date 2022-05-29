@@ -15,6 +15,9 @@ import javax.xml.validation.Validator;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * The type Schedule vaccine receptionist ui.
+ */
 public class ScheduleVaccineReceptionistUI implements Runnable {
 
     private final ScheduleVaccineReceptionistController controller;
@@ -22,6 +25,9 @@ public class ScheduleVaccineReceptionistUI implements Runnable {
     private final Company company;
 
 
+    /**
+     * Instantiates a new Schedule vaccine receptionist ui.
+     */
     public ScheduleVaccineReceptionistUI() {
         this.company = App.getInstance().getCompany();
         this.controller = new ScheduleVaccineReceptionistController();
@@ -94,6 +100,11 @@ public class ScheduleVaccineReceptionistUI implements Runnable {
     }
 
 
+    /**
+     * Gets vaccination center.
+     *
+     * @return the vaccination center
+     */
     public List<VaccinationCenter> getVaccinationCenter() {
         return this.controller.getVaccinationCenter();
     }
