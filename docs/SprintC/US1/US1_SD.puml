@@ -46,13 +46,13 @@ deactivate UI
 |||
 
 
-
 USER -> UI : introduces date and time
 activate UI
 |||
 UI --> USER: shows all data and requests confirmation
 deactivate UI
 |||
+
 
 
 USER -> UI : confirms the data

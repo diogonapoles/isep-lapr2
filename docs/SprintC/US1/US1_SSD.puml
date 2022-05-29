@@ -25,7 +25,6 @@ User-> ":System" : confirms the data
 activate ":System"
 ":System" --> User : infoms operation (in)sucess
 deactivate ":System"
-
-
 deactivate User
+
 @enduml

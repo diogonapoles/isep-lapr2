@@ -271,7 +271,7 @@ Other software classes (i.e. Pure Fabrication) identified:
 
 * A SNS User menu was added.
 
-* For some demonstration purposes some SNS Users and its schedules are bootstrapped while system starts.
+* For demonstration purposes, some SNS Users and its schedules are bootstrapped while system starts.
 
 
 # 7. Observations

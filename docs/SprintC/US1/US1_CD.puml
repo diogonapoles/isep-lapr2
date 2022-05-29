@@ -8,6 +8,7 @@ class ScheduleVaccineController{
 }
 
 class ScheduleVaccineUI{
+
 }
 
 class ScheduleVaccine{
