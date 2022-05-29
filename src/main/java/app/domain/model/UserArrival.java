@@ -16,9 +16,6 @@ public class UserArrival {
         return snsUser;
     }
 
-    public void setSnsUser(SNSUser snsUser) {
-        this.snsUser = snsUser;
-    }
 
     public VaccinationCenter getVaccinationCenter() {
         return vaccinationCenter;

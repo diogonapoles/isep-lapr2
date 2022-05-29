@@ -107,8 +107,6 @@ public class App {
 
         createEmployee();
         createSnsUser();
-        //createVaccinnationCenter();
-        //createSnsUserWithAppointment();
         createVaccineType();
 
         VaccinationCenter vc1 = this.company.getVaccinationCenterStore().newVaccinationCenter(1, "Healthcare", "917876321", "493782",
@@ -134,18 +132,7 @@ public class App {
         this.company.getVaccineTypeStore().registerVaccineType(vt1);
     }
 
-    private void createSnsUserWithAppointment() {
-        VaccinationCenter vc1 = this.company.getVaccinationCenterStore().newVaccinationCenter(1, "Healthcare", "917876321", "493782",
-                "TestRua1", "teste1@gmail.com", "healthcare.com",
-                "10:00", "20:00", "3", "20");
-        this.company.getVaccinationCenterStore().registerVaccinationCenter(vc1);
-        VaccineType vt1 = this.company.getVaccineTypeStore().newVaccineType(0,"12341","COVID-19");
-        Date dateTime = new Date(2022,10,12,14,7);
 
-        ScheduleVaccine snsU10 = this.company.getScheduleVaccineStore().newScheduleVaccine(new ScheduleVaccineDTO(
-                "12344433", vc1,vt1,dateTime));
-        this.company.getScheduleVaccineStore().registerScheduleVaccine(snsU10);
-    }
 
     private void createSnsUser() throws ParseException {
         SNSUser snsU1 = this.company.getSNSUserStore().newSNSUser("maria", "feminine", "09/03/1998", "street 21", "912245654", "maria12@gmail.com", "123459876", "34566543");
@@ -159,16 +146,7 @@ public class App {
     }
 
 
-    private void createVaccinnationCenter() {
-        VaccinationCenter vc1 = this.company.getVaccinationCenterStore().newVaccinationCenter(1, "Healthcare", "917876321", "493782",
-                "TestRua1", "teste1@gmail.com", "healthcare.com",
-                "10", "20", "3", "20");
-        this.company.getVaccinationCenterStore().registerVaccinationCenter(vc1);
-        VaccinationCenter vc2 = this.company.getVaccinationCenterStore().newVaccinationCenter(0, "Community", "917312756", "654253",
-                "TestRua2", "teste2@gmail.com", "community.com",
-                "8", "22", "5", "40");
-        this.company.getVaccinationCenterStore().registerVaccinationCenter(vc2);
-    }
+
 
 
     private void createEmployee() {

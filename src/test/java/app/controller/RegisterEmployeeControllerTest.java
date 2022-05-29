@@ -2,6 +2,7 @@ package app.controller;
 
 import app.domain.model.Employee;
 import app.domain.model.HealthcareCenter;
+import app.domain.model.ScheduleVaccine;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
@@ -22,6 +23,7 @@ class RegisterEmployeeControllerTest {
             "tgr@gmail.com", "12341234", 0);
     boolean result2 = emp.newEmployee("maria", "912834737", "tigas streat",
             "tigas@gmail.com", "12345678", 0);
+
 
 
     @Test

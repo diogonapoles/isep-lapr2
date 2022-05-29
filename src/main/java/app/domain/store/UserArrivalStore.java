@@ -31,14 +31,18 @@ public class UserArrivalStore {
 
 
     private boolean validateUserSchedule(SNSUser snsUser) {
-        for (ScheduleVaccine sv : scheduleVaccineStore.getListScheduleVaccine()) {
-            if (sv.getSNSUserNumber().equals(snsUser.getSnsUserNumber()))
-                if (listUserToWaitingRoom.isEmpty())
-                    return true;
-                else
-                    for (UserArrival userArrival : listUserToWaitingRoom)
-                        if (!userArrival.getSnsUser().equals(snsUser))
-                            return true;
+        try {
+            for (ScheduleVaccine sv : scheduleVaccineStore.getListScheduleVaccine()) {
+                if (sv.getSNSUserNumber().equals(snsUser.getSnsUserNumber()))
+                    if (listUserToWaitingRoom.isEmpty())
+                        return true;
+                    else
+                        for (UserArrival userArrival : listUserToWaitingRoom)
+                            if (!userArrival.getSnsUser().equals(snsUser))
+                                return true;
+            }
+        }catch (Exception e){
+            return false;
         }
         return false;
     }
