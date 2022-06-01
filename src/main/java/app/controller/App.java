@@ -103,6 +103,7 @@ public class App {
 
         //  this.authFacade.addUserWithRole("Nurse", "nurse@lei.sem2.pt", "123456", Constants.ROLE_NURSE);
         this.authFacade.addUserWithRole("Main Administrator", "admin@lei.sem2.pt", "123456", Constants.ROLE_ADMIN);
+        //  this.authFacade.addUserWithRole("Center Coordinator", "coordinator@lei.sem2.pt","123456", Constants.ROLE_CENTER_COORDINATOR);
         //  this.authFacade.addUserWithRole("Receptionist", "receptionist@lei.sem2.pt", "123456", Constants.ROLE_RECEPTIONIST);
 
         this.getCompany().defaultRegister(this.authFacade);
@@ -120,10 +121,10 @@ public class App {
                 "8", "22", "5", "40");
         this.company.getVaccinationCenterStore().registerVaccinationCenter(vc2);
 
-        VaccineType vt1 = this.company.getVaccineTypeStore().newVaccineType(0,"12341","COVID-19");
-        Date dateTime = new Date(2022, 11, 21, 9,32);
+        VaccineType vt1 = this.company.getVaccineTypeStore().newVaccineType(0, "12341", "COVID-19");
+        Date dateTime = new Date(2022, 11, 21, 9, 32);
 
-        ScheduleVaccine snsU10 = this.company.getScheduleVaccineStore().newScheduleVaccine(new ScheduleVaccineDTO("123444333", vc1,vt1,dateTime));
+        ScheduleVaccine snsU10 = this.company.getScheduleVaccineStore().newScheduleVaccine(new ScheduleVaccineDTO("123444333", vc1, vt1, dateTime));
         this.company.getScheduleVaccineStore().registerScheduleVaccine(snsU10);
 
 
@@ -133,7 +134,6 @@ public class App {
         VaccineType vt1 = this.company.getVaccineTypeStore().newVaccineType(0, "12345", "COVID-19");
         this.company.getVaccineTypeStore().registerVaccineType(vt1);
     }
-
 
 
     private void createSnsUser() throws ParseException {
@@ -146,9 +146,6 @@ public class App {
 
 
     }
-
-
-
 
 
     private void createEmployee() {
@@ -165,13 +162,17 @@ public class App {
                 "nando23@gmail.com", "12349876", 2);
         getCompany().getEmployeeStore().registerEmployee(employee3);
 
-        Employee employee4 = getCompany().getEmployeeStore().newEmployee("Receptionist","912333121","street 21",
+        Employee employee4 = getCompany().getEmployeeStore().newEmployee("Receptionist" , "912333121", "street 21",
                 "receptionist@lei.sem2.pt", "12344321", 0);
         getCompany().getEmployeeStore().registerEmployee(employee4);
 
-        Employee employee5 = getCompany().getEmployeeStore().newEmployee("Nurse","918564321","avenue 21",
+        Employee employee5 = getCompany().getEmployeeStore().newEmployee("Nurse", "918564321", "avenue 21",
                 "nurse@lei.sem2.pt", "10293847", 2);
         getCompany().getEmployeeStore().registerEmployee(employee5);
+
+        Employee employee6 = getCompany().getEmployeeStore().newEmployee("Coordinator", "912218217", "avenue 26",
+                "coordinator@lei.sem2.pt", "19231741", 1);
+        getCompany().getEmployeeStore().registerEmployee(employee6);
 
     }
 
