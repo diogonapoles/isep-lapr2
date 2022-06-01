@@ -1,8 +1,12 @@
 package app.controller;
 
 import app.domain.model.*;
+import app.domain.model.systemUser.Employee;
+import app.domain.model.vaccinationCenter.VaccinationCenter;
+import app.domain.model.vaccinationProcess.ScheduleVaccine;
+import app.domain.model.vaccine.VaccineType;
 import app.domain.shared.Constants;
-import app.domain.systemUsers.SNSUser;
+import app.domain.model.systemUser.SNSUser;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import pt.isep.lei.esoft.auth.UserSession;
 
@@ -10,8 +14,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Properties;
 

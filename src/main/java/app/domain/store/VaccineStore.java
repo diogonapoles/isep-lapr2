@@ -1,7 +1,7 @@
 package app.domain.store;
 
-import app.domain.model.Vaccine;
-import app.domain.model.VaccineType;
+import app.domain.model.vaccine.Vaccine;
+import app.domain.model.vaccine.VaccineType;
 
 import java.util.ArrayList;
 import java.util.List;

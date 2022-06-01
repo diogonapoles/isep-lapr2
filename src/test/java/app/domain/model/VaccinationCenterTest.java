@@ -1,5 +1,7 @@
 package app.domain.model;
 
+import app.domain.model.vaccinationCenter.CommunityCenter;
+import app.domain.model.vaccinationCenter.HealthcareCenter;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

@@ -1,7 +1,13 @@
 package app.controller;
 
-import app.domain.model.*;
-import app.domain.systemUsers.SNSUser;
+import app.controller.receptionist.UserArrivalController;
+import app.domain.model.vaccinationCenter.CommunityCenter;
+import app.domain.model.vaccinationCenter.HealthcareCenter;
+import app.domain.model.systemUser.SNSUser;
+import app.domain.model.vaccinationProcess.ScheduleVaccine;
+import app.domain.model.vaccine.ToxoidVaccine;
+import app.domain.model.vaccine.VaccineType;
+import app.domain.model.vaccine.mRNAVaccine;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

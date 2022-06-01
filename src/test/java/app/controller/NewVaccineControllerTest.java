@@ -1,8 +1,8 @@
 /*package app.controller;
 
-import app.domain.model.ToxoidVaccine;
-import app.domain.model.Vaccine;
-import app.domain.model.VaccineType;
+import app.domain.model.vaccine.ToxoidVaccine;
+import app.domain.model.vaccine.Vaccine;
+import app.domain.model.vaccine.VaccineType;
 import app.domain.store.VaccineTypeStore;
 import org.junit.jupiter.api.Test;
 

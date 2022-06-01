@@ -1,10 +1,11 @@
 package app.domain.store;
 
-import app.domain.model.*;
+import app.domain.model.systemUser.Employee;
+import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.domain.shared.Constants;
-import app.domain.systemUsers.CenterCoordinator;
-import app.domain.systemUsers.Nurse;
-import app.domain.systemUsers.Receptionist;
+import app.domain.model.systemUser.CenterCoordinator;
+import app.domain.model.systemUser.Nurse;
+import app.domain.model.systemUser.Receptionist;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
 

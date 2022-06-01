@@ -1,14 +1,14 @@
 package app.controller;
 
-import app.domain.model.CommunityCenter;
-import app.domain.model.HealthcareCenter;
+import app.controller.administrator.RegisterVaccinationCenterController;
+import app.domain.model.vaccinationCenter.CommunityCenter;
+import app.domain.model.vaccinationCenter.HealthcareCenter;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertLinesMatch;
 

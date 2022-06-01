@@ -1,8 +1,7 @@
 package app.domain.store;
 
-import app.domain.model.*;
+import app.domain.model.vaccine.*;
 
-import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 

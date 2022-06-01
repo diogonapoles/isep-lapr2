@@ -1,7 +1,7 @@
 package app.domain.store;
 
 import app.domain.shared.Constants;
-import app.domain.systemUsers.SNSUser;
+import app.domain.model.systemUser.SNSUser;
 import pt.isep.lei.esoft.auth.AuthFacade;
 
 import java.text.ParseException;

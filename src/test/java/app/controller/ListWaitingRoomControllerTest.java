@@ -1,7 +1,8 @@
 package app.controller;
 
-import app.domain.model.Employee;
-import app.domain.systemUsers.SNSUser;
+import app.controller.nurse.ListWaitingRoomController;
+import app.controller.receptionist.UserArrivalController;
+import app.domain.model.systemUser.SNSUser;
 import org.junit.Test;
 
 import java.text.ParseException;

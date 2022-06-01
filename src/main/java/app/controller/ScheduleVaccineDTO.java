@@ -1,8 +1,7 @@
 package app.controller;
 
-import app.domain.model.VaccinationCenter;
-import app.domain.model.Vaccine;
-import app.domain.model.VaccineType;
+import app.domain.model.vaccinationCenter.VaccinationCenter;
+import app.domain.model.vaccine.VaccineType;
 
 import java.util.Date;
 

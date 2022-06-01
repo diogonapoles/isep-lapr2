@@ -1,14 +1,14 @@
 package app.domain.model;
 
-import app.controller.UserArrivalController;
-import app.domain.systemUsers.SNSUser;
+import app.domain.model.vaccinationCenter.CommunityCenter;
+import app.domain.model.vaccinationCenter.HealthcareCenter;
+import app.domain.model.systemUser.SNSUser;
+import app.domain.model.vaccinationProcess.UserArrival;
 import org.junit.jupiter.api.Test;
-import pt.isep.lei.esoft.auth.domain.model.User;
 
 import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
 
 class UserArrivalTest {
 

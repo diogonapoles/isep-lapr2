@@ -1,7 +1,7 @@
 package app.controller;
 
-import app.domain.model.CommunityCenter;
-import app.domain.model.VaccinationCenter;
+import app.domain.model.vaccinationCenter.CommunityCenter;
+import app.domain.model.vaccinationCenter.VaccinationCenter;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,7 +1,7 @@
 package app.controller;
 
-import app.domain.model.ToxoidVaccine;
-import org.junit.Assert;
+import app.controller.administrator.NewVaccineTypeController;
+import app.domain.model.vaccine.ToxoidVaccine;
 import org.junit.Test;
 
 import java.util.ArrayList;

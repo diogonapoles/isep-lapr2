@@ -1,11 +1,11 @@
 package app.domain.store;
 
 import app.controller.ScheduleVaccineDTO;
-import app.domain.model.ScheduleVaccine;
-import app.domain.model.VaccinationCenter;
-import app.domain.model.Vaccine;
-import app.domain.model.VaccineType;
-import app.domain.systemUsers.SNSUser;
+import app.domain.model.vaccinationProcess.ScheduleVaccine;
+import app.domain.model.vaccinationCenter.VaccinationCenter;
+import app.domain.model.vaccine.Vaccine;
+import app.domain.model.vaccine.VaccineType;
+import app.domain.model.systemUser.SNSUser;
 
 import java.util.ArrayList;
 import java.util.Date;

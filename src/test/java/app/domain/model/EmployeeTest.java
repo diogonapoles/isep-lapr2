@@ -1,8 +1,8 @@
 package app.domain.model;
 
-import app.domain.systemUsers.CenterCoordinator;
-import app.domain.systemUsers.Nurse;
-import app.domain.systemUsers.Receptionist;
+import app.domain.model.systemUser.CenterCoordinator;
+import app.domain.model.systemUser.Nurse;
+import app.domain.model.systemUser.Receptionist;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

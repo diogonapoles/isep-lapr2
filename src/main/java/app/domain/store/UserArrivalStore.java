@@ -1,10 +1,10 @@
 package app.domain.store;
 
 
-import app.domain.model.ScheduleVaccine;
-import app.domain.model.UserArrival;
-import app.domain.model.VaccinationCenter;
-import app.domain.systemUsers.SNSUser;
+import app.domain.model.vaccinationProcess.ScheduleVaccine;
+import app.domain.model.vaccinationProcess.UserArrival;
+import app.domain.model.vaccinationCenter.VaccinationCenter;
+import app.domain.model.systemUser.SNSUser;
 
 
 import java.util.ArrayList;

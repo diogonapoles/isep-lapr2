@@ -1,8 +1,8 @@
 package app.controller;
 
 import app.domain.model.Company;
-import app.domain.model.Employee;
-import app.domain.model.VaccinationCenter;
+import app.domain.model.systemUser.Employee;
+import app.domain.model.vaccinationCenter.VaccinationCenter;
 
 import java.util.List;
 

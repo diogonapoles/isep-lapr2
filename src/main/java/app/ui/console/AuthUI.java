@@ -2,10 +2,13 @@ package app.ui.console;
 
 import app.controller.AuthController;
 import app.domain.shared.Constants;
+import app.ui.console.administrator.AdminUI;
+import app.ui.console.nurse.NurseUI;
+import app.ui.console.receptionist.ReceptionistUI;
+import app.ui.console.snsUser.SnsUserUI;
 import app.ui.console.utils.Utils;
 import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
 
-import java.lang.management.MemoryNotificationInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;

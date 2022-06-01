@@ -1,15 +1,12 @@
 package app.domain.model;
 
-import app.domain.systemUsers.SNSUser;
-import app.ui.console.utils.Utils;
+import app.domain.model.systemUser.SNSUser;
+import app.ui.console.utils.Data;
 
 import java.io.*;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * The type Csv reader.
@@ -45,7 +42,7 @@ public class CSVReader {
         /**
          * The Header 5.
          */
-        HEADER5("e-mail", "email", "e-mail address", "email address"),
+        HEADER5("email", "email", "e-mail address", "email address"),
         /**
          * The Header 6.
          */
@@ -148,6 +145,7 @@ public class CSVReader {
         try {
             line = line.toLowerCase();
             line = line.replaceAll(" ", "");
+            line = line.replaceAll("-", "");
             if (line.contains(SEPARATOR_A)) {
                 separator = SEPARATOR_A;
                 // Validating if header is in the expected format
@@ -197,16 +195,17 @@ public class CSVReader {
 
     private static Date stringToDate(String birthDate)
     {
+        String separator = "/";
+        String[] date = birthDate.split(separator);
+        Data d1 = new Data(Integer.parseInt(date[0]), Integer.parseInt(date[1]), Integer.parseInt(date[2]));
             try {
-                if (!birthDate.matches("\\d{2}/\\d{2}/\\d{4}")){
+                if (d1.isMaior(Data.dataAtual())){
                     return null;
                 }
 
-                SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(birthDate);
 
-                Date date = df.parse(birthDate);
-
-                return date;
+                return date1;
             } catch (ParseException ex){
                 System.out.println("Couldn't read birthdate");
                 return null;
