@@ -17,6 +17,8 @@ import java.util.Objects;
  */
 public class ScheduleVaccineStore {
 
+    private VaccineType oVaccineType;
+
     private final List<ScheduleVaccine> listScheduleVaccine = new ArrayList<>();
 
     /**
@@ -48,8 +50,7 @@ public class ScheduleVaccineStore {
         int row = 0;
         while (row < listScheduleVaccine.size() && flag) {
             test = listScheduleVaccine.get(row);
-            if (Objects.equals(test.getSNSUserNumber(), snsUserNumber) && (test.getDateTime().equals(dateTime))
-                    && test.getVaccineType().equals(vaccineType)) {
+            if (Objects.equals(test.getSNSUserNumber(), snsUserNumber) && (test.getDateTime().equals(dateTime))) {
                 result = test;
                 flag = false;
             }
@@ -126,10 +127,10 @@ public class ScheduleVaccineStore {
     public ScheduleVaccine newScheduleVaccine(ScheduleVaccineDTO scheduleVaccineDTO) {
         String snsUserNumber = scheduleVaccineDTO.getSnsUserNumber();
         VaccinationCenter vaccinationCenter = scheduleVaccineDTO.getVaccinationCenter();
-        VaccineType vaccineType = scheduleVaccineDTO.getVaccineType();
+        Vaccine vaccine = scheduleVaccineDTO.getVaccine();
         Date dateTime = scheduleVaccineDTO.getDateTime();
 
-        ScheduleVaccine scheduleUserVaccine = new ScheduleVaccine(snsUserNumber, vaccinationCenter, vaccineType, dateTime);
+        ScheduleVaccine scheduleUserVaccine = new ScheduleVaccine(snsUserNumber, vaccinationCenter, vaccine, dateTime);
 
         if (validateScheduleVaccine(scheduleUserVaccine))
             return scheduleUserVaccine;
@@ -148,10 +149,10 @@ public class ScheduleVaccineStore {
     public ScheduleVaccine newScheduleVaccineReceptionist(ScheduleVaccineDTO scheduleVaccineDTO, SNSUser user, Vaccine vaccine) {
         String snsUserNumber = scheduleVaccineDTO.getSnsUserNumber();
         VaccinationCenter vaccinationCenter = scheduleVaccineDTO.getVaccinationCenter();
-        VaccineType vaccineType = scheduleVaccineDTO.getVaccineType();
+        VaccineType vaccineType = scheduleVaccineDTO.getVaccinationCenter().getCurrentOutbreak();
         Date dateTime = scheduleVaccineDTO.getDateTime();
 
-        ScheduleVaccine scheduleUserVaccine = new ScheduleVaccine(snsUserNumber, vaccinationCenter, vaccineType, dateTime);
+        ScheduleVaccine scheduleUserVaccine = new ScheduleVaccine(snsUserNumber, vaccinationCenter, vaccine, dateTime);
 
         if (validateScheduleVaccineReceptionist(scheduleUserVaccine, user, vaccine))
             return scheduleUserVaccine;

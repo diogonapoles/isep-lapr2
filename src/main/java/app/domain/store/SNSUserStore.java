@@ -142,4 +142,12 @@ public class SNSUserStore {
         }
         return null;
     }
+
+    public SNSUser getSNSUserByEmail(String email){
+        for (SNSUser user : listSNSUser) {
+            if (user.getEmailAddress().contains(email))
+                return user;
+        }
+        return null;
+    }
 }

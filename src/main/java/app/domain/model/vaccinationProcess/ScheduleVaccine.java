@@ -1,6 +1,7 @@
 package app.domain.model.vaccinationProcess;
 
 import app.domain.model.vaccinationCenter.VaccinationCenter;
+import app.domain.model.vaccine.Vaccine;
 import app.domain.model.vaccine.VaccineType;
 
 import java.util.Date;
@@ -12,7 +13,7 @@ public class ScheduleVaccine {
 
     private String snsUserNumber;
     private VaccinationCenter vaccinationCenter;
-    private VaccineType vaccineType;
+    private Vaccine vaccine;
     private Date dateTime;
 
     /**
@@ -20,10 +21,9 @@ public class ScheduleVaccine {
      *
      * @param snsUserNumber     the sns user number
      * @param vaccinationCenter the vaccination center
-     * @param vaccineType       the vaccine type
      * @param dateTime          the date time
      */
-    public ScheduleVaccine(String snsUserNumber, VaccinationCenter vaccinationCenter, VaccineType vaccineType, Date dateTime) {
+    public ScheduleVaccine(String snsUserNumber, VaccinationCenter vaccinationCenter, Vaccine vaccine, Date dateTime) {
         if((vaccinationCenter == null)  ||
                 (snsUserNumber == null) )
 
@@ -32,7 +32,7 @@ public class ScheduleVaccine {
 
 
         setSNSUserNumber(snsUserNumber);
-        setVaccineType(vaccineType);
+        setVaccine(vaccine);
         setVaccinationCenter(vaccinationCenter);
         setDateTime(dateTime);
     }
@@ -40,10 +40,9 @@ public class ScheduleVaccine {
     /**
      * Sets vaccine type.
      *
-     * @param vaccineType the vaccine type
      */
-    public void setVaccineType(VaccineType vaccineType) {
-        this.vaccineType = vaccineType;
+    public void setVaccine(Vaccine vaccine) {
+        this.vaccine = vaccine;
     }
 
 
@@ -107,14 +106,6 @@ public class ScheduleVaccine {
         return "The SNS User number " + snsUserNumber + " has his vaccine appointment schedule at " +dateTime+" at: "+vaccinationCenter.toStringScheduleVaccine();
     }
 
-    /**
-     * Gets vaccine type.
-     *
-     * @return the vaccine type
-     */
-    public VaccineType getVaccineType() {
-        return vaccineType;
-    }
 
 
 }

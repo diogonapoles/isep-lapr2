@@ -36,8 +36,8 @@ public class VaccinationCenterStore {
      * @param maxNumVaccinesPerSlot the max num vaccines per slot
      * @return the vaccination center
      */
-    public VaccinationCenter newVaccinationCenter(int typeSelection, String name, String phoneNumber, String faxNumber, String homeAddress, String emailAddress, String websiteAddress, String openingHours, String closingHours, String slotDuration, String maxNumVaccinesPerSlot){
-        if(validateVaccinationCenter(name,phoneNumber,emailAddress))
+    public VaccinationCenter newVaccinationCenter(int typeSelection, String name, int phoneNumber, int faxNumber, String homeAddress, String emailAddress, String websiteAddress, int openingHours, int closingHours, int slotDuration, int maxNumVaccinesPerSlot){
+        if(validateVaccinationCenter(emailAddress))
         {
             if (typeSelection == 0)
                 return new HealthcareCenter(name,phoneNumber,faxNumber,homeAddress,emailAddress, websiteAddress,openingHours,closingHours,slotDuration,maxNumVaccinesPerSlot);
@@ -50,18 +50,14 @@ public class VaccinationCenterStore {
     /**
      * Validate vaccination center boolean.
      *
-     * @param name         the name
-     * @param phoneNumber  the phone number
      * @param emailAddress the email address
      * @return the boolean
      */
-    public boolean validateVaccinationCenter(String name, String phoneNumber, String emailAddress)
+    public boolean validateVaccinationCenter(String emailAddress)
     {
         for(VaccinationCenter vacs: listVaccinationCenter)
         {
-            if(vacs.getName().contains(name)
-                    ||vacs.getPhoneNumber().contains(phoneNumber)
-                    || vacs.getEmailAddress().contains(emailAddress))
+            if(vacs.getEmailAddress().contains(emailAddress))
                 return false;
         }
 
@@ -77,7 +73,7 @@ public class VaccinationCenterStore {
      */
     public boolean registerVaccinationCenter(VaccinationCenter oVaccinationCenter)
     {
-        if(validateVaccinationCenter(oVaccinationCenter.getName(),oVaccinationCenter.getPhoneNumber(),oVaccinationCenter.getEmailAddress()))
+        if(validateVaccinationCenter(oVaccinationCenter.getEmailAddress()))
             return addVaccinationCenter(oVaccinationCenter);
         else
             return false;

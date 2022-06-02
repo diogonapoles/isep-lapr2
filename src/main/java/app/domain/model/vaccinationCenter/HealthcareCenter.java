@@ -19,7 +19,7 @@ public class HealthcareCenter extends VaccinationCenter {
      * @param slotDuration          the slot duration
      * @param maxNumVaccinesPerSlot the max num vaccines per slot
      */
-    public HealthcareCenter(String name, String phoneNumber, String faxNumber, String homeAddress, String emailAddress, String websiteAddress, String openingHours, String closingHours, String slotDuration, String maxNumVaccinesPerSlot)
+    public HealthcareCenter(String name, int phoneNumber, int faxNumber, String homeAddress, String emailAddress, String websiteAddress, int openingHours, int closingHours, int slotDuration, int maxNumVaccinesPerSlot)
     {
         super(name, phoneNumber, faxNumber, homeAddress, emailAddress, websiteAddress, openingHours, closingHours, slotDuration, maxNumVaccinesPerSlot);
 

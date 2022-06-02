@@ -2,6 +2,7 @@ package app.controller.administrator;
 
 import app.controller.App;
 import app.domain.model.Company;
+import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.domain.model.vaccine.VaccineType;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public class NewVaccineTypeController {
     private App oApp;
     private Company oCompany;
     private VaccineType oVaccineType;
+    private VaccinationCenter vaccinationCenter;
 
     /**
      * Instantiates a new New vaccine type controller.
@@ -21,6 +23,11 @@ public class NewVaccineTypeController {
     public NewVaccineTypeController(){
         this.oApp = App.getInstance();
         this.oCompany = oApp.getCompany();
+    }
+
+    public VaccinationCenter getWorking() {
+        vaccinationCenter = oCompany.getEmployeeStore().getWorking(oApp.getCurrentUserSession().getUserId().getEmail());
+        return vaccinationCenter;
     }
 
     /**
@@ -31,8 +38,10 @@ public class NewVaccineTypeController {
      * @param designation   the designation
      * @return the boolean
      */
+
+
     public boolean newVaccineType(int techSelection, String code, String designation){
-        this.oVaccineType = oCompany.getVaccineTypeStore().newVaccineType(techSelection, code, designation);
+        this.oVaccineType = getWorking().newVaccineType(techSelection, code, designation);
         if (this.oVaccineType != null)
             return true;
         else
@@ -44,7 +53,7 @@ public class NewVaccineTypeController {
      *
      * @return the list
      */
-    public List<String> getVaccineTechnologyTypes(){return this.oCompany.getVaccineTypeStore().getVaccineTechnologyTypes();}
+    public List<String> getVaccineTechnologyTypes(){return this.oVaccineType.getVaccineTechnologyTypes();}
 
     /**
      * Get vaccine type string string.
@@ -58,5 +67,5 @@ public class NewVaccineTypeController {
      *
      * @return the boolean
      */
-    public boolean registerVaccineType(){return this.oCompany.getVaccineTypeStore().registerVaccineType(oVaccineType);}
+    public boolean registerVaccineType(){return this.getWorking().registerVaccineType(oVaccineType);}
 }

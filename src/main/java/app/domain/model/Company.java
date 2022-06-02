@@ -15,8 +15,6 @@ public class Company {
     private AuthFacade authFacade;
     private EmployeeStore oEmployeeStore;
     private VaccinationCenterStore oVaccinationCenterStore;
-    private VaccineTypeStore oVaccineTypeStore;
-    private VaccineStore oVaccineStore;
     private SNSUserStore oSNSUserStore;
     private CSVReader oCSVReader;
     private UserArrivalStore oUserArrivalStore;
@@ -35,9 +33,7 @@ public class Company {
         this.designation = designation;
         this.authFacade = new AuthFacade();
         this.oVaccinationCenterStore = new VaccinationCenterStore();
-        this.oVaccineTypeStore = new VaccineTypeStore();
         this.oCSVReader = new CSVReader();
-        this.oVaccineStore = new VaccineStore();
         this.oScheduleVaccineStore = new ScheduleVaccineStore();
         this.oUserArrivalStore = new UserArrivalStore(getScheduleVaccineStore());
     }
@@ -90,20 +86,6 @@ public class Company {
      * @return the vaccination center store
      */
     public VaccinationCenterStore getVaccinationCenterStore(){return this.oVaccinationCenterStore;}
-
-    /**
-     * Get vaccine type store.
-     *
-     * @return the vaccine type store
-     */
-    public VaccineTypeStore getVaccineTypeStore(){return this.oVaccineTypeStore;}
-
-    /**
-     * Get vaccine store.
-     *
-     * @return the vaccine store
-     */
-    public VaccineStore getVaccineStore(){ return this.oVaccineStore;}
 
     /**
      * Get sns user store sns user store.

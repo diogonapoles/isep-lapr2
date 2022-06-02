@@ -1,4 +1,4 @@
-package app.controller;
+/*package app.controller;
 
 import app.controller.administrator.RegisterVaccinationCenterController;
 import app.domain.model.vaccinationCenter.CommunityCenter;
@@ -88,4 +88,4 @@ public class RegisterVaccinationCenterControllerTest {
         assertEquals(true, result1);
         assertEquals(true, result2);
     }
-}
+}*/

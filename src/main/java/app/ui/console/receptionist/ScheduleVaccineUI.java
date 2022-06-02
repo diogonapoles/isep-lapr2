@@ -60,16 +60,19 @@ public class ScheduleVaccineUI implements Runnable {
             vaccinationCenter = controller.getWorking();
 
             if (!(vaccinationCenter instanceof HealthcareCenter)) {
-                vaccine = (Vaccine) Utils.showAndSelectOne(this.controller.getVaccines(), "Vaccine:");
+                vaccineType = (VaccineType) Utils.showAndSelectOne(this.controller.getVaccineTypes(), "Vaccine Types:");
+                vaccine = (Vaccine) Utils.showAndSelectOne(this.controller.getVaccines(vaccineType), "Vaccines:");
             }else {
-                vaccine = this.controller.getVaccines().get(0);
+                vaccineType = vaccinationCenter.getCurrentOutbreak();
+                vaccine = this.controller.getVaccines(vaccineType).get(0);
             }
+
             date = Utils.readDateFromConsole("Date:(day-month-year hour:minute)");
             if (!controller.validateDate(date))
                 throw new IllegalArgumentException("Date is not valid");
 
 
-            ScheduleVaccineDTO scheduleVaccineDTO = new ScheduleVaccineDTO(snsUserNumber, vaccinationCenter, vaccine.getType(), date);
+            ScheduleVaccineDTO scheduleVaccineDTO = new ScheduleVaccineDTO(snsUserNumber, vaccinationCenter, vaccine, date);
 
 
             try {

@@ -19,20 +19,24 @@ public class NewVaccineUI implements Runnable {
     }
 
     public void run() {
-        if (this.controller.getVaccineTypes() == null)
-            throw new IllegalArgumentException("No Vaccine Types were found");
-        int selection = Utils.showAndSelectIndex(this.controller.getVaccineTypes(), "Vaccine Types:");
-        if(selection >= 0 && selection < this.controller.getVaccineTypes().size()) {
-            if (inputData(this.controller.getVaccineTypes().get(selection))) {
-                getData();
+        if (controller.getWorking() == null) {
+            throw new IllegalArgumentException("Can't find any valid Vaccination Center for this user");
+        }else {
+            if (this.controller.getVaccineTypes() == null)
+                throw new IllegalArgumentException("No Vaccine Types were found");
+            int selection = Utils.showAndSelectIndex(this.controller.getVaccineTypes(), "Vaccine Types:");
+            if (selection >= 0 && selection < this.controller.getVaccineTypes().size()) {
+                if (inputData(this.controller.getVaccineTypes().get(selection))) {
+                    getData();
 
-                if (Utils.confirm("Confirm data?(s/n)")) {
-                    controller.registerVaccine();
-                    System.out.println("Vaccine registered successfully.");
-                } else
-                    run();
-            } else {
-                System.out.println("Not a valid Vaccine or already exists");
+                    if (Utils.confirm("Confirm data?(s/n)")) {
+                        controller.registerVaccine();
+                        System.out.println("Vaccine registered successfully.");
+                    } else
+                        run();
+                } else {
+                    System.out.println("Not a valid Vaccine or already exists");
+                }
             }
         }
     }

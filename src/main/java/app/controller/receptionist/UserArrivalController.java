@@ -5,7 +5,6 @@ import app.domain.model.*;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.domain.model.vaccinationProcess.UserArrival;
 import app.domain.store.ScheduleVaccineStore;
-import app.domain.store.VaccineTypeStore;
 import app.domain.model.systemUser.SNSUser;
 
 /**
@@ -17,8 +16,6 @@ public class UserArrivalController {
     private final Company oCompany;
     private SNSUser oSNSUser;
     private UserArrival userArrival;
-    private VaccineTypeStore vaccineTypeStore;
-    private ScheduleVaccineStore vaccineScheduleStore;
     private VaccinationCenter vaccinationCenter;
 
 
@@ -28,8 +25,6 @@ public class UserArrivalController {
     public UserArrivalController() {
         this.oApp = App.getInstance();
         this.oCompany = oApp.getCompany();
-        this.vaccineTypeStore = oCompany.getVaccineTypeStore();
-        this.vaccineScheduleStore =oCompany.getScheduleVaccineStore();
     }
 
     /**

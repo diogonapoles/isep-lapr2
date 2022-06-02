@@ -1,4 +1,4 @@
-package app.controller;
+/*package app.controller;
 
 import app.controller.receptionist.UserArrivalController;
 import app.domain.model.vaccinationCenter.CommunityCenter;
@@ -76,4 +76,4 @@ class UserArrivalControllerTest {
     }
 
 
-}
+}*/

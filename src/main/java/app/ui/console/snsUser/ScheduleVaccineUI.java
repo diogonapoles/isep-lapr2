@@ -1,169 +1,57 @@
-
 package app.ui.console.snsUser;
 
-import app.controller.App;
+
 import app.controller.snsUser.ScheduleVaccineController;
-import app.controller.ScheduleVaccineDTO;
-import app.domain.model.*;
-import app.domain.model.vaccinationCenter.HealthcareCenter;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
+import app.domain.model.vaccine.VaccineSchedule;
 import app.domain.model.vaccine.VaccineType;
-import app.domain.shared.Constants;
 import app.ui.console.utils.Utils;
-import pt.isep.lei.esoft.auth.AuthFacade;
 
 import java.util.Date;
-import java.util.List;
 
-/**
- * The type Schedule vaccine ui.
- */
 public class ScheduleVaccineUI implements Runnable {
 
-    private final ScheduleVaccineController controller;
-    private final AuthFacade authFacade;
-    private final Company company;
+    private ScheduleVaccineController controller;
 
-
-    /**
-     * Instantiates a new Schedule vaccine ui.
-     */
     public ScheduleVaccineUI() {
-        this.company = App.getInstance().getCompany();
         this.controller = new ScheduleVaccineController();
-        this.authFacade = this.company.getAuthFacade();
-
-
     }
 
-
-    @Override
     public void run() {
-
-        //try {
-        if (getVaccinationCenter().size() < 0) {
-            throw new IllegalArgumentException("there are none vaccination centers registered to schedule vaccines");
-        } else {
-            String snsUserNumber = null;
-            VaccinationCenter vaccinationCenter = null;
-            VaccineType vaccineType = null;
-            Date date = null;
-
-            if (this.authFacade.getCurrentUserSession().getUserRoles().get(0).getId().equals(Constants.ROLE_SNS_USER)) {
-                snsUserNumber = Utils.readLineFromConsole("SNS Number:");
-            } else {
-                //not a receptionist
-            }
-
-            vaccinationCenter = (VaccinationCenter) Utils.showAndSelectOne(this.controller.getVaccinationCenter(), "Vaccination Centers:");
-
-            if (!(vaccinationCenter instanceof HealthcareCenter)) {
-                vaccineType = (VaccineType) Utils.showAndSelectOne(this.controller.getVaccineTypes(), "vaccine Types:");
-            }
-               vaccineType = company.getVaccineTypeStore().getCurrentOutbreak();
-
-
-            date = Utils.readDateFromConsole("Date:(day-month-year hour:minute)");
-
-
-
-
-     /*   if (getVaccinationCenter().size() < 0) {
-            throw new IllegalArgumentException("there are none vaccination centers registered to schedule vaccines");
-        } else {
-            String snsUserNumber = Utils.readLineFromConsole("SNS Number:");
-            VaccinationCenter vaccinationCenter = (VaccinationCenter) Utils.showAndSelectOne(this.controller.getVaccinationCenter(), "Vaccination Centers:");
-            try {
-                VaccineType vaccineType = (VaccineType) Utils.showAndSelectOne(this.controller.getVaccineTypes(), "Vaccine Type:");
-            } catch (Exception ex) {
-                System.out.printf("outbreak\n\n");
-                //vaccineType = company.getCurrentOutBreak();
-            }
-            Date date = Utils.readDateFromConsole("Date:(day-month-year)");
-            getData();
-            if (Utils.confirm("Confirms data?(s/n)")) {
-                if (controller.getAvailableSlot(getVaccinationCenter(), date) == null) {
-                    System.out.printf("No slots available for that date");
-                    return;
-                }
-
-
-                controller.registerScheduleVaccine();
-
-
-                System.out.println("Schedule registered successfully");
-            } else
-                run();
-        } else{
-
-            System.out.println("Cannot Schedule the Vaccine");
+        if (!controller.validateUserSession()) {
+            System.out.println("User is not valid");
+            return;
         }
 
+        VaccinationCenter vaccinationCenter = (VaccinationCenter) Utils.showAndSelectOne(controller.getVaccinationCenterList(), "Select a Vaccination Center:");
 
-      */
+        VaccineType vaccineType = (VaccineType) Utils.showAndSelectOne(controller.getAvailableVaccineTypes(vaccinationCenter), "Select a Vaccine Type:");
 
-            ScheduleVaccineDTO scheduleVaccineDTO = new ScheduleVaccineDTO(snsUserNumber, vaccinationCenter, vaccineType, date);
+        Date date = controller.readDate("Insert vaccination date (dd/MM/yyyy)");
 
-            try {
-                this.controller.newScheduleVaccine(scheduleVaccineDTO);
-                getData();
-                if (Utils.confirm("Confirms data?(s/n)")) {
+        Date timeSelector = (Date) Utils.showAndSelectOne(controller.getAvailableTimes(vaccinationCenter, date), "Select a Schedule:");
 
-                  /*  if (controller.validateWithinWorkingHours(vaccinationCenter, date)) {
-                        System.out.println("Outside center working hours");
-                        return;
-                    }
+        if (!controller.validateVaccineSchedule(vaccinationCenter, timeSelector)){
+            System.out.println("This SNS user already scheduled a vaccine");
+            return;
+        }
 
-                   */
+        VaccineSchedule schedule = controller.createVaccineSchedule(vaccinationCenter, vaccineType, timeSelector);
 
-                    controller.registerScheduleVaccine();
+        if(schedule == null) {
+            System.out.println("Error while creating vaccination schedule");
+            return;
+        }
 
-                    System.out.println("Schedule registered successfully");
-                } else
-                    run();
-
-
-            } catch (Exception e) {
-                System.out.println(e);
+        System.out.println(schedule);
+        boolean confirm = Utils.confirm("Do you want to schedule this vaccine? (s/n)");
+        if(confirm){
+            if(controller.addVaccineSchedule(vaccinationCenter, schedule)){
+                System.out.println("Success");
+            }else{
+                System.out.println("Error saving this vaccine schedule");
+                return;
             }
-
-
         }
-
     }
-
-
-    /**
-     * Gets vaccination center.
-     *
-     * @return the vaccination center
-     */
-    public List<VaccinationCenter> getVaccinationCenter() {
-        return this.controller.getVaccinationCenter();
-    }
-
-    private boolean inputData() {
-        VaccineType vaccineType = null;
-
-        String snsUserNumber = Utils.readLineFromConsole("SNS Number:");
-        VaccinationCenter vaccinationCenter = (VaccinationCenter) Utils.showAndSelectOne(this.controller.getVaccinationCenter(), "Vaccination Centers:");
-        try {
-            vaccineType = (VaccineType) Utils.showAndSelectOne(this.controller.getVaccineTypes(), "Vaccine Type:");
-        } catch (Exception ex) {
-            System.out.printf("outbreak\n\n\n\n");
-            //vaccineType = company.getCurrentOutBreak();
-        }
-        Date date = Utils.readDateFromConsole("Date:");
-        ScheduleVaccineDTO scheduleVaccineDTO = new ScheduleVaccineDTO(snsUserNumber, vaccinationCenter, vaccineType, date);
-        return this.controller.newScheduleVaccine(scheduleVaccineDTO);
-
-
-    }
-
-    private void getData() {
-        System.out.println(controller.getScheduleVaccineString());
-    }
-
 }
-
-

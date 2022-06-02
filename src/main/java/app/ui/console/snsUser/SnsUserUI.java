@@ -15,7 +15,7 @@ public class SnsUserUI implements Runnable{
         List<MenuItem> options = new ArrayList<MenuItem>();
 
 
-        options.add(new MenuItem("Schedule Vaccine: ", new ScheduleVaccineUI()));
+        options.add(new MenuItem("Schedule Vaccine", new ScheduleVaccineUI()));
 
 
 

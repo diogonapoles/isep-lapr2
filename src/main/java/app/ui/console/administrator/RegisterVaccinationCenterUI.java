@@ -52,15 +52,15 @@ public class RegisterVaccinationCenterUI implements Runnable{
     private boolean inputData(int typeSelection)
     {
         String name = Utils.readLineFromConsole("Name:");
-        String phoneNumber = Utils.readLineFromConsole("Phone Number (Portuguese format, 9 digits):");
-        String faxNumber = Utils.readLineFromConsole("Fax Number:");
+        int phoneNumber = Utils.readIntegerFromConsole("Phone Number (Portuguese format, 9 digits):");
+        int faxNumber = Utils.readIntegerFromConsole("Fax Number:");
         String homeAddress = Utils.readLineFromConsole("Home Address:");
         String emailAddress = Utils.readLineFromConsole("Email Address:");
         String websiteAddress = Utils.readLineFromConsole("Website Address:");
-        String openingHours = Utils.readLineFromConsole("Opening Hours:");
-        String closingHours = Utils.readLineFromConsole("Closing Hours:");
-        String slotDuration = Utils.readLineFromConsole("Slot Duration:");
-        String maxNumVaccinesPerSlot = Utils.readLineFromConsole("Maximum number of vaccines per slot:");
+        int openingHours = Utils.readIntegerFromConsole("Opening Hours:");
+        int closingHours = Utils.readIntegerFromConsole("Closing Hours:");
+        int slotDuration = Utils.readIntegerFromConsole("Slot Duration:");
+        int maxNumVaccinesPerSlot = Utils.readIntegerFromConsole("Maximum number of vaccines per slot:");
 
         return controller.newVaccinationCenter(typeSelection, name,phoneNumber,faxNumber,homeAddress,emailAddress, websiteAddress,openingHours,closingHours,slotDuration,maxNumVaccinesPerSlot);
 

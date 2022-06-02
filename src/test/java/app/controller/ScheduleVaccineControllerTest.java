@@ -1,4 +1,4 @@
-package app.controller;
+/*package app.controller;
 
 import app.domain.model.vaccinationCenter.HealthcareCenter;
 import app.domain.model.vaccine.Vaccine;
@@ -50,4 +50,4 @@ class ScheduleVaccineControllerTest {
     @Test
     void validateDate() {
     }
-}
+}*/

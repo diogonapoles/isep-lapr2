@@ -27,8 +27,7 @@ public class ScheduleVaccineController {
     private final AuthFacade authFacade;
     private final ScheduleVaccineStore scheduleVaccineStore;
     private final VaccinationCenterStore vaccinationCenterStore;
-    private final VaccineTypeStore vaccineTypeStore;
-    private final VaccineStore vaccineStore;
+    private VaccinationCenter vaccinationCenter;
     private final SNSUserStore snsUserStore;
 
     /**
@@ -40,8 +39,6 @@ public class ScheduleVaccineController {
         this.authFacade = this.oCompany.getAuthFacade();
         this.scheduleVaccineStore = oCompany.getScheduleVaccineStore();
         this.vaccinationCenterStore = oCompany.getVaccinationCenterStore();
-        this.vaccineTypeStore = oCompany.getVaccineTypeStore();
-        this.vaccineStore = oCompany.getVaccineStore();
         this.snsUserStore = oCompany.getSNSUserStore();
     }
 
@@ -99,7 +96,7 @@ public class ScheduleVaccineController {
      * @return the vaccine types
      */
     public List<VaccineType> getVaccineTypes() {
-        return this.vaccineTypeStore.getListVaccineType();
+        return this.vaccinationCenter.getListVaccineType();
     }
 
     /**
@@ -107,8 +104,8 @@ public class ScheduleVaccineController {
      *
      * @return the vaccines
      */
-    public List<Vaccine> getVaccines() {
-        return this.vaccineStore.getListVaccines();
+    public List<Vaccine> getVaccines(VaccineType vaccineType) {
+        return vaccineType.getListVaccines();
     }
 
     /**
@@ -140,8 +137,8 @@ public class ScheduleVaccineController {
      * @return the working
      */
     public VaccinationCenter getWorking() {
-        VaccinationCenter vc = oCompany.getEmployeeStore().getWorking(oApp.getCurrentUserSession().getUserId().getEmail());
-        return vc;
+        vaccinationCenter = oCompany.getEmployeeStore().getWorking(oApp.getCurrentUserSession().getUserId().getEmail());
+        return vaccinationCenter;
     }
 
     /**

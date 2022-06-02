@@ -36,13 +36,13 @@ public class ScheduleDates {
     public long getDifferenceInMinutesOpenClose(VaccinationCenter vaccinationCenter) throws ParseException {
 
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH");
 
-        String closingHours = vaccinationCenter.getClosingHours();
-        String openingHours = vaccinationCenter.getOpeningHours();
+        int closingHours = vaccinationCenter.getClosingHours();
+        int openingHours = vaccinationCenter.getOpeningHours();
 
-        Date dateClosingHours = simpleDateFormat.parse(closingHours);
-        Date dateOpeningHours = simpleDateFormat.parse(openingHours);
+        Date dateClosingHours = simpleDateFormat.parse(String.valueOf(closingHours));
+        Date dateOpeningHours = simpleDateFormat.parse(String.valueOf(openingHours));
 
         long differenceInMinutes = ((Math.abs(dateOpeningHours.getTime() - dateClosingHours.getTime())) / (60 * 1000) % 60);
         return differenceInMinutes;
@@ -57,8 +57,8 @@ public class ScheduleDates {
      * @throws ParseException the parse exception
      */
     public int getNumberAvailableDatesForDay(VaccinationCenter vaccinationCenter, Date day) throws ParseException {
-        int minutes = Integer.parseInt(vaccinationCenter.getSlotDuration());
-        int slots = Integer.parseInt(vaccinationCenter.getMaxNumVaccinesPerSlot());
+        int minutes = vaccinationCenter.getSlotDuration();
+        int slots = vaccinationCenter.getMaxNumVaccinesPerSlot();
 
         int numberOfVaccinesToVaccinationCenter= (int) (getDifferenceInMinutesOpenClose(vaccinationCenter) % minutes);
 
@@ -74,8 +74,8 @@ public class ScheduleDates {
      * @throws ParseException the parse exception
      */
     public int getNumberAvailableDatesForHour(VaccinationCenter vaccinationCenter, Date hour) throws ParseException {
-        int minutes = Integer.parseInt(vaccinationCenter.getSlotDuration());
-        int slots = Integer.parseInt(vaccinationCenter.getMaxNumVaccinesPerSlot());
+        int minutes = vaccinationCenter.getSlotDuration();
+        int slots = vaccinationCenter.getMaxNumVaccinesPerSlot();
 
         int numberOfVaccinesPerHour = 60 %minutes;
 
@@ -92,12 +92,7 @@ public class ScheduleDates {
     public void getAvailableDatesForVaccine(VaccinationCenter vaccinationCenter,Date hour) throws ParseException {
         System.out.printf(String.valueOf(hour));
         for (int x = 1; x < getNumberAvailableDatesForHour(vaccinationCenter, hour); x++) {
-            System.out.println(hour+vaccinationCenter.getSlotDuration());
-
 
         }
-
-
-
     }
 }

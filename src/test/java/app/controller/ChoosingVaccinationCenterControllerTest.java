@@ -1,4 +1,4 @@
-package app.controller;
+/*package app.controller;
 
 import app.domain.model.vaccinationCenter.CommunityCenter;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
@@ -19,4 +19,4 @@ class ChoosingVaccinationCenterControllerTest {
     }
 
 
-}
+}*/

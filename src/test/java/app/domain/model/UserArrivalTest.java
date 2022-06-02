@@ -20,12 +20,12 @@ class UserArrivalTest {
     };
 
 
-    HealthcareCenter hc = new HealthcareCenter("Healthcare", "917876321", "493782",
+    HealthcareCenter hc = new HealthcareCenter("Healthcare", 917876321, 493782,
             "TesteRua1", "teste1@gmail.com", "healthcare.com",
-            "10", "20", "3", "20");
-    CommunityCenter cc = new CommunityCenter("Community", "917312756", "654253",
+            10, 20, 3, 20);
+    CommunityCenter cc = new CommunityCenter("Community", 917312756, 654253,
             "TesteRua2", "teste2@gmail.com", "community.com",
-            "8", "22", "5", "40");
+            8, 22, 5, 40);
 
     UserArrival ua = new UserArrival(oSnsUser, hc);
     UserArrival ua1 = new UserArrival(oSnsUser1,cc);

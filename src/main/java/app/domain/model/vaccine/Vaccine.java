@@ -1,6 +1,5 @@
 package app.domain.model.vaccine;
 
-import app.domain.store.VaccineTypeStore;
 
 /**
  * The type Vaccine.
@@ -10,23 +9,12 @@ public class Vaccine {
     /**
      * The Vaccine type list.
      */
-    VaccineTypeStore vaccineTypeList;
     private String name;
     private String brand;
     private String ageGroup;
     private String doseNumber;
     private double dosage;
     private  int timeSinceLastDose;
-    private VaccineType type;
-
-    /**
-     * Gets type.
-     *
-     * @return the type
-     */
-    public VaccineType getType() {
-        return type;
-    }
 
     /**
      * Gets name.
@@ -140,7 +128,6 @@ public class Vaccine {
     /**
      * Instantiates a new Vaccine.
      *
-     * @param type              the type
      * @param name              the name
      * @param brand             the brand
      * @param ageGroup          the age group
@@ -148,7 +135,7 @@ public class Vaccine {
      * @param dosage            the dosage
      * @param timeSinceLastDose the time since last dose
      */
-    public Vaccine(VaccineType type, String name, String brand, String ageGroup, String doseNumber, double dosage, int timeSinceLastDose){
+    public Vaccine(String name, String brand, String ageGroup, String doseNumber, double dosage, int timeSinceLastDose){
         if ((name == null) || (name.isEmpty())
                 || (brand == null) || (brand.isEmpty())
                 || (ageGroup == null) || (ageGroup.isEmpty())
@@ -158,7 +145,6 @@ public class Vaccine {
             throw new IllegalArgumentException("All attributes are mandatory!" +
                     " Write number of days since last dose on the last field.");
         } else {
-            this.type = type;
             this.name = name;
             this.brand = brand;
             this.ageGroup = ageGroup;
@@ -174,4 +160,5 @@ public class Vaccine {
                 ", Dosage = "+dosage+"" +
                 ", Time Since Last Dose = "+timeSinceLastDose+"]");
     }
+
 }

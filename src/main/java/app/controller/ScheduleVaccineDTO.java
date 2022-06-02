@@ -1,6 +1,7 @@
 package app.controller;
 
 import app.domain.model.vaccinationCenter.VaccinationCenter;
+import app.domain.model.vaccine.Vaccine;
 import app.domain.model.vaccine.VaccineType;
 
 import java.util.Date;
@@ -11,7 +12,7 @@ import java.util.Date;
 public class ScheduleVaccineDTO {
     private final String snsUserNumber;
     private final VaccinationCenter vaccinationCenter;
-    private final VaccineType vaccineType;
+    private final Vaccine vaccine;
     private final Date dateTime;
 
     /**
@@ -19,14 +20,14 @@ public class ScheduleVaccineDTO {
      *
      * @param snsUserNumber     the sns user number
      * @param vaccinationCenter the vaccination center
-     * @param vaccineType       the vaccine type
+     * @param vaccine       the vaccine type
      * @param dateTime          the date time
      */
-    public ScheduleVaccineDTO(String snsUserNumber, VaccinationCenter vaccinationCenter, VaccineType vaccineType, Date dateTime){
+    public ScheduleVaccineDTO(String snsUserNumber, VaccinationCenter vaccinationCenter, Vaccine vaccine, Date dateTime){
         this.snsUserNumber = snsUserNumber;
         this.vaccinationCenter = vaccinationCenter;
-        this.vaccineType= vaccineType;
-        this.dateTime=dateTime;
+        this.vaccine = vaccine;
+        this.dateTime = dateTime;
     }
 
 
@@ -53,8 +54,8 @@ public class ScheduleVaccineDTO {
      *
      * @return the vaccine type
      */
-    public VaccineType getVaccineType(){
-        return vaccineType;
+    public Vaccine getVaccine(){
+        return vaccine;
     }
 
     /**

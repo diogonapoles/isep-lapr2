@@ -1,6 +1,15 @@
 package app.domain.model.vaccinationCenter;
 
-import org.apache.commons.lang3.StringUtils;
+import app.domain.model.systemUser.SNSUser;
+import app.domain.model.vaccine.*;
+import app.domain.store.UserArrivalStore;
+import pt.isep.lei.esoft.auth.UserSession;
+
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * The type Vaccination center.
@@ -9,15 +18,22 @@ public abstract class VaccinationCenter {
 
 
     private String name;
-    private String phoneNumber;
-    private String faxNumber;
+    private Integer phoneNumber;
+    private Integer faxNumber;
     private String homeAddress;
     private String emailAddress;
     private String websiteAddress;
-    private String openingHours;
-    private String closingHours;
-    private String slotDuration;
-    private String maxNumVaccinesPerSlot;
+    private Integer openingHours;
+    private Integer openingMinutes;
+    private Integer closingHours;
+    private Integer closingMinutes;
+    private Integer slotDuration;
+    private Integer maxNumVaccinesPerSlot;
+    private Day vaccinationDay;
+    private UserArrivalStore waitingRoom;
+    private List<VaccineType> listVaccineType;
+    private List<Slot> listSlots;
+    private List<VaccineSchedule> listSchedule;
 
     /**
      * Instantiates a new Vaccination center.
@@ -33,34 +49,24 @@ public abstract class VaccinationCenter {
      * @param slotDuration          the slot duration
      * @param maxNumVaccinesPerSlot the max num vaccines per slot
      */
-    public VaccinationCenter(String name, String phoneNumber, String faxNumber, String homeAddress, String emailAddress, String websiteAddress, String openingHours, String closingHours, String slotDuration, String maxNumVaccinesPerSlot) {
-        if ((name == null) || (name.isEmpty()) ||
-                (phoneNumber == null) || (phoneNumber.isEmpty()) || (faxNumber == null) ||
-                (faxNumber.isEmpty()) || (homeAddress == null) ||
+    public VaccinationCenter(String name, int phoneNumber, int faxNumber, String homeAddress, String emailAddress, String websiteAddress, int openingHours, int closingHours, int slotDuration, int maxNumVaccinesPerSlot) {
+        if ((name == null) || (name.isEmpty()) || (homeAddress == null) ||
                 (homeAddress.isEmpty()) || (emailAddress == null) ||
-                (emailAddress.isEmpty()) || (websiteAddress == null) || (websiteAddress.isEmpty()) ||
-                (openingHours == null) || (openingHours.isEmpty()) || (closingHours == null) || (closingHours.isEmpty()) ||
-                (slotDuration == null) || (slotDuration.isEmpty()) ||
-                (maxNumVaccinesPerSlot == null) || (maxNumVaccinesPerSlot.isEmpty()))
+                (emailAddress.isEmpty()) || (websiteAddress == null) || (websiteAddress.isEmpty()))
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
 
-        if ((phoneNumber.length() != 9) || !StringUtils.isNumeric(phoneNumber))
+        if (String.valueOf(phoneNumber).length() != 9)
             throw new IllegalArgumentException("Phone number must be in PT format");
 
         if (!emailAddress.contains("@"))
             throw new IllegalArgumentException("Not a valid e-mail address");
 
-        if (StringUtils.isNumeric(openingHours) && StringUtils.isNumeric(closingHours) &&
-                StringUtils.isNumeric(slotDuration) && StringUtils.isNumeric(maxNumVaccinesPerSlot)) {
-            if (Integer.parseInt(openingHours) < 0 || Integer.parseInt(closingHours) < 0)
-                throw new IllegalArgumentException("Time can't be less than 0");
-            if (Integer.parseInt(openingHours) > 24 || Integer.parseInt(closingHours) > 24)
-                throw new IllegalArgumentException("You can't exceed the 24h of a day");
-            if (openingHours.equals(closingHours))
-                throw new IllegalArgumentException("Opening time can't be the same as closing time");
-        } else {
-            throw new IllegalArgumentException("Time must be a numeric value");
-        }
+        if (openingHours < 0 || closingHours < 0)
+            throw new IllegalArgumentException("Time can't be less than 0");
+        if (openingHours > 24 || closingHours > 24)
+            throw new IllegalArgumentException("You can't exceed the 24h of a day");
+        if (openingHours == closingHours)
+            throw new IllegalArgumentException("Opening time can't be the same as closing time");
 
 
         this.name = name;
@@ -73,6 +79,9 @@ public abstract class VaccinationCenter {
         this.closingHours = closingHours;
         this.slotDuration = slotDuration;
         this.maxNumVaccinesPerSlot = maxNumVaccinesPerSlot;
+        this.listVaccineType = new ArrayList<>();
+        this.listSlots = new ArrayList<>();
+        this.listSchedule = new ArrayList<>();
     }
 
     /**
@@ -105,7 +114,7 @@ public abstract class VaccinationCenter {
      *
      * @return the phone number
      */
-    public String getPhoneNumber() {
+    public int getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -114,7 +123,7 @@ public abstract class VaccinationCenter {
      *
      * @param phoneNumber the phone number
      */
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -123,7 +132,7 @@ public abstract class VaccinationCenter {
      *
      * @return the fax number
      */
-    public String getFaxNumber() {
+    public int getFaxNumber() {
         return faxNumber;
     }
 
@@ -132,7 +141,7 @@ public abstract class VaccinationCenter {
      *
      * @param faxNumber the fax number
      */
-    public void setFaxNumber(String faxNumber) {
+    public void setFaxNumber(int faxNumber) {
         this.faxNumber = faxNumber;
     }
 
@@ -195,7 +204,7 @@ public abstract class VaccinationCenter {
      *
      * @return the opening hours
      */
-    public String getOpeningHours() {
+    public int getOpeningHours() {
         return openingHours;
     }
 
@@ -204,7 +213,7 @@ public abstract class VaccinationCenter {
      *
      * @param openingHours the opening hours
      */
-    public void setOpeningHours(String openingHours) {
+    public void setOpeningHours(int openingHours) {
         this.openingHours = openingHours;
     }
 
@@ -213,7 +222,7 @@ public abstract class VaccinationCenter {
      *
      * @return the closing hours
      */
-    public String getClosingHours() {
+    public int getClosingHours() {
         return closingHours;
     }
 
@@ -222,7 +231,7 @@ public abstract class VaccinationCenter {
      *
      * @param closingHours the closing hours
      */
-    public void setClosingHours(String closingHours) {
+    public void setClosingHours(int closingHours) {
         this.closingHours = closingHours;
     }
 
@@ -231,7 +240,7 @@ public abstract class VaccinationCenter {
      *
      * @return the slot duration
      */
-    public String getSlotDuration() {
+    public int getSlotDuration() {
         return slotDuration;
     }
 
@@ -240,7 +249,7 @@ public abstract class VaccinationCenter {
      *
      * @param slotDuration the slot duration
      */
-    public void setSlotDuration(String slotDuration) {
+    public void setSlotDuration(int slotDuration) {
         this.slotDuration = slotDuration;
     }
 
@@ -249,7 +258,7 @@ public abstract class VaccinationCenter {
      *
      * @return the max num vaccines per slot
      */
-    public String getMaxNumVaccinesPerSlot() {
+    public int getMaxNumVaccinesPerSlot() {
         return maxNumVaccinesPerSlot;
     }
 
@@ -258,7 +267,7 @@ public abstract class VaccinationCenter {
      *
      * @param maxNumVaccinesPerSlot the max num vaccines per slot
      */
-    public void setMaxNumVaccinesPerSlot(String maxNumVaccinesPerSlot) {
+    public void setMaxNumVaccinesPerSlot(int maxNumVaccinesPerSlot) {
         this.maxNumVaccinesPerSlot = maxNumVaccinesPerSlot;
     }
 
@@ -291,6 +300,169 @@ public abstract class VaccinationCenter {
                 "\n\n";
     }
 
+    /**
+     * New vaccine type vaccine type.
+     *
+     * @param technology  the technology
+     * @param code        the code
+     * @param designation the designation
+     * @return the vaccine type
+     */
+    public VaccineType newVaccineType(int technology, String code, String designation){
+        if(validateVaccineType(code))
+        {
+            if (technology == 0)
+                return new LiveAttenuatedVaccine(code, designation);
+            else if (technology == 1)
+                return new InactivatedVaccine(code, designation);
+            else if (technology == 2)
+                return new SubunitVaccine(code, designation);
+            else if (technology == 3)
+                return new ToxoidVaccine(code, designation);
+            else if (technology == 4)
+                return new ViralVectorVaccine(code, designation);
+            else if (technology == 5)
+                return new mRNAVaccine(code, designation);
+        }
+        return null;
+    }
+
+    /**
+     * Validate vaccine type boolean.
+     *
+     * @param code the code
+     * @return the boolean
+     */
+    public boolean validateVaccineType(String code){
+        for(VaccineType vt: listVaccineType)
+        {
+            if(vt.getCode().contains(code))
+                return false;
+        }
+        return true;
+    }
+
+    /**
+     * Get current outbreak vaccine type.
+     *
+     * @return the vaccine type
+     */
+    public VaccineType getCurrentOutbreak(){
+        VaccineType vaccineType=listVaccineType.get(0);;
+        return vaccineType;
+    }
+
+    /**
+     * Register vaccine type boolean.
+     *
+     * @param oVaccineType the o vaccine type
+     * @return the boolean
+     */
+    public boolean registerVaccineType(VaccineType oVaccineType)
+    {
+        if(validateVaccineType(oVaccineType.getCode()))
+            return addVaccineType(oVaccineType);
+        else
+            return false;
+    }
+
+    public boolean addVaccineType(VaccineType vt){return this.listVaccineType.add(vt);}
+
+    public boolean addVaccine(VaccineType vt, Vaccine v){return vt.addVaccine(v);}
+
+    /**
+     * Get list vaccine type list.
+     *
+     * @return the list
+     */
+    public List<VaccineType> getListVaccineType(){
+        return listVaccineType;
+    }
+
+
+    public List<Date> getAvailableSlots(VaccinationCenter vaccinationCenter, Date day) {
+        if(!this.validateScheduleDate(day))
+            throw new IllegalArgumentException("Date is not valid");
+
+        vaccinationDay = newVaccinationDay(vaccinationCenter, vaccinationDay, day);
+
+        if(!findSlot(vaccinationDay)){
+            Slot slot = new Slot(vaccinationDay);
+            if(slot == null)
+                throw new IllegalArgumentException("Problem with the slot");
+            listSlots.add(slot);
+            slot.allSlots(vaccinationDay.getDaySchedule(), vaccinationCenter.maxNumVaccinesPerSlot);
+            slot.startUserSlotList();
+            return slot.getAvailableSlots();
+        }else{
+            Slot slot = returnSlot(vaccinationDay);
+            if(slot == null)
+                throw new IllegalArgumentException("Problem with the slot");
+            return slot.getAvailableSlots();
+        }
+    }
+
+
+    public VaccineSchedule createVaccineSchedule(VaccinationCenter vaccinationCenter, SNSUser user, VaccineType type, Date day){
+        if (day == null)
+            throw new IllegalArgumentException("There was a problem registering this schedule");
+        if (!findSlot(vaccinationDay))
+            throw new IllegalArgumentException("There was a problem registering this schedule");
+        Slot slot = returnSlot(vaccinationDay);
+
+        slot.addSNSUserSlot(user, day);
+
+        VaccineSchedule schedule = new VaccineSchedule(user, type, day);
+        return schedule;
+    }
+
+    public boolean addVaccineSchedule(VaccineSchedule schedule){
+        return listSchedule.add(schedule);
+    }
+
+    private boolean validateScheduleDate(Date day){
+        LocalDate date = day.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate today = LocalDate.now(ZoneId.systemDefault());
+
+        if (date.isBefore(today)) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean findSlot(Day vaccinationDay){
+        for (Slot slot1 : listSlots) {
+            if (slot1.getVaccineDay() == vaccinationDay)
+                return true;
+        }
+        return false;
+    }
+
+    public Slot returnSlot(Day vaccinationDay){
+        for (Slot slot : listSlots) {
+            if (slot.getVaccineDay() == vaccinationDay)
+                return slot;
+        }
+        return null;
+    }
+
+    public Day newVaccinationDay(VaccinationCenter vaccinationCenter,Day d1, Date day){
+        for (Slot slot : listSlots) {
+            if (slot.getVaccineDay() == d1)
+                return vaccinationDay;
+        }
+        return new Day(vaccinationCenter, day, vaccinationCenter.openingHours,
+                vaccinationCenter.closingHours,
+                vaccinationCenter.slotDuration, vaccinationCenter.maxNumVaccinesPerSlot);
+    }
+
+    public boolean validateVaccineSchedule(SNSUser user, Date date){
+        for (VaccineSchedule schedule : listSchedule) {
+            if (schedule.getUser() == user && schedule.getTime() == date)
+                return false;
+        }
+        return true;
+    }
 
 }
 

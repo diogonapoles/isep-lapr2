@@ -21,31 +21,26 @@ public class NewVaccineTypeUI implements Runnable{
     public void run(){
         int selection = Utils.showAndSelectIndex(this.controller.getVaccineTechnologyTypes(), "Vaccine Technology Types:");
 
-        if(selection >= 0 && selection < 6)
-        {
-            if(inputData(selection))
-            {
-                getData();
+        if (controller.getWorking() == null) {
+            throw new IllegalArgumentException("Can't find any valid Vaccination Center for this user");
+        }else {
+            if (selection >= 0 && selection < 6) {
+                if (inputData(selection)) {
+                    getData();
 
-                if(Utils.confirm("Confirm data?(s/n)"))
-                {
-                    controller.registerVaccineType();
-                    System.out.println("Success");
+                    if (Utils.confirm("Confirm data?(s/n)")) {
+                        controller.registerVaccineType();
+                        System.out.println("Success");
+                    } else
+                        run();
+                } else {
+                    System.out.println("Not a valid Vaccine Type or already exists");
                 }
-                else
-                    run();
-            }
-            else
-            {
-                System.out.println("Not a valid Vaccine Type or already exists");
-            }
 
+            } else {
+                System.out.println("Invalid Selection");
+            }
         }
-        else
-        {
-            System.out.println("Invalid Selection");
-        }
-
     }
 
     private boolean inputData(int techSelection)

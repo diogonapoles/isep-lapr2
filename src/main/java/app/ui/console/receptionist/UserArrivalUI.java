@@ -17,7 +17,6 @@ public class UserArrivalUI implements Runnable {
      * Instantiates a new User arrival ui.
      */
     public UserArrivalUI() {
-
         this.controller = new UserArrivalController();
     }
 

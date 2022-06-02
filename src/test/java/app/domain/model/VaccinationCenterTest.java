@@ -1,4 +1,4 @@
-package app.domain.model;
+/*package app.domain.model;
 
 import app.domain.model.vaccinationCenter.CommunityCenter;
 import app.domain.model.vaccinationCenter.HealthcareCenter;
@@ -182,4 +182,4 @@ public class VaccinationCenterTest {
                 "maxNumVaccinesPerSlot: 40\n" +
                 "\n", cc.toString());
     }
-}
+}*/

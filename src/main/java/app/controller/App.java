@@ -4,6 +4,7 @@ import app.domain.model.*;
 import app.domain.model.systemUser.Employee;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.domain.model.vaccinationProcess.ScheduleVaccine;
+import app.domain.model.vaccine.Vaccine;
 import app.domain.model.vaccine.VaccineType;
 import app.domain.shared.Constants;
 import app.domain.model.systemUser.SNSUser;
@@ -110,29 +111,39 @@ public class App {
 
         createEmployee();
         createSnsUser();
-        createVaccineType();
 
-        VaccinationCenter vc1 = this.company.getVaccinationCenterStore().newVaccinationCenter(1, "Healthcare", "917876321", "493782",
+        VaccinationCenter vc1 = this.company.getVaccinationCenterStore().newVaccinationCenter(1, "Healthcare", 917876321, 493782,
                 "TestRua1", "teste1@gmail.com", "healthcare.com",
-                "10", "20", "3", "20");
+                10, 20, 3, 20);
         this.company.getVaccinationCenterStore().registerVaccinationCenter(vc1);
-        VaccinationCenter vc2 = this.company.getVaccinationCenterStore().newVaccinationCenter(0, "Community", "917312756", "654253",
+        VaccinationCenter vc2 = this.company.getVaccinationCenterStore().newVaccinationCenter(0, "Community", 917312756, 654253,
                 "TestRua2", "teste2@gmail.com", "community.com",
-                "8", "22", "5", "40");
+                8, 22, 5, 40);
         this.company.getVaccinationCenterStore().registerVaccinationCenter(vc2);
 
-        VaccineType vt1 = this.company.getVaccineTypeStore().newVaccineType(0, "12341", "COVID-19");
+        createVaccineType(vc1);
+
+        VaccineType vt1 = vc1.newVaccineType(0, "12341", "COVID-19");
+
+        createVaccine(vt1);
+
+        Vaccine v1 = vt1.newVaccine("COVID-19 Vaccine", "Pfizer", "18", "2", 2, 2);
         Date dateTime = new Date(2022, 11, 21, 9, 32);
 
-        ScheduleVaccine snsU10 = this.company.getScheduleVaccineStore().newScheduleVaccine(new ScheduleVaccineDTO("123444333", vc1, vt1, dateTime));
+        ScheduleVaccine snsU10 = this.company.getScheduleVaccineStore().newScheduleVaccine(new ScheduleVaccineDTO("123444333", vc1, v1, dateTime));
         this.company.getScheduleVaccineStore().registerScheduleVaccine(snsU10);
 
 
     }
 
-    private void createVaccineType() {
-        VaccineType vt1 = this.company.getVaccineTypeStore().newVaccineType(0, "12345", "COVID-19");
-        this.company.getVaccineTypeStore().registerVaccineType(vt1);
+    private void createVaccineType(VaccinationCenter vc1) {
+        VaccineType vt1 = vc1.newVaccineType(0, "12345", "COVID-19");
+        vc1.registerVaccineType(vt1);
+    }
+
+    private void createVaccine(VaccineType vt1) {
+        Vaccine v1 = vt1.newVaccine("COVID-19 Vaccine", "Pfizer", "18", "2", 2, 2);
+        vt1.registerVaccine(v1);
     }
 
 

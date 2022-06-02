@@ -2,6 +2,7 @@ package app.controller.administrator;
 
 import app.controller.App;
 import app.domain.model.Company;
+import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.domain.model.vaccine.Vaccine;
 import app.domain.model.vaccine.VaccineType;
 
@@ -16,6 +17,8 @@ public class NewVaccineController {
     private App oApp;
     private Company oCompany;
     private Vaccine oNewVaccine;
+    private VaccineType oVaccineType;
+    private VaccinationCenter oVaccinationCenter;
 
 
     /**
@@ -24,6 +27,11 @@ public class NewVaccineController {
     public NewVaccineController() {
         this.oApp = App.getInstance();
         this.oCompany = oApp.getCompany();
+    }
+
+    public VaccinationCenter getWorking() {
+        oVaccinationCenter = oCompany.getEmployeeStore().getWorking(oApp.getCurrentUserSession().getUserId().getEmail());
+        return oVaccinationCenter;
     }
 
     /**
@@ -39,7 +47,7 @@ public class NewVaccineController {
      * @return the boolean
      */
     public boolean newVaccine(VaccineType type, String name, String brand, String ageGroup, String doseNumber, double dosage, int timeSinceLastDose ){
-        this.oNewVaccine = oCompany.getVaccineStore().newVaccine(type, name, brand, ageGroup, doseNumber, dosage, timeSinceLastDose);
+        this.oNewVaccine = oVaccineType.newVaccine(name, brand, ageGroup, doseNumber, dosage, timeSinceLastDose);
         if (this.oNewVaccine != null)
             return true;
         else
@@ -59,12 +67,12 @@ public class NewVaccineController {
      *
      * @return the boolean
      */
-    public boolean registerVaccine(){return this.oCompany.getVaccineStore().registerVaccine(oNewVaccine);}
+    public boolean registerVaccine(){return this.oVaccineType.registerVaccine(oNewVaccine);}
 
     /**
      * Get vaccine types list.
      *
      * @return the list
      */
-    public List<VaccineType> getVaccineTypes(){return this.oCompany.getVaccineTypeStore().getListVaccineType();}
+    public List<VaccineType> getVaccineTypes(){return this.oVaccinationCenter.getListVaccineType();}
 }
