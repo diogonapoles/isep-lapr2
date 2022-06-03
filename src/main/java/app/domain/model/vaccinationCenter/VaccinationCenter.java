@@ -30,6 +30,7 @@ public abstract class VaccinationCenter {
     private Integer slotDuration;
     private Integer maxNumVaccinesPerSlot;
     private Day vaccinationDay;
+    private List<Day> listVaccinationDay;
     private UserArrivalStore waitingRoom;
     private List<VaccineType> listVaccineType;
     private List<Slot> listSlots;
@@ -82,6 +83,7 @@ public abstract class VaccinationCenter {
         this.listVaccineType = new ArrayList<>();
         this.listSlots = new ArrayList<>();
         this.listSchedule = new ArrayList<>();
+        this.listVaccinationDay = new ArrayList<>();
     }
 
     /**
@@ -384,7 +386,7 @@ public abstract class VaccinationCenter {
         if(!this.validateScheduleDate(day))
             throw new IllegalArgumentException("Date is not valid");
 
-        vaccinationDay = newVaccinationDay(vaccinationCenter, vaccinationDay, day);
+        vaccinationDay = newVaccinationDay(vaccinationCenter, day);
 
         if(!findSlot(vaccinationDay)){
             Slot slot = new Slot(vaccinationDay);
@@ -432,7 +434,7 @@ public abstract class VaccinationCenter {
 
     public boolean findSlot(Day vaccinationDay){
         for (Slot slot1 : listSlots) {
-            if (slot1.getVaccineDay() == vaccinationDay)
+            if (slot1.getVaccineDay().equals(vaccinationDay))
                 return true;
         }
         return false;
@@ -440,25 +442,27 @@ public abstract class VaccinationCenter {
 
     public Slot returnSlot(Day vaccinationDay){
         for (Slot slot : listSlots) {
-            if (slot.getVaccineDay() == vaccinationDay)
+            if (slot.getVaccineDay().equals(vaccinationDay))
                 return slot;
         }
         return null;
     }
 
-    public Day newVaccinationDay(VaccinationCenter vaccinationCenter,Day d1, Date day){
-        for (Slot slot : listSlots) {
-            if (slot.getVaccineDay() == d1)
-                return vaccinationDay;
+    public Day newVaccinationDay(VaccinationCenter vaccinationCenter, Date day){
+        for (Day vaxDay : listVaccinationDay) {
+            if (vaxDay.getDay().equals(day))
+                return vaxDay;
         }
-        return new Day(vaccinationCenter, day, vaccinationCenter.openingHours,
+        Day newDay = new Day(vaccinationCenter, day, vaccinationCenter.openingHours,
                 vaccinationCenter.closingHours,
                 vaccinationCenter.slotDuration, vaccinationCenter.maxNumVaccinesPerSlot);
+        listVaccinationDay.add(newDay);
+        return newDay;
     }
 
     public boolean validateVaccineSchedule(SNSUser user, Date date){
         for (VaccineSchedule schedule : listSchedule) {
-            if (schedule.getUser() == user && schedule.getTime() == date)
+            if (schedule.getUser().equals(user) && schedule.getTime().equals(date))
                 return false;
         }
         return true;

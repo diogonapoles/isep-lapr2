@@ -82,7 +82,7 @@ public class Slot {
 
     public int findDate(Date date){
         for (int index = 0; index < allSlots.size(); index++) {
-            if (allSlots.get(index) == date && !slotOcupation.get(index))
+            if (allSlots.get(index).equals(date) && !slotOcupation.get(index))
                 return index;
         }
         return -1;
