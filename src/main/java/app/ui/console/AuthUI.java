@@ -3,6 +3,7 @@ package app.ui.console;
 import app.controller.AuthController;
 import app.domain.shared.Constants;
 import app.ui.console.administrator.AdminUI;
+import app.ui.console.centerCoordinator.CenterCoordinatorUI;
 import app.ui.console.nurse.NurseUI;
 import app.ui.console.receptionist.ReceptionistUI;
 import app.ui.console.snsUser.SnsUserUI;

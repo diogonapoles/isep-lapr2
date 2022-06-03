@@ -1,6 +1,6 @@
-package app.ui.console;
+package app.ui.console.centerCoordinator;
 
-import app.domain.model.ImportLegacySystemData;
+import app.ui.console.MenuItem;
 import app.ui.console.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;

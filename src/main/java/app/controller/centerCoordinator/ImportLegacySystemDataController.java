@@ -1,6 +1,7 @@
-package app.domain.model;
+package app.controller.centerCoordinator;
 
 import app.controller.App;
+import app.domain.model.Company;
 
 public class ImportLegacySystemDataController {
     private App app;

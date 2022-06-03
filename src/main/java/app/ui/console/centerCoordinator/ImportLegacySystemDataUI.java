@@ -1,10 +1,8 @@
-package app.ui.console;
+package app.ui.console.centerCoordinator;
 
-import app.controller.ChoosingVaccinationCenterController;
-import app.domain.model.ImportLegacySystemDataController;
-import app.ui.console.utils.Utils;
+import app.controller.centerCoordinator.ImportLegacySystemDataController;
 
-public class ImportLegacySystemDataUI {
+public class ImportLegacySystemDataUI implements Runnable{
 
     private final ImportLegacySystemDataController controller;
 
