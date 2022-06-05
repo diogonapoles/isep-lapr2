@@ -1,159 +1,94 @@
-package app.controller.receptionist;
+package app.controller.snsUser;
 
 import app.controller.App;
-import app.controller.ScheduleVaccineDTO;
 import app.domain.model.*;
-import app.domain.model.vaccinationCenter.VaccinationCenter;
-import app.domain.model.vaccinationProcess.ScheduleVaccine;
-import app.domain.model.vaccine.Vaccine;
-import app.domain.model.vaccine.VaccineType;
-import app.domain.store.*;
 import app.domain.model.systemUser.SNSUser;
-import pt.isep.lei.esoft.auth.AuthFacade;
+import app.domain.model.vaccinationCenter.VaccinationCenter;
+import app.domain.model.vaccine.Vaccine;
+import app.domain.model.vaccine.VaccineSchedule;
+import app.domain.model.vaccine.VaccineType;
+import app.domain.shared.Constants;
+import app.ui.console.utils.Utils;
+import pt.isep.lei.esoft.auth.UserSession;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /**
- * The type Schedule vaccine receptionist controller.
+ * The type Schedule vaccine controller.
  */
 public class ScheduleVaccineController {
 
     private App oApp;
     private Company oCompany;
-    private ScheduleVaccine oScheduleVaccine;
-    private final AuthFacade authFacade;
-    private final ScheduleVaccineStore scheduleVaccineStore;
-    private final VaccinationCenterStore vaccinationCenterStore;
-    private VaccinationCenter vaccinationCenter;
-    private final SNSUserStore snsUserStore;
 
-    /**
-     * Instantiates a new Schedule vaccine receptionist controller.
-     */
     public ScheduleVaccineController() {
         this.oApp = App.getInstance();
         this.oCompany = oApp.getCompany();
-        this.authFacade = this.oCompany.getAuthFacade();
-        this.scheduleVaccineStore = oCompany.getScheduleVaccineStore();
-        this.vaccinationCenterStore = oCompany.getVaccinationCenterStore();
-        this.snsUserStore = oCompany.getSNSUserStore();
     }
 
-    /**
-     * New schedule vaccine boolean.
-     *
-     * @param scheduleVaccineDTO the schedule vaccine dto
-     * @param vaccine            the vaccine
-     * @return the boolean
-     */
-    public boolean newScheduleVaccine(ScheduleVaccineDTO scheduleVaccineDTO, Vaccine vaccine) {
-        String snsUserNumber = scheduleVaccineDTO.getSnsUserNumber();
-        SNSUser user = oCompany.getSNSUserStore().getSNSUserByNumber(snsUserNumber);
-
-        this.oScheduleVaccine = oCompany.getScheduleVaccineStore().newScheduleVaccineReceptionist(scheduleVaccineDTO, user, vaccine);
-        if (this.oScheduleVaccine != null) {
-            return true;
-        } else {
-            return false;
-        }
+    public boolean validateUserSession(){
+        UserSession session = this.oApp.getCurrentUserSession();
+        return session.isLoggedInWithRole(Constants.ROLE_SNS_USER);
     }
 
-    //  public List<String> getScheduleVaccine() {
-    //    return this.oCompany.getScheduleVaccineStore().listScheduleVaccine();
-    //}
-
-
-    /**
-     * Gets schedule vaccine string.
-     *
-     * @return the schedule vaccine string
-     */
-    public String getScheduleVaccineString() {
-        return this.oScheduleVaccine.toString();
+    public List<VaccinationCenter> getVaccinationCenterList(){
+        return this.oCompany.getVaccinationCenterStore().getVaccinationCenters();
     }
 
-
-    //    public boolean newScheduleVaccine(){return this.oCompany.getScheduleVaccineStore().newScheduleVaccine(oScheduleVaccine);}
-
-    //public boolean newScheduleVaccine(){return this.oCompany.getScheduleVaccineStore().newScheduleVaccine(oScheduleVaccine);}
-
-
-    /**
-     * Gets vaccination center.
-     *
-     * @return the vaccination center
-     */
-    public List<VaccinationCenter> getVaccinationCenter() {
-        return this.vaccinationCenterStore.getVaccinationCenters();
+    public List<VaccineType> getAvailableVaccineTypes(VaccinationCenter vaccinationCenter){
+        return vaccinationCenter.getListVaccineType();
     }
 
-    /**
-     * Gets vaccine types.
-     *
-     * @return the vaccine types
-     */
-    public List<VaccineType> getVaccineTypes() {
-        return this.vaccinationCenter.getListVaccineType();
+    public List<Date> getAvailableTimes(VaccinationCenter vaccinationCenter, Date day){
+        Date date1 = (Date) day;
+        return vaccinationCenter.getAvailableSlots(vaccinationCenter, date1);
     }
 
-    /**
-     * Gets vaccines.
-     *
-     * @return the vaccines
-     */
-    public List<Vaccine> getVaccines(VaccineType vaccineType) {
-        return vaccineType.getListVaccines();
+    public VaccineSchedule createVaccineSchedule(VaccinationCenter vaccinationCenter, VaccineType vaccineType, Vaccine vaccine, Date time){
+        UserSession session = this.oApp.getCurrentUserSession();
+        SNSUser user = this.oApp.getCompany().getSNSUserStore().getSNSUserByEmail(session.getUserId().getEmail());
+        return vaccinationCenter.createVaccineSchedule(vaccinationCenter, user, vaccineType, vaccine, time);
     }
 
-    /**
-     * Register schedule vaccine boolean.
-     *
-     * @param scheduleVaccineDTO the schedule vaccine dto
-     * @param vaccine            the vaccine
-     * @return the boolean
-     */
-    public boolean registerScheduleVaccine(ScheduleVaccineDTO scheduleVaccineDTO, Vaccine vaccine) {
-        String snsUserNumber = scheduleVaccineDTO.getSnsUserNumber();
-        SNSUser user = oCompany.getSNSUserStore().getSNSUserByNumber(snsUserNumber);
-
-        return this.oCompany.getScheduleVaccineStore().registerScheduleVaccineReceptionist(this.oScheduleVaccine, user, vaccine);
+    public boolean addVaccineSchedule(VaccinationCenter vaccinationCenter, VaccineSchedule schedule){
+        return vaccinationCenter.addVaccineSchedule(schedule);
     }
 
-    /**
-     * Gets schedule vaccine.
-     *
-     * @return the schedule vaccine
-     */
-    public ScheduleVaccine getScheduleVaccine() {
-        return oScheduleVaccine;
+    public boolean validateVaccineSchedule(VaccineType vaccineType, VaccinationCenter vaccinationCenter){
+        UserSession session = this.oApp.getCurrentUserSession();
+        SNSUser user = this.oApp.getCompany().getSNSUserStore().getSNSUserByEmail(session.getUserId().getEmail());
+        return vaccinationCenter.validateVaccineSchedule(vaccineType, user);
     }
 
-    /**
-     * Gets working.
-     *
-     * @return the working
-     */
-    public VaccinationCenter getWorking() {
-        vaccinationCenter = oCompany.getEmployeeStore().getWorking(oApp.getCurrentUserSession().getUserId().getEmail());
-        return vaccinationCenter;
+    public Vaccine vaccineAgeAndTimeSinceLastDose(VaccineType vaccineType, VaccinationCenter vaccinationCenter, Date date) {
+        UserSession session = this.oApp.getCurrentUserSession();
+        SNSUser user = this.oApp.getCompany().getSNSUserStore().getSNSUserByEmail(session.getUserId().getEmail());
+        return vaccinationCenter.vaccineAgeAndTimeSinceLastDose(vaccineType, user, date);
     }
 
-    /**
-     * Validate date boolean.
-     *
-     * @param d the d
-     * @return the boolean
-     */
-    public boolean validateDate(Date d) {
-        LocalDate date = d.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        LocalDate today = LocalDate.now(ZoneId.systemDefault());
+    public Date readDate(String prompt)
+    {
+        do
+        {
+            try
+            {
+                String strDate = Utils.readLineFromConsole(prompt);
+                SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                Date date = df.parse(strDate);
 
-        if (date.isBefore(today)) {
-            return false;
-        }
-        return true;
+                return date;
+            } catch (ParseException ex)
+            {
+                Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } while (true);
     }
 }
+
+
