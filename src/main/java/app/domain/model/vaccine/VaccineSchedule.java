@@ -9,11 +9,13 @@ public class VaccineSchedule {
 
     private SNSUser user;
     private VaccineType vaccineType;
+    private Vaccine vaccine;
     private Date time;
 
-    public VaccineSchedule(SNSUser user, VaccineType vaccineType, Date time) {
+    public VaccineSchedule(SNSUser user, VaccineType vaccineType, Vaccine vaccine, Date time) {
         this.user = user;
         this.vaccineType = vaccineType;
+        this.vaccine = vaccine;
         this.time = time;
     }
 
@@ -31,6 +33,14 @@ public class VaccineSchedule {
 
     public void setVaccineType(VaccineType vaccineType) {
         this.vaccineType = vaccineType;
+    }
+
+    public Vaccine getVaccine() {
+        return vaccine;
+    }
+
+    public void setVaccine(Vaccine vaccine) {
+        this.vaccine = vaccine;
     }
 
     public Date getTime() {

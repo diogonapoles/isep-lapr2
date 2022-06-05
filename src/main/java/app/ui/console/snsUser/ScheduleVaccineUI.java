@@ -3,6 +3,7 @@ package app.ui.console.snsUser;
 
 import app.controller.snsUser.ScheduleVaccineController;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
+import app.domain.model.vaccine.Vaccine;
 import app.domain.model.vaccine.VaccineSchedule;
 import app.domain.model.vaccine.VaccineType;
 import app.ui.console.utils.Utils;
@@ -31,12 +32,14 @@ public class ScheduleVaccineUI implements Runnable {
 
         Date timeSelector = (Date) Utils.showAndSelectOne(controller.getAvailableTimes(vaccinationCenter, date), "Select a Schedule:");
 
-        if (!controller.validateVaccineSchedule(vaccinationCenter, timeSelector)){
+        if (!controller.validateVaccineSchedule(vaccineType, vaccinationCenter)){
             System.out.println("This SNS user already scheduled a vaccine");
             return;
         }
 
-        VaccineSchedule schedule = controller.createVaccineSchedule(vaccinationCenter, vaccineType, timeSelector);
+        Vaccine vaccine = controller.vaccineAgeAndTimeSinceLastDose(vaccineType, vaccinationCenter, timeSelector);
+
+        VaccineSchedule schedule = controller.createVaccineSchedule(vaccinationCenter, vaccineType, vaccine, timeSelector);
 
         if(schedule == null) {
             System.out.println("Error while creating vaccination schedule");

@@ -1,6 +1,7 @@
 package app.ui.console.administrator;
 
 import app.controller.administrator.NewVaccineController;
+import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.domain.model.vaccine.VaccineType;
 import app.ui.console.utils.Utils;
 
@@ -19,25 +20,34 @@ public class NewVaccineUI implements Runnable {
     }
 
     public void run() {
-        if (controller.getWorking() == null) {
-            throw new IllegalArgumentException("Can't find any valid Vaccination Center for this user");
-        }else {
-            if (this.controller.getVaccineTypes() == null)
-                throw new IllegalArgumentException("No Vaccine Types were found");
-            int selection = Utils.showAndSelectIndex(this.controller.getVaccineTypes(), "Vaccine Types:");
-            if (selection >= 0 && selection < this.controller.getVaccineTypes().size()) {
-                if (inputData(this.controller.getVaccineTypes().get(selection))) {
-                    getData();
+        if (this.controller.getVaccinationCenters() == null) {
+            System.out.println("No Vaccination Centers were found");
+            return;
+        }
+        VaccinationCenter vaccinationCenter = (VaccinationCenter) Utils.showAndSelectOne(this.controller.getVaccinationCenters(), "Vaccination Centers:");
+        if (vaccinationCenter == null)
+            return;
+        controller.setWorking(vaccinationCenter);
+        if (this.controller.getVaccineTypes() == null) {
+            System.out.println("No Vaccine Types were found");
+            return;
+        }
+        VaccineType vaccineType = (VaccineType) Utils.showAndSelectOne(this.controller.getVaccineTypes(), "Vaccine Types:");
+        if (vaccineType == null)
+            return;
+        controller.setVaccineType(vaccineType);
 
-                    if (Utils.confirm("Confirm data?(s/n)")) {
-                        controller.registerVaccine();
-                        System.out.println("Vaccine registered successfully.");
-                    } else
-                        run();
-                } else {
-                    System.out.println("Not a valid Vaccine or already exists");
-                }
-            }
+        if (inputData(vaccineType)){
+            getData();
+
+            if (Utils.confirm("Confirm data?(s/n)")) {
+                controller.registerVaccine();
+                System.out.println("Vaccine registered successfully.");
+            } else
+                return;
+        } else {
+            System.out.println("Not a valid Vaccine or already exists");
+            return;
         }
     }
 
@@ -51,7 +61,6 @@ public class NewVaccineUI implements Runnable {
 
             return controller.newVaccine(type, name, brand, ageGroup, doseNumber, dosage, timeSinceLastDose);
         }
-
 
         private void getData() {
             System.out.println(controller.getNewVaccinetoString());

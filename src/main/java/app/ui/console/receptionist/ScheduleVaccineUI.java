@@ -1,7 +1,8 @@
-package app.ui.console.snsUser;
+package app.ui.console.receptionist;
 
 
-import app.controller.snsUser.ScheduleVaccineController;
+import app.controller.receptionist.ScheduleVaccineController;
+import app.domain.model.systemUser.SNSUser;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.domain.model.vaccine.Vaccine;
 import app.domain.model.vaccine.VaccineSchedule;
@@ -24,22 +25,28 @@ public class ScheduleVaccineUI implements Runnable {
             return;
         }
 
-        VaccinationCenter vaccinationCenter = (VaccinationCenter) Utils.showAndSelectOne(controller.getVaccinationCenterList(), "Select a Vaccination Center:");
+        SNSUser user = controller.getSNSUserByNumber(Utils.readLineFromConsole("Insert SNS user number:"));
+        if (user == null){
+            System.out.println("Could't find SNS user in the System");
+            return;
+        }
 
+        VaccinationCenter vaccinationCenter = controller.getWorking();
+        
         VaccineType vaccineType = (VaccineType) Utils.showAndSelectOne(controller.getAvailableVaccineTypes(vaccinationCenter), "Select a Vaccine Type:");
 
         Date date = controller.readDate("Insert vaccination date (dd/MM/yyyy)");
 
         Date timeSelector = (Date) Utils.showAndSelectOne(controller.getAvailableTimes(vaccinationCenter, date), "Select a Schedule:");
 
-        if (!controller.validateVaccineSchedule(vaccineType, vaccinationCenter)){
+        if (!controller.validateVaccineSchedule(user, vaccineType, vaccinationCenter)){
             System.out.println("This SNS user already scheduled a vaccine");
             return;
         }
 
-        Vaccine vaccine = controller.vaccineAgeAndTimeSinceLastDose(vaccineType, vaccinationCenter, timeSelector);
+        Vaccine vaccine = controller.vaccineAgeAndTimeSinceLastDose(user, vaccineType, vaccinationCenter, timeSelector);
 
-        VaccineSchedule schedule = controller.createVaccineSchedule(vaccinationCenter, vaccineType, vaccine, timeSelector);
+        VaccineSchedule schedule = controller.createVaccineSchedule(user, vaccinationCenter, vaccineType, vaccine, timeSelector);
 
         if(schedule == null) {
             System.out.println("Error while creating vaccination schedule");

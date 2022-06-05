@@ -29,9 +29,12 @@ public class NewVaccineController {
         this.oCompany = oApp.getCompany();
     }
 
-    public VaccinationCenter getWorking() {
-        oVaccinationCenter = oCompany.getEmployeeStore().getWorking(oApp.getCurrentUserSession().getUserId().getEmail());
-        return oVaccinationCenter;
+    public void setWorking(VaccinationCenter vaccinationCenter) {
+        oVaccinationCenter = vaccinationCenter;
+    }
+
+    public void setVaccineType(VaccineType vaccineType) {
+        oVaccineType = vaccineType;
     }
 
     /**
@@ -75,4 +78,6 @@ public class NewVaccineController {
      * @return the list
      */
     public List<VaccineType> getVaccineTypes(){return this.oVaccinationCenter.getListVaccineType();}
+
+    public List<VaccinationCenter> getVaccinationCenters(){return this.oCompany.getVaccinationCenterStore().getVaccinationCenters();}
 }

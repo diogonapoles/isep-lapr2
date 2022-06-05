@@ -1,6 +1,8 @@
 package app.domain.model.vaccine;
 
 
+import java.util.regex.Pattern;
+
 /**
  * The type Vaccine.
  */
@@ -14,7 +16,7 @@ public class Vaccine {
     private String ageGroup;
     private String doseNumber;
     private double dosage;
-    private  int timeSinceLastDose;
+    private int timeSinceLastDose;
 
     /**
      * Gets name.
@@ -138,7 +140,7 @@ public class Vaccine {
     public Vaccine(String name, String brand, String ageGroup, String doseNumber, double dosage, int timeSinceLastDose){
         if ((name == null) || (name.isEmpty())
                 || (brand == null) || (brand.isEmpty())
-                || (ageGroup == null) || (ageGroup.isEmpty())
+                || (ageGroup == null) || (ageGroup.isEmpty()) || !validateAgeGroup(ageGroup)
                 || (doseNumber == null) || (doseNumber.isEmpty())
                 || (dosage == 0)
                 || (timeSinceLastDose == 0)){
@@ -161,4 +163,16 @@ public class Vaccine {
                 ", Time Since Last Dose = "+timeSinceLastDose+"]");
     }
 
+    private static final Pattern p = Pattern.compile("\\d{2}-\\d{2}");
+
+    public boolean validateAgeGroup(String ageGroup){
+        if(p.matcher(ageGroup).matches())
+            return true;
+        throw new IllegalArgumentException("Age group is not valid. It should be (minAge-maxAge)");
+    }
+
+    public int getAgeGroup(int limit){
+        String[] group = ageGroup.split("-");
+        return Integer.parseInt(group[limit]);
+    }
 }

@@ -1,6 +1,7 @@
 package app.ui.console.administrator;
 
 import app.controller.administrator.NewVaccineTypeController;
+import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.ui.console.utils.Utils;
 
 /**
@@ -19,12 +20,18 @@ public class NewVaccineTypeUI implements Runnable{
     }
 
     public void run(){
+        if (this.controller.getVaccinationCenters() == null) {
+            System.out.println("No Vaccination Centers were found");
+            return;
+        }
+        VaccinationCenter vaccinationCenter = (VaccinationCenter) Utils.showAndSelectOne(this.controller.getVaccinationCenters(), "Vaccination Centers:");
+        if (vaccinationCenter == null)
+            return;
+        controller.setWorking(vaccinationCenter);
+
         int selection = Utils.showAndSelectIndex(this.controller.getVaccineTechnologyTypes(), "Vaccine Technology Types:");
 
-        if (controller.getWorking() == null) {
-            throw new IllegalArgumentException("Can't find any valid Vaccination Center for this user");
-        }else {
-            if (selection >= 0 && selection < 6) {
+            if (selection >= 0 && selection < controller.getVaccineTechnologyTypes().size()) {
                 if (inputData(selection)) {
                     getData();
 
@@ -40,7 +47,7 @@ public class NewVaccineTypeUI implements Runnable{
             } else {
                 System.out.println("Invalid Selection");
             }
-        }
+
     }
 
     private boolean inputData(int techSelection)

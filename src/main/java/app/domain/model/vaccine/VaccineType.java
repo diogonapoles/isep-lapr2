@@ -11,7 +11,7 @@ import java.util.List;
 public abstract class VaccineType {
     private String code;
     private String designation;
-    private List<Vaccine> listVaccine = new ArrayList<>();
+    private List<Vaccine> listVaccine;
 
     /**
      * Instantiates a new Vaccine type.
@@ -27,6 +27,7 @@ public abstract class VaccineType {
 
         this.code = code;
         this.designation = designation;
+        this.listVaccine = new ArrayList<>();
     }
 
     /**
@@ -80,23 +81,6 @@ public abstract class VaccineType {
                 "]";
     }
 
-    /**
-     * Gets vaccine technology types.
-     *
-     * @return the vaccine technology types
-     */
-    public List<String> getVaccineTechnologyTypes()
-    {
-        List<String> listOfVaccineType = new ArrayList<>();
-        listOfVaccineType.add("Live-Attenuated Vaccine");
-        listOfVaccineType.add("Inactivated Vaccine");
-        listOfVaccineType.add("Subunit Vaccine");
-        listOfVaccineType.add("Toxoid Vaccine");
-        listOfVaccineType.add("Viral Vector Vaccine");
-        listOfVaccineType.add("Messenger RNA (mRNA) Vaccine");
-
-        return listOfVaccineType;
-    }
 
     /**
      * Validate vaccine boolean.
@@ -142,7 +126,10 @@ public abstract class VaccineType {
      * @return the vaccine
      */
     public Vaccine newVaccine(String name, String brand, String ageGroup, String doseNumber, double dosage, int timeSinceLastDose){
-        return new Vaccine(name, brand, ageGroup, doseNumber, dosage, timeSinceLastDose);
+        if(validateVaccine(name)){
+            return new Vaccine(name, brand, ageGroup, doseNumber, dosage, timeSinceLastDose);
+        }
+        return null;
     }
 
     /**

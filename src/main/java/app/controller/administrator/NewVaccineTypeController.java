@@ -15,7 +15,7 @@ public class NewVaccineTypeController {
     private App oApp;
     private Company oCompany;
     private VaccineType oVaccineType;
-    private VaccinationCenter vaccinationCenter;
+    private VaccinationCenter oVaccinationCenter;
 
     /**
      * Instantiates a new New vaccine type controller.
@@ -25,10 +25,10 @@ public class NewVaccineTypeController {
         this.oCompany = oApp.getCompany();
     }
 
-    public VaccinationCenter getWorking() {
-        vaccinationCenter = oCompany.getEmployeeStore().getWorking(oApp.getCurrentUserSession().getUserId().getEmail());
-        return vaccinationCenter;
+    public void setWorking(VaccinationCenter vaccinationCenter) {
+        oVaccinationCenter = vaccinationCenter;
     }
+
 
     /**
      * New vaccine type boolean.
@@ -41,7 +41,7 @@ public class NewVaccineTypeController {
 
 
     public boolean newVaccineType(int techSelection, String code, String designation){
-        this.oVaccineType = getWorking().newVaccineType(techSelection, code, designation);
+        this.oVaccineType = oVaccinationCenter.newVaccineType(techSelection, code, designation);
         if (this.oVaccineType != null)
             return true;
         else
@@ -53,7 +53,7 @@ public class NewVaccineTypeController {
      *
      * @return the list
      */
-    public List<String> getVaccineTechnologyTypes(){return this.oVaccineType.getVaccineTechnologyTypes();}
+    public List<String> getVaccineTechnologyTypes(){return this.oVaccinationCenter.getVaccineTechnologyTypes();}
 
     /**
      * Get vaccine type string string.
@@ -67,5 +67,7 @@ public class NewVaccineTypeController {
      *
      * @return the boolean
      */
-    public boolean registerVaccineType(){return this.getWorking().registerVaccineType(oVaccineType);}
+    public boolean registerVaccineType(){return this.oVaccinationCenter.registerVaccineType(oVaccineType);}
+
+    public List<VaccinationCenter> getVaccinationCenters(){return this.oCompany.getVaccinationCenterStore().getVaccinationCenters();}
 }

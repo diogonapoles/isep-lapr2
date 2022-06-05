@@ -4,6 +4,7 @@ import app.controller.App;
 import app.domain.model.*;
 import app.domain.model.systemUser.SNSUser;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
+import app.domain.model.vaccine.Vaccine;
 import app.domain.model.vaccine.VaccineSchedule;
 import app.domain.model.vaccine.VaccineType;
 import app.domain.shared.Constants;
@@ -49,20 +50,26 @@ public class ScheduleVaccineController {
         return vaccinationCenter.getAvailableSlots(vaccinationCenter, date1);
     }
 
-    public VaccineSchedule createVaccineSchedule(VaccinationCenter vaccinationCenter, VaccineType vaccineType, Date time){
+    public VaccineSchedule createVaccineSchedule(VaccinationCenter vaccinationCenter, VaccineType vaccineType, Vaccine vaccine, Date time){
         UserSession session = this.oApp.getCurrentUserSession();
         SNSUser user = this.oApp.getCompany().getSNSUserStore().getSNSUserByEmail(session.getUserId().getEmail());
-        return vaccinationCenter.createVaccineSchedule(vaccinationCenter, user,vaccineType,time);
+        return vaccinationCenter.createVaccineSchedule(vaccinationCenter, user, vaccineType, vaccine, time);
     }
 
     public boolean addVaccineSchedule(VaccinationCenter vaccinationCenter, VaccineSchedule schedule){
         return vaccinationCenter.addVaccineSchedule(schedule);
     }
 
-    public boolean validateVaccineSchedule(VaccinationCenter vaccinationCenter, Date time){
+    public boolean validateVaccineSchedule(VaccineType vaccineType, VaccinationCenter vaccinationCenter){
         UserSession session = this.oApp.getCurrentUserSession();
         SNSUser user = this.oApp.getCompany().getSNSUserStore().getSNSUserByEmail(session.getUserId().getEmail());
-        return vaccinationCenter.validateVaccineSchedule(user, time);
+        return vaccinationCenter.validateVaccineSchedule(vaccineType, user);
+    }
+
+    public Vaccine vaccineAgeAndTimeSinceLastDose(VaccineType vaccineType, VaccinationCenter vaccinationCenter, Date date) {
+        UserSession session = this.oApp.getCurrentUserSession();
+        SNSUser user = this.oApp.getCompany().getSNSUserStore().getSNSUserByEmail(session.getUserId().getEmail());
+        return vaccinationCenter.vaccineAgeAndTimeSinceLastDose(vaccineType, user, date);
     }
 
     public Date readDate(String prompt)

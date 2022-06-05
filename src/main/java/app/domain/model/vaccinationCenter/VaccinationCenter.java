@@ -8,6 +8,7 @@ import pt.isep.lei.esoft.auth.UserSession;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -92,6 +93,9 @@ public abstract class VaccinationCenter {
     public VaccinationCenter() {
 
     }
+
+
+
 
     /**
      * Gets name.
@@ -303,6 +307,24 @@ public abstract class VaccinationCenter {
     }
 
     /**
+     * Gets vaccine technology types.
+     *
+     * @return the vaccine technology types
+     */
+    public List<String> getVaccineTechnologyTypes()
+    {
+        List<String> listOfVaccineType = new ArrayList<>();
+        listOfVaccineType.add("Live-Attenuated Vaccine");
+        listOfVaccineType.add("Inactivated Vaccine");
+        listOfVaccineType.add("Subunit Vaccine");
+        listOfVaccineType.add("Toxoid Vaccine");
+        listOfVaccineType.add("Viral Vector Vaccine");
+        listOfVaccineType.add("Messenger RNA (mRNA) Vaccine");
+
+        return listOfVaccineType;
+    }
+
+    /**
      * New vaccine type vaccine type.
      *
      * @param technology  the technology
@@ -405,7 +427,7 @@ public abstract class VaccinationCenter {
     }
 
 
-    public VaccineSchedule createVaccineSchedule(VaccinationCenter vaccinationCenter, SNSUser user, VaccineType type, Date day){
+    public VaccineSchedule createVaccineSchedule(VaccinationCenter vaccinationCenter, SNSUser user, VaccineType type, Vaccine vaccine, Date day){
         if (day == null)
             throw new IllegalArgumentException("There was a problem registering this schedule");
         if (!findSlot(vaccinationDay))
@@ -414,7 +436,7 @@ public abstract class VaccinationCenter {
 
         slot.addSNSUserSlot(user, day);
 
-        VaccineSchedule schedule = new VaccineSchedule(user, type, day);
+        VaccineSchedule schedule = new VaccineSchedule(user, type, vaccine, day);
         return schedule;
     }
 
@@ -460,14 +482,76 @@ public abstract class VaccinationCenter {
         return newDay;
     }
 
-    public boolean validateVaccineSchedule(SNSUser user, Date date){
+    public boolean validateVaccineSchedule(VaccineType type, SNSUser user){
         for (VaccineSchedule schedule : listSchedule) {
-            if (schedule.getUser().equals(user) && schedule.getTime().equals(date))
-                return false;
+            SNSUser snsUser = schedule.getUser();
+            VaccineType vtype = schedule.getVaccineType();
+            if (snsUser.equals(user)) {
+                if (vtype.equals(type))
+                    return false;
+            }
         }
         return true;
     }
 
+    public VaccineType findVaccineType(String code) {
+        for (VaccineType type : listVaccineType) {
+            if (type.getCode().equals(code)){
+                return type;
+            }
+        }
+        throw new IllegalArgumentException("Couldn't find this vaccine type");
+    }
+
+    public boolean validateAgeGroup(Vaccine vaccine, int age) {
+        if (vaccine.getAgeGroup(0) <= age && age <= vaccine.getAgeGroup(1))
+            return true;
+        throw new IllegalArgumentException("This user is not within the age for this vaccine");
+    }
+
+    public boolean validateTimeSinceLastDose(Vaccine vaccine, SNSUser user, Date vaccineDate) {
+        boolean flag=false;
+        Calendar lastVaccine = Calendar.getInstance();
+        Calendar newVaccine = Calendar.getInstance();
+        if(listSchedule.isEmpty())
+            return true;
+
+        for (VaccineSchedule schedule : listSchedule) {
+            Vaccine vax = schedule.getVaccine();
+            if (vax.equals(vaccine))
+                flag=true;
+        }
+
+        if(flag) {
+            for (VaccineSchedule schedule : listSchedule) {
+                SNSUser snsUser = schedule.getUser();
+                Vaccine vax = schedule.getVaccine();
+                if (snsUser.equals(user)) {
+                    if (vax.equals(vaccine)) {
+                        lastVaccine.setTime(schedule.getTime());
+                        lastVaccine.add(Calendar.DATE, vaccine.getTimeSinceLastDose());
+                        newVaccine.setTime(vaccineDate);
+
+                        if (lastVaccine.before(newVaccine))
+                            return true;
+                    }
+                }
+            }
+        }else{
+            return true;
+        }
+        throw new IllegalArgumentException("This user is not within the time since last dose");
+    }
+
+    public Vaccine vaccineAgeAndTimeSinceLastDose(VaccineType vaccineType, SNSUser user, Date vaccineDate){
+        if(vaccineType.getListVaccines().isEmpty())
+            throw new IllegalArgumentException("There are no available vaccines for this vaccine type");
+        for (Vaccine vaccine : vaccineType.getListVaccines()) {
+            if (validateAgeGroup(vaccine, user.getAge()) && validateTimeSinceLastDose(vaccine, user, vaccineDate))
+                return vaccine;
+        }
+        throw new IllegalArgumentException("Could not verify age and time since last dose");
+    }
 }
 
 

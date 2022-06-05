@@ -1,7 +1,7 @@
-package app.controller.snsUser;
+package app.controller.receptionist;
 
 import app.controller.App;
-import app.domain.model.*;
+import app.domain.model.Company;
 import app.domain.model.systemUser.SNSUser;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.domain.model.vaccine.Vaccine;
@@ -26,15 +26,30 @@ public class ScheduleVaccineController {
 
     private App oApp;
     private Company oCompany;
+    private VaccinationCenter vaccinationCenter;
 
     public ScheduleVaccineController() {
         this.oApp = App.getInstance();
         this.oCompany = oApp.getCompany();
     }
 
+    public SNSUser getSNSUserByNumber(String snsUserNumber){
+        for (SNSUser user : oCompany.getSNSUserStore().getSnsUserList()){
+            if(user.getSnsUserNumber().equals(snsUserNumber))
+                return user;
+        }
+        return null;
+    }
+
+    public VaccinationCenter getWorking() {
+        vaccinationCenter = oCompany.getEmployeeStore().getWorking(oApp.getCurrentUserSession().getUserId().getEmail());
+        return vaccinationCenter;
+    }
+
+
     public boolean validateUserSession(){
         UserSession session = this.oApp.getCurrentUserSession();
-        return session.isLoggedInWithRole(Constants.ROLE_SNS_USER);
+        return session.isLoggedInWithRole(Constants.ROLE_RECEPTIONIST);
     }
 
     public List<VaccinationCenter> getVaccinationCenterList(){
@@ -50,9 +65,7 @@ public class ScheduleVaccineController {
         return vaccinationCenter.getAvailableSlots(vaccinationCenter, date1);
     }
 
-    public VaccineSchedule createVaccineSchedule(VaccinationCenter vaccinationCenter, VaccineType vaccineType, Vaccine vaccine, Date time){
-        UserSession session = this.oApp.getCurrentUserSession();
-        SNSUser user = this.oApp.getCompany().getSNSUserStore().getSNSUserByEmail(session.getUserId().getEmail());
+    public VaccineSchedule createVaccineSchedule(SNSUser user, VaccinationCenter vaccinationCenter, VaccineType vaccineType, Vaccine vaccine, Date time){
         return vaccinationCenter.createVaccineSchedule(vaccinationCenter, user, vaccineType, vaccine, time);
     }
 
@@ -60,15 +73,11 @@ public class ScheduleVaccineController {
         return vaccinationCenter.addVaccineSchedule(schedule);
     }
 
-    public boolean validateVaccineSchedule(VaccineType vaccineType, VaccinationCenter vaccinationCenter){
-        UserSession session = this.oApp.getCurrentUserSession();
-        SNSUser user = this.oApp.getCompany().getSNSUserStore().getSNSUserByEmail(session.getUserId().getEmail());
+    public boolean validateVaccineSchedule(SNSUser user, VaccineType vaccineType, VaccinationCenter vaccinationCenter){
         return vaccinationCenter.validateVaccineSchedule(vaccineType, user);
     }
 
-    public Vaccine vaccineAgeAndTimeSinceLastDose(VaccineType vaccineType, VaccinationCenter vaccinationCenter, Date date) {
-        UserSession session = this.oApp.getCurrentUserSession();
-        SNSUser user = this.oApp.getCompany().getSNSUserStore().getSNSUserByEmail(session.getUserId().getEmail());
+    public Vaccine vaccineAgeAndTimeSinceLastDose(SNSUser user, VaccineType vaccineType, VaccinationCenter vaccinationCenter, Date date) {
         return vaccinationCenter.vaccineAgeAndTimeSinceLastDose(vaccineType, user, date);
     }
 

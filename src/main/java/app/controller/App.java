@@ -5,6 +5,7 @@ import app.domain.model.systemUser.Employee;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.domain.model.vaccinationProcess.ScheduleVaccine;
 import app.domain.model.vaccine.Vaccine;
+import app.domain.model.vaccine.VaccineSchedule;
 import app.domain.model.vaccine.VaccineType;
 import app.domain.shared.Constants;
 import app.domain.model.systemUser.SNSUser;
@@ -110,6 +111,7 @@ public class App {
         this.getCompany().defaultRegister(this.authFacade);
 
         createEmployee();
+        SNSUser snsU2 = this.company.getSNSUserStore().newSNSUser("tomas", "masculine", "07/10/1999", "avenue 45", "915654723", "tomas23@gmail.com", "123444333", "76342123");
         createSnsUser();
 
         VaccinationCenter vc1 = this.company.getVaccinationCenterStore().newVaccinationCenter(1, "Healthcare", 917876321, 493782,
@@ -121,29 +123,29 @@ public class App {
                 8, 22, 5, 40);
         this.company.getVaccinationCenterStore().registerVaccinationCenter(vc2);
 
+
+        VaccineType vt1 = vc1.newVaccineType(0, "12345", "COVID-19");
+        VaccineType vt2 = vc1.newVaccineType(0, "54321", "FLU");
         createVaccineType(vc1);
 
-        VaccineType vt1 = vc1.newVaccineType(0, "12341", "COVID-19");
 
-        createVaccine(vt1);
-
-        Vaccine v1 = vt1.newVaccine("COVID-19 Vaccine", "Pfizer", "18", "2", 2, 2);
-        Date dateTime = new Date(2022, 11, 21, 9, 32);
-
-        ScheduleVaccine snsU10 = this.company.getScheduleVaccineStore().newScheduleVaccine(new ScheduleVaccineDTO("123444333", vc1, v1, dateTime));
-        this.company.getScheduleVaccineStore().registerScheduleVaccine(snsU10);
-
-
+        Vaccine v1 = vt1.newVaccine("COVID-19 Vaccine", "Pfizer", "18-22", "2", 5, 90);
+        Vaccine v2 = vt2.newVaccine("FLU Vaccine", "Pfizer", "10-45", "1", 5, 180);
+        createVaccine(vc1.findVaccineType("12345"), vc1.findVaccineType("54321"));
     }
 
     private void createVaccineType(VaccinationCenter vc1) {
         VaccineType vt1 = vc1.newVaccineType(0, "12345", "COVID-19");
+        VaccineType vt2 = vc1.newVaccineType(0, "54321", "FLU");
         vc1.registerVaccineType(vt1);
+        vc1.registerVaccineType(vt2);
     }
 
-    private void createVaccine(VaccineType vt1) {
-        Vaccine v1 = vt1.newVaccine("COVID-19 Vaccine", "Pfizer", "18", "2", 2, 2);
+    private void createVaccine(VaccineType vt1, VaccineType vt2) {
+        Vaccine v1 = vt1.newVaccine("COVID-19 Vaccine", "Pfizer", "18-22", "2", 2, 2);
+        Vaccine v2 = vt2.newVaccine("FLU Vaccine", "Pfizer", "10-45", "1", 5, 180);
         vt1.registerVaccine(v1);
+        vt2.registerVaccine(v2);
     }
 
 
