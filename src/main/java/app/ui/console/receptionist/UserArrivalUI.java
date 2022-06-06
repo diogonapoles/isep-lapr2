@@ -28,19 +28,23 @@ public class UserArrivalUI implements Runnable {
             return;
         } else {
             String snsUserNumber = Utils.readLineFromConsole("SNS User Number");
-            SNSUser user = controller.getSNSUserByNumber(snsUserNumber);
-
-            if (user == null) {
-                System.out.println("SNS user not found in the System");
-                return;
-            }
-            if (inputData(user)) {
+            try {
+                SNSUser user = controller.getSNSUserByNumber(snsUserNumber);
+                if (user == null) {
+                    System.out.println("SNS user not found in the System");
+                    return;
+                }
+                if (inputData(user)) {
 
                     controller.registerUserArrival();
                     System.out.println("SNS User arrival registered successfully");
 
-            } else {
-                System.out.println("not a valid user or already exists");
+                } else {
+                    System.out.println("not a valid user or already exists");
+                }
+            }catch (Exception e){
+                System.out.println(e);
+                return;
             }
         }
 

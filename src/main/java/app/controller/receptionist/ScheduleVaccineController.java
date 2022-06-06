@@ -83,11 +83,17 @@ public class ScheduleVaccineController {
 
     public Date readDate(String prompt)
     {
+        System.out.println("\n" + prompt);
+        System.out.println("");
+        System.out.println("0 - Cancel");
         do
         {
             try
             {
-                String strDate = Utils.readLineFromConsole(prompt);
+                String strDate = Utils.readLineFromConsole("");
+                if (strDate.equals("0"))
+                    return null;
+
                 SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
                 Date date = df.parse(strDate);
 

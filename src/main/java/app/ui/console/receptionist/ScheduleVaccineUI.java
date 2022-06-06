@@ -34,8 +34,14 @@ public class ScheduleVaccineUI implements Runnable {
         VaccinationCenter vaccinationCenter = controller.getWorking();
         
         VaccineType vaccineType = (VaccineType) Utils.showAndSelectOne(controller.getAvailableVaccineTypes(vaccinationCenter), "Select a Vaccine Type:");
+        if (vaccineType == null){
+            return;
+        }
 
         Date date = controller.readDate("Insert vaccination date (dd/MM/yyyy)");
+        if (date == null)
+            return;
+
 
         Date timeSelector = (Date) Utils.showAndSelectOne(controller.getAvailableTimes(vaccinationCenter, date), "Select a Schedule:");
 
