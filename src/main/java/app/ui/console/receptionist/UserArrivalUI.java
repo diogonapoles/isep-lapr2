@@ -2,6 +2,7 @@ package app.ui.console.receptionist;
 
 
 import app.controller.receptionist.UserArrivalController;
+import app.domain.model.systemUser.SNSUser;
 import app.ui.console.utils.Utils;
 
 
@@ -24,20 +25,19 @@ public class UserArrivalUI implements Runnable {
 
         if (controller.getWorking() == null) {
             System.out.println("Doesn't exist");
+            return;
         } else {
             String snsUserNumber = Utils.readLineFromConsole("SNS User Number");
-            if (inputData(snsUserNumber)) {
+            SNSUser user = controller.getSNSUserByNumber(snsUserNumber);
 
-            //    Object o = Utils.showAndSelectOne(controller.getVaccineTypeList(), "\nVaccineTypes: ");
-              //  ScheduleVaccine scheduleVaccine = controller.getScheduleVaccine(snsUserNumber, (VaccineType) o);
-              //  getData();
+            if (user == null) {
+                System.out.println("SNS user not found in the System");
+                return;
+            }
+            if (inputData(user)) {
 
-                //if (Utils.confirm("Confirms data?(s/n)")) {
                     controller.registerUserArrival();
                     System.out.println("SNS User arrival registered successfully");
-                //} else
-                    //run();
-
 
             } else {
                 System.out.println("not a valid user or already exists");
@@ -46,9 +46,9 @@ public class UserArrivalUI implements Runnable {
 
     }
 
-    private boolean inputData(String snsUserNumber) {
+    private boolean inputData(SNSUser user) {
 
-        return controller.newUserArrival(snsUserNumber);
+        return controller.newUserArrival(user);
     }
 
 

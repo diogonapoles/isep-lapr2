@@ -45,12 +45,12 @@ class LoadSNSUsersControllerTest {
     }
 
 
-    @Test
+    /*@Test
     void getCSVFileString() {
         LoadSNSUsersController snsc = new LoadSNSUsersController();
         snsc.newCSVReader("/Users/diogonapoles/lei-22-s2-1dc-g13/CSVHeader.csv");
 
         String result = "[SNSUser{name='Joao', address='Rua Pereira', phoneNumber='917156542', birthDate='Fri May 02 00:00:00 WEST 2003', emailAddress='teste@isep.ipp.pt', snsUserNumber='411451234', citizenCardNumber='67837561'}, SNSUser{name='Mario', address='Rua Marco', phoneNumber='917312456', birthDate='Sat May 03 00:00:00 WEST 2003', emailAddress='teste2@isep.ipp.pt', snsUserNumber='424236543', citizenCardNumber='56738093'}]";
         assertEquals(result, snsc.getCSVFileString());
-    }
+    }*/
 }

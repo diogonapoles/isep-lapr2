@@ -1,9 +1,8 @@
 package app.domain.model.vaccinationCenter;
 
 import app.domain.model.systemUser.SNSUser;
+import app.domain.model.vaccinationProcess.UserArrival;
 import app.domain.model.vaccine.*;
-import app.domain.store.UserArrivalStore;
-import pt.isep.lei.esoft.auth.UserSession;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -25,17 +24,15 @@ public abstract class VaccinationCenter {
     private String emailAddress;
     private String websiteAddress;
     private Integer openingHours;
-    private Integer openingMinutes;
     private Integer closingHours;
-    private Integer closingMinutes;
     private Integer slotDuration;
     private Integer maxNumVaccinesPerSlot;
     private Day vaccinationDay;
     private List<Day> listVaccinationDay;
-    private UserArrivalStore waitingRoom;
     private List<VaccineType> listVaccineType;
     private List<Slot> listSlots;
     private List<VaccineSchedule> listSchedule;
+    private List<UserArrival> waitingRoom;
 
     /**
      * Instantiates a new Vaccination center.
@@ -85,6 +82,7 @@ public abstract class VaccinationCenter {
         this.listSlots = new ArrayList<>();
         this.listSchedule = new ArrayList<>();
         this.listVaccinationDay = new ArrayList<>();
+        this.waitingRoom = new ArrayList<>();
     }
 
     /**
@@ -552,6 +550,53 @@ public abstract class VaccinationCenter {
         }
         throw new IllegalArgumentException("Could not verify age and time since last dose");
     }
+
+
+    public UserArrival newUserArrival(SNSUser snsUser, VaccinationCenter vc) {
+        VaccineSchedule schedule = validateUserSchedule(snsUser);
+
+        return new UserArrival(snsUser, new Date(), schedule);
+    }
+
+
+    private VaccineSchedule validateUserSchedule(SNSUser snsUser) {
+        for (VaccineSchedule schedule : listSchedule) {
+            if (schedule.getUser().equals(snsUser)) {
+                if (waitingRoom.isEmpty()) {
+                    return schedule;
+                }else {
+                    for (UserArrival userArrival : waitingRoom) {
+                        if (!userArrival.getSnsUser().equals(snsUser))
+                            return schedule;
+                    }
+                    throw new IllegalArgumentException("User is already in the waiting room");
+                }
+            }
+            throw new IllegalArgumentException("Couldn't find any schedule for this user");
+        }
+        throw new IllegalArgumentException("Couldn't find any schedule for this user");
+    }
+
+
+    /**
+     * Register user arrival boolean.
+     *
+     * @param userArrival the user arrival
+     * @return the boolean
+     */
+    public boolean registerUserArrival(UserArrival userArrival) {
+        return addUserToWaitingRoom(userArrival);
+    }
+
+    private boolean addUserToWaitingRoom(UserArrival userArrival) {
+        return this.waitingRoom.add(userArrival);
+    }
+
+    public List<UserArrival> getListUserToWaitingRoom() {
+        return waitingRoom;
+    }
+
+
 }
 
 

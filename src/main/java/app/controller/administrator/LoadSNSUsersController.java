@@ -68,7 +68,7 @@ public class LoadSNSUsersController {
      *
      * @return the string
      */
-    public String getCSVFileString(){
-        return this.oSNSUserList.toString();
+    public List<SNSUser> getCSVUserList(){
+        return this.oSNSUserList;
     }
 }

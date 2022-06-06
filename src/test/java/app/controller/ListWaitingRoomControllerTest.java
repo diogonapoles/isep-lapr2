@@ -28,8 +28,8 @@ public class ListWaitingRoomControllerTest {
     public void getListUsersInWaitingRoom() throws ParseException {
         Date dtest = new SimpleDateFormat("dd/MM/yyyy").parse("02/05/2003");
         SNSUser user = new SNSUser("Test","male",dtest ,"street test", "923456789","user@test.com","123453678","12345342");
-        String numero = user.getSnsUserNumber();
-        cont.newUserArrival(numero);
+
+        cont.newUserArrival(user);
         List<SNSUser> Users = new ArrayList<>();
         Users.add(user);
 

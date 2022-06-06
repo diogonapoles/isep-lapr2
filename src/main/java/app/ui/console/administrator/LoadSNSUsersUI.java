@@ -39,6 +39,6 @@ public class LoadSNSUsersUI implements Runnable {
     }
 
     private void getData(){
-        System.out.println(controller.getCSVFileString());
+        Utils.showList(controller.getCSVUserList(), "Loaded SNS users:");
     }
 }

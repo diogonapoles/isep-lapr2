@@ -2,7 +2,10 @@ package app.controller.nurse;
 
 import app.controller.App;
 import app.controller.receptionist.UserArrivalController;
+import app.domain.model.Company;
 import app.domain.model.systemUser.SNSUser;
+import app.domain.model.vaccinationCenter.VaccinationCenter;
+import app.domain.model.vaccinationProcess.UserArrival;
 
 import java.util.List;
 
@@ -13,12 +16,20 @@ public class ListWaitingRoomController extends UserArrivalController {
 
 
     private final App oApp;
+    private final Company oCompany;
+    private VaccinationCenter vaccinationCenter;
 
     /**
      * Instantiates a new List waiting room controller.
      */
     public ListWaitingRoomController() {
         this.oApp = App.getInstance();
+        this.oCompany = oApp.getCompany();
+    }
+
+    public VaccinationCenter getWorking() {
+        vaccinationCenter = oCompany.getEmployeeStore().getWorking(oApp.getCurrentUserSession().getUserId().getEmail());
+        return vaccinationCenter;
     }
 
     /**
@@ -26,11 +37,7 @@ public class ListWaitingRoomController extends UserArrivalController {
      *
      * @return the list users in waiting room
      */
-    public List<SNSUser>  getListUsersInWaitingRoom() {
-        return this.oApp.getCompany().getUserArrivalStore().getListUserToWaitingRoom(getWorking());
+    public List<UserArrival>  getListUsersInWaitingRoom() {
+        return this.vaccinationCenter.getListUserToWaitingRoom();
     }
-
-
-
-
 }

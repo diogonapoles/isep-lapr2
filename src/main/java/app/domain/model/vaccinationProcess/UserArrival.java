@@ -2,30 +2,25 @@ package app.domain.model.vaccinationProcess;
 
 import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.domain.model.systemUser.SNSUser;
+import app.domain.model.vaccine.VaccineSchedule;
+
+import java.util.Date;
 
 /**
  * The type User arrival.
  */
 public class UserArrival {
 
-    /**
-     * The Sns user.
-     */
-    SNSUser snsUser;
-    /**
-     * The Vaccination center.
-     */
-    VaccinationCenter vaccinationCenter;
 
-    /**
-     * Instantiates a new User arrival.
-     *
-     * @param snsUser           the sns user
-     * @param vaccinationCenter the vaccination center
-     */
-    public UserArrival(SNSUser snsUser, VaccinationCenter vaccinationCenter) {
+    private SNSUser snsUser;
+    private Date arrivalTime;
+    private VaccineSchedule schedule;
+
+
+    public UserArrival(SNSUser snsUser, Date arrivalTime, VaccineSchedule schedule) {
         this.snsUser = snsUser;
-        this.vaccinationCenter = vaccinationCenter;
+        this.arrivalTime = arrivalTime;
+        this.schedule = schedule;
     }
 
     /**
@@ -37,22 +32,28 @@ public class UserArrival {
         return snsUser;
     }
 
-
-    /**
-     * Gets vaccination center.
-     *
-     * @return the vaccination center
-     */
-    public VaccinationCenter getVaccinationCenter() {
-        return vaccinationCenter;
+    public void setSnsUser(SNSUser snsUser) {
+        this.snsUser = snsUser;
     }
 
-    /**
-     * Sets vaccination center.
-     *
-     * @param vaccinationCenter the vaccination center
-     */
-    public void setVaccinationCenter(VaccinationCenter vaccinationCenter) {
-        this.vaccinationCenter = vaccinationCenter;
+    public Date getArrivalTime() {
+        return arrivalTime;
+    }
+
+    public void setArrivalTime(Date arrivalTime) {
+        this.arrivalTime = arrivalTime;
+    }
+
+    public VaccineSchedule getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(VaccineSchedule schedule) {
+        this.schedule = schedule;
+    }
+
+    @Override
+    public String toString() {
+        return "User [" + "E-mail = " + snsUser.getEmailAddress() + " | Arrival Time = " + arrivalTime + " | Scheduled Time = " + schedule.getTime() + "]";
     }
 }

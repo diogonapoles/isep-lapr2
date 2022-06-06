@@ -22,7 +22,10 @@ public class ListWaitingRoomUI implements Runnable{
     }
 
     private void listUsersInWaitingRoom(){
-
-        Utils.showList(controller.getListUsersInWaitingRoom(),"List of SNS Users in the Waiting Room");
+        if (controller.getWorking() == null) {
+            System.out.println("Doesn't exist");
+        } else {
+            Utils.showList(controller.getListUsersInWaitingRoom(), "List of SNS Users in the Waiting Room");
+        }
     }
 }

@@ -4,7 +4,6 @@ import app.controller.App;
 import app.domain.model.*;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.domain.model.vaccinationProcess.UserArrival;
-import app.domain.store.ScheduleVaccineStore;
 import app.domain.model.systemUser.SNSUser;
 
 /**
@@ -37,15 +36,21 @@ public class UserArrivalController {
         return vaccinationCenter;
     }
 
+    public SNSUser getSNSUserByNumber(String snsUserNumber){
+        for (SNSUser user : oCompany.getSNSUserStore().getSnsUserList()){
+            if(user.getSnsUserNumber().equals(snsUserNumber))
+                return user;
+        }
+        return null;
+    }
 
     /**
      * New user arrival boolean.
      *
-     * @param snsUserNumber the sns user number
      * @return the boolean
      */
-    public boolean newUserArrival(String snsUserNumber) {
-        this.userArrival = oCompany.getUserArrivalStore().newUserArrival(oCompany.getSNSUserStore().getSNSUserByNumber(snsUserNumber), snsUserNumber, vaccinationCenter);
+    public boolean newUserArrival(SNSUser user) {
+        this.userArrival = vaccinationCenter.newUserArrival(user, vaccinationCenter);
 
         if (this.userArrival != null)
             return true;
@@ -60,16 +65,7 @@ public class UserArrivalController {
      * @return the boolean
      */
     public boolean registerUserArrival() {
-        return this.oCompany.getUserArrivalStore().registerUserArrival(this.userArrival);
+        return this.vaccinationCenter.registerUserArrival(this.userArrival);
     }
 
-
-    /**
-     * Gets user arrival string.
-     *
-     * @return the user arrival string
-     */
-    public String getUserArrivalString() {
-        return this.oSNSUser.toStringWaitingRoom();
-    }
 }

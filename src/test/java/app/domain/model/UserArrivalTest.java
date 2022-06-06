@@ -1,4 +1,4 @@
-package app.domain.model;
+/*package app.domain.model;
 
 import app.domain.model.vaccinationCenter.CommunityCenter;
 import app.domain.model.vaccinationCenter.HealthcareCenter;
@@ -46,4 +46,4 @@ class UserArrivalTest {
     }
 
 
-}
+}*/
