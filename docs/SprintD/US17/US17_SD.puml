@@ -1,11 +1,63 @@
 @startuml
-'https://plantuml.com/sequence-diagram
 
 autonumber
+actor "Receptionist" as RCP
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+participant ":UserArrivalUI" as UI
+participant ":UserArrivalController" as CTRL
+participant "App" as APP
+participant "app\n:App" as App
+participant "comp:Company" as COMP
+participant "uas\n:UserArrivalStore" as UAS
+participant "snsU: SNSUser" as snsU
+participant "svs\n:ScheduleVaccineStore" as SVS
+participant "auth\n:AuthFacade" as AF
+
+
+
+RCP -> UI : starts to import the data
+activate UI
+UI -> CTRL : controller = UserArrivalController()
+activate CTRL
+CTRL -> APP : app = getInstance()
+activate APP
+deactivate APP
+CTRL -> App : company = getCompany()
+activate App
+deactivate App
+
+deactivate CTRL
+
+UI --> RCP : request data (filePath)
+deactivate UI
+
+RCP -> UI : types requested data
+activate UI
+
+UI -> CTRL : newUserArrival (snsUserNumber)
+activate CTRL
+
+CTRL -> UAS : snsU = newUserArrival (snsUserNumber)
+activate UAS
+
+UAS --> snsU** : snsU = newUserArrival (snsUserNumber)
+
+UAS -> SVS: listScheduleVaccine = getListScheduleVaccine()
+activate SVS
+deactivate SVS
+
+
+UAS -> UAS : validateUserSchedule(snsU)
+activate UAS
+deactivate UAS
+
+
+UI --> RCP : informs operation success
+deactivate UAS
+deactivate CTRL
+deactivate UI
+deactivate RCP
+
+
 @enduml

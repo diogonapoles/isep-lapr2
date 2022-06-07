@@ -1,5 +1,6 @@
 package app.domain.model;
 
+import app.domain.model.systemUser.SNSUser;
 import app.domain.store.*;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
@@ -17,6 +18,7 @@ public class Company {
     private VaccinationCenterStore oVaccinationCenterStore;
     private SNSUserStore oSNSUserStore;
     private CSVReader oCSVReader;
+
 
     /**
      * Instantiates a new Company.
