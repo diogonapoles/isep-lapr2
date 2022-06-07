@@ -1,9 +1,12 @@
 package app.domain.model;
 
-import app.domain.model.systemUser.SNSUser;
+import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.domain.store.*;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
+
+import javax.xml.validation.Validator;
+import java.security.PrivateKey;
 
 /**
  * The type Company.
@@ -20,6 +23,7 @@ public class Company {
     private CSVReader oCSVReader;
 
 
+
     /**
      * Instantiates a new Company.
      *
@@ -34,6 +38,7 @@ public class Company {
         this.authFacade = new AuthFacade();
         this.oVaccinationCenterStore = new VaccinationCenterStore();
         this.oCSVReader = new CSVReader();
+
     }
 
     /**

@@ -3,7 +3,6 @@ package app.controller.nurse;
 
 import app.controller.App;
 import app.domain.model.Company;
-import app.domain.model.systemUser.SNSUser;
 import app.domain.model.vaccinationProcess.UserArrival;
 
 import java.util.List;
@@ -24,7 +23,9 @@ public class AdverseReactionsController {
 
 
     public List<UserArrival> getWaitingRoomList(){
-        return this.oApp.getCompany().getUserArrivalStore().getWaitingRoomList() ;
+      //  return oApp.getCompany().
+        //return this.oApp.getCompany().get.getWaitingRoomList() ;
+        return null;
     }
 
 
