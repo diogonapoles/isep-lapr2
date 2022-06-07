@@ -29,7 +29,7 @@ public class ListWaitingRoomControllerTest {
         Date dtest = new SimpleDateFormat("dd/MM/yyyy").parse("02/05/2003");
         SNSUser user = new SNSUser("Test","male",dtest ,"street test", "923456789","user@test.com","123453678","12345342");
 
-        cont.newUserArrival(user);
+        cont.newUserArrival(user, controller.getWorking());
         List<SNSUser> Users = new ArrayList<>();
         Users.add(user);
 

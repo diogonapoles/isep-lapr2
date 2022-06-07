@@ -49,7 +49,7 @@ public class UserArrivalController {
      *
      * @return the boolean
      */
-    public boolean newUserArrival(SNSUser user) {
+    public boolean newUserArrival(SNSUser user, VaccinationCenter vaccinationCenter) {
         this.userArrival = vaccinationCenter.newUserArrival(user, vaccinationCenter);
 
         if (this.userArrival != null)
