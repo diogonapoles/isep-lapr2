@@ -21,6 +21,7 @@ public class Company {
     private VaccinationCenterStore oVaccinationCenterStore;
     private SNSUserStore oSNSUserStore;
     private CSVReader oCSVReader;
+    private VaccinationCenter vaccinationCenter;
 
 
 

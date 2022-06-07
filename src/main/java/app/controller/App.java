@@ -2,6 +2,7 @@ package app.controller;
 
 import app.domain.model.*;
 import app.domain.model.systemUser.Employee;
+import app.domain.model.vaccinationCenter.Day;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.domain.model.vaccinationProcess.ScheduleVaccine;
 import app.domain.model.vaccine.Vaccine;
@@ -16,6 +17,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
 
@@ -103,10 +106,7 @@ public class App {
         this.authFacade.addUserRole(Constants.ROLE_NURSE, Constants.ROLE_NURSE);
         this.authFacade.addUserRole(Constants.ROLE_CENTER_COORDINATOR, Constants.ROLE_CENTER_COORDINATOR);
 
-        //  this.authFacade.addUserWithRole("Nurse", "nurse@lei.sem2.pt", "123456", Constants.ROLE_NURSE);
         this.authFacade.addUserWithRole("Main Administrator", "admin@lei.sem2.pt", "123456", Constants.ROLE_ADMIN);
-        //  this.authFacade.addUserWithRole("Center Coordinator", "coordinator@lei.sem2.pt","123456", Constants.ROLE_CENTER_COORDINATOR);
-        //  this.authFacade.addUserWithRole("Receptionist", "receptionist@lei.sem2.pt", "123456", Constants.ROLE_RECEPTIONIST);
 
         this.getCompany().defaultRegister(this.authFacade);
 
@@ -122,6 +122,9 @@ public class App {
                 "TestRua2", "teste2@gmail.com", "community.com",
                 8, 22, 5, 40);
         this.company.getVaccinationCenterStore().registerVaccinationCenter(vc2);
+
+//        createSchedules();
+
 
 
         VaccineType vt1 = vc1.newVaccineType(0, "12345", "COVID-19");
@@ -156,6 +159,19 @@ public class App {
         this.company.getSNSUserStore().registerSNSUser(snsU2);
         SNSUser snsU3 = this.company.getSNSUserStore().newSNSUser("snsUser", "masculine", "09/10/2016", "avenue 45", "917774723", "snsuser@lei.sem2.pt", "977642231", "11177744");
         this.company.getSNSUserStore().registerSNSUser(snsU3);
+
+
+    }
+
+    private void createSchedules() throws ParseException {
+        VaccinationCenter vc = this.getCompany().getVaccinationCenterStore().getVaccinationCenters().get(0);
+        VaccineType vt1 = vc.newVaccineType(0, "12345", "COVID-19");
+        Vaccine v1 = vt1.newVaccine("COVID-19 Vaccine", "Pfizer", "18-22", "2", 5, 90);
+        SNSUser snsUser01 = this.company.getSNSUserStore().getSNSUserByNumber("123444333");
+
+        Calendar date = Calendar.getInstance();
+        date.add(Calendar.DAY_OF_MONTH,1);
+        vc.createVaccineSchedule(vc,snsUser01,vt1,v1,date.getTime());
 
 
     }

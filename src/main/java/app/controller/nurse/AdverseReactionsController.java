@@ -3,6 +3,7 @@ package app.controller.nurse;
 
 import app.controller.App;
 import app.domain.model.Company;
+import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.domain.model.vaccinationProcess.UserArrival;
 
 import java.util.List;
@@ -10,22 +11,24 @@ import java.util.List;
 public class AdverseReactionsController {
 
 
-    private App oApp;
-    private Company oCompany;
-    private String snsUserNumber;
+    private final App oApp;
+    private final Company oCompany;
+    private VaccinationCenter vaccinationCenter;
 
 
     public AdverseReactionsController(){
         this.oApp = App.getInstance();
         this.oCompany = oApp.getCompany();
+
     }
 
-
+    public VaccinationCenter getWorking() {
+        vaccinationCenter = oCompany.getEmployeeStore().getWorking(oApp.getCurrentUserSession().getUserId().getEmail());
+        return vaccinationCenter;
+    }
 
     public List<UserArrival> getWaitingRoomList(){
-      //  return oApp.getCompany().
-        //return this.oApp.getCompany().get.getWaitingRoomList() ;
-        return null;
+        return this.getWorking().getListUserToWaitingRoom();
     }
 
 
@@ -43,8 +46,4 @@ public class AdverseReactionsController {
         return false;
     }
 
-    public List getAdverseReactions() {
-     //   return getWaitingRoomList();
-        return null;
-    }
 }

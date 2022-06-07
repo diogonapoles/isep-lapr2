@@ -4,6 +4,7 @@ import app.domain.model.systemUser.SNSUser;
 import app.domain.model.vaccinationProcess.UserArrival;
 import app.domain.model.vaccine.*;
 
+import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -430,6 +431,8 @@ public abstract class VaccinationCenter {
             throw new IllegalArgumentException("There was a problem registering this schedule");
         if (!findSlot(vaccinationDay))
             throw new IllegalArgumentException("There was a problem registering this schedule");
+
+
         Slot slot = returnSlot(vaccinationDay);
 
         slot.addSNSUserSlot(user, day);
