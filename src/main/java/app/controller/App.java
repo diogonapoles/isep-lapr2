@@ -131,8 +131,9 @@ public class App {
         createVaccineType(vc1);
 
 
-        Vaccine v1 = vt1.newVaccine("COVID-19 Vaccine", "Pfizer", "18-22", "2", 5, 90);
-        Vaccine v2 = vt2.newVaccine("FLU Vaccine", "Pfizer", "10-45", "1", 5, 180);
+        Vaccine v1 = vt1.newVaccine("COVID-19 Vaccine", "Pfizer", "18-22", 2, 5, 90);
+        Vaccine v3 = vt1.newVaccine("COVID-19 Vaccine 2", "Janssen", "20-30", 1, 5, 360);
+        Vaccine v2 = vt2.newVaccine("FLU Vaccine", "Pfizer", "10-45", 1, 5, 180);
         createVaccine(vc1.findVaccineType("12345"), vc1.findVaccineType("54321"));
     }
 
@@ -144,10 +145,12 @@ public class App {
     }
 
     private void createVaccine(VaccineType vt1, VaccineType vt2) {
-        Vaccine v1 = vt1.newVaccine("COVID-19 Vaccine", "Pfizer", "18-22", "2", 2, 2);
-        Vaccine v2 = vt2.newVaccine("FLU Vaccine", "Pfizer", "10-45", "1", 5, 180);
+        Vaccine v1 = vt1.newVaccine("COVID-19 Vaccine", "Pfizer", "18-22", 2, 5, 90);
+        Vaccine v3 = vt1.newVaccine("COVID-19 Vaccine 2", "Janssen", "20-30", 1, 5, 360);
+        Vaccine v2 = vt2.newVaccine("FLU Vaccine", "Pfizer", "10-45", 1, 5, 180);
         vt1.registerVaccine(v1);
         vt2.registerVaccine(v2);
+        vt1.registerVaccine(v3);
     }
 
 
@@ -165,12 +168,12 @@ public class App {
     private void createSchedules() throws ParseException {
         VaccinationCenter vc = this.getCompany().getVaccinationCenterStore().getVaccinationCenters().get(0);
         VaccineType vt1 = vc.newVaccineType(0, "12345", "COVID-19");
-        Vaccine v1 = vt1.newVaccine("COVID-19 Vaccine", "Pfizer", "18-22", "2", 5, 90);
+        Vaccine v1 = vt1.newVaccine("COVID-19 Vaccine", "Pfizer", "18-22", 2, 5, 90);
         SNSUser snsUser01 = this.company.getSNSUserStore().getSNSUserByNumber("123444333");
 
         Calendar date = Calendar.getInstance();
         date.add(Calendar.DAY_OF_MONTH,1);
-        vc.createVaccineSchedule(vc,snsUser01,vt1,v1,date.getTime());
+        //vc.createVaccineSchedule(vc,snsUser01,vt1,v1,date.getTime());
 
 
     }

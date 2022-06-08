@@ -125,7 +125,7 @@ public abstract class VaccineType {
      * @param timeSinceLastDose the time since last dose
      * @return the vaccine
      */
-    public Vaccine newVaccine(String name, String brand, String ageGroup, String doseNumber, double dosage, int timeSinceLastDose){
+    public Vaccine newVaccine(String name, String brand, String ageGroup, int doseNumber, double dosage, int timeSinceLastDose){
         if(validateVaccine(name)){
             return new Vaccine(name, brand, ageGroup, doseNumber, dosage, timeSinceLastDose);
         }

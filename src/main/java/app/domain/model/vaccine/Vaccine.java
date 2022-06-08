@@ -14,7 +14,7 @@ public class Vaccine {
     private String name;
     private String brand;
     private String ageGroup;
-    private String doseNumber;
+    private int doseNumber;
     private double dosage;
     private int timeSinceLastDose;
 
@@ -77,7 +77,7 @@ public class Vaccine {
      *
      * @return the dose number
      */
-    public String getDoseNumber() {
+    public int getDoseNumber() {
         return doseNumber;
     }
 
@@ -86,7 +86,7 @@ public class Vaccine {
      *
      * @param doseNumber the dose number
      */
-    public void setDoseNumber(String doseNumber) {
+    public void setDoseNumber(int doseNumber) {
         this.doseNumber = doseNumber;
     }
 
@@ -137,11 +137,11 @@ public class Vaccine {
      * @param dosage            the dosage
      * @param timeSinceLastDose the time since last dose
      */
-    public Vaccine(String name, String brand, String ageGroup, String doseNumber, double dosage, int timeSinceLastDose){
+    public Vaccine(String name, String brand, String ageGroup, int doseNumber, double dosage, int timeSinceLastDose){
         if ((name == null) || (name.isEmpty())
                 || (brand == null) || (brand.isEmpty())
                 || (ageGroup == null) || (ageGroup.isEmpty()) || !validateAgeGroup(ageGroup)
-                || (doseNumber == null) || (doseNumber.isEmpty())
+                || (doseNumber == 0)
                 || (dosage == 0)
                 || (timeSinceLastDose == 0)){
             throw new IllegalArgumentException("All attributes are mandatory!" +

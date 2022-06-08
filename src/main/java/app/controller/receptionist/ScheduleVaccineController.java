@@ -65,20 +65,24 @@ public class ScheduleVaccineController {
         return vaccinationCenter.getAvailableSlots(vaccinationCenter, date1);
     }
 
-    public VaccineSchedule createVaccineSchedule(SNSUser user, VaccinationCenter vaccinationCenter, VaccineType vaccineType, Vaccine vaccine, Date time){
-        return vaccinationCenter.createVaccineSchedule(vaccinationCenter, user, vaccineType, vaccine, time);
+    public VaccineSchedule createVaccineSchedule(SNSUser user, VaccinationCenter vaccinationCenter, VaccineType vaccineType, Date time){
+        return vaccinationCenter.createVaccineSchedule(vaccinationCenter, user, vaccineType, time);
     }
 
     public boolean addVaccineSchedule(VaccinationCenter vaccinationCenter, VaccineSchedule schedule){
         return vaccinationCenter.addVaccineSchedule(schedule);
     }
 
-    public boolean validateVaccineSchedule(SNSUser user, VaccineType vaccineType, VaccinationCenter vaccinationCenter){
-        return vaccinationCenter.validateVaccineSchedule(vaccineType, user);
+    public boolean validateVaccineSchedule(SNSUser user, VaccineType vaccineType, VaccinationCenter vaccinationCenter, Date timeSelector){
+        return vaccinationCenter.validateVaccineSchedule(vaccineType, user, timeSelector);
     }
 
-    public Vaccine vaccineAgeAndTimeSinceLastDose(SNSUser user, VaccineType vaccineType, VaccinationCenter vaccinationCenter, Date date) {
+    public List<Vaccine> vaccineAgeAndTimeSinceLastDose(SNSUser user, VaccineType vaccineType, VaccinationCenter vaccinationCenter, Date date) {
         return vaccinationCenter.vaccineAgeAndTimeSinceLastDose(vaccineType, user, date);
+    }
+
+    public boolean validateAdministratedVaccines(VaccineType vaccineType, SNSUser snsUser){
+        return vaccinationCenter.validateAdministratedVaccines(vaccineType, snsUser);
     }
 
     public Date readDate(String prompt)
@@ -104,6 +108,8 @@ public class ScheduleVaccineController {
             }
         } while (true);
     }
+
+
 }
 
 

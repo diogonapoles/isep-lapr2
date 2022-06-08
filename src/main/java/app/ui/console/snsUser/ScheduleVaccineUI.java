@@ -9,6 +9,7 @@ import app.domain.model.vaccine.VaccineType;
 import app.ui.console.utils.Utils;
 
 import java.util.Date;
+import java.util.List;
 
 public class ScheduleVaccineUI implements Runnable {
 
@@ -32,14 +33,21 @@ public class ScheduleVaccineUI implements Runnable {
 
         Date timeSelector = (Date) Utils.showAndSelectOne(controller.getAvailableTimes(vaccinationCenter, date), "Select a Schedule:");
 
-        if (!controller.validateVaccineSchedule(vaccineType, vaccinationCenter)){
+        if (!controller.validateVaccineSchedule(vaccineType, vaccinationCenter, timeSelector)){
             System.out.println("This SNS user already scheduled a vaccine");
             return;
         }
 
-        Vaccine vaccine = controller.vaccineAgeAndTimeSinceLastDose(vaccineType, vaccinationCenter, timeSelector);
 
-        VaccineSchedule schedule = controller.createVaccineSchedule(vaccinationCenter, vaccineType, vaccine, timeSelector);
+        List<Vaccine> vaccine = controller.vaccineAgeAndTimeSinceLastDose(vaccineType, vaccinationCenter, timeSelector);
+
+        if (vaccine == null){
+            System.out.println("There is any vaccines available for this user");
+            return;
+        }
+
+
+        VaccineSchedule schedule = controller.createVaccineSchedule(vaccinationCenter, vaccineType, timeSelector);
 
         if(schedule == null) {
             System.out.println("Error while creating vaccination schedule");

@@ -19,6 +19,7 @@ public class NurseUI implements Runnable{
         new ChoosingVaccinationCenterUI().run();
 
         options.add(new MenuItem("List Users in The Waiting Room ", new ListWaitingRoomUI()));
+        options.add(new MenuItem("Register Vaccine Administration", new VaccineAdministrationUI()));
         options.add(new MenuItem("Record Adverse Reactions", new AdverseReactionsUI()));
 
 

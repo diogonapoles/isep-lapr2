@@ -50,23 +50,23 @@ public class ScheduleVaccineController {
         return vaccinationCenter.getAvailableSlots(vaccinationCenter, date1);
     }
 
-    public VaccineSchedule createVaccineSchedule(VaccinationCenter vaccinationCenter, VaccineType vaccineType, Vaccine vaccine, Date time){
+    public VaccineSchedule createVaccineSchedule(VaccinationCenter vaccinationCenter, VaccineType vaccineType, Date time){
         UserSession session = this.oApp.getCurrentUserSession();
         SNSUser user = this.oApp.getCompany().getSNSUserStore().getSNSUserByEmail(session.getUserId().getEmail());
-        return vaccinationCenter.createVaccineSchedule(vaccinationCenter, user, vaccineType, vaccine, time);
+        return vaccinationCenter.createVaccineSchedule(vaccinationCenter, user, vaccineType, time);
     }
 
     public boolean addVaccineSchedule(VaccinationCenter vaccinationCenter, VaccineSchedule schedule){
         return vaccinationCenter.addVaccineSchedule(schedule);
     }
 
-    public boolean validateVaccineSchedule(VaccineType vaccineType, VaccinationCenter vaccinationCenter){
+    public boolean validateVaccineSchedule(VaccineType vaccineType, VaccinationCenter vaccinationCenter, Date timeSelector){
         UserSession session = this.oApp.getCurrentUserSession();
         SNSUser user = this.oApp.getCompany().getSNSUserStore().getSNSUserByEmail(session.getUserId().getEmail());
-        return vaccinationCenter.validateVaccineSchedule(vaccineType, user);
+        return vaccinationCenter.validateVaccineSchedule(vaccineType, user, timeSelector);
     }
 
-    public Vaccine vaccineAgeAndTimeSinceLastDose(VaccineType vaccineType, VaccinationCenter vaccinationCenter, Date date) {
+    public List<Vaccine> vaccineAgeAndTimeSinceLastDose(VaccineType vaccineType, VaccinationCenter vaccinationCenter, Date date) {
         UserSession session = this.oApp.getCurrentUserSession();
         SNSUser user = this.oApp.getCompany().getSNSUserStore().getSNSUserByEmail(session.getUserId().getEmail());
         return vaccinationCenter.vaccineAgeAndTimeSinceLastDose(vaccineType, user, date);

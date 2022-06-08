@@ -10,6 +10,7 @@ import app.domain.model.vaccine.VaccineType;
 import app.ui.console.utils.Utils;
 
 import java.util.Date;
+import java.util.List;
 
 public class ScheduleVaccineUI implements Runnable {
 
@@ -38,21 +39,30 @@ public class ScheduleVaccineUI implements Runnable {
             return;
         }
 
+        if (!controller.validateAdministratedVaccines(vaccineType, user)){
+            System.out.println("This user has overdue vaccinations, please go to the vaccination center and only after taking the vaccine of this type will you be able to schedule a new one.");
+            return;
+        }
+
         Date date = controller.readDate("Insert vaccination date (dd/MM/yyyy)");
         if (date == null)
             return;
 
-
         Date timeSelector = (Date) Utils.showAndSelectOne(controller.getAvailableTimes(vaccinationCenter, date), "Select a Schedule:");
 
-        if (!controller.validateVaccineSchedule(user, vaccineType, vaccinationCenter)){
-            System.out.println("This SNS user already scheduled a vaccine");
+        if (!controller.validateVaccineSchedule(user, vaccineType, vaccinationCenter, timeSelector)){
+            System.out.println("This SNS user already scheduled a vaccine for this day");
             return;
         }
 
-        Vaccine vaccine = controller.vaccineAgeAndTimeSinceLastDose(user, vaccineType, vaccinationCenter, timeSelector);
+        List<Vaccine> vaccines = controller.vaccineAgeAndTimeSinceLastDose(user, vaccineType, vaccinationCenter, timeSelector);
 
-        VaccineSchedule schedule = controller.createVaccineSchedule(user, vaccinationCenter, vaccineType, vaccine, timeSelector);
+        if (vaccines.isEmpty()){
+            System.out.println("There aren't any vaccines available for this user");
+            return;
+        }
+
+        VaccineSchedule schedule = controller.createVaccineSchedule(user, vaccinationCenter, vaccineType, timeSelector);
 
         if(schedule == null) {
             System.out.println("Error while creating vaccination schedule");

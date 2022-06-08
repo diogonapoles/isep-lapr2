@@ -24,8 +24,7 @@ public class ScheduleVaccine {
      * @param dateTime          the date time
      */
     public ScheduleVaccine(String snsUserNumber, VaccinationCenter vaccinationCenter, Vaccine vaccine, Date dateTime) {
-        if((vaccinationCenter == null)  ||
-                (snsUserNumber == null) )
+        if((vaccinationCenter == null)  || (snsUserNumber == null) )
 
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
 

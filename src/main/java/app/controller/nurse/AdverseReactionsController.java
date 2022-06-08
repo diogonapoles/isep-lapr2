@@ -5,6 +5,7 @@ import app.controller.App;
 import app.domain.model.Company;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.domain.model.vaccinationProcess.UserArrival;
+import app.domain.model.vaccinationProcess.VaccineAdministration;
 
 import java.util.List;
 
@@ -27,16 +28,16 @@ public class AdverseReactionsController {
         return vaccinationCenter;
     }
 
-    public List<UserArrival> getWaitingRoomList(){
-        return this.getWorking().getListUserToWaitingRoom();
+    public List<VaccineAdministration> getRecoveryRoom(){
+        return this.getWorking().getRecoveryRoom();
     }
 
 
 
     public Boolean isUserInRecoveryList(String snsUserNumber) {
 
-        for (UserArrival user : getWaitingRoomList()){
-            if (user.getSnsUser().getSnsUserNumber().equals(snsUserNumber)){
+        for (VaccineAdministration user : getRecoveryRoom()){
+            if (user.getUserArrival().getSnsUser().getSnsUserNumber().equals(snsUserNumber)){
                 return true;
             }else{
                 return false;

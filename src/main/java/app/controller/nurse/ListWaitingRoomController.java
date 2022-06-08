@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * The type List waiting room controller.
  */
-public class ListWaitingRoomController extends UserArrivalController {
+public class ListWaitingRoomController {
 
 
     private final App oApp;

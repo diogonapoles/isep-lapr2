@@ -65,7 +65,8 @@ public class UserArrivalController {
      * @return the boolean
      */
     public boolean registerUserArrival() {
-        return this.vaccinationCenter.registerUserArrival(this.userArrival);
+        vaccinationCenter.moveToWaitingRoom(userArrival);
+        return this.vaccinationCenter.registerUserArrival(userArrival);
     }
 
 }

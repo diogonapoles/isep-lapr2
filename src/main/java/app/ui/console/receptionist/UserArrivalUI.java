@@ -37,7 +37,6 @@ public class UserArrivalUI implements Runnable {
                     return;
                 }
                 if (inputData(user, vaccinationCenter)) {
-
                     controller.registerUserArrival();
                     System.out.println("SNS User arrival registered successfully");
 
