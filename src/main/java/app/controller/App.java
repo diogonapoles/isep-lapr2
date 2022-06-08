@@ -129,29 +129,35 @@ public class App {
         VaccineType vt1 = vc1.newVaccineType(0, "12345", "COVID-19");
         VaccineType vt2 = vc1.newVaccineType(0, "54321", "FLU");
         VaccineType vt3 = vc1.newVaccineType(1, "98765", "COVID-19");
+        VaccineType vt4 = vc1.newVaccineType(2,"65465", "COVID-19");
         createVaccineType(vc1);
 
 
         Vaccine v1 = vt1.newVaccine("COVID-19 Vaccine", "Pfizer", "18-22", 2, 5, 90);
         Vaccine v3 = vt1.newVaccine("COVID-19 Vaccine 2", "Janssen", "20-30", 1, 5, 360);
         Vaccine v2 = vt2.newVaccine("FLU Vaccine", "Pfizer", "10-45", 1, 5, 180);
-        createVaccine(vc1.findVaccineType("12345"), vc1.findVaccineType("54321"));
+        Vaccine v4 = vt4.newVaccine("spikevax", "Moderna", "12-52",1,5,130);
+        createVaccine(vc1.findVaccineType("12345"), vc1.findVaccineType("54321"), vc1.findVaccineType("65465"));
     }
 
     private void createVaccineType(VaccinationCenter vc1) {
         VaccineType vt1 = vc1.newVaccineType(0, "12345", "COVID-19");
         VaccineType vt2 = vc1.newVaccineType(0, "54321", "FLU");
         VaccineType vt3 = vc1.newVaccineType(1, "98765", "COVID-19");
+        VaccineType vt4 = vc1.newVaccineType(2,"65465", "COVID-19");
         vc1.registerVaccineType(vt1);
         vc1.registerVaccineType(vt2);
         vc1.registerVaccineType(vt3);
+        vc1.registerVaccineType(vt4);
     }
 
-    private void createVaccine(VaccineType vt1, VaccineType vt2) {
+    private void createVaccine(VaccineType vt1, VaccineType vt2,VaccineType vt4) {
         Vaccine v1 = vt1.newVaccine("COVID-19 Vaccine", "Pfizer", "18-22", 2, 2, 2);
         Vaccine v2 = vt2.newVaccine("FLU Vaccine", "Pfizer", "10-45", 1, 5, 180);
+        Vaccine v4 = vt4.newVaccine("spikevax", "Moderna", "12-52",1,5,130);
         vt1.registerVaccine(v1);
         vt2.registerVaccine(v2);
+        vt4.registerVaccine(v4);
     }
 
 
