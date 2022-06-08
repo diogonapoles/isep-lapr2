@@ -23,7 +23,6 @@
 				<version>0.0.4</version>
 				<configuration>
 					<mainClass>app.ui.gui.App</mainClass>
-					<executable>C:\Users\35191\.jdks\azul-15.0.7\bin\java</executable>
 				</configuration>
 			</plugin>
 			<plugin>

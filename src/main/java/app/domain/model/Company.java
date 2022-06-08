@@ -5,9 +5,6 @@ import app.domain.store.*;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
 
-import javax.xml.validation.Validator;
-import java.security.PrivateKey;
-
 /**
  * The type Company.
  *
@@ -21,6 +18,8 @@ public class Company {
     private VaccinationCenterStore oVaccinationCenterStore;
     private SNSUserStore oSNSUserStore;
     private CSVReader oCSVReader;
+    private LegacySystemData oLegacySystemData;
+    private LegacySystemDataReader oLegacySystemDataReader;
     private VaccinationCenter vaccinationCenter;
 
 
@@ -39,6 +38,7 @@ public class Company {
         this.authFacade = new AuthFacade();
         this.oVaccinationCenterStore = new VaccinationCenterStore();
         this.oCSVReader = new CSVReader();
+        this.oLegacySystemDataReader = new LegacySystemDataReader();
 
     }
 
@@ -66,6 +66,9 @@ public class Company {
      * @return the csv reader
      */
     public CSVReader getCSVReader(){return this.oCSVReader;}
+
+    public LegacySystemData getLegacySystemData(){return this.oLegacySystemData;}
+    public LegacySystemDataReader getLegacySystemDataReader(){return this.oLegacySystemDataReader;}
 
     /**
      * Get employee store.
