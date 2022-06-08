@@ -2,13 +2,21 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.ui.gui.MainUI">
    <children>
-      <VBox layoutX="37.0" layoutY="80.0" prefHeight="200.0" prefWidth="518.0">
-         <children>
-            <Button mnemonicParsing="false" text="DoLogin" />
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="11.0" prefWidth="66.0" text="DevTeam" />
-         </children></VBox>
+      <Button layoutX="140.0" layoutY="200.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="103.0" text="Do Login" />
+      <Button layoutX="357.0" layoutY="200.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="103.0" text="Know Dev Team" />
+      <Label layoutX="192.0" layoutY="126.0" prefHeight="30.0" prefWidth="288.0" text="Please choose your option!">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="244.0" layoutY="47.0" prefHeight="38.0" prefWidth="112.0" text="Welcome!">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

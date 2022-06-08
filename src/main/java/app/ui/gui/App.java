@@ -29,27 +29,23 @@ public class App extends Application {
 
     @Override
         public void start(Stage stage) throws Exception {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getResource("/fxml/Main.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add("/styles/Styles.css");
-
-
-
-            /*Image img = new Im;
-            stage.getIcons().add(img);*/
+            this.stage = stage ;
             stage.setTitle("LAPR2APP");
             stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
             stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
             stage.setResizable(false);
-            stage.setScene(scene);
-            stage.show();
+            Image img = new Image("img.png");
+            stage.getIcons().add(img);
+            toMainScene();
+            this.stage.show();
+
+
+
 
         }
 
 
-/*
+
     public void toMainScene() {
         try {
             MainUI mainUI = (MainUI) replaceSceneContent("fxml/Main.fxml");
@@ -76,6 +72,6 @@ public class App extends Application {
         this.stage.sizeToScene();
         return (Initializable) loader.getController();
     }
-*/
+
 
 }
