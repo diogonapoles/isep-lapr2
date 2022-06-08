@@ -142,14 +142,14 @@ public class App {
         VaccineType vt1 = vc1.newVaccineType(0, "12345", "COVID-19");
         VaccineType vt2 = vc1.newVaccineType(0, "54321", "FLU");
         VaccineType vt3 = vc1.newVaccineType(1, "98765", "COVID-19");
-        vc1.registerVaccineType(vt1);   
+        vc1.registerVaccineType(vt1);
         vc1.registerVaccineType(vt2);
         vc1.registerVaccineType(vt3);
     }
 
     private void createVaccine(VaccineType vt1, VaccineType vt2) {
-        Vaccine v1 = vt1.newVaccine("COVID-19 Vaccine", "Pfizer", "18-22", "2", 2, 2);
-        Vaccine v2 = vt2.newVaccine("FLU Vaccine", "Pfizer", "10-45", "1", 5, 180);
+        Vaccine v1 = vt1.newVaccine("COVID-19 Vaccine", "Pfizer", "18-22", 2, 2, 2);
+        Vaccine v2 = vt2.newVaccine("FLU Vaccine", "Pfizer", "10-45", 1, 5, 180);
         vt1.registerVaccine(v1);
         vt2.registerVaccine(v2);
     }
@@ -174,7 +174,7 @@ public class App {
 
         Calendar date = Calendar.getInstance();
         date.add(Calendar.DAY_OF_MONTH,1);
-        vc.createVaccineSchedule(vc,snsUser01,vt1,v1,date.getTime());
+        vc.createVaccineSchedule(vc,snsUser01,vt1,date.getTime());
 
 
     }

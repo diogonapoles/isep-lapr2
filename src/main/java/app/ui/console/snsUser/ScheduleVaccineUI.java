@@ -20,26 +20,24 @@ public class ScheduleVaccineUI implements Runnable {
     }
 
     public void run() {
-        try {
-            if (!controller.validateUserSession()) {
-                System.out.println("User is not valid");
-                return;
-            }
+        if (!controller.validateUserSession()) {
+            System.out.println("User is not valid");
+            return;
+        }
 
-            VaccinationCenter vaccinationCenter = (VaccinationCenter) Utils.showAndSelectOne(controller.getVaccinationCenterList(), "Select a Vaccination Center:");
+        VaccinationCenter vaccinationCenter = (VaccinationCenter) Utils.showAndSelectOne(controller.getVaccinationCenterList(), "Select a Vaccination Center:");
 
-            VaccineType vaccineType = (VaccineType) Utils.showAndSelectOne(controller.getAvailableVaccineTypes(vaccinationCenter), "Select a Vaccine Type:");
+        VaccineType vaccineType = (VaccineType) Utils.showAndSelectOne(controller.getAvailableVaccineTypes(vaccinationCenter), "Select a Vaccine Type:");
 
-            Date date = controller.readDate("Insert vaccination date (dd/MM/yyyy)");
+        Date date = controller.readDate("Insert vaccination date (dd/MM/yyyy)");
 
-            Date timeSelector = (Date) Utils.showAndSelectOne(controller.getAvailableTimes(vaccinationCenter, date), "Select a Schedule:");
+        Date timeSelector = (Date) Utils.showAndSelectOne(controller.getAvailableTimes(vaccinationCenter, date), "Select a Schedule:");
 
         if (!controller.validateVaccineSchedule(vaccineType, vaccinationCenter, timeSelector)){
             System.out.println("This SNS user already scheduled a vaccine");
             return;
         }
 
-            Vaccine vaccine = controller.vaccineAgeAndTimeSinceLastDose(vaccineType, vaccinationCenter, timeSelector);
 
         List<Vaccine> vaccine = controller.vaccineAgeAndTimeSinceLastDose(vaccineType, vaccinationCenter, timeSelector);
 
@@ -65,19 +63,6 @@ public class ScheduleVaccineUI implements Runnable {
                 System.out.println("Error saving this vaccine schedule");
                 return;
             }
-
-            System.out.println(schedule);
-            boolean confirm = Utils.confirm("Do you want to schedule this vaccine? (s/n)");
-            if (confirm) {
-                if (controller.addVaccineSchedule(vaccinationCenter, schedule)) {
-                    System.out.println("Success");
-                } else {
-                    System.out.println("Error saving this vaccine schedule");
-                    return;
-                }
-            }
-        } catch (IllegalArgumentException ex) {
-            throw new IllegalArgumentException("could not load Centers");
         }
     }
 }
