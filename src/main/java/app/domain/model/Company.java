@@ -39,7 +39,6 @@ public class Company {
         this.oVaccinationCenterStore = new VaccinationCenterStore();
         this.oCSVReader = new CSVReader();
         this.oLegacySystemDataReader = new LegacySystemDataReader();
-
     }
 
     /**
@@ -100,4 +99,6 @@ public class Company {
      * @return the sns user store
      */
     public SNSUserStore getSNSUserStore(){return this.oSNSUserStore;}
+
+
 }
