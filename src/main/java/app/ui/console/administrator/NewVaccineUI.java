@@ -55,7 +55,7 @@ public class NewVaccineUI implements Runnable {
             String name = Utils.readLineFromConsole("Name:");
             String brand = Utils.readLineFromConsole("Brand:");
             String ageGroup = Utils.readLineFromConsole("Age Group:");
-            String doseNumber = Utils.readLineFromConsole("Dose Number:");
+            int doseNumber = Integer.parseInt(Utils.readLineFromConsole("Dose Number:"));
             double dosage = Double.parseDouble(Utils.readLineFromConsole("Dosage:"));
             int timeSinceLastDose = Integer.parseInt(Utils.readLineFromConsole("Time Since Last Dose:"));
 

@@ -52,9 +52,6 @@ public class ScheduleVaccineController {
         return session.isLoggedInWithRole(Constants.ROLE_RECEPTIONIST);
     }
 
-    public List<VaccinationCenter> getVaccinationCenterList(){
-        return this.oCompany.getVaccinationCenterStore().getVaccinationCenters();
-    }
 
     public List<VaccineType> getAvailableVaccineTypes(VaccinationCenter vaccinationCenter){
         return vaccinationCenter.getListVaccineType();
@@ -65,20 +62,28 @@ public class ScheduleVaccineController {
         return vaccinationCenter.getAvailableSlots(vaccinationCenter, date1);
     }
 
-    public VaccineSchedule createVaccineSchedule(SNSUser user, VaccinationCenter vaccinationCenter, VaccineType vaccineType, Vaccine vaccine, Date time){
-        return vaccinationCenter.createVaccineSchedule(vaccinationCenter, user, vaccineType, vaccine, time);
+    public VaccineSchedule createVaccineSchedule(SNSUser user, VaccinationCenter vaccinationCenter, VaccineType vaccineType, List<Vaccine> vaccineList, Date time){
+        return vaccinationCenter.createVaccineSchedule(vaccinationCenter, user, vaccineType,vaccineList, time);
     }
 
     public boolean addVaccineSchedule(VaccinationCenter vaccinationCenter, VaccineSchedule schedule){
         return vaccinationCenter.addVaccineSchedule(schedule);
     }
 
-    public boolean validateVaccineSchedule(SNSUser user, VaccineType vaccineType, VaccinationCenter vaccinationCenter){
-        return vaccinationCenter.validateVaccineSchedule(vaccineType, user);
+    public boolean validateVaccineSchedule(SNSUser user, VaccineType vaccineType, VaccinationCenter vaccinationCenter, Date timeSelector){
+        return vaccinationCenter.validateVaccineSchedule(vaccineType, user, timeSelector);
     }
 
-    public Vaccine vaccineAgeAndTimeSinceLastDose(SNSUser user, VaccineType vaccineType, VaccinationCenter vaccinationCenter, Date date) {
-        return vaccinationCenter.vaccineAgeAndTimeSinceLastDose(vaccineType, user, date);
+    public List<Vaccine> vaccineAge(SNSUser user, VaccineType vaccineType, VaccinationCenter vaccinationCenter) {
+        return vaccinationCenter.vaccineAge(vaccineType, user);
+    }
+
+    public boolean validateAdministratedVaccines(VaccineType vaccineType, SNSUser snsUser){
+        return vaccinationCenter.validateAdministratedVaccines(vaccineType, snsUser);
+    }
+
+    public Vaccine ongoingVaccine(VaccineType vaccineType, SNSUser snsUser, Date date){
+        return vaccinationCenter.validateOngoingVaccine(vaccineType, snsUser, date);
     }
 
     public Date readDate(String prompt)

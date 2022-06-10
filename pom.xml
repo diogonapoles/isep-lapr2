@@ -35,6 +35,7 @@
 						<artifactId>junit-platform-surefire-provider</artifactId>
 						<version>1.2.0</version>
 					</dependency>
+
 					<!--dependency>
 						<groupId>org.apache.maven.surefire</groupId>
 						<artifactId>surefire-junit4</artifactId>

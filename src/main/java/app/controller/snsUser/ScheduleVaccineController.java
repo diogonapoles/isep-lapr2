@@ -26,6 +26,7 @@ public class ScheduleVaccineController {
 
     private App oApp;
     private Company oCompany;
+    private VaccinationCenter vaccinationCenter;
 
     public ScheduleVaccineController() {
         this.oApp = App.getInstance();
@@ -41,6 +42,15 @@ public class ScheduleVaccineController {
         return this.oCompany.getVaccinationCenterStore().getVaccinationCenters();
     }
 
+    public void setVaccinationCenter(VaccinationCenter vaccinationCenter){
+        this.vaccinationCenter = vaccinationCenter;
+    }
+
+    public SNSUser getSNSUser(){
+        UserSession session = this.oApp.getCurrentUserSession();
+        return this.oApp.getCompany().getSNSUserStore().getSNSUserByEmail(session.getUserId().getEmail());
+    }
+
     public List<VaccineType> getAvailableVaccineTypes(VaccinationCenter vaccinationCenter){
         return vaccinationCenter.getListVaccineType();
     }
@@ -50,35 +60,43 @@ public class ScheduleVaccineController {
         return vaccinationCenter.getAvailableSlots(vaccinationCenter, date1);
     }
 
-    public VaccineSchedule createVaccineSchedule(VaccinationCenter vaccinationCenter, VaccineType vaccineType, Vaccine vaccine, Date time){
-        UserSession session = this.oApp.getCurrentUserSession();
-        SNSUser user = this.oApp.getCompany().getSNSUserStore().getSNSUserByEmail(session.getUserId().getEmail());
-        return vaccinationCenter.createVaccineSchedule(vaccinationCenter, user, vaccineType, vaccine, time);
+    public VaccineSchedule createVaccineSchedule(SNSUser user, VaccinationCenter vaccinationCenter, VaccineType vaccineType, List<Vaccine> vaccineList, Date time){
+        return vaccinationCenter.createVaccineSchedule(vaccinationCenter, user, vaccineType,vaccineList, time);
     }
 
     public boolean addVaccineSchedule(VaccinationCenter vaccinationCenter, VaccineSchedule schedule){
         return vaccinationCenter.addVaccineSchedule(schedule);
     }
 
-    public boolean validateVaccineSchedule(VaccineType vaccineType, VaccinationCenter vaccinationCenter){
-        UserSession session = this.oApp.getCurrentUserSession();
-        SNSUser user = this.oApp.getCompany().getSNSUserStore().getSNSUserByEmail(session.getUserId().getEmail());
-        return vaccinationCenter.validateVaccineSchedule(vaccineType, user);
+    public boolean validateVaccineSchedule(SNSUser user, VaccineType vaccineType, VaccinationCenter vaccinationCenter, Date timeSelector){
+        return vaccinationCenter.validateVaccineSchedule(vaccineType, user, timeSelector);
     }
 
-    public Vaccine vaccineAgeAndTimeSinceLastDose(VaccineType vaccineType, VaccinationCenter vaccinationCenter, Date date) {
-        UserSession session = this.oApp.getCurrentUserSession();
-        SNSUser user = this.oApp.getCompany().getSNSUserStore().getSNSUserByEmail(session.getUserId().getEmail());
-        return vaccinationCenter.vaccineAgeAndTimeSinceLastDose(vaccineType, user, date);
+    public List<Vaccine> vaccineAge(SNSUser user, VaccineType vaccineType, VaccinationCenter vaccinationCenter) {
+        return vaccinationCenter.vaccineAge(vaccineType, user);
+    }
+
+    public boolean validateAdministratedVaccines(VaccineType vaccineType, SNSUser snsUser){
+        return vaccinationCenter.validateAdministratedVaccines(vaccineType, snsUser);
+    }
+
+    public Vaccine ongoingVaccine(VaccineType vaccineType, SNSUser snsUser, Date date){
+        return vaccinationCenter.validateOngoingVaccine(vaccineType, snsUser, date);
     }
 
     public Date readDate(String prompt)
     {
+        System.out.println("\n" + prompt);
+        System.out.println("");
+        System.out.println("0 - Cancel");
         do
         {
             try
             {
-                String strDate = Utils.readLineFromConsole(prompt);
+                String strDate = Utils.readLineFromConsole("");
+                if (strDate.equals("0"))
+                    return null;
+
                 SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
                 Date date = df.parse(strDate);
 
@@ -90,5 +108,7 @@ public class ScheduleVaccineController {
         } while (true);
     }
 }
+
+
 
 

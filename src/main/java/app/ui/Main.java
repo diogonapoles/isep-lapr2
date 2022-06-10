@@ -1,5 +1,6 @@
 package app.ui;
 
+import app.domain.model.Stats;
 import app.ui.console.MainMenuUI;
 
 /**
@@ -15,12 +16,13 @@ public class Main {
      *
      * @param args the input arguments
      */
-    public static void main(String[] args)
-    {
+    public static void main(String[] args){
         try
         {
+            Stats stats = new Stats();
             MainMenuUI menu = new MainMenuUI();
 
+            stats.start();
             menu.run();
         }
         catch( Exception e )

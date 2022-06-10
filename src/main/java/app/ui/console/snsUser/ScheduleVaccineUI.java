@@ -2,13 +2,16 @@ package app.ui.console.snsUser;
 
 
 import app.controller.snsUser.ScheduleVaccineController;
+import app.domain.model.systemUser.SNSUser;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.domain.model.vaccine.Vaccine;
 import app.domain.model.vaccine.VaccineSchedule;
 import app.domain.model.vaccine.VaccineType;
 import app.ui.console.utils.Utils;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class ScheduleVaccineUI implements Runnable {
 
@@ -24,22 +27,47 @@ public class ScheduleVaccineUI implements Runnable {
             return;
         }
 
+        SNSUser user = controller.getSNSUser();
+
         VaccinationCenter vaccinationCenter = (VaccinationCenter) Utils.showAndSelectOne(controller.getVaccinationCenterList(), "Select a Vaccination Center:");
 
+        controller.setVaccinationCenter(vaccinationCenter);
+
         VaccineType vaccineType = (VaccineType) Utils.showAndSelectOne(controller.getAvailableVaccineTypes(vaccinationCenter), "Select a Vaccine Type:");
-
-        Date date = controller.readDate("Insert vaccination date (dd/MM/yyyy)");
-
-        Date timeSelector = (Date) Utils.showAndSelectOne(controller.getAvailableTimes(vaccinationCenter, date), "Select a Schedule:");
-
-        if (!controller.validateVaccineSchedule(vaccineType, vaccinationCenter)){
-            System.out.println("This SNS user already scheduled a vaccine");
+        if (vaccineType == null){
             return;
         }
 
-        Vaccine vaccine = controller.vaccineAgeAndTimeSinceLastDose(vaccineType, vaccinationCenter, timeSelector);
+        if (!controller.validateAdministratedVaccines(vaccineType, user)){
+            System.out.println("This user has overdue vaccinations, please go to the vaccination center and only after taking the vaccine of this type will you be able to schedule a new one.");
+            return;
+        }
 
-        VaccineSchedule schedule = controller.createVaccineSchedule(vaccinationCenter, vaccineType, vaccine, timeSelector);
+        Date date = controller.readDate("Insert vaccination date (dd/MM/yyyy)");
+        if (date == null)
+            return;
+
+        if (!controller.validateVaccineSchedule(user, vaccineType, vaccinationCenter, date)){
+            System.out.println("This SNS user already scheduled a vaccine for this day");
+            return;
+        }
+
+        Vaccine vaccine =  controller.ongoingVaccine(vaccineType, user, date);
+        List<Vaccine> vaccineList = new ArrayList<>();
+        if (vaccine == null){
+            vaccineList = controller.vaccineAge(user, vaccineType, vaccinationCenter);
+        }else{
+            vaccineList.add(vaccine);
+        }
+
+        if (vaccineList.isEmpty()){
+            System.out.println("There aren't any vaccines available for this user");
+            return;
+        }
+
+        Date timeSelector = (Date) Utils.showAndSelectOne(controller.getAvailableTimes(vaccinationCenter, date), "Select a Schedule:");
+
+        VaccineSchedule schedule = controller.createVaccineSchedule(user, vaccinationCenter, vaccineType, vaccineList, timeSelector);
 
         if(schedule == null) {
             System.out.println("Error while creating vaccination schedule");
