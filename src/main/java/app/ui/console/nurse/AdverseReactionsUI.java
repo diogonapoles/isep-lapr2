@@ -15,7 +15,6 @@ public class AdverseReactionsUI implements Runnable {
         controller = new AdverseReactionsController();
     }
 
-
     public void run() {
         snsUserNumber = Utils.readLineFromConsole("Insert the User SNS Number");
         if (isUserInRecoveryList(snsUserNumber)) {
@@ -26,14 +25,9 @@ public class AdverseReactionsUI implements Runnable {
 
 
 
-
     }
 
     private Boolean isUserInRecoveryList(String snsUserNumber) {
         return this.controller.isUserInRecoveryList(snsUserNumber);
     }
-
-
-
-
 }

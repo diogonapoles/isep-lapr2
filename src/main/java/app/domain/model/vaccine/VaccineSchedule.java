@@ -12,11 +12,13 @@ public class VaccineSchedule implements Comparable<VaccineSchedule> {
 
     private SNSUser user;
     private VaccineType vaccineType;
+    private List<Vaccine> vaccineList;
     private Date time;
 
-    public VaccineSchedule(SNSUser user, VaccineType vaccineType, Date time) {
+    public VaccineSchedule(SNSUser user, VaccineType vaccineType, List<Vaccine> vaccineList, Date time) {
         this.user = user;
         this.vaccineType = vaccineType;
+        this.vaccineList = vaccineList;
         this.time = time;
     }
 
@@ -32,12 +34,21 @@ public class VaccineSchedule implements Comparable<VaccineSchedule> {
         return vaccineType;}
 
 
+
     public void setVaccineType(VaccineType vaccineType) {
         this.vaccineType = vaccineType;
     }
 
     public Date getTime() {
         return time;
+    }
+
+    public List<Vaccine> getVaccineList() {
+        return vaccineList;
+    }
+
+    public void setVaccineList(List<Vaccine> vaccineList) {
+        this.vaccineList = vaccineList;
     }
 
     public void setTime(Date time) {

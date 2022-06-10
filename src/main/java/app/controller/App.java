@@ -172,19 +172,6 @@ public class App {
 
     }
 
-    private void createSchedules() throws ParseException {
-        VaccinationCenter vc = this.getCompany().getVaccinationCenterStore().getVaccinationCenters().get(0);
-        VaccineType vt1 = vc.newVaccineType(0, "12345", "COVID-19");
-        Vaccine v1 = vt1.newVaccine("COVID-19 Vaccine", "Pfizer", "18-22", 2, 5, 90);
-        SNSUser snsUser01 = this.company.getSNSUserStore().getSNSUserByNumber("123444333");
-
-        Calendar date = Calendar.getInstance();
-        date.add(Calendar.DAY_OF_MONTH,1);
-        vc.createVaccineSchedule(vc,snsUser01,vt1,date.getTime());
-
-
-    }
-
 
     private void createEmployee() {
 

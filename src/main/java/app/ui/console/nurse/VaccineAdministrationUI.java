@@ -28,18 +28,21 @@ public class VaccineAdministrationUI implements Runnable{
                 return;
             }
 
-            Vaccine vaccine = (Vaccine) Utils.showAndSelectOne(controller.getAvailableVaccinesForUser(user.getSchedule().getVaccineType(), user.getSnsUser(), user.getSchedule().getTime()), "Available Vaccines for this user:");
+            Vaccine vaccine = (Vaccine) Utils.showAndSelectOne(controller.getAvailableVaccinesForUser(user), "Available Vaccines for this user:");
             if (vaccine == null){
                 return;
             }
 
-            VaccineAdministration vaccineAdministration = controller.createVaccineAdministration(user, vaccine, new Date());
+            VaccineAdministration vaccineAdministration = controller.validateVaccineAdministration(user, vaccine);
+            if (vaccineAdministration == null)
+                vaccineAdministration = controller.createVaccineAdministration(user, vaccine, new Date());
+
             System.out.println(vaccineAdministration);
             boolean confirm = Utils.confirm("Do you want to schedule this vaccine? (s/n)");
             if(confirm){
                 if(controller.addVaccineAdministration(vaccineAdministration)){
                     controller.removeFromWaitingRoom(user);
-                    controller.moveToRecoveryRoom(vaccineAdministration);
+                    controller.moveToRecoveryRoom(vaccineAdministration, vaccine);
                     System.out.println("Success");
                 }else{
                     System.out.println("Error saving this vaccine administration process");

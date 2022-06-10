@@ -31,8 +31,8 @@ public class VaccineAdministrationController {
         return vaccinationCenter.getListUserToWaitingRoom();
     }
 
-    public List<Vaccine> getAvailableVaccinesForUser(VaccineType vaccineType, SNSUser user, Date vaccineDate){
-        return vaccinationCenter.vaccineAgeAndTimeSinceLastDose(vaccineType, user, vaccineDate);
+    public List<Vaccine> getAvailableVaccinesForUser(UserArrival user){
+        return user.getSchedule().getVaccineList();
     }
 
     public VaccinationCenter getVaccinationCenter() {
@@ -51,11 +51,12 @@ public class VaccineAdministrationController {
         vaccinationCenter.removeFromWaitingRoom(user);
     }
 
-    public boolean moveToRecoveryRoom(VaccineAdministration vaccineAdministration){
-        return vaccinationCenter.moveToRecoveryRoom(vaccineAdministration);
+    public void moveToRecoveryRoom(VaccineAdministration vaccineAdministration, Vaccine vaccine){
+        vaccinationCenter.moveToRecoveryRoom(vaccineAdministration);
+        vaccinationCenter.recoveryRoomTimer(vaccineAdministration, vaccine);
     }
 
-    public boolean findVaccineAdministration(UserArrival user, Vaccine vaccine){
-        return vaccinationCenter.findVaccineAdministration(user.getSnsUser(), vaccine);
+    public VaccineAdministration validateVaccineAdministration(UserArrival user, Vaccine vaccine){
+        return vaccinationCenter.validateVaccineAdministration(user.getSnsUser(), vaccine);
     }
 }

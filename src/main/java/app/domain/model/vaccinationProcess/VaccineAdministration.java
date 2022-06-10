@@ -10,13 +10,15 @@ public class VaccineAdministration {
     private Date vaccinationTime;
     private Vaccine vaccine;
     private Integer doses;
+    private Integer recoveryRoomTime;
 
 
-    public VaccineAdministration(UserArrival userArrival, Vaccine vaccine, Date vaccinationTime, int doses) {
+    public VaccineAdministration(UserArrival userArrival, Vaccine vaccine, Date vaccinationTime, int recoveryRoomTime) {
         this.userArrival = userArrival;
         this.vaccinationTime = vaccinationTime;
         this.vaccine = vaccine;
         this.doses = 0;
+        this.recoveryRoomTime = recoveryRoomTime;
     }
 
     public UserArrival getUserArrival() {
@@ -53,6 +55,14 @@ public class VaccineAdministration {
 
     public void setDoses(Integer doses) {
         this.doses = doses;
+    }
+
+    public Integer getRecoveryRoomTime() {
+        return recoveryRoomTime;
+    }
+
+    public void setRecoveryRoomTime(Integer recoveryRoomTime) {
+        this.recoveryRoomTime = recoveryRoomTime;
     }
 
     @Override

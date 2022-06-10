@@ -9,6 +9,7 @@ import app.domain.model.vaccine.VaccineSchedule;
 import app.domain.model.vaccine.VaccineType;
 import app.ui.console.utils.Utils;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -48,21 +49,27 @@ public class ScheduleVaccineUI implements Runnable {
         if (date == null)
             return;
 
-        Date timeSelector = (Date) Utils.showAndSelectOne(controller.getAvailableTimes(vaccinationCenter, date), "Select a Schedule:");
-
-        if (!controller.validateVaccineSchedule(user, vaccineType, vaccinationCenter, timeSelector)){
+        if (!controller.validateVaccineSchedule(user, vaccineType, vaccinationCenter, date)){
             System.out.println("This SNS user already scheduled a vaccine for this day");
             return;
         }
 
-        List<Vaccine> vaccines = controller.vaccineAgeAndTimeSinceLastDose(user, vaccineType, vaccinationCenter, timeSelector);
+        Vaccine vaccine =  controller.ongoingVaccine(vaccineType, user, date);
+        List<Vaccine> vaccineList = new ArrayList<>();
+        if (vaccine == null){
+            vaccineList = controller.vaccineAge(user, vaccineType, vaccinationCenter);
+        }else{
+            vaccineList.add(vaccine);
+        }
 
-        if (vaccines.isEmpty()){
+        if (vaccineList.isEmpty()){
             System.out.println("There aren't any vaccines available for this user");
             return;
         }
 
-        VaccineSchedule schedule = controller.createVaccineSchedule(user, vaccinationCenter, vaccineType, timeSelector);
+        Date timeSelector = (Date) Utils.showAndSelectOne(controller.getAvailableTimes(vaccinationCenter, date), "Select a Schedule:");
+
+        VaccineSchedule schedule = controller.createVaccineSchedule(user, vaccinationCenter, vaccineType, vaccineList, timeSelector);
 
         if(schedule == null) {
             System.out.println("Error while creating vaccination schedule");
