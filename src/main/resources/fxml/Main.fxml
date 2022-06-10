@@ -5,9 +5,10 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.ui.gui.MainUI">
+
    <children>
-      <Button layoutX="140.0" layoutY="200.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="103.0" text="Do Login" />
-      <Button layoutX="357.0" layoutY="200.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="103.0" text="Know Dev Team" />
+      <Button layoutX="140.0" layoutY="200.0" mnemonicParsing="false" onAction="#btnLogin" prefHeight="38.0" prefWidth="103.0" text="Do Login" />
+      <Button layoutX="357.0" layoutY="200.0" mnemonicParsing="false" onAction="#btnDev" prefHeight="38.0" prefWidth="103.0" text="Know Dev Team" />
       <Label layoutX="192.0" layoutY="126.0" prefHeight="30.0" prefWidth="288.0" text="Please choose your option!">
          <font>
             <Font size="18.0" />

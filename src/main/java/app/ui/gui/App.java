@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 
 public class App extends Application {
     private Stage stage;
-    private final double MINIMUM_WINDOW_WIDTH = 400.0;
+    private final double MINIMUM_WINDOW_WIDTH = 600.0;
     private final double MINIMUM_WINDOW_HEIGHT = 300.0;
     private final double SCENE_WIDTH = 450.0;
     private final double SCENE_HEIGHT = 350.0;
@@ -34,8 +34,8 @@ public class App extends Application {
             stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
             stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
             stage.setResizable(false);
-            Image img = new Image("img.png");
-            stage.getIcons().add(img);
+            //Image img = new Image("img.png");
+            // stage.getIcons().add(img);
             toMainScene();
             this.stage.show();
 
@@ -48,11 +48,15 @@ public class App extends Application {
 
     public void toMainScene() {
         try {
-            MainUI mainUI = (MainUI) replaceSceneContent("fxml/Main.fxml");
+            MainUI mainUI = (MainUI) replaceSceneContent("/fxml/Main.fxml");
             mainUI.setMainApp(this);
         } catch (Exception ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public Stage getStage() {
+        return this.stage;
     }
 
     public Initializable replaceSceneContent(String fxml) throws Exception {
