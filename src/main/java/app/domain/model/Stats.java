@@ -1,11 +1,9 @@
 package app.domain.model;
 
 import app.controller.App;
-import app.domain.model.systemUser.SNSUser;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.domain.model.vaccinationProcess.VaccineAdministration;
 import app.domain.shared.Constants;
-import com.opencsv.CSVWriter;
 import org.apache.commons.lang3.time.DateUtils;
 
 import java.io.*;
@@ -21,6 +19,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class Stats {
     private App oApp;
@@ -36,7 +35,7 @@ public class Stats {
 
     public void start() throws IOException {
         Properties props = new Properties();
-        props.load(new FileInputStream("/Users/diogonapoles/lei-22-s2-1dc-g13/config.properties"));
+        props.load(new FileInputStream("./config.properties"));
         String time = props.getProperty(Constants.PARAMS_DAILYSTATISTICS_TIME);
         String[] hoursMinutes = time.split(":");
         int targetHour = Integer.parseInt(hoursMinutes[0]);
@@ -80,48 +79,41 @@ public class Stats {
         }
     }
 
+    private static final DateFormat DATE_FORMAT = new SimpleDateFormat("dd_MM_yyyy");
+    private static final String DATE = DATE_FORMAT.format(new Date());
 
-    private static final String CSV_FILE_PATH = "./result.csv";
+    private static final String CSV_FILE_PATH = "./results_" + DATE + ".csv";
     private static final String SEPARATOR = ";";
 
-
-
     public void addDataToCSV(String output) {
-        // first create file object for file placed at location
-        // specified by filepath
         File file = new File(output);
-        Scanner sc = new Scanner(System.in);
         try {
-            // create FileWriter object with file as parameter
-            FileWriter outputfile = new FileWriter(file);
+            FileWriter writer = new FileWriter(file);
+            List<String> header = new ArrayList<>();
+            header.add("Vaccination Center");
+            header.add("Vaccination Time");
+            header.add("SNS User");
 
-            // create CSVWriter with ';' as separator
-            CSVWriter writer = new CSVWriter(outputfile, ';',
-                    CSVWriter.NO_QUOTE_CHARACTER,
-                    CSVWriter.DEFAULT_ESCAPE_CHARACTER,
-                    CSVWriter.DEFAULT_LINE_END);
-
-            // create a List which contains Data
-            List<String[]> data = new ArrayList<String[]>();
+            String collect = header.stream().collect(Collectors.joining(";"));
+            writer.write(collect);
 
             for (VaccinationCenter vaccinationCenter : oCompany.getVaccinationCenterStore().getVaccinationCenters()){
                 for(VaccineAdministration administration : vaccinationCenter.getListAdministratedVaccines()){
                     if (DateUtils.isSameDay(administration.getVaccinationTime(), new Date())){
-                        String center = vaccinationCenter.getName();
+                        DateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
 
-                        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
-                        String date = dateFormat.format(administration.getVaccinationTime());
+                        List<String> data = new ArrayList<>();
+                        data.add(vaccinationCenter.getName());
+                        data.add(dateFormat.format(administration.getVaccinationTime()));
+                        data.add(administration.getUserArrival().getSnsUser().getEmailAddress());
 
-                        String user = administration.getUserArrival().getSnsUser().getEmailAddress();
-
-                        String row = center.concat(SEPARATOR).concat(date).concat(SEPARATOR).concat(user);
-                        String[] rowdata = row.split(SEPARATOR);
-                        data.add(rowdata);
+                        String rowdata = data.stream().collect(Collectors.joining(SEPARATOR));
+                        writer.write(rowdata);
+                        writer.write("\n");
                     }
                 }
             }
 
-            writer.writeAll(data);
             writer.close();
 
         } catch (IOException e) {
