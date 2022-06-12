@@ -1,33 +1,71 @@
 package app.ui.gui;
 
-
-import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
+import java.io.IOException;
 
-public class MainUI extends App {
-    private App mainApp;
+public class MainUI {
+    private Appfx mainAppfx;
+    private Stage stage ;
+    @FXML
+    private Button btnDEv;
 
     @FXML
-    private Button btnLogin;
+    private Button btnlogin;
+
     @FXML
-    private Button btnDev;
-
-
-    public void setMainApp(App mainApp) {
-        this.mainApp = mainApp;
+    public void setMainApp(Appfx mainAppfx) {
+        this.mainAppfx = mainAppfx;
 
     }
-        @FXML
-    public void btnLogin(ActionEvent e){
-         //   LoginUI LoginUI = new LoginUI(this.mainApp);
-          //  LoginUI.toLoginSceneUI1();
-    }
     @FXML
-    public void btnDev(ActionEvent e){
-            System.out.println("teste");
+    void btnDev(ActionEvent event) throws IOException {
+       // Stage stage =  mainAppfx.getStage();
+
+        try {
+            var loader = new FXMLLoader(getClass().getResource("/fxml/DevTeam.fxml"));
+            Parent root = loader.load();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            // scene.getStylesheets().add(getClass().getResource("/styles/Styles.css").toExternalForm());
+            String css = this.getClass().getResource("/styles/Styles.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            stage.setScene(scene);
+
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+
+
+
+    }
+
+    @FXML
+    void btnLogin(ActionEvent event) {
+        // Stage stage =  mainAppfx.getStage();
+
+        try {
+            var loader = new FXMLLoader(getClass().getResource("/fxml/Login1.fxml"));
+            Parent root = loader.load();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            // scene.getStylesheets().add(getClass().getResource("/styles/Styles.css").toExternalForm());
+            String css = this.getClass().getResource("/styles/Styles.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            stage.setScene(scene);
+
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+
     }
 
 }
+

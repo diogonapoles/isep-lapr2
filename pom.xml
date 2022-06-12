@@ -22,7 +22,7 @@
 				<artifactId>javafx-maven-plugin</artifactId>
 				<version>0.0.4</version>
 				<configuration>
-					<mainClass>app.ui.gui.App</mainClass>
+					<mainClass>app.ui.gui.Appfx</mainClass>
 				</configuration>
 			</plugin>
 			<plugin>

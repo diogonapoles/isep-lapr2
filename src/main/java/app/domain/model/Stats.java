@@ -5,7 +5,6 @@ import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.domain.model.vaccinationProcess.VaccineAdministration;
 import app.domain.shared.Constants;
 import org.apache.commons.lang3.time.DateUtils;
-
 import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -121,3 +120,4 @@ public class Stats {
         }
     }
 }
+

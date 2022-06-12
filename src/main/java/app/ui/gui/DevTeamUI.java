@@ -11,17 +11,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class LoginScene1UI {
-    private Stage stage ;
-
+public class DevTeamUI {
+    private Stage stage;
     @FXML
     private Button btnBack;
 
     @FXML
-    private Button btnConfirm;
-
-    @FXML
-    void btnBack(ActionEvent event) throws IOException {
+    void btnBack(ActionEvent event) throws IOException  {
         try {
             var loader = new FXMLLoader(getClass().getResource("/fxml/Main.fxml"));
             Parent root = loader.load();
@@ -35,11 +31,6 @@ public class LoginScene1UI {
         }catch (Exception ex){
             ex.printStackTrace();
         }
-
-    }
-
-    @FXML
-    void btnConfirm(ActionEvent event) {
 
     }
 
