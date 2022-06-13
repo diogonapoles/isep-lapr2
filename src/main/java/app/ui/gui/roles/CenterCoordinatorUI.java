@@ -1,5 +1,7 @@
 package app.ui.gui.roles;
 
+import app.controller.ChoosingVaccinationCenterController;
+import app.domain.model.vaccinationCenter.VaccinationCenter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,11 +20,13 @@ import java.util.ResourceBundle;
 
 public class CenterCoordinatorUI implements Initializable {
     private Stage stage;
+    private ChoosingVaccinationCenterController controller;
+
     @FXML
     private Button btnBack;
 
     @FXML
-    private ChoiceBox<String> comboVac;
+    private ChoiceBox<VaccinationCenter> comboVac;
 
     @FXML
     private Button btnConfirm;
@@ -36,15 +40,11 @@ public class CenterCoordinatorUI implements Initializable {
 
 
     public void initialize(URL arg0, ResourceBundle arg1){
-
-        List<String> centers = new ArrayList<>();
-        centers.add("center1");
-        centers.add("center2");
-        centers.add("center3");
+        controller = new ChoosingVaccinationCenterController();
+        List<VaccinationCenter> centers = controller.getVaccinationCenters();
         comboVac.getItems().addAll(centers);
         btnLeft.setDisable(true);
         btnRight.setDisable(true);
-
 
     }
 

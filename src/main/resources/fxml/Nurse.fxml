@@ -20,12 +20,12 @@
       <Label accessibleRoleDescription="rd" layoutX="14.0" layoutY="369.0" text="Note: The options listed are the options developed in SprintD" />
       <Button fx:id="btnLeft" layoutX="35.0" layoutY="227.0" mnemonicParsing="false" onAction="#btnUS7" prefHeight="62.0" prefWidth="250.0" text="Record adverse reactions of a SNS User" />
       <Button fx:id="btnRight" layoutX="323.0" layoutY="227.0" mnemonicParsing="false" onAction="#btnUS8" prefHeight="62.0" prefWidth="250.0" text="Record the administration of a vaccine" />
-      <ChoiceBox fx:id="comboVac" layoutX="396.0" layoutY="110.0" prefWidth="150.0" />
-      <Label layoutX="177.0" layoutY="112.0" text="Choose the vaccination center:">
+      <ChoiceBox fx:id="comboVac" layoutX="56.0" layoutY="82.0" prefWidth="150.0" />
+      <Label layoutX="66.0" layoutY="62.0" text="Choose the vaccination center:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="btnConfirm" layoutX="442.0" layoutY="155.0" mnemonicParsing="false" onAction="#btnConfirm" text="Confirm" />
+      <Button fx:id="btnConfirm" layoutX="208.0" layoutY="82.0" mnemonicParsing="false" onAction="#btnConfirm" text="Confirm" />
    </children>
 </AnchorPane>
