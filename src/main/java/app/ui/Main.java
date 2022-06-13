@@ -2,6 +2,7 @@ package app.ui;
 
 import app.domain.model.Stats;
 import app.ui.console.MainMenuUI;
+import javafx.fxml.JavaFXBuilderFactory;
 
 /**
  * The type Main.
@@ -19,10 +20,10 @@ public class Main {
     public static void main(String[] args){
         try
         {
-           //Stats stats = new Stats();
+           Stats stats = new Stats();
             MainMenuUI menu = new MainMenuUI();
 
-            //stats.start();
+            stats.start();
             menu.run();
         }
         catch( Exception e )

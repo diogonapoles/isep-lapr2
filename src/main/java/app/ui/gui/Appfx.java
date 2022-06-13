@@ -33,7 +33,7 @@ public class Appfx extends Application {
             stage.setResizable(false);
             //Image img = new Image("img.png");
             // stage.getIcons().add(img);
-        try {
+       /* try {
             //Parent root = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
             var loader = new FXMLLoader(getClass().getResource("/fxml/Main.fxml"));
             Parent root = loader.load();
@@ -45,10 +45,10 @@ public class Appfx extends Application {
 
         }catch (Exception ex) {
             ex.printStackTrace();
-        } /**/
+        } */
         MainUI mainUI = new MainUI();
         mainUI.setMainApp(this);
-          // toMainScene();
+           toMainScene();
             this.stage.show();
 
 
@@ -72,18 +72,6 @@ public class Appfx extends Application {
     }
 
     public Initializable replaceSceneContent(String fxml) throws Exception {
-        /* try {
-            Parent root = FXMLLoader.load(getClass().getResource(fxml));
-            Scene scene = new Scene(root);
-            // scene.getStylesheets().add(getClass().getResource("/styles/Styles.css").toExternalForm());
-            String css = this.getClass().getResource("/styles/Styles.css").toExternalForm();
-            scene.getStylesheets().add(css);
-            stage.setScene(scene);
-
-        }catch (Exception ex) {
-            ex.printStackTrace();
-        }*/
-
         FXMLLoader loader = new FXMLLoader();
         InputStream in = Appfx.class.getResourceAsStream(fxml);
         loader.setBuilderFactory(new JavaFXBuilderFactory());
@@ -95,13 +83,10 @@ public class Appfx extends Application {
             in.close();
         }
         Scene scene = new Scene(page, SCENE_WIDTH, SCENE_HEIGHT);
-
+        scene.getStylesheets().add("/styles/Styles.css");
         this.stage.setScene(scene);
         this.stage.sizeToScene();
         return (Initializable) loader.getController();
-
-
-
     }
 
 
