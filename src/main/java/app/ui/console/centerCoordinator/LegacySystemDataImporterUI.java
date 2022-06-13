@@ -3,8 +3,6 @@ package app.ui.console.centerCoordinator;
 import app.controller.centerCoordinator.LegacySystemDataImporterController;
 import app.ui.console.utils.Utils;
 
-import java.io.IOException;
-
 public class LegacySystemDataImporterUI implements Runnable {
 
     private final LegacySystemDataImporterController controller;
@@ -25,11 +23,12 @@ public class LegacySystemDataImporterUI implements Runnable {
         try {
             if (inputData()) {
                 this.controller.setSortAlgorithms();
-                Utils.showAndSelectOne(controller.getSortAlgorithms(),"\n\nChoose the intended sort algorithm\n");
+                String sortChoice = (String) Utils.showAndSelectOne(controller.getSortAlgorithms(),"\n\nChoose the intended sort algorithm\n");
                 this.controller.setSortOrder();
-                Utils.showAndSelectOne(controller.getSortOrder(),"\n\nChoose the intended sorting method\n");
+                String sortOrder = (String) Utils.showAndSelectOne(controller.getSortOrder(),"\n\nChoose the intended sorting method\n");
                 this.controller.setSortArrivalLeaving();
-                Utils.showAndSelectOne(controller.getSortArrivalLeaving(),"\n\nChoose the intended parameter for Sorting\n");
+                String sortArrivalLeaving = (String) Utils.showAndSelectOne(controller.getSortArrivalLeaving(),"\n\nChoose the intended parameter for Sorting\n");
+
 
 
 /*
