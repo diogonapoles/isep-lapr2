@@ -15,13 +15,15 @@ public class LegacySystemDataReader {
 
     private final String HEADER = ("SNSUSerNumber;VaccineName;Dose;LotNumber;ScheduledDateTime;ArrivalDateTime;NurseAdministrationDateTime;LeavingDateTime");
 
-    public void csvReaderLegacyData(String fileName) throws Exception {
+    public List csvReaderLegacyData(String fileName) throws Exception {
 
 
         List<LegacySystemData> listLegacySystemData = new ArrayList<>();
         Path pathToFile = Paths.get(fileName);
 
+
         try (BufferedReader br = Files.newBufferedReader(pathToFile)) {
+            String linha= br.readLine();
             String line = br.readLine();
             while (line != null) {
                 String[] attributes = line.split(";");
@@ -32,7 +34,7 @@ public class LegacySystemDataReader {
         } catch (Exception ex) {
             throw new Exception("Couldn't read from the presented file");
         }
-        //return listLegacySystemData;
+        return listLegacySystemData;
 
 
 

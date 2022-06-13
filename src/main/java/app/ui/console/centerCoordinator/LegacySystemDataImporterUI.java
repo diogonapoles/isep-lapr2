@@ -3,8 +3,6 @@ package app.ui.console.centerCoordinator;
 import app.controller.centerCoordinator.LegacySystemDataImporterController;
 import app.ui.console.utils.Utils;
 
-import java.io.IOException;
-
 public class LegacySystemDataImporterUI implements Runnable {
 
     private final LegacySystemDataImporterController controller;
@@ -14,13 +12,25 @@ public class LegacySystemDataImporterUI implements Runnable {
         controller = new LegacySystemDataImporterController();
     }
 
+    public boolean inputData() throws Exception {
+        String fileLocation = Utils.readLineFromConsole("File Location:");
+        return controller.newLegacySystemDataReader(fileLocation);
+    }
+
 
     public void run() {
 
         try {
             if (inputData()) {
-                String sa = (String) Utils.showAndSelectOne(controller.getSortAlgorithms(),"Choose the intended sort algorithm");
-                this.controller.setSortAlgorithm(sa);
+                this.controller.setSortAlgorithms();
+                String sortChoice = (String) Utils.showAndSelectOne(controller.getSortAlgorithms(),"\n\nChoose the intended sort algorithm\n");
+                this.controller.setSortOrder();
+                String sortOrder = (String) Utils.showAndSelectOne(controller.getSortOrder(),"\n\nChoose the intended sorting method\n");
+                this.controller.setSortArrivalLeaving();
+                String sortArrivalLeaving = (String) Utils.showAndSelectOne(controller.getSortArrivalLeaving(),"\n\nChoose the intended parameter for Sorting\n");
+
+
+
 /*
                 if (Utils.confirm("Confirm data?(s/n)")) {
                     controller.importLegacySystemDataCSV();
@@ -43,10 +53,9 @@ public class LegacySystemDataImporterUI implements Runnable {
 
     }
 
-    private boolean inputData() throws Exception {
-        String fileLocation = Utils.readLineFromConsole("File Location:");
-        return controller.newLegacySystemDataReader(fileLocation);
-    }
+
+
+
 
 
 

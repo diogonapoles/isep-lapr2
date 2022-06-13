@@ -38,6 +38,21 @@ public class Utils {
             return null;
         }
     }
+    static public String readLineFromConsoleWithoutPrompt()
+    {
+        try
+        {
+
+            InputStreamReader converter = new InputStreamReader(System.in);
+            BufferedReader in = new BufferedReader(converter);
+
+            return in.readLine();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     /**
      * Read integer from console int.
@@ -63,6 +78,23 @@ public class Utils {
         } while (true);
     }
 
+    static public int readIntegerFromConsoleWithoutPrompt( )
+    {
+        do
+        {
+            try
+            {
+                String input = readLineFromConsoleWithoutPrompt();
+
+                int value = Integer.parseInt(input);
+
+                return value;
+            } catch (NumberFormatException ex)
+            {
+                Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } while (true);
+    }
     /**
      * Read double from console double.
      *

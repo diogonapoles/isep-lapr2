@@ -6,7 +6,10 @@ import java.util.List;
 
 public class LegacySystemData {
 
-    private List listSortAlgorithms = new ArrayList<>();
+    private final List<Object> listSortAlgorithms = new ArrayList<>();
+    private final List<Object> listSortOrder = new ArrayList<>();
+    private final List<Object> listSortArrivalLeaving = new ArrayList<>();
+
     private int snsUserNumber;
     private String vaccineName;
     private String dose;
@@ -17,7 +20,7 @@ public class LegacySystemData {
 
 
     public LegacySystemData(int snsUserNumber, String vaccineName, String dose, String lotNumber,
-                                  Date scheduledDateTime, Date arrivalDateTime, Date leavingDateTime) {
+                            Date scheduledDateTime, Date arrivalDateTime, Date leavingDateTime) {
         this.snsUserNumber = snsUserNumber;
         this.vaccineName = vaccineName;
         this.dose = dose;
@@ -25,6 +28,10 @@ public class LegacySystemData {
         this.scheduledDateTime = scheduledDateTime;
         this.arrivalDateTime = arrivalDateTime;
         this.leavingDateTime = leavingDateTime;
+
+    }
+
+    public LegacySystemData(){
 
     }
 
@@ -84,11 +91,32 @@ public class LegacySystemData {
         this.leavingDateTime = leavingDateTime;
     }
 
-
-    public List getSortAlgorithms() {
+    public void setSortAlgorithms() {
         listSortAlgorithms.add("Bubble Sort");
         listSortAlgorithms.add("Insertion Sort");
+    }
+
+    public List<Object> getSortAlgorithms() {
         return listSortAlgorithms;
     }
+    public void setSortOrder() {
+        listSortOrder.add("Ascending");
+        listSortOrder.add("Descending");
+    }
+
+    public List<Object> getSortOrder() {
+        return listSortOrder;
+    }
+
+    public void setSortArrivalLeaving() {
+        listSortArrivalLeaving.add("Sort By Arrival Time");
+        listSortArrivalLeaving.add("Sort by leaving Time");
+    }
+
+    public List<Object> getSortArrivalLeaving() {
+        return listSortArrivalLeaving;
+    }
+
+
 
 }

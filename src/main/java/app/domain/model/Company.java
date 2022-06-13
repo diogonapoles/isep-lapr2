@@ -18,9 +18,12 @@ public class Company {
     private VaccinationCenterStore oVaccinationCenterStore;
     private SNSUserStore oSNSUserStore;
     private CSVReader oCSVReader;
-    private LegacySystemData oLegacySystemData;
+
     private LegacySystemDataReader oLegacySystemDataReader;
+    private LegacySystemData oLegacySystemData;
     private VaccinationCenter vaccinationCenter;
+    private BruteForce oBruteForce;
+    private Benchmark oBenchmark;
 
 
 
@@ -39,6 +42,9 @@ public class Company {
         this.oVaccinationCenterStore = new VaccinationCenterStore();
         this.oCSVReader = new CSVReader();
         this.oLegacySystemDataReader = new LegacySystemDataReader();
+        this.oLegacySystemData = new LegacySystemData();
+        this.oBruteForce = new BruteForce();
+        this.oBenchmark = new Benchmark();
     }
 
     /**
@@ -66,8 +72,13 @@ public class Company {
      */
     public CSVReader getCSVReader(){return this.oCSVReader;}
 
-    public LegacySystemData getLegacySystemData(){return this.oLegacySystemData;}
+    public BruteForce getBruteForceAlgorithm(){return this.oBruteForce;}
+
+    public Benchmark getBenchmarkAlgorithm(){return this.oBenchmark;}
+
     public LegacySystemDataReader getLegacySystemDataReader(){return this.oLegacySystemDataReader;}
+
+    public LegacySystemData getLegacySystemData(){return this.oLegacySystemData;}
 
     /**
      * Get employee store.
