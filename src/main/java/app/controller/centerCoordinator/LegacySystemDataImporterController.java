@@ -2,15 +2,13 @@ package app.controller.centerCoordinator;
 
 import app.controller.App;
 import app.domain.model.Company;
-import app.domain.model.LegacySystemData;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LegacySystemDataImporterController {
-    private App oApp;
-    private Company oCompany;
+    private final App oApp;
+    private final Company oCompany;
 
     public LegacySystemDataImporterController(){
         this.oApp = App.getInstance();
@@ -19,12 +17,12 @@ public class LegacySystemDataImporterController {
 
 
 
-    public List<LegacySystemData> listLegacySystemData= new ArrayList<>();
+    private List listLegacySystemData= new ArrayList<>();
+
 
 
     public boolean newLegacySystemDataReader(String filePath) throws Exception {
-        //this.listLegacySystemData = oCompany.getLegacySystemDataReader().csvReaderLegacyData(filePath);
-        oCompany.getLegacySystemDataReader().csvReaderLegacyData(filePath);
+        this.listLegacySystemData = oCompany.getLegacySystemDataReader().csvReaderLegacyData(filePath);
         if (this.listLegacySystemData != null)
             return true;
         else
@@ -62,11 +60,30 @@ public class LegacySystemDataImporterController {
     }
 
 
-    public List getSortAlgorithms() {
+    public List<Object> getSortAlgorithms() {
         return oCompany.getLegacySystemData().getSortAlgorithms();
     }
 
-    public void setSortAlgorithm(String sa) {
-        String sortAlgorithm = sa;
+    public void setSortAlgorithms() {
+        oCompany.getLegacySystemData().setSortAlgorithms();
+
+    }
+
+    public List<Object> getSortOrder(){
+        return oCompany.getLegacySystemData().getSortOrder();
+    }
+
+    public void setSortOrder() {
+        oCompany.getLegacySystemData().setSortOrder();
+
+    }
+
+    public List<Object> getSortArrivalLeaving(){
+        return oCompany.getLegacySystemData().getSortArrivalLeaving();
+    }
+
+    public void setSortArrivalLeaving () {
+        oCompany.getLegacySystemData().setSortArrivalLeaving();
+
     }
 }
