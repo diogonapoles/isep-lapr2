@@ -2,11 +2,17 @@ package app.domain.model.vaccinationCenter;
 
 import app.domain.model.systemUser.SNSUser;
 import app.domain.model.vaccinationProcess.UserArrival;
+import app.domain.model.vaccinationProcess.UserLeaving;
 import app.domain.model.vaccinationProcess.VaccineAdministration;
 import app.domain.model.vaccine.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 /**
@@ -31,12 +37,13 @@ public abstract class VaccinationCenter {
     private List<Slot> listSlots;
     private List<VaccineSchedule> listSchedule;
     private List<UserArrival> listUserArrival;
+    private List<UserLeaving> listUserLeaving;
     private List<VaccineAdministration> listAdministratedVaccines;
 
     private List<UserArrival> waitingRoom;
     private List<VaccineAdministration> recoveryRoom;
 
-    private final int RECOVERY_ROOM_TIME = 1800;
+    private final int RECOVERY_ROOM_TIME = 1800; //seconds
 
 
     /**
@@ -89,6 +96,7 @@ public abstract class VaccinationCenter {
         this.listVaccinationDay = new ArrayList<>();
         this.listUserArrival = new ArrayList<>();
         this.listAdministratedVaccines = new ArrayList<>();
+        this.listUserLeaving = new ArrayList<>();
         this.waitingRoom = new ArrayList<>();
         this.recoveryRoom = new ArrayList<>();
     }
@@ -704,6 +712,7 @@ public abstract class VaccinationCenter {
                     @Override
                     public void run() {
                         removeFromRecoveryRoom(vaccineAdministration, vaccine);
+                        listUserLeaving.add(new UserLeaving(vaccineAdministration, new Date()));
                     }
                 },
                 RECOVERY_ROOM_TIME
@@ -810,7 +819,61 @@ public abstract class VaccinationCenter {
         return null;
     }
 
+    public boolean validateTimeIntervalForVaccinationCenter(int timeInterval, String start, String end) {
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("HH:mm");
+        LocalTime t1 = LocalTime.parse(start, fmt);
+        LocalTime t2 = LocalTime.parse(end, fmt);
+        long minutes = ChronoUnit.MINUTES.between(t1, t2);
 
+        if (findDivisors((int) minutes).contains(timeInterval))
+            return true;
+        return false;
+    }
+
+    public List<Integer> findDivisors(int minutes){
+        List<Integer> divisors = new ArrayList<>();
+        for (int i = 1; i * i <= minutes; ++i)
+            if (minutes % i == 0) {
+                divisors.add(i);
+                if (i != minutes / i)
+                    divisors.add(minutes / i);
+            }
+        return divisors;
+    }
+
+
+    public boolean validateAnalyzePerformanceTime(int time, boolean flag){
+        if(flag){//startTime
+            return openingHours<=time;
+        }else{//endTime
+            return closingHours>time;
+        }
+    }
+
+    public List<UserArrival> getListUserArrival() {
+        return listUserArrival;
+    }
+
+    public List<UserLeaving> getListUserLeaving() {
+        return listUserLeaving;
+    }
+
+    //true = start
+    //false = end
+    public Date analyzePerformanceTime(String time, boolean flag){
+        String[] timeSplit = time.split(":");
+        if(validateAnalyzePerformanceTime(Integer.parseInt(timeSplit[0]), flag)){
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm");
+                dateFormat.setLenient(false);
+                return dateFormat.parse(time);
+            } catch (ParseException e) {
+                throw new IllegalArgumentException("Invalid time:" + time);
+            }
+        }else{
+            throw new IllegalArgumentException("You have to respect the Vaccination Center timetable (" + openingHours + "-" + closingHours + ")");
+        }
+    }
 }
 
 

@@ -10,10 +10,9 @@ public class CenterCoordinatorUI implements Runnable{
     public void run() {
         List<MenuItem> options = new ArrayList<MenuItem>();
 
-        new LegacySystemDataImporterUI().run();
 
-        options.add(new MenuItem("Import data from legacy system ", new CenterCoordinatorUI()));
-
+        options.add(new MenuItem("Import data from legacy system ", new LegacySystemDataImporterUI()));
+        options.add(new MenuItem("Analyze Performance", new AnalyzePerformanceUI()));
 
 
         int option = 0;
