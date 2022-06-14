@@ -21,6 +21,7 @@ import java.util.ResourceBundle;
 public class CenterCoordinatorUI implements Initializable {
     private Stage stage;
     private ChoosingVaccinationCenterController controller;
+    public static VaccinationCenter vaccinationCenter;
 
     @FXML
     private Button btnBack;
@@ -52,6 +53,7 @@ public class CenterCoordinatorUI implements Initializable {
     void btnConfirm(ActionEvent event) {
         btnLeft.setDisable(false);
         btnRight.setDisable(false);
+        vaccinationCenter = comboVac.getValue();
 
     }
 
