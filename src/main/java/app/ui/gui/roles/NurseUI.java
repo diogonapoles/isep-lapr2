@@ -20,6 +20,8 @@ import java.util.ResourceBundle;
 public class NurseUI implements Initializable {
     private Stage stage;
     private ChoosingVaccinationCenterController controller;
+    private boolean pressed = false;
+    public VaccinationCenter vaccinationCenter;
     @FXML
     private Button btnBack;
 
@@ -49,19 +51,42 @@ public class NurseUI implements Initializable {
 
     @FXML
     void btnConfirm(ActionEvent event) {
-        btnLeft.setDisable(false);
-        btnRight.setDisable(false);
+        if (pressed) {
+            btnLeft.setDisable(false);
+            btnRight.setDisable(false);
+            vaccinationCenter = comboVac.getValue();
 
+
+
+        }
     }
 
 
+    public VaccinationCenter getVaccinationCenter(){
+        return this.vaccinationCenter;
+    }
 
-
+    @FXML
+    void btnPress(ActionEvent event) {
+        pressed = true;
+    }
 
 
     @FXML
     void btnUS7(ActionEvent event) {
+        try {
+            var loader = new FXMLLoader(getClass().getResource("/fxml/US/7_1.fxml"));
+            Parent root = loader.load();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            // scene.getStylesheets().add(getClass().getResource("/styles/Styles.css").toExternalForm());
+            String css = this.getClass().getResource("/styles/Styles.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            stage.setScene(scene);
 
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
     }
 
 
