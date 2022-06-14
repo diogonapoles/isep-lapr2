@@ -150,4 +150,14 @@ public class SNSUserStore {
         }
         return null;
     }
+
+
+
+    public String getSNSUserNameByNumber(int snsUserNumber) {
+        for (SNSUser user : listSNSUser){
+            if (user.getSnsUserNumber().equals(snsUserNumber))
+                return user.getName();
+        }
+    return null;
+    }
 }

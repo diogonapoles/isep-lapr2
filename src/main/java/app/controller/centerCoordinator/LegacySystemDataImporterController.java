@@ -21,6 +21,7 @@ public class LegacySystemDataImporterController {
 
 
 
+
     public boolean newLegacySystemDataReader(String filePath) throws Exception {
         this.listLegacySystemData = oCompany.getLegacySystemDataReader().csvReaderLegacyData(filePath);
         if (this.listLegacySystemData != null)
@@ -29,35 +30,16 @@ public class LegacySystemDataImporterController {
             return false;
     }
 
+    public List getListLegacySystemData(){return listLegacySystemData;}
 
-    public boolean importSNSUserCSV() {
-    /*    this.listLegacySystemData = oCompany.getSNSUserStore().validateTempList(listLegacySystemData);
-        if (listLegacySystemData.size() > 0) {
-            return this.oCompany.getSNSUserStore().importSNSUserCSV(listLegacySystemData);
-        }else{
-            return false;
-        }
-
-     */
-        return false;
+    public void sortLegacySystemData(List listLegacySystemData) {
+        boolean ascending=false;
+        int position=0;
+        this.listLegacySystemData= oCompany.getLegacySystemData().bubbleSortArrayList(listLegacySystemData, ascending,position);
+        System.out.println(listLegacySystemData);
+        
     }
 
-
-    public void clearTempArray(){
-        listLegacySystemData.clear();
-    }
-
-
-   // public List<SNSUser> getCSVUserList(){
-    //    return this.listLegacySystemData;
-    //}
-
-
-
-
-
-    public void importLegacySystemDataCSV() {
-    }
 
 
     public List<Object> getSortAlgorithms() {
@@ -86,4 +68,16 @@ public class LegacySystemDataImporterController {
         oCompany.getLegacySystemData().setSortArrivalLeaving();
 
     }
+
+    public int getSnsUserNumber() {
+        return oCompany.getLegacySystemData().getSnsUserNumber();
+    }
+
+    public String getSNSUserName(){
+        return oCompany.getSNSUserStore().getSNSUserNameByNumber(getSnsUserNumber());
+    }
+
+    public void sortByParameters(String sortChoice, String sortOrder, String sortArrivalLeaving, List listLegacyData) {
+            oCompany.getLegacySystemData().sortByParameters(sortChoice, sortOrder, sortArrivalLeaving, listLegacyData);
+        }
 }

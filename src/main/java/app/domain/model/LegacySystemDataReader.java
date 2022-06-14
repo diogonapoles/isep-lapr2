@@ -12,8 +12,8 @@ import java.util.List;
 
 public class LegacySystemDataReader {
 
+    private List listLegacy = new ArrayList();
 
-    private final String HEADER = ("SNSUSerNumber;VaccineName;Dose;LotNumber;ScheduledDateTime;ArrivalDateTime;NurseAdministrationDateTime;LeavingDateTime");
 
     public List csvReaderLegacyData(String fileName) throws Exception {
 
@@ -23,7 +23,7 @@ public class LegacySystemDataReader {
 
 
         try (BufferedReader br = Files.newBufferedReader(pathToFile)) {
-            String linha= br.readLine();
+            String header = br.readLine();
             String line = br.readLine();
             while (line != null) {
                 String[] attributes = line.split(";");
@@ -36,86 +36,22 @@ public class LegacySystemDataReader {
         }
         return listLegacySystemData;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*        List<Object> listLegacySystemData;
-        BufferedReader br = null;
-        Path pathToFile = Paths.get(fileName);
-
-        try {
-            br = new BufferedReader(new FileReader(pathToFile));
-            listLegacySystemData = br.lines().collect(Collectors.toList());
-
-        } catch (IOException e) {
-            throw new IOException("Couldn't open the file");
-        }finally {
-            if (br!=null){
-                try {
-                    br.close();
-                }catch (IOException e){
-                    throw new IOException("Could't close the file");
-                }
-            }
-        }
-
-        listLegacySystemData.forEach(System.out::println);
-
-        return listLegacySystemData;
-
- */
-
-
-
-
-
-
-
-
-
-       /* try {
-            BufferedReader br = new BufferedReader(new FileReader(filePath));
-            String header = br.readLine();
-            if (header == HEADER) {
-                String[] columns = header.split(";");
-            }
-
-            return null;
-
-        } catch (IOException ex) {
-            throw new IOException("Couldn't read the data in the given file");
-        }finally {
-            br.close();
-        }
-
-        */
-
-
     }
 
     private LegacySystemData createLegacySystemData(String[] attributes) throws Exception {
         try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm");
             int snsUserNumber = Integer.parseInt(attributes[0]);
             String vaccineName = attributes[1];
             String dose = attributes[2];
             String lotNumber = attributes[3];
             Date scheduledDateTime = dateFormat.parse(attributes[4]);
             Date arrivalDateTime = dateFormat.parse(attributes[5]);
-            Date leavingDateTime = dateFormat.parse(attributes[6]);
+            Date nurseAdministrationTime = dateFormat.parse(attributes[6]);
+            Date leavingDateTime = dateFormat.parse(attributes[7]);
             return new LegacySystemData(snsUserNumber, vaccineName, dose, lotNumber,
-                    scheduledDateTime, arrivalDateTime, leavingDateTime);
-        }catch (Exception ex){
+                    scheduledDateTime, arrivalDateTime, nurseAdministrationTime, leavingDateTime);
+        } catch (Exception ex) {
             throw new Exception("Couldn´t read the date from the file");
         }
     }

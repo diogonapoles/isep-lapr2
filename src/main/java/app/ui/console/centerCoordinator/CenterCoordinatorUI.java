@@ -25,13 +25,8 @@ public class CenterCoordinatorUI implements Runnable{
         }
         while (option != -1);
 
-
-
-
-
-
-
     }
+
 
 
 }

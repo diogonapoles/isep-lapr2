@@ -45,6 +45,7 @@ public class Company {
         this.oLegacySystemData = new LegacySystemData();
         this.oBruteForce = new BruteForce();
         this.oBenchmark = new Benchmark();
+
     }
 
     /**
