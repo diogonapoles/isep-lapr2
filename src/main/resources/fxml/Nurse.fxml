@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.ui.gui.roles.NurseUI">
+   <children>
+      <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnBack" text="Back" />
+      <Label layoutX="263.0" layoutY="91.0" text="NURSE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="231.0" layoutY="180.0" text="Choose your option:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label accessibleRoleDescription="rd" layoutX="14.0" layoutY="369.0" text="Note: The options listed are the options developed in SprintD" />
+      <Button fx:id="btnLeft" layoutX="35.0" layoutY="227.0" mnemonicParsing="false" onAction="#btnUS7" prefHeight="62.0" prefWidth="250.0" text="Record adverse reactions of a SNS User" />
+      <Button fx:id="btnRight" layoutX="323.0" layoutY="227.0" mnemonicParsing="false" onAction="#btnUS8" prefHeight="62.0" prefWidth="250.0" text="Record the administration of a vaccine" />
+      <ChoiceBox fx:id="comboVac" layoutX="363.0" layoutY="14.0" prefWidth="150.0" />
+      <Label layoutX="168.0" layoutY="17.0" text="Choose the vaccination center:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnConfirm" layoutX="514.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnConfirm" text="Confirm" />
+   </children>
+</AnchorPane>

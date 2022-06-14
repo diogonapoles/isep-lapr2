@@ -3,13 +3,20 @@ package app.ui.console.centerCoordinator;
 import app.controller.centerCoordinator.LegacySystemDataImporterController;
 import app.ui.console.utils.Utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LegacySystemDataImporterUI implements Runnable {
 
     private final LegacySystemDataImporterController controller;
 
+    private final CenterCoordinatorUI ccUI;
+
+    private List listLegacyData = new ArrayList<>();
 
     public LegacySystemDataImporterUI() {
         controller = new LegacySystemDataImporterController();
+        ccUI = new CenterCoordinatorUI();
     }
 
     public boolean inputData() throws Exception {
@@ -22,13 +29,19 @@ public class LegacySystemDataImporterUI implements Runnable {
 
         try {
             if (inputData()) {
-                this.controller.setSortAlgorithms();
-                String sortChoice = (String) Utils.showAndSelectOne(controller.getSortAlgorithms(),"\n\nChoose the intended sort algorithm\n");
-                this.controller.setSortOrder();
-                String sortOrder = (String) Utils.showAndSelectOne(controller.getSortOrder(),"\n\nChoose the intended sorting method\n");
-                this.controller.setSortArrivalLeaving();
-                String sortArrivalLeaving = (String) Utils.showAndSelectOne(controller.getSortArrivalLeaving(),"\n\nChoose the intended parameter for Sorting\n");
+                listLegacyData = controller.getListLegacySystemData();
 
+                addSortStuff();
+
+                String sortChoice = (String) Utils.showAndSelectOne(controller.getSortAlgorithms(), "\n\nChoose the intended sort algorithm\n");
+                String sortOrder = (String) Utils.showAndSelectOne(controller.getSortOrder(), "\n\nChoose the intended sorting method\n");
+                String sortArrivalLeaving = (String) Utils.showAndSelectOne(controller.getSortArrivalLeaving(), "\n\nChoose the intended parameter for Sorting\n");
+
+                try {
+                    controller.sortByParameters(sortChoice, sortOrder, sortArrivalLeaving, listLegacyData);
+                }catch (Exception ex){
+                    ccUI.run();
+                }
 
 
 /*
@@ -53,30 +66,20 @@ public class LegacySystemDataImporterUI implements Runnable {
 
     }
 
+    private void addSortStuff() {
+
+        this.controller.setSortAlgorithms();
+        this.controller.setSortOrder();
+        this.controller.setSortArrivalLeaving();
 
 
-
-
-
+    }
 
     private void getSortedData() {
-       // Utils.showList(controller.getli(), "Sorted Data:");
+        // Utils.showList(controller.getli(), "Sorted Data:");
     }
 
 
-
-
 }
-      /*  if (this.controller.getVaccinationCenters() == null) {
-            System.out.println("null list");
-        }else if (this.controller.getVaccinationCenters().isEmpty()) {
-            System.out.println("empty list");
-            return;
-        }
-
-        Object vc = Utils.showAndSelectOne(controller.getVaccinationCenters(),"Choose Center:\n\n");
-        controller.setWorking(vc);
-
-       */
 
 

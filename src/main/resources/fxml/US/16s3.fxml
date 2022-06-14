@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="126.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.ui.gui.US.ui.US16ui">
+   <children>
+      <Label layoutX="111.0" layoutY="26.0" text="Insert the values in the format specified, please!">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnOK2" layoutX="284.0" layoutY="70.0" mnemonicParsing="false" onAction="#btnOK2" text="OK" />
+   </children>
+</AnchorPane>

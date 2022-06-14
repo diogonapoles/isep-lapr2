@@ -41,6 +41,7 @@ public class Stats {
     public void start() throws IOException {
         Properties props = new Properties();
         props.load(new FileInputStream("./config.properties"));
+       // props.load(new FileInputStream("C:\\Users\\35193\\Desktop\\ProjetoLapr2\\lei-22-s2-1dc-g13\\config.properties"));
         String time = props.getProperty(Constants.PARAMS_DAILYSTATISTICS_TIME);
         String[] hoursMinutes = time.split(":");
         int targetHour = Integer.parseInt(hoursMinutes[0]);

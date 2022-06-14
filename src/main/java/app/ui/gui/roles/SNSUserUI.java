@@ -1,5 +1,4 @@
-package app.ui.gui;
-
+package app.ui.gui.roles;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,26 +9,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
-public class DevTeamUI {
-    private Appfx mainAppfx;
+public class SNSUserUI {
     private Stage stage;
     @FXML
     private Button btnBack;
-    public void setMainApp(Appfx mainAppfx) {
-        this.mainAppfx = mainAppfx;
 
-    }
     @FXML
-    void btnBack(ActionEvent event) throws IOException  {
-
-
-
-
-
+    void btnBack(ActionEvent event) {
         try {
-            var loader = new FXMLLoader(getClass().getResource("/fxml/Main.fxml"));
+            var loader = new FXMLLoader(getClass().getResource("/fxml/Login1.fxml"));
             Parent root = loader.load();
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);

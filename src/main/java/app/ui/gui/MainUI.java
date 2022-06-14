@@ -10,6 +10,8 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MainUI {
     private Appfx mainAppfx;
@@ -26,8 +28,13 @@ public class MainUI {
 
     }
     @FXML
-    void btnDev(ActionEvent event) throws IOException {
-       // Stage stage =  mainAppfx.getStage();
+    void btnDev(ActionEvent event) throws Exception {
+
+/*
+            DevTeamUI devTeamUI = (DevTeamUI) mainAppfx.replaceSceneContent("/fxml/DevTeam.fxml");
+            devTeamUI.setMainApp(mainAppfx);
+*/
+
 
         try {
             var loader = new FXMLLoader(getClass().getResource("/fxml/DevTeam.fxml"));
@@ -49,7 +56,7 @@ public class MainUI {
 
     @FXML
     void btnLogin(ActionEvent event) {
-        // Stage stage =  mainAppfx.getStage();
+
 
         try {
             var loader = new FXMLLoader(getClass().getResource("/fxml/Login1.fxml"));
