@@ -21,7 +21,7 @@ public class NurseUI implements Initializable {
     private Stage stage;
     private ChoosingVaccinationCenterController controller;
     private boolean pressed = false;
-    public VaccinationCenter vaccinationCenter;
+    public static VaccinationCenter vaccinationCenter;
     @FXML
     private Button btnBack;
 
@@ -51,14 +51,13 @@ public class NurseUI implements Initializable {
 
     @FXML
     void btnConfirm(ActionEvent event) {
-        if (pressed) {
             btnLeft.setDisable(false);
             btnRight.setDisable(false);
             vaccinationCenter = comboVac.getValue();
 
 
 
-        }
+
     }
 
 
@@ -75,7 +74,7 @@ public class NurseUI implements Initializable {
     @FXML
     void btnUS7(ActionEvent event) {
         try {
-            var loader = new FXMLLoader(getClass().getResource("/fxml/US/7_1.fxml"));
+            var loader = new FXMLLoader(getClass().getResource("/fxml/US/7s1.fxml"));
             Parent root = loader.load();
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);

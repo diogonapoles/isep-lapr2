@@ -1,17 +1,18 @@
 package app.ui.gui.US.ui;
 
-import app.controller.nurse.AdverseReactionsController;
-import app.ui.console.utils.Utils;
 import app.ui.gui.US.ctrl.US7ctrl;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
+
+
 
 
 public class US7ui {
@@ -20,11 +21,10 @@ public class US7ui {
     private String snsUserNumber;
     private String adverseReactions;
     private Stage stage;
-    @FXML
-    private Button btnBack;
+
 
     @FXML
-    private Button btnConfirm;
+    private Button btnBack ;
     @FXML
     private TextField reactionTextField;
 
@@ -37,7 +37,7 @@ public class US7ui {
 
 
     @FXML
-    void btnOK1(ActionEvent event) {
+   public void btnOK1(ActionEvent event) {
         try {
             var loader = new FXMLLoader(getClass().getResource("/fxml/Nurse.fxml"));
             Parent root = loader.load();
@@ -55,7 +55,7 @@ public class US7ui {
     @FXML
     public void btnOK2(ActionEvent event) {
         try {
-            var loader = new FXMLLoader(getClass().getResource("/fxml/US/7_1.fxml"));
+            var loader = new FXMLLoader(getClass().getResource("/fxml/US/7s1.fxml"));
             Parent root = loader.load();
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
@@ -76,13 +76,13 @@ public class US7ui {
 
 
     @FXML
-    void btnConfirm(ActionEvent event) {
+    public void btnConfirm(ActionEvent event) {
         snsUserNumber = userTextField.getText();
 
         if (isUserInRecoveryList(snsUserNumber)) {
             adverseReactions = reactionTextField.getText();
             try {
-                var loader = new FXMLLoader(getClass().getResource("/fxml/US/7_2.fxml"));
+                var loader = new FXMLLoader(getClass().getResource("/fxml/US/7s2.fxml"));
                 Parent root = loader.load();
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 Scene scene = new Scene(root);
@@ -96,7 +96,7 @@ public class US7ui {
             }
         } else
             try {
-                var loader = new FXMLLoader(getClass().getResource("/fxml/US/7_3.fxml"));
+                var loader = new FXMLLoader(getClass().getResource("/fxml/US/7s3.fxml"));
                 Parent root = loader.load();
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 Scene scene = new Scene(root);
@@ -123,7 +123,7 @@ public class US7ui {
     }
 
     @FXML
-    void btnBack(ActionEvent event) {
+    public void btnBack(ActionEvent event) {
         try {
             var loader = new FXMLLoader(getClass().getResource("/fxml/Nurse.fxml"));
             Parent root = loader.load();

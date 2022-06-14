@@ -27,7 +27,7 @@ public class US7ctrl {
     }
 
     public VaccinationCenter getWorking() {
-
+        vaccinationCenter = NurseUI.vaccinationCenter;
         //vaccinationCenter = oCompany.getEmployeeStore().getWorking(oApp.getCurrentUserSession().getUserId().getEmail());
         return vaccinationCenter;
     }
