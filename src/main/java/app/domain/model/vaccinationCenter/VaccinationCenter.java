@@ -4,8 +4,10 @@ import app.domain.model.systemUser.SNSUser;
 import app.domain.model.vaccinationProcess.UserArrival;
 import app.domain.model.vaccinationProcess.UserLeaving;
 import app.domain.model.vaccinationProcess.VaccineAdministration;
+import app.domain.model.vaccinationProcess.VaccineSchedule;
 import app.domain.model.vaccine.*;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -18,8 +20,7 @@ import java.util.*;
 /**
  * The type Vaccination center.
  */
-public abstract class VaccinationCenter {
-
+public abstract class VaccinationCenter implements Serializable {
 
     private String name;
     private Integer phoneNumber;
@@ -495,6 +496,18 @@ public abstract class VaccinationCenter {
                 vaccinationCenter.slotDuration, vaccinationCenter.maxNumVaccinesPerSlot);
         listVaccinationDay.add(newDay);
         return newDay;
+    }
+
+    public List<Day> getListVaccinationDay() {
+        return listVaccinationDay;
+    }
+
+    public List<Slot> getListSlots() {
+        return listSlots;
+    }
+
+    public List<VaccineSchedule> getListSchedule() {
+        return listSchedule;
     }
 
     public boolean validateVaccineSchedule(VaccineType type, SNSUser user, Date date){

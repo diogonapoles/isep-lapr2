@@ -1,11 +1,9 @@
 package app.domain.model.vaccinationProcess;
 
-import app.domain.model.systemUser.SNSUser;
-import app.domain.model.vaccine.VaccineSchedule;
-
+import java.io.Serializable;
 import java.util.Date;
 
-public class UserLeaving {
+public class UserLeaving implements Serializable {
 
     private VaccineAdministration schedule;
     private Date leavingDate;

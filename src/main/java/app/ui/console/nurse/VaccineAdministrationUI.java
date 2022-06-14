@@ -1,15 +1,12 @@
 package app.ui.console.nurse;
 
 import app.controller.nurse.VaccineAdministrationController;
-import app.domain.model.systemUser.SNSUser;
 import app.domain.model.vaccinationProcess.UserArrival;
 import app.domain.model.vaccinationProcess.VaccineAdministration;
 import app.domain.model.vaccine.Vaccine;
-import app.domain.model.vaccine.VaccineSchedule;
 import app.ui.console.utils.Utils;
 
 import java.util.Date;
-import java.util.List;
 
 public class VaccineAdministrationUI implements Runnable{
     private VaccineAdministrationController controller;
@@ -38,7 +35,7 @@ public class VaccineAdministrationUI implements Runnable{
                 vaccineAdministration = controller.createVaccineAdministration(user, vaccine, new Date());
 
             System.out.println(vaccineAdministration);
-            boolean confirm = Utils.confirm("Do you want to schedule this vaccine? (s/n)");
+            boolean confirm = Utils.confirm("Do you want to record this vaccine? (s/n)");
             if(confirm){
                 if(controller.addVaccineAdministration(vaccineAdministration)){
                     controller.removeFromWaitingRoom(user);

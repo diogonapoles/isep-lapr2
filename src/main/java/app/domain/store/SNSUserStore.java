@@ -38,6 +38,7 @@ public class SNSUserStore {
             SNSUser oSNSUser = list.get(counter);
             if (validateSNSUser(oSNSUser.getPhoneNumber(), oSNSUser.getHomeAddress(), oSNSUser.getEmailAddress()))
                 addSNSUser(oSNSUser);
+
             else
                 return false;
         }

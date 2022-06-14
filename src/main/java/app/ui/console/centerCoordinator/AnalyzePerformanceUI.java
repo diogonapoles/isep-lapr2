@@ -27,7 +27,7 @@ public class AnalyzePerformanceUI implements Runnable{
 
         Properties props = new Properties();
         try {
-            props.load(new FileInputStream("./config.properties"));
+            props.load(new FileInputStream("config.properties"));
         } catch (IOException e) {
             System.out.println("Could not read config file");
             return;

@@ -5,7 +5,7 @@ import app.controller.snsUser.ScheduleVaccineController;
 import app.domain.model.systemUser.SNSUser;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.domain.model.vaccine.Vaccine;
-import app.domain.model.vaccine.VaccineSchedule;
+import app.domain.model.vaccinationProcess.VaccineSchedule;
 import app.domain.model.vaccine.VaccineType;
 import app.ui.console.utils.Utils;
 

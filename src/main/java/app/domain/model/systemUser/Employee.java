@@ -3,10 +3,15 @@ package app.domain.model.systemUser;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
 import org.apache.commons.lang3.StringUtils;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
 /**
  * The type Employee.
  */
-public abstract class Employee {
+public abstract class Employee implements Serializable {
 
 
     private String name;
@@ -166,6 +171,5 @@ public abstract class Employee {
                 ", Address = " + address + ", Email Address = " + emailAddress +
                 ", Citizen Card Number = " + citizenCardNumber + "]");
     }
-
 
 }

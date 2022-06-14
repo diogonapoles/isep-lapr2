@@ -4,12 +4,13 @@ import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.domain.model.vaccine.Vaccine;
 import app.domain.model.vaccine.VaccineType;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * The type Schedule vaccine.
  */
-public class ScheduleVaccine {
+public class ScheduleVaccine implements Serializable{
 
     private String snsUserNumber;
     private VaccinationCenter vaccinationCenter;

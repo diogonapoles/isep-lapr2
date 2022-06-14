@@ -2,11 +2,12 @@ package app.domain.model.vaccinationCenter;
 
 import app.domain.model.systemUser.SNSUser;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Slot {
+public class Slot implements Serializable {
 
     private Day vaccineDay;
     private List<Date> allSlots;

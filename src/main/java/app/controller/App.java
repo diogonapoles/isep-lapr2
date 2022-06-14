@@ -2,11 +2,8 @@ package app.controller;
 
 import app.domain.model.*;
 import app.domain.model.systemUser.Employee;
-import app.domain.model.vaccinationCenter.Day;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
-import app.domain.model.vaccinationProcess.ScheduleVaccine;
 import app.domain.model.vaccine.Vaccine;
-import app.domain.model.vaccine.VaccineSchedule;
 import app.domain.model.vaccine.VaccineType;
 import app.domain.shared.Constants;
 import app.domain.model.systemUser.SNSUser;
@@ -17,9 +14,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -39,6 +34,8 @@ public class App {
         try {
             bootstrap();
         } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -99,7 +96,11 @@ public class App {
     }
 
 
-    private void bootstrap() throws ParseException {
+    private void bootstrap() throws ParseException, IOException {
+        Stats stats = new Stats(company);
+        stats.start();
+
+
         this.authFacade.addUserRole(Constants.ROLE_ADMIN, Constants.ROLE_ADMIN);
         this.authFacade.addUserRole(Constants.ROLE_SNS_USER, Constants.ROLE_SNS_USER);
         this.authFacade.addUserRole(Constants.ROLE_RECEPTIONIST, Constants.ROLE_RECEPTIONIST);
@@ -138,6 +139,23 @@ public class App {
         Vaccine v2 = vt2.newVaccine("FLU Vaccine", "Pfizer", "10-45", 1, 5, 180);
         Vaccine v4 = vt4.newVaccine("spikevax", "Moderna", "12-52",1,5,130);
         createVaccine(vc1.findVaccineType("12345"), vc1.findVaccineType("54321"), vc1.findVaccineType("65465"));
+    }
+    private void registerEmployees(List<Employee> list){
+        for (Employee employee : list){
+            this.company.getEmployeeStore().registerEmployee(employee);
+        }
+    }
+
+    private void registerSNSUsers(List<SNSUser> list){
+        for (SNSUser user : list){
+            this.company.getSNSUserStore().registerSNSUser(user);
+        }
+    }
+
+    private void registerVaccinationCenters(List<VaccinationCenter> list){
+        for (VaccinationCenter center : list){
+            this.company.getVaccinationCenterStore().registerVaccinationCenter(center);
+        }
     }
 
     private void createVaccineType(VaccinationCenter vc1) {

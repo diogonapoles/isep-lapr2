@@ -70,4 +70,5 @@ public class NewVaccineTypeController {
     public boolean registerVaccineType(){return this.oVaccinationCenter.registerVaccineType(oVaccineType);}
 
     public List<VaccinationCenter> getVaccinationCenters(){return this.oCompany.getVaccinationCenterStore().getVaccinationCenters();}
+
 }

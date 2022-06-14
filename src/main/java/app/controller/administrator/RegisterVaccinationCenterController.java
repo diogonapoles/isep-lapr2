@@ -69,4 +69,5 @@ public class RegisterVaccinationCenterController {
      * @return the boolean
      */
     public boolean registerVaccinationCenter(){return this.oCompany.getVaccinationCenterStore().registerVaccinationCenter(oVaccinationCenter);}
+
 }

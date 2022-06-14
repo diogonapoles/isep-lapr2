@@ -9,13 +9,14 @@ import app.domain.model.systemUser.Receptionist;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * The type Employee store.
  */
-public class EmployeeStore {
+public class EmployeeStore implements Serializable {
 
     private final List<Employee> listEmployee = new ArrayList<>();
     private final AuthFacade authFacade;
@@ -46,22 +47,19 @@ public class EmployeeStore {
         if (validateEmployee(phoneNumber, emailAddress, citizenCardNumber)) {
             if (roleSelection == 0) {
                 this.authFacade.addUserWithRole(name, emailAddress, "123456", Constants.ROLE_RECEPTIONIST);
-                return new Receptionist(name, phoneNumber, address, emailAddress, citizenCardNumber);
+                return new Nurse (name, phoneNumber, address, emailAddress, citizenCardNumber);
             } else if (roleSelection == 1) {
                 this.authFacade.addUserWithRole(name, emailAddress, "123456", Constants.ROLE_CENTER_COORDINATOR);
-                return new CenterCoordinator(name, phoneNumber, address, emailAddress, citizenCardNumber);
+                return new CenterCoordinator (name, phoneNumber, address, emailAddress, citizenCardNumber);
             } else if (roleSelection == 2) {
                 this.authFacade.addUserWithRole(name, emailAddress, "123456", Constants.ROLE_NURSE);
-                return new Nurse(name, phoneNumber, address, emailAddress, citizenCardNumber);
+                return new Receptionist (name, phoneNumber, address, emailAddress, citizenCardNumber);
             }
-
-
         }
-
         return null;
     }
 
-    private boolean validateEmployee(String phoneNumber, String emailAddress, String citizenCardNumber) {
+    public boolean validateEmployee(String phoneNumber, String emailAddress, String citizenCardNumber) {
 
         for (Employee employee : listEmployee) {
             if (employee.getCitizenCardNumber().equals(citizenCardNumber)
@@ -85,6 +83,20 @@ public class EmployeeStore {
      */
     public boolean registerEmployee(Employee employee) {
         return addEmployee(employee);
+    }
+
+    public boolean registerEmployeeFromFile(Employee emp){
+        String role = null;
+        if (emp instanceof Receptionist)
+            role = Constants.ROLE_RECEPTIONIST;
+        else if (emp instanceof CenterCoordinator)
+            role = Constants.ROLE_CENTER_COORDINATOR;
+        else if (emp instanceof Nurse)
+            role = Constants.ROLE_NURSE;
+        if (role == null)
+            return false;
+        this.authFacade.addUserWithRole(emp.getName(), emp.getEmailAddress(), "123456", role);
+        return addEmployee(emp);
     }
 
     private boolean addEmployee(Employee employee) {
@@ -161,6 +173,12 @@ public class EmployeeStore {
                 return employee.getWorking();
 
         return null;
+    }
+
+    private static final String EMPLOYEE_FILE_NAME = "employee.ser";
+
+    public List<Employee> getListEmployee() {
+        return listEmployee;
     }
 
 }

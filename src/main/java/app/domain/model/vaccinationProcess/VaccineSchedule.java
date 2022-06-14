@@ -1,14 +1,14 @@
-package app.domain.model.vaccine;
+package app.domain.model.vaccinationProcess;
 
 import app.domain.model.systemUser.SNSUser;
-import app.domain.model.vaccinationCenter.Day;
-import app.domain.model.vaccinationProcess.VaccineAdministration;
-import app.ui.console.utils.Data;
+import app.domain.model.vaccine.Vaccine;
+import app.domain.model.vaccine.VaccineType;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class VaccineSchedule implements Comparable<VaccineSchedule> {
+public class VaccineSchedule implements Comparable<VaccineSchedule>, Serializable {
 
     private SNSUser user;
     private VaccineType vaccineType;

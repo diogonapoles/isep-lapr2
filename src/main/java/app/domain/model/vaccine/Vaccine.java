@@ -1,12 +1,13 @@
 package app.domain.model.vaccine;
 
 
+import java.io.Serializable;
 import java.util.regex.Pattern;
 
 /**
  * The type Vaccine.
  */
-public class Vaccine {
+public class Vaccine implements Serializable {
 
     /**
      * The Vaccine type list.

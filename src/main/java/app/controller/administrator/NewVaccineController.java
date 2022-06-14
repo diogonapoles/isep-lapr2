@@ -80,4 +80,5 @@ public class NewVaccineController {
     public List<VaccineType> getVaccineTypes(){return this.oVaccinationCenter.getListVaccineType();}
 
     public List<VaccinationCenter> getVaccinationCenters(){return this.oCompany.getVaccinationCenterStore().getVaccinationCenters();}
+
 }

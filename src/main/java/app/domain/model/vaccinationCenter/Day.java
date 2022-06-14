@@ -3,6 +3,7 @@ package app.domain.model.vaccinationCenter;
 import app.controller.App;
 import app.domain.model.Company;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class Day {
+public class Day implements Serializable {
 
     private App oApp;
     private Company oCompany;

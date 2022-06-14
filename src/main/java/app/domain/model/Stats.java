@@ -21,12 +21,18 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class Stats {
-    private App oApp;
-    private static Company oCompany;
 
-    public Stats() {
-        this.oApp = App.getInstance();
-        this.oCompany = oApp.getCompany();
+    private static final DateFormat DATE_FORMAT = new SimpleDateFormat("dd_MM_yyyy");
+    private static final String DATE = DATE_FORMAT.format(new Date());
+
+    private static final String CSV_FILE_PATH = "./results_" + DATE + ".csv";
+    private static final String SEPARATOR = ";";
+
+
+    private Company company;
+
+    public Stats(Company company) {
+        this.company = company;
     }
 
     ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
@@ -78,12 +84,6 @@ public class Stats {
         }
     }
 
-    private static final DateFormat DATE_FORMAT = new SimpleDateFormat("dd_MM_yyyy");
-    private static final String DATE = DATE_FORMAT.format(new Date());
-
-    private static final String CSV_FILE_PATH = "./results_" + DATE + ".csv";
-    private static final String SEPARATOR = ";";
-
     public void addDataToCSV(String output) {
         File file = new File(output);
         try {
@@ -96,7 +96,7 @@ public class Stats {
             String collect = header.stream().collect(Collectors.joining(";"));
             writer.write(collect);
 
-            for (VaccinationCenter vaccinationCenter : oCompany.getVaccinationCenterStore().getVaccinationCenters()){
+            for (VaccinationCenter vaccinationCenter : company.getVaccinationCenterStore().getVaccinationCenters()){
                 for(VaccineAdministration administration : vaccinationCenter.getListAdministratedVaccines()){
                     if (DateUtils.isSameDay(administration.getVaccinationTime(), new Date())){
                         DateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");

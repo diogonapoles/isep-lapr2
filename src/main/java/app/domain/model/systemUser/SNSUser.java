@@ -2,12 +2,13 @@ package app.domain.model.systemUser;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Calendar;
 import java.util.Date;
 
-public class SNSUser {
+public class SNSUser implements Serializable {
 
     private String name;
     private String gender;

@@ -1,15 +1,14 @@
 package app.domain.model.vaccinationProcess;
 
-import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.domain.model.systemUser.SNSUser;
-import app.domain.model.vaccine.VaccineSchedule;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * The type User arrival.
  */
-public class UserArrival {
+public class UserArrival implements Serializable {
 
 
     private SNSUser snsUser;

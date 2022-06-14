@@ -55,7 +55,7 @@ public class AnalyzePerformanceController {
     public Date stringToDate(String strDate) {
         Date date;
         try {
-            SimpleDateFormat df = new SimpleDateFormat("HH:mm");
+            SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
             df.setLenient(false);
             date = df.parse(strDate);
         } catch (ParseException e) {

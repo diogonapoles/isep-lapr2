@@ -2,9 +2,10 @@ package app.domain.model.vaccinationProcess;
 
 import app.domain.model.vaccine.Vaccine;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class VaccineAdministration {
+public class VaccineAdministration implements Serializable {
 
     private UserArrival userArrival;
     private Date vaccinationTime;

@@ -18,12 +18,11 @@ public class Company {
     private VaccinationCenterStore oVaccinationCenterStore;
     private SNSUserStore oSNSUserStore;
     private CSVReader oCSVReader;
-
-    private LegacySystemDataReader oLegacySystemDataReader;
     private LegacySystemData oLegacySystemData;
-    private VaccinationCenter vaccinationCenter;
+    private LegacySystemDataReader oLegacySystemDataReader;
     private BruteForce oBruteForce;
     private Benchmark oBenchmark;
+    private FileUtils oFileUtils;
 
 
 
@@ -45,6 +44,7 @@ public class Company {
         this.oLegacySystemData = new LegacySystemData();
         this.oBruteForce = new BruteForce();
         this.oBenchmark = new Benchmark();
+        this.oFileUtils = new FileUtils();
     }
 
     /**
@@ -71,6 +71,8 @@ public class Company {
      * @return the csv reader
      */
     public CSVReader getCSVReader(){return this.oCSVReader;}
+
+    public FileUtils getFileUtils(){return this.oFileUtils;}
 
     public BruteForce getBruteForceAlgorithm(){return this.oBruteForce;}
 

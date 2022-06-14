@@ -2,13 +2,14 @@ package app.domain.model.vaccine;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * The type Vaccine type.
  */
-public abstract class VaccineType {
+public abstract class VaccineType implements Serializable {
     private String code;
     private String designation;
     private List<Vaccine> listVaccine;
