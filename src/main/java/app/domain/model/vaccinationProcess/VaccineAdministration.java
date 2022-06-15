@@ -66,8 +66,11 @@ public class VaccineAdministration implements Serializable {
         this.recoveryRoomTime = recoveryRoomTime;
     }
 
+
+
     @Override
     public String toString() {
-        return "VaccineAdministration [" + " SNS User = " + userArrival.getSnsUser().getEmailAddress() + " | Vaccine = " + vaccine.getName() + "]";
+        return "VaccineAdministration ["+"SNS User Number "+userArrival.getSnsUser().getSnsUserNumber()
+                + " | SNS User = " + userArrival.getSnsUser().getEmailAddress() + " | Vaccine = " + vaccine.getName() + "]";
     }
 }

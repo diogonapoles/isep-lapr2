@@ -1,9 +1,13 @@
 package app.domain.model.vaccinationProcess;
 
+import app.controller.App;
+import app.domain.model.Company;
 import app.domain.model.systemUser.SNSUser;
 
+import javax.swing.plaf.basic.ComboPopup;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * The type User arrival.
@@ -14,12 +18,18 @@ public class UserArrival implements Serializable {
     private SNSUser snsUser;
     private Date arrivalTime;
     private VaccineSchedule schedule;
+    private App oApp;
+    private Company oCompany;
 
 
     public UserArrival(SNSUser snsUser, Date arrivalTime, VaccineSchedule schedule) {
         this.snsUser = snsUser;
         this.arrivalTime = arrivalTime;
         this.schedule = schedule;
+    }
+    public UserArrival(){
+        oApp= App.getInstance();
+        oCompany=oApp.getCompany();
     }
 
     /**
@@ -55,4 +65,9 @@ public class UserArrival implements Serializable {
     public String toString() {
         return "User [" + "E-mail = " + snsUser.getEmailAddress() + " | Arrival Time = " + arrivalTime + " | Scheduled Time = " + schedule.getTime() + "]";
     }
+
+    public List getArrivalList(){
+        return oCompany.getLegacySystemData().getArrivalList();
+    }
+
 }

@@ -1,6 +1,8 @@
 package app.domain.model;
 
 import app.domain.model.vaccinationCenter.VaccinationCenter;
+import app.domain.model.vaccine.Vaccine;
+import app.domain.model.vaccine.VaccineType;
 import app.domain.store.*;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
@@ -18,6 +20,7 @@ public class Company {
     private VaccinationCenterStore oVaccinationCenterStore;
     private SNSUserStore oSNSUserStore;
     private CSVReader oCSVReader;
+    private Vaccine oVaccine;
     private LegacySystemData oLegacySystemData;
     private LegacySystemDataReader oLegacySystemDataReader;
     private BruteForce oBruteForce;
@@ -77,6 +80,8 @@ public class Company {
     public BruteForce getBruteForceAlgorithm(){return this.oBruteForce;}
 
     public Benchmark getBenchmarkAlgorithm(){return this.oBenchmark;}
+
+    public Vaccine getVaccine(){return this.oVaccine;}
 
     public LegacySystemDataReader getLegacySystemDataReader(){return this.oLegacySystemDataReader;}
 

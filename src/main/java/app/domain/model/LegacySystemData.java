@@ -1,6 +1,5 @@
 package app.domain.model;
 
-import app.controller.App;
 
 import java.util.*;
 
@@ -8,7 +7,8 @@ public class LegacySystemData implements Comparable<LegacySystemData> {
 
 
     private List<LegacySystemData> listLegacy = new ArrayList<>();
-
+    private List listLeaving = new ArrayList<>();
+    private List listArrival=new ArrayList();
     private final List<Object> listSortAlgorithms = new ArrayList<>();
     private final List<Object> listSortOrder = new ArrayList<>();
     private final List<Object> listSortArrivalLeaving = new ArrayList<>();
@@ -41,7 +41,6 @@ public class LegacySystemData implements Comparable<LegacySystemData> {
     }
 
     public LegacySystemData() {
-
     }
 
     public Date getNurseAdministrationTime() {
@@ -153,7 +152,7 @@ public class LegacySystemData implements Comparable<LegacySystemData> {
     }
 
 
-    public void sortByParameters(String sortChoice, String sortOrder, String sortArrivalLeaving, List listLegacyData) {
+    public List sortByParameters(String sortChoice, String sortOrder, String sortArrivalLeaving, List listLegacyData) {
 
         boolean ascending = true;
         int position;
@@ -192,31 +191,37 @@ public class LegacySystemData implements Comparable<LegacySystemData> {
             }
         }
 
-        System.out.println("SNSUSerNumber; VaccineName; Dose; LotNumber; ScheduledDateTime; ArrivalDateTime; NurseAdministrationDateTime; LeavingDateTime");
-        for (int i = 0; i < listLegacy.size(); i++) {
-            System.out.println(listLegacy.get(i).toString());
 
+        return listLegacy;
+
+
+    }
+
+    public List getLeavingList() {
+        for (int i = 0; i < listLegacy.size()-1; i++) {
+            listLeaving.add(listLegacy.get(i).getLeavingDateTime());
         }
-
-
+        return getListSorted(listLeaving);
+    }
+    public List getArrivalList() {
+        for (int i = 0; i < listLegacy.size()-1; i++) {
+            listArrival.add(listLegacy.get(i).getArrivalDateTime());
+        }
+        return getListSorted(listArrival);
     }
 
-    public String getNameByNumber() {
-        return null;
-        // return oCompany.getSNSUserStore().getSNSUserNameByNumber(getSnsUserNumber());
+    public List getListSorted(List list){
+        Collections.sort(list);
+        return list;
     }
 
-
-    public String getVaccineDescription() {
-        //   return oCompany.getV
-        return null;
-    }
 
     public String toString() {
-        return String.format(getNameByNumber() + ";  " + getVaccineDescription() + ";  " + getSnsUserNumber() + ";  " + getVaccineName() + ";  " + getDose() + ";  " + getLotNumber() + ";  " +
+        return String.format(/*getNameByNumber() + ";  " + getVaccineDescription() + ";  " +*/ getSnsUserNumber() + ";  " + getVaccineName() + ";  " + getDose() + ";  " + getLotNumber() + ";  " +
                 getScheduledDateTime() + ";  " + getArrivalDateTime() + ";  " + getNurseAdministrationTime() + ";  " +
                 getLeavingDateTime());
     }
+
 
     public List bubbleSortArrayList(List<LegacySystemData> list, Boolean ascending, int position) {
         LegacySystemData temp;
@@ -244,14 +249,14 @@ public class LegacySystemData implements Comparable<LegacySystemData> {
                             }
                         }
                     } else {
-                        if (position==ARRIVAL_POSITION) {
+                        if (position == ARRIVAL_POSITION) {
                             if (list.get(i).compareTo(list.get(i + 1)) < 0) {
                                 temp = list.get(i);
                                 list.set(i, list.get(i + 1));
                                 list.set(i + 1, temp);
                                 sorted = false;
                             }
-                        }else {
+                        } else {
                             if (list.get(i).compareToLeaving(list.get(i + 1)) < 0) {
                                 temp = list.get(i);
                                 list.set(i, list.get(i + 1));

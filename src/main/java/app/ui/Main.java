@@ -17,17 +17,14 @@ public class Main {
      *
      * @param args the input arguments
      */
-    public static void main(String[] args){
-        try
-        {
-           Stats stats = new Stats();
+    public static void main(String[] args) {
+        try {
+            Stats stats = new Stats();
             MainMenuUI menu = new MainMenuUI();
 
             stats.start();
             menu.run();
-        }
-        catch( Exception e )
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

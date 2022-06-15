@@ -1,5 +1,7 @@
 package app.domain.model.vaccine;
 
+import app.controller.App;
+import app.domain.model.Company;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
@@ -14,14 +16,17 @@ public abstract class VaccineType implements Serializable {
     private String designation;
     private List<Vaccine> listVaccine;
 
+    private App oApp;
+    private Company oCompany;
+
     /**
      * Instantiates a new Vaccine type.
      *
      * @param code        the code
      * @param designation the designation
      */
-    public VaccineType(String code, String designation){
-        if((code == null) || (code.isEmpty()) ||
+    public VaccineType(String code, String designation) {
+        if ((code == null) || (code.isEmpty()) ||
                 (designation == null) || (designation.isEmpty()) ||
                 (code.length() != 5) || !StringUtils.isNumeric(code))
             throw new IllegalArgumentException("None of the arguments can be null or empty. Code must be 5 digits");
@@ -29,12 +34,13 @@ public abstract class VaccineType implements Serializable {
         this.code = code;
         this.designation = designation;
         this.listVaccine = new ArrayList<>();
+
     }
 
     /**
      * Instantiates a new Vaccine type.
      */
-    public VaccineType(){
+    public VaccineType() {
     }
 
     /**
@@ -89,10 +95,9 @@ public abstract class VaccineType implements Serializable {
      * @param name the name
      * @return the boolean
      */
-    public boolean validateVaccine(String name){
-        for(Vaccine lv: listVaccine)
-        {
-            if(lv.getName().contains(name))
+    public boolean validateVaccine(String name) {
+        for (Vaccine lv : listVaccine) {
+            if (lv.getName().contains(name))
                 return false;
         }
         return true;
@@ -104,16 +109,17 @@ public abstract class VaccineType implements Serializable {
      * @param oVaccine the o vaccine
      * @return the boolean
      */
-    public boolean registerVaccine(Vaccine oVaccine)
-    {
-        if(validateVaccine(oVaccine.getName()))
+    public boolean registerVaccine(Vaccine oVaccine) {
+        if (validateVaccine(oVaccine.getName()))
             return addVaccine(oVaccine);
         else
             return false;
     }
 
 
-    public boolean addVaccine(Vaccine v){ return this.listVaccine.add(v); }
+    public boolean addVaccine(Vaccine v) {
+        return this.listVaccine.add(v);
+    }
 
     /**
      * New vaccine vaccine.
@@ -126,8 +132,8 @@ public abstract class VaccineType implements Serializable {
      * @param timeSinceLastDose the time since last dose
      * @return the vaccine
      */
-    public Vaccine newVaccine(String name, String brand, String ageGroup, int doseNumber, double dosage, int timeSinceLastDose){
-        if(validateVaccine(name)){
+    public Vaccine newVaccine(String name, String brand, String ageGroup, int doseNumber, double dosage, int timeSinceLastDose) {
+        if (validateVaccine(name)) {
             return new Vaccine(name, brand, ageGroup, doseNumber, dosage, timeSinceLastDose);
         }
         return null;
@@ -138,7 +144,7 @@ public abstract class VaccineType implements Serializable {
      *
      * @return the list
      */
-    public List<Vaccine> getListVaccines(){
+    public List<Vaccine> getListVaccines() {
         return listVaccine;
     }
 
