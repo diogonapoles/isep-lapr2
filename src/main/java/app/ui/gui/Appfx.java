@@ -82,10 +82,10 @@ public class Appfx extends Application {
         } finally {
             in.close();
         }
-        Scene scene = new Scene(page, SCENE_WIDTH, SCENE_HEIGHT);
+        Scene scene = new Scene(page);
         scene.getStylesheets().add("/styles/Styles.css");
         this.stage.setScene(scene);
-        this.stage.sizeToScene();
+       this.stage.sizeToScene();
         return (Initializable) loader.getController();
     }
 

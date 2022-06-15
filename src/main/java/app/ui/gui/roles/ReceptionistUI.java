@@ -1,21 +1,28 @@
 package app.ui.gui.roles;
 
+import app.ui.gui.Appfx;
+import app.ui.gui.MainUI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class ReceptionistUI {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+
+public class ReceptionistUI implements Initializable {
     private Stage stage;
     @FXML
     private Button btnBack;
-
+    private Appfx mainAppfx;
     @FXML
-    void btnBack(ActionEvent event) {
+    void btnBack(ActionEvent event) throws Exception {
         try {
             var loader = new FXMLLoader(getClass().getResource("/fxml/Login1.fxml"));
             Parent root = loader.load();
@@ -32,4 +39,9 @@ public class ReceptionistUI {
 
     }
 
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }

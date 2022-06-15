@@ -2,6 +2,10 @@ package app.ui.gui.roles;
 
 import app.controller.ChoosingVaccinationCenterController;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
+import app.ui.gui.Appfx;
+import app.ui.gui.MainUI;
+import app.ui.gui.US.ui.US17ui;
+import app.ui.gui.US.ui.US7ui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +26,7 @@ public class NurseUI implements Initializable {
     private ChoosingVaccinationCenterController controller;
     private boolean pressed = false;
     public static VaccinationCenter vaccinationCenter;
+    private Appfx mainAppfx;
     @FXML
     private Button btnBack;
 
@@ -36,6 +41,10 @@ public class NurseUI implements Initializable {
 
     @FXML
     private Button btnRight;
+    public void setMainApp(Appfx mainAppfx) {
+        this.mainAppfx = mainAppfx;
+
+    }
 
 
 
@@ -72,7 +81,8 @@ public class NurseUI implements Initializable {
 
 
     @FXML
-    void btnUS7(ActionEvent event) {
+    void btnUS7(ActionEvent event) throws Exception {
+
         try {
             var loader = new FXMLLoader(getClass().getResource("/fxml/US/7s1.fxml"));
             Parent root = loader.load();
@@ -86,6 +96,8 @@ public class NurseUI implements Initializable {
         }catch (Exception ex){
             ex.printStackTrace();
         }
+
+
     }
 
 
@@ -94,7 +106,23 @@ public class NurseUI implements Initializable {
 
 
     @FXML
-    void btnUS8(ActionEvent event) {
+    void btnUS8(ActionEvent event) throws Exception {
+
+
+        try {
+            var loader = new FXMLLoader(getClass().getResource("/fxml/US/8s1.fxml"));
+            Parent root = loader.load();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            // scene.getStylesheets().add(getClass().getResource("/styles/Styles.css").toExternalForm());
+            String css = this.getClass().getResource("/styles/Styles.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            stage.setScene(scene);
+
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+
 
     }
 
@@ -105,7 +133,10 @@ public class NurseUI implements Initializable {
 
 
     @FXML
-    void btnBack(ActionEvent event) {
+    void btnBack(ActionEvent event) throws Exception {
+
+
+
         try {
             var loader = new FXMLLoader(getClass().getResource("/fxml/Login1.fxml"));
             Parent root = loader.load();
@@ -119,6 +150,8 @@ public class NurseUI implements Initializable {
         }catch (Exception ex){
             ex.printStackTrace();
         }
+
+
 
     }
 
