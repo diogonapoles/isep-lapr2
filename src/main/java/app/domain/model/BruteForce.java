@@ -68,6 +68,7 @@ public class BruteForce {
     public String findDay(List<Date> arrivals){
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         return dateFormat.format(arrivals.get(1));
+
     }
 
     private static int TIME = 720;

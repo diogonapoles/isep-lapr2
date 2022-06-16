@@ -33,8 +33,14 @@ public class AnalyzePerformanceUI implements Runnable{
             return;
         }
 
+        String day;
+        try{
+            day = controller.findDay();
+        }catch (Exception e){
+            System.out.println("You have to load a legacy file first");
+            return;
+        }
 
-        String day = controller.findDay();
 
         int timeInterval = Utils.readIntegerFromConsole("Type the desired time interval (in minutes):");
         if (!controller.validateTimeIntervalForVaccinationCenter(timeInterval)) {
