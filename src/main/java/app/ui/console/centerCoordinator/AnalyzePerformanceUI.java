@@ -6,7 +6,7 @@ import app.ui.console.utils.Utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Date;
+import java.util.Arrays;
 import java.util.Properties;
 
 public class AnalyzePerformanceUI implements Runnable{
@@ -61,13 +61,14 @@ public class AnalyzePerformanceUI implements Runnable{
             System.out.println(controller.findTimeInterval(day, timeInterval, maxInfo[0], maxSubArray.length));
         }
         if (algorithm.equals(BENCHMARK_ALGORITHM)) {
-            int[] maxSubArray = controller.getMaxSubArrayBenchmark(inputList);
-            int maxSum = controller.getMaxSumBruteBenchmark(maxSubArray);
             System.out.println("Input List:");
             controller.printArray(inputList);
 
             System.out.println("Maximum Subarray:");
-            controller.printArray(maxSubArray);
+            int[] result = controller.getMaxSubArrayBenchmark(inputList);
+            System.out.println(Arrays.toString(result));
+
+            int maxSum = controller.getMaxSumBenchmark(result);
 
             System.out.println("Max Sum:" + maxSum);
         }

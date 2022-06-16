@@ -1,6 +1,7 @@
 package app.controller.centerCoordinator;
 
 import app.controller.App;
+import app.domain.model.Benchmark;
 import app.domain.model.BruteForce;
 import app.domain.model.Company;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
@@ -17,11 +18,13 @@ public class AnalyzePerformanceController {
     private Company oCompany;
     private VaccinationCenter vaccinationCenter;
     private BruteForce bruteForceAlgorithm;
+    private Benchmark benchmarkAlgorithm;
 
     public AnalyzePerformanceController() {
         this.oApp = App.getInstance();
         this.oCompany = oApp.getCompany();
         this.bruteForceAlgorithm = new BruteForce(oCompany);
+        this.benchmarkAlgorithm = new Benchmark();
     }
 
     public VaccinationCenter getWorking() {
@@ -29,12 +32,12 @@ public class AnalyzePerformanceController {
         return vaccinationCenter;
     }
 
-    public boolean validateTimeIntervalForVaccinationCenter(int timeInterval){
-        return vaccinationCenter.validateTimeIntervalForVaccinationCenter(timeInterval);
+    public void setWorking(VaccinationCenter vc) {
+        vaccinationCenter = vc;
     }
 
-    public Date setTime(String time, boolean flag){
-        return vaccinationCenter.analyzePerformanceTime(time, flag);
+    public boolean validateTimeIntervalForVaccinationCenter(int timeInterval){
+        return vaccinationCenter.validateTimeIntervalForVaccinationCenter(timeInterval);
     }
 
     public int[] createInputList(int timeInterval, String day){
@@ -50,30 +53,6 @@ public class AnalyzePerformanceController {
 
     public String findDay(){
         return bruteForceAlgorithm.findDay(oCompany.getLegacySystemData().getArrivalList());
-    }
-
-    public Date stringToDate(String strDate) {
-        Date date;
-        try {
-            SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-            df.setLenient(false);
-            date = df.parse(strDate);
-        } catch (ParseException e) {
-            return null;
-        }
-        return date;
-    }
-
-    public Date stringToTime(String strDate) {
-        Date date;
-        try {
-            SimpleDateFormat df = new SimpleDateFormat("HH:mm");
-            df.setLenient(false);
-            date = df.parse(strDate);
-        } catch (ParseException e) {
-            return null;
-        }
-        return date;
     }
 
     public Date stringToFullDate(String strDate) {
@@ -101,11 +80,11 @@ public class AnalyzePerformanceController {
     }
 
     public int[] getMaxSubArrayBenchmark(int[] inputList) {
-        return oCompany.getBenchmarkAlgorithm().max(inputList);
+        return benchmarkAlgorithm.max(inputList);
     }
 
-    public int getMaxSumBruteBenchmark(int[] maxSubArray) {
-        return oCompany.getBenchmarkAlgorithm().sum(maxSubArray);
+    public int getMaxSumBenchmark(int[] maxSubArray) {
+        return benchmarkAlgorithm.sum(maxSubArray);
     }
 
     public int[] findMaxSubarray(int[] inputList, int i, int j) {
@@ -137,7 +116,7 @@ public class AnalyzePerformanceController {
 
         } catch (ParseException e) {
             e.printStackTrace();
+            return null;
         }
-        return null;
     }
 }

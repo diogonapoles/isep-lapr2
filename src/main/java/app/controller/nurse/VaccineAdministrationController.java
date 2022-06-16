@@ -25,6 +25,10 @@ public class VaccineAdministrationController {
         return vaccinationCenter;
     }
 
+    public void setWorking(VaccinationCenter vc) {
+        vaccinationCenter = vc;
+    }
+
     public List<UserArrival> getWaitingRoom(){
         return vaccinationCenter.getListUserToWaitingRoom();
     }

@@ -46,8 +46,6 @@ public abstract class VaccinationCenter implements Serializable {
     private List<VaccineAdministration> recoveryRoom;
 
     private final int RECOVERY_ROOM_TIME = 1800; //seconds
-
-
     /**
      * Instantiates a new Vaccination center.
      *
@@ -102,6 +100,11 @@ public abstract class VaccinationCenter implements Serializable {
         this.waitingRoom = new ArrayList<>();
         this.recoveryRoom = new ArrayList<>();
     }
+
+    public int getRECOVERY_ROOM_TIME() {
+        return RECOVERY_ROOM_TIME;
+    }
+
 
     /**
      * Instantiates a new Vaccination center.
@@ -665,10 +668,10 @@ public abstract class VaccinationCenter implements Serializable {
      * @return the boolean
      */
     public boolean registerUserArrival(UserArrival userArrival) {
-        return addUserToWaitingRoom(userArrival);
+        return addUserToUserArrivalList(userArrival);
     }
 
-    private boolean addUserToWaitingRoom(UserArrival userArrival) {
+    public boolean addUserToUserArrivalList(UserArrival userArrival) {
         return this.listUserArrival.add(userArrival);
     }
 
@@ -740,6 +743,10 @@ public abstract class VaccinationCenter implements Serializable {
         if (scheduleList.size()==administrations)
             return true;
         return false;
+    }
+
+    public List<UserArrival> getWaitingRoom() {
+        return waitingRoom;
     }
 
     public List <VaccineSchedule> scheduleForUser(VaccineType vaccineType, SNSUser snsUser) {
