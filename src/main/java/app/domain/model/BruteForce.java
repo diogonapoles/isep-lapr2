@@ -68,7 +68,6 @@ public class BruteForce {
     public String findDay(List<Date> arrivals){
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         return dateFormat.format(arrivals.get(1));
-
     }
 
     private static int TIME = 720;
@@ -80,20 +79,6 @@ public class BruteForce {
             return length;
         }
     }
-
-    /*public int getListLength(int timeInterval, String startString, String endString){
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("HH:mm");
-        LocalTime t1 = LocalTime.parse(startString, fmt);
-        LocalTime t2 = LocalTime.parse(endString, fmt);
-        long minutes = ChronoUnit.MINUTES.between(t1, t2);
-
-        int length = (int) (minutes/timeInterval);
-        if (length == 0 || length == 1){
-            throw new IllegalArgumentException("Problem dividing the time given");
-        }else{
-            return length;
-        }
-    }*/
 
     public int[] maxSubArray(int[] nums) {
 
