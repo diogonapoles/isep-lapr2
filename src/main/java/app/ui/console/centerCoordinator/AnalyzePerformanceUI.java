@@ -59,7 +59,7 @@ public class AnalyzePerformanceUI implements Runnable{
         String algorithm = props.getProperty(Constants.PARAMS_ALGORITHM);
 
 
-        int[] inputList = controller.createInputList(timeInterval, start, end);
+        int[] inputList = controller.createInputList(timeInterval,dateString, start, end);
         if (algorithm.equals(BRUTEFORCE_ALGORITHM)) {
             int[] maxSubArray = controller.getMaxSubArrayBruteForce(inputList);
             int maxSum = controller.getMaxSumBruteForce(maxSubArray);

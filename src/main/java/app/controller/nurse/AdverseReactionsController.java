@@ -35,7 +35,8 @@ public class AdverseReactionsController {
 
 
     public Boolean isUserInRecoveryList(String snsUserNumber) {
-
+        System.out.println(getRecoveryRoom());
+        System.out.println("ola");
         for (VaccineAdministration user : getRecoveryRoom()){
             if (user.getUserArrival().getSnsUser().getSnsUserNumber().equals(snsUserNumber)){
                 return true;

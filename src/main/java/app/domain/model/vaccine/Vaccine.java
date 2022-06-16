@@ -1,6 +1,8 @@
 package app.domain.model.vaccine;
 
 
+import app.domain.model.vaccinationCenter.VaccinationCenter;
+
 import java.io.Serializable;
 import java.util.regex.Pattern;
 
@@ -18,6 +20,13 @@ public class Vaccine implements Serializable {
     private int doseNumber;
     private double dosage;
     private int timeSinceLastDose;
+
+    private VaccineType oVaccineType;
+
+  //  public Vaccine(VaccineType oVaccineType) {
+
+    //    this.oVaccineType = oVaccineType;
+    //}
 
     /**
      * Gets name.
@@ -116,6 +125,10 @@ public class Vaccine implements Serializable {
      */
     public int getTimeSinceLastDose() {
         return timeSinceLastDose;
+    }
+
+    public String getVaccineDescription(){
+        return oVaccineType.getDesignation();
     }
 
     /**

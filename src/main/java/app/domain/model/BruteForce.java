@@ -1,5 +1,6 @@
 package app.domain.model;
 
+import app.controller.App;
 import app.domain.model.vaccinationProcess.UserArrival;
 import app.domain.model.vaccinationProcess.UserLeaving;
 
@@ -11,22 +12,32 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+
 public class BruteForce {
+    private Company oCompany;
+
+    public BruteForce(Company oCompany) {
+        this.oCompany = oCompany;
+    }
+
     public int[] createInputList(int timeInterval, Date start, Date end, String startString, String endString, List<UserArrival> listUserArrival, List<UserLeaving> listUserLeaving) {
         int listLength = getListLength(timeInterval, startString, endString);
         Calendar startCalendar = Calendar.getInstance();
-        List<UserArrival> arrivalList = new ArrayList<>();
-        List<UserLeaving> leavingList = new ArrayList<>();
+        List<Date> arrivalList = new ArrayList<>();
+        List<Date> leavingList = new ArrayList<>();
 
-        for (UserArrival arrival : listUserArrival){
-            if (arrival.getArrivalTime().equals(start) || arrival.getArrivalTime().after(start)) {
+        for (Date arrival : oCompany.getLegacySystemData().getArrivalList()){
+            if (arrival.equals(start) || arrival.after(start)) {
                 arrivalList.add(arrival);
             }
         }
-        for (UserLeaving leaving : listUserLeaving){
-            if (leaving.getLeavingDate().equals(end) || leaving.getLeavingDate().before(end)) {
+        for (Date leaving : oCompany.getLegacySystemData().getLeavingList()){
+            if (leaving.equals(end)) {
                 leavingList.add(leaving);
+                break;
             }
+            if (leaving.before(end) && leaving.after(start))
+                leavingList.add(leaving);
         }
 
         int[] diffList = new int[listLength];
@@ -38,11 +49,11 @@ public class BruteForce {
             int counter=0;
             Calendar endCalendar = startCalendar;
             endCalendar.add(Calendar.MINUTE, timeInterval);
-            for (UserArrival arrival : arrivalList){
+            for (Date arrival : arrivalList){
                 Calendar arrivalTime = Calendar.getInstance();
-                arrivalTime.setTime(arrival.getArrivalTime());
-                if (arrivalTime.equals(startCalendar) || arrivalTime.after(startCalendar)){
-                    if (arrivalTime.equals(endCalendar) || arrivalTime.before(endCalendar)){
+                arrivalTime.setTime(arrival);
+                if (arrivalTime.compareTo(startCalendar)==0 || arrivalTime.compareTo(startCalendar)==1){
+                    if (arrivalTime.compareTo(endCalendar)==0 || arrivalTime.compareTo(endCalendar)==-1){
                         counter++;
                     }
                 }
@@ -55,9 +66,9 @@ public class BruteForce {
             int counter=0;
             Calendar endCalendar = startCalendar;
             endCalendar.add(Calendar.MINUTE, timeInterval);
-            for (UserLeaving leaving : leavingList){
+            for (Date leaving : leavingList){
                 Calendar leavingTime = Calendar.getInstance();
-                leavingTime.setTime(leaving.getLeavingDate());
+                leavingTime.setTime(leaving);
                 if (leavingTime.equals(startCalendar) || leavingTime.after(startCalendar)){
                     if (leavingTime.equals(endCalendar) || leavingTime.before(endCalendar)){
                         counter++;
@@ -76,7 +87,7 @@ public class BruteForce {
     }
 
     public int getListLength(int timeInterval, String startString, String endString){
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("hh:mm");
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("HH:mm");
         LocalTime t1 = LocalTime.parse(startString, fmt);
         LocalTime t2 = LocalTime.parse(endString, fmt);
         long minutes = ChronoUnit.MINUTES.between(t1, t2);

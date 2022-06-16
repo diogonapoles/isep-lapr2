@@ -13,6 +13,7 @@ public class LegacySystemDataImporterUI implements Runnable {
     private final CenterCoordinatorUI ccUI;
 
     private List listLegacyData = new ArrayList<>();
+    private List listSorted = new ArrayList();
 
     public LegacySystemDataImporterUI() {
         controller = new LegacySystemDataImporterController();
@@ -20,8 +21,12 @@ public class LegacySystemDataImporterUI implements Runnable {
     }
 
     public boolean inputData() throws Exception {
-        String fileLocation = Utils.readLineFromConsole("File Location:");
-        return controller.newLegacySystemDataReader(fileLocation);
+        try {
+            String fileLocation = Utils.readLineFromConsole("File Location:");
+            return controller.newLegacySystemDataReader(fileLocation);
+        } catch (Exception ex) {
+            throw new Exception("Couldn´t read the file");
+        }
     }
 
 
@@ -38,32 +43,28 @@ public class LegacySystemDataImporterUI implements Runnable {
                 String sortArrivalLeaving = (String) Utils.showAndSelectOne(controller.getSortArrivalLeaving(), "\n\nChoose the intended parameter for Sorting\n");
 
                 try {
-                    controller.sortByParameters(sortChoice, sortOrder, sortArrivalLeaving, listLegacyData);
-                }catch (Exception ex){
+                    listSorted = controller.sortByParameters(sortChoice, sortOrder, sortArrivalLeaving, listLegacyData);
+                } catch (Exception ex) {
                     ccUI.run();
                 }
 
+                System.out.println("Name; Vaccine; SNSUSerNumber; VaccineName; Dose; LotNumber; ScheduledDateTime; ArrivalDateTime; NurseAdministrationDateTime; LeavingDateTime");
+                for (int i = 0; i < listSorted.size(); i++) {
+                    System.out.println(listSorted.get(i).toString());
+                }
 
-/*
-                if (Utils.confirm("Confirm data?(s/n)")) {
-                    controller.importLegacySystemDataCSV();
-                    controller.clearTempArray();
-                    System.out.println("Operation finished");
-                } else
-                    run();
 
- */
+
             } else
                 System.out.println("There is a problem with the file");
 
 
         } catch (Exception e) {
-            System.out.println("ola");
-            throw new RuntimeException(e);
+            //throw new RuntimeException("couldn't open the file");
+            System.out.printf("\n\ncouldn't open the file\n");
+            run();
 
         }
-
-
     }
 
     private void addSortStuff() {
@@ -75,9 +76,6 @@ public class LegacySystemDataImporterUI implements Runnable {
 
     }
 
-    private void getSortedData() {
-        // Utils.showList(controller.getli(), "Sorted Data:");
-    }
 
 
 }

@@ -2,12 +2,10 @@ package app.controller.nurse;
 
 import app.controller.App;
 import app.domain.model.Company;
-import app.domain.model.systemUser.SNSUser;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.domain.model.vaccinationProcess.UserArrival;
 import app.domain.model.vaccinationProcess.VaccineAdministration;
 import app.domain.model.vaccine.Vaccine;
-import app.domain.model.vaccine.VaccineType;
 
 import java.util.Date;
 import java.util.List;

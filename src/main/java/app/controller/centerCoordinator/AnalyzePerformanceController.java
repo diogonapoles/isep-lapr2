@@ -1,6 +1,7 @@
 package app.controller.centerCoordinator;
 
 import app.controller.App;
+import app.domain.model.BruteForce;
 import app.domain.model.Company;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
 
@@ -33,15 +34,19 @@ public class AnalyzePerformanceController {
         return vaccinationCenter.analyzePerformanceTime(time, flag);
     }
 
-    public int[] createInputList(int timeInterval, String startString, String endString){
-        Date start = stringToDate(startString);
-        Date end = stringToDate(endString);
+    public int[] createInputList(int timeInterval,String day, String startString, String endString){
+        String startStr = day.concat(" ").concat(startString);
+        String endStr = day.concat(" ").concat(endString);
+        Date start = stringToTime(startStr);
+        Date end = stringToTime(endStr);
 
         if (start == null || end == null){
             throw new IllegalArgumentException("Invalid Dates");
         }
 
-        return oCompany.getBruteForceAlgorithm().createInputList(timeInterval, start, end, startString, endString, vaccinationCenter.getListUserArrival(), vaccinationCenter.getListUserLeaving());
+        BruteForce bruteForceAlgorithm = new BruteForce(oCompany);
+
+        return bruteForceAlgorithm.createInputList(timeInterval, start, end, startString, endString, vaccinationCenter.getListUserArrival(), vaccinationCenter.getListUserLeaving());
     }
 
     public int[] getMaxSubArrayBruteForce(int[] input){
@@ -56,6 +61,18 @@ public class AnalyzePerformanceController {
         Date date;
         try {
             SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            df.setLenient(false);
+            date = df.parse(strDate);
+        } catch (ParseException e) {
+            return null;
+        }
+        return date;
+    }
+
+    public Date stringToTime(String strDate) {
+        Date date;
+        try {
+            SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
             df.setLenient(false);
             date = df.parse(strDate);
         } catch (ParseException e) {
