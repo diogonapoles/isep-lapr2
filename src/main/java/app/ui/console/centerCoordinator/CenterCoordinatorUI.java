@@ -18,6 +18,8 @@ public class CenterCoordinatorUI implements Runnable {
 
         options.add(new MenuItem("Analyze Performance", new AnalyzePerformanceUI()));
 
+        options.add(new MenuItem("Export Vaccination Statistics", new VaccinatedToFileUI()));
+
 
         int option = 0;
         do {

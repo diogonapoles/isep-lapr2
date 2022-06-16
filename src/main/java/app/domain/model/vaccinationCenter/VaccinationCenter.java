@@ -6,6 +6,7 @@ import app.domain.model.vaccinationProcess.UserLeaving;
 import app.domain.model.vaccinationProcess.VaccineAdministration;
 import app.domain.model.vaccinationProcess.VaccineSchedule;
 import app.domain.model.vaccine.*;
+import app.domain.store.VaccinationCenterStore;
 
 import java.io.Serializable;
 import java.text.ParseException;

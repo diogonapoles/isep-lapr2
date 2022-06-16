@@ -7,6 +7,8 @@ public class LegacySystemData implements Comparable<LegacySystemData> {
 
 
     private List<LegacySystemData> listLegacy = new ArrayList<>();
+    private final List listLeaving = new ArrayList<>();
+    private final List listArrival = new ArrayList();
     private final List<Object> listSortAlgorithms = new ArrayList<>();
     private final List<Object> listSortOrder = new ArrayList<>();
     private final List<Object> listSortArrivalLeaving = new ArrayList<>();
@@ -210,7 +212,7 @@ public class LegacySystemData implements Comparable<LegacySystemData> {
         return getListSorted(listArrival);
     }
 
-    public List getListSorted(List list){
+    public List getListSorted(List list) {
         Collections.sort(list);
         return list;
     }

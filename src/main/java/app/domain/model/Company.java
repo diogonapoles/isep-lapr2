@@ -1,8 +1,6 @@
 package app.domain.model;
 
-import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.domain.model.vaccine.Vaccine;
-import app.domain.model.vaccine.VaccineType;
 import app.domain.store.*;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
