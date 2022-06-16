@@ -58,6 +58,41 @@ public class SNSUser implements Serializable {
         }
     }
 
+    public SNSUser(String name, Date birthDate, String homeAddress, String phoneNumber, String emailAddress, String snsUserNumber, String citizenCardNumber) {
+        try {
+            if ((name == null) || (name.isEmpty())
+                    || (birthDate == null)
+                    || (homeAddress == null) || (homeAddress.isEmpty())
+                    || (phoneNumber == null) || (phoneNumber.isEmpty())
+                    || (emailAddress == null) || (emailAddress.isEmpty())
+                    || (snsUserNumber == null) || (snsUserNumber.isEmpty())
+                    || (citizenCardNumber == null) || (citizenCardNumber.isEmpty()))
+                throw new IllegalArgumentException("None of the arguments can be null or empty.");
+
+            if ((phoneNumber.length() != 9) || !StringUtils.isNumeric(phoneNumber))
+                throw new IllegalArgumentException("Phone number must be in PT format.");
+
+            if ((citizenCardNumber.length() != 8) || !StringUtils.isNumeric(citizenCardNumber))
+                throw new IllegalArgumentException("Citizen card must have 8 digits.");
+
+            if ((snsUserNumber.length() != 9) || !StringUtils.isNumeric(snsUserNumber))
+                throw new IllegalArgumentException("SNS User number must have 9 digits.");
+
+            if (!emailAddress.contains("@"))
+                throw new IllegalArgumentException("Not a valid e-mail address.");
+
+            this.name = name;
+            this.birthDate = birthDate;
+            this.homeAddress = homeAddress;
+            this.phoneNumber = phoneNumber;
+            this.emailAddress = emailAddress;
+            this.snsUserNumber = snsUserNumber;
+            this.citizenCardNumber = citizenCardNumber;
+        }catch (IllegalArgumentException e){
+            System.out.println();
+        }
+    }
+
     public SNSUser(String name, String homeAddress, String phoneNumber, Date birthDate, String emailAddress, String snsUserNumber, String citizenCardNumber) {
 
             if ((snsUserNumber == null) || snsUserNumber.length() != 9 || !StringUtils.isNumeric(snsUserNumber)) {

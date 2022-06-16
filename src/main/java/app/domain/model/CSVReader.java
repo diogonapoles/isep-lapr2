@@ -119,12 +119,18 @@ public class CSVReader {
 
             while (line != null) {
                 String[] user = line.split(separator);
-                if(stringToDate(user[2]) != null) {
-                    SNSUser tempUser = new SNSUser(user[0], user[1], stringToDate(user[2]), user[3], user[4], user[5], user[6], user[7]);
+                if(user[1].equals("")){
+                    SNSUser tempUser = new SNSUser(user[0], stringToDate(user[2]), user[3], user[4], user[5], user[6], user[7]);
                     if(tempUser.getName() != null)
                         tempSave.add(tempUser);
                 }else{
-                    System.out.println(user[2] + " is not a valid date, it should be in the dd/MM/yyyy format");
+                    if (stringToDate(user[2]) != null) {
+                        SNSUser tempUser = new SNSUser(user[0], user[1], stringToDate(user[2]), user[3], user[4], user[5], user[6], user[7]);
+                        if (tempUser.getName() != null)
+                            tempSave.add(tempUser);
+                    } else {
+                        System.out.println(user[2] + " is not a valid date, it should be in the dd/MM/yyyy format");
+                    }
                 }
                 line = br.readLine();
             }
@@ -143,6 +149,7 @@ public class CSVReader {
      */
     public int validateHeader(String line){
         try {
+            String header = getCompleteHeader();
             line = line.toLowerCase();
             line = line.replaceAll(" ", "");
             line = line.replaceAll("-", "");
@@ -150,8 +157,8 @@ public class CSVReader {
                 separator = SEPARATOR_A;
                 // Validating if header is in the expected format
                 try {
-                    if (!line.equals(getCompleteHeader()))
-                        throw new IllegalArgumentException("Invalid header. Should be: " + getCompleteHeader());
+                    if (line.equals(header))
+                        throw new IllegalArgumentException("Invalid header. Should be: " + header);
                 } catch (Exception e) {
                     System.out.println(e);
                     return -1;

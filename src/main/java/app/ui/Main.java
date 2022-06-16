@@ -23,7 +23,7 @@ public class Main {
             Stats stats = new Stats();
             MainMenuUI menu = new MainMenuUI();
 
-           // stats.start();
+            stats.start();
             menu.run();
         } catch (Exception e) {
             e.printStackTrace();
