@@ -4,6 +4,8 @@ import app.controller.App;
 import app.domain.model.vaccinationProcess.UserArrival;
 import app.domain.model.vaccinationProcess.UserLeaving;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -20,63 +22,40 @@ public class BruteForce {
         this.oCompany = oCompany;
     }
 
-    public int[] createInputList(int timeInterval, Date start, Date end, String startString, String endString, List<UserArrival> listUserArrival, List<UserLeaving> listUserLeaving) {
-        int listLength = getListLength(timeInterval, startString, endString);
+    public int[] createInputList(int timeInterval, Date opening) {
+        int listLength = getListLength(timeInterval);
         Calendar startCalendar = Calendar.getInstance();
-        List<Date> arrivalList = new ArrayList<>();
-        List<Date> leavingList = new ArrayList<>();
-
-        for (Date arrival : oCompany.getLegacySystemData().getArrivalList()){
-            if (arrival.equals(start) || arrival.after(start)) {
-                arrivalList.add(arrival);
-            }
-        }
-        for (Date leaving : oCompany.getLegacySystemData().getLeavingList()){
-            if (leaving.equals(end)) {
-                leavingList.add(leaving);
-                break;
-            }
-            if (leaving.before(end) && leaving.after(start))
-                leavingList.add(leaving);
-        }
+        Calendar endCalendar = startCalendar.getInstance();
+        List<Date> arrivalList = oCompany.getLegacySystemData().getArrivalList();
+        List<Date> leavingList = oCompany.getLegacySystemData().getLeavingList();
 
         int[] diffList = new int[listLength];
         int[] arrivalCount = new int[listLength];
         int[] leavingCount = new int[listLength];
 
-        startCalendar.setTime(start);
+        startCalendar.setTime(opening);
         for (int i = 0; i < listLength; i++) {
-            int counter=0;
-            Calendar endCalendar = startCalendar;
+            int counterArrival=0;
+            int counterLeaving=0;
+            endCalendar.setTime(startCalendar.getTime());
             endCalendar.add(Calendar.MINUTE, timeInterval);
             for (Date arrival : arrivalList){
-                Calendar arrivalTime = Calendar.getInstance();
-                arrivalTime.setTime(arrival);
-                if (arrivalTime.compareTo(startCalendar)==0 || arrivalTime.compareTo(startCalendar)==1){
-                    if (arrivalTime.compareTo(endCalendar)==0 || arrivalTime.compareTo(endCalendar)==-1){
-                        counter++;
+                if (arrival.compareTo(startCalendar.getTime())==0 || arrival.compareTo(startCalendar.getTime()) > 0){
+                    if (arrival.compareTo(endCalendar.getTime()) < 0){
+                        counterArrival++;
                     }
                 }
             }
-            startCalendar.add(Calendar.MINUTE, timeInterval);
-            arrivalCount[i] = counter;
-        }
-
-        for (int i = 0; i < listLength; i++) {
-            int counter=0;
-            Calendar endCalendar = startCalendar;
-            endCalendar.add(Calendar.MINUTE, timeInterval);
             for (Date leaving : leavingList){
-                Calendar leavingTime = Calendar.getInstance();
-                leavingTime.setTime(leaving);
-                if (leavingTime.equals(startCalendar) || leavingTime.after(startCalendar)){
-                    if (leavingTime.equals(endCalendar) || leavingTime.before(endCalendar)){
-                        counter++;
+                if (leaving.compareTo(startCalendar.getTime())==0 || leaving.compareTo(startCalendar.getTime()) > 0){
+                    if (leaving.compareTo(endCalendar.getTime()) < 0){
+                        counterLeaving++;
                     }
                 }
             }
             startCalendar.add(Calendar.MINUTE, timeInterval);
-            leavingCount[i] = counter;
+            arrivalCount[i] = counterArrival;
+            leavingCount[i] = counterLeaving;
         }
 
         for (int i = 0; i < listLength; i++) {
@@ -86,7 +65,22 @@ public class BruteForce {
         return diffList;
     }
 
-    public int getListLength(int timeInterval, String startString, String endString){
+    public String findDay(List<Date> arrivals){
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return dateFormat.format(arrivals.get(1));
+    }
+
+    private static int TIME = 720;
+    public int getListLength(int timeInterval){
+        int length = TIME/timeInterval;
+        if (length == 0 || length == 1){
+            throw new IllegalArgumentException("Problem dividing the time given");
+        }else{
+            return length;
+        }
+    }
+
+    /*public int getListLength(int timeInterval, String startString, String endString){
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("HH:mm");
         LocalTime t1 = LocalTime.parse(startString, fmt);
         LocalTime t2 = LocalTime.parse(endString, fmt);
@@ -98,42 +92,43 @@ public class BruteForce {
         }else{
             return length;
         }
-    }
+    }*/
 
     public int[] maxSubArray(int[] nums) {
 
-        int n = nums.length;
-        int maximumSubArraySum = Integer.MIN_VALUE;
-        int start = 0;
-        int end = 0;
+        int currSum = nums[0];
+        int maxSum = currSum;
+        int maxPosition = 0;
 
-        for (int left = 0; left < n; left++) {
 
-            int runningWindowSum = 0;
-
-            for (int right = left; right < n; right++) {
-                runningWindowSum += nums[right];
-
-                if (runningWindowSum > maximumSubArraySum) {
-                    maximumSubArraySum = runningWindowSum;
-                    start = left;
-                    end = right;
+        for (int i = 0; i < nums.length; i++) {
+            currSum = nums[i];
+            if (currSum > maxSum) {
+                maxSum = currSum;
+            }
+            for (int j = i + 1; j < nums.length; j++) {
+                currSum = currSum + nums[j];
+                if (currSum > maxSum) {
+                    maxSum = currSum;
+                    maxPosition = i;
                 }
             }
         }
-        int [] maxSubArray = new int[end-start+1];
-        int counter=0;
-        for (int i = start; i < end+1; i++) {
-            maxSubArray[counter] = nums[i];
-        }
-        return maxSubArray;
+        int[] max = new int[3];
+        max[0]=maxPosition;
+        max[1]=findLimit(nums,maxPosition,maxSum);
+        max[2]=maxSum;
+
+        return max;
     }
 
-    public int maxSum(int[] maxSubArray){
+    public int findLimit(int[] nums, int maxPos, int maxSum){
         int sum=0;
-        for (int i = 0; i < maxSubArray.length; i++) {
-            sum += maxSubArray[i];
+        int i = maxPos;
+        while (sum != maxSum) {
+            sum += nums[i];
+            i++;
         }
-        return sum;
+        return i;
     }
 }

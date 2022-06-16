@@ -29,7 +29,7 @@ public class US16ctrl {
     }
 
     public boolean validateTimeIntervalForVaccinationCenter(int timeInterval, String start, String end){
-        return vaccinationCenter.validateTimeIntervalForVaccinationCenter(timeInterval, start, end);
+        return vaccinationCenter.validateTimeIntervalForVaccinationCenter(timeInterval);
     }
 
     public Date setTime(String time, boolean flag){
@@ -44,15 +44,7 @@ public class US16ctrl {
             throw new IllegalArgumentException("Invalid Dates");
         }
 
-        return oCompany.getBruteForceAlgorithm().createInputList(timeInterval, start, end, startString, endString, vaccinationCenter.getListUserArrival(), vaccinationCenter.getListUserLeaving());
-    }
-
-    public int[] getMaxSubArrayBruteForce(int[] input){
-        return oCompany.getBruteForceAlgorithm().maxSubArray(input);
-    }
-
-    public int getMaxSumBruteForce(int[] input){
-        return oCompany.getBruteForceAlgorithm().maxSum(input);
+        return oCompany.getBruteForceAlgorithm().createInputList(timeInterval, start);
     }
 
     public Date stringToDate(String strDate) {

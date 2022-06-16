@@ -7,6 +7,7 @@ import app.domain.model.vaccinationCenter.VaccinationCenter;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -15,10 +16,12 @@ public class AnalyzePerformanceController {
     private App oApp;
     private Company oCompany;
     private VaccinationCenter vaccinationCenter;
+    private BruteForce bruteForceAlgorithm;
 
     public AnalyzePerformanceController() {
         this.oApp = App.getInstance();
         this.oCompany = oApp.getCompany();
+        this.bruteForceAlgorithm = new BruteForce(oCompany);
     }
 
     public VaccinationCenter getWorking() {
@@ -26,35 +29,27 @@ public class AnalyzePerformanceController {
         return vaccinationCenter;
     }
 
-    public boolean validateTimeIntervalForVaccinationCenter(int timeInterval, String start, String end){
-        return vaccinationCenter.validateTimeIntervalForVaccinationCenter(timeInterval, start, end);
+    public boolean validateTimeIntervalForVaccinationCenter(int timeInterval){
+        return vaccinationCenter.validateTimeIntervalForVaccinationCenter(timeInterval);
     }
 
     public Date setTime(String time, boolean flag){
         return vaccinationCenter.analyzePerformanceTime(time, flag);
     }
 
-    public int[] createInputList(int timeInterval,String day, String startString, String endString){
-        String startStr = day.concat(" ").concat(startString);
-        String endStr = day.concat(" ").concat(endString);
-        Date start = stringToTime(startStr);
-        Date end = stringToTime(endStr);
+    public int[] createInputList(int timeInterval, String day){
+        String startStr = "08:00";
+        Date start = stringToFullDate(day.concat(" ").concat(startStr));
 
-        if (start == null || end == null){
-            throw new IllegalArgumentException("Invalid Dates");
-        }
-
-        BruteForce bruteForceAlgorithm = new BruteForce(oCompany);
-
-        return bruteForceAlgorithm.createInputList(timeInterval, start, end, startString, endString, vaccinationCenter.getListUserArrival(), vaccinationCenter.getListUserLeaving());
+        return bruteForceAlgorithm.createInputList(timeInterval, start);
     }
 
     public int[] getMaxSubArrayBruteForce(int[] input){
-        return oCompany.getBruteForceAlgorithm().maxSubArray(input);
+        return bruteForceAlgorithm.maxSubArray(input);
     }
 
-    public int getMaxSumBruteForce(int[] input){
-        return oCompany.getBruteForceAlgorithm().maxSum(input);
+    public String findDay(){
+        return bruteForceAlgorithm.findDay(oCompany.getLegacySystemData().getArrivalList());
     }
 
     public Date stringToDate(String strDate) {
@@ -72,6 +67,18 @@ public class AnalyzePerformanceController {
     public Date stringToTime(String strDate) {
         Date date;
         try {
+            SimpleDateFormat df = new SimpleDateFormat("HH:mm");
+            df.setLenient(false);
+            date = df.parse(strDate);
+        } catch (ParseException e) {
+            return null;
+        }
+        return date;
+    }
+
+    public Date stringToFullDate(String strDate) {
+        Date date;
+        try {
             SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
             df.setLenient(false);
             date = df.parse(strDate);
@@ -82,9 +89,12 @@ public class AnalyzePerformanceController {
     }
 
     public void printArray(int[] array){
-        System.out.println("[");
+        System.out.print("[");
         for (int i = 0; i < array.length; i++) {
             System.out.print(array[i]);
+            if (i != array.length-1){
+                System.out.print(", ");
+            }
         }
         System.out.print("]");
         System.out.println();
@@ -96,5 +106,38 @@ public class AnalyzePerformanceController {
 
     public int getMaxSumBruteBenchmark(int[] maxSubArray) {
         return oCompany.getBenchmarkAlgorithm().sum(maxSubArray);
+    }
+
+    public int[] findMaxSubarray(int[] inputList, int i, int j) {
+        int[] subArray = new int[j-i];
+        int pos = i;
+        for (int k = 0; k < j; k++) {
+            subArray[k] = inputList[pos];
+            pos++;
+        }
+        return subArray;
+    }
+
+    public String findTimeInterval(String day, int timeInterval, int i, int length) {
+        try {
+            String start = "08:00";
+            SimpleDateFormat df = new SimpleDateFormat("HH:mm");
+            Date d1 = df.parse(start);
+            Calendar s = Calendar.getInstance();
+            s.setTime(d1);
+            s.add(Calendar.MINUTE, timeInterval*i);
+            String startTime = df.format(s.getTime());
+
+            Calendar e = Calendar.getInstance();
+            e.setTime(d1);
+            e.add(Calendar.MINUTE, timeInterval*length);
+            String endTime = df.format(e.getTime());
+
+            return "[" + day + " " + startTime + ", " + day + " " + endTime + "]";
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

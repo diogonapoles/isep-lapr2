@@ -33,25 +33,11 @@ public class AnalyzePerformanceUI implements Runnable{
             return;
         }
 
-        String dateString = Utils.readLineFromConsole("Insert date to analyze (dd/MM/yyyy):");
-        Date date = controller.stringToDate(dateString);
-        if (date == null){
-            System.out.println("Date should be (dd/MM/yyyy)");
-            return;
-        }
 
-        String start = Utils.readLineFromConsole("Start time (HH:mm):");
-        if (!start.matches("\\d{2}:\\d{2}")){
-            System.out.println("Time must be (HH:mm)");
-        }
-
-        String end = Utils.readLineFromConsole("End time (HH:mm):");
-        if (!end.matches("\\d{2}:\\d{2}")){
-            System.out.println("Time must be (HH:mm)");
-        }
+        String day = controller.findDay();
 
         int timeInterval = Utils.readIntegerFromConsole("Type the desired time interval (in minutes):");
-        if (!controller.validateTimeIntervalForVaccinationCenter(timeInterval, start, end)) {
+        if (!controller.validateTimeIntervalForVaccinationCenter(timeInterval)) {
             System.out.println("Interval not found");
             return;
         }
@@ -59,17 +45,20 @@ public class AnalyzePerformanceUI implements Runnable{
         String algorithm = props.getProperty(Constants.PARAMS_ALGORITHM);
 
 
-        int[] inputList = controller.createInputList(timeInterval,dateString, start, end);
+        int[] inputList = controller.createInputList(timeInterval, day);
         if (algorithm.equals(BRUTEFORCE_ALGORITHM)) {
-            int[] maxSubArray = controller.getMaxSubArrayBruteForce(inputList);
-            int maxSum = controller.getMaxSumBruteForce(maxSubArray);
+            int[] maxInfo = controller.getMaxSubArrayBruteForce(inputList);
+            int[] maxSubArray = controller.findMaxSubarray(inputList, maxInfo[0], maxInfo[1]);
             System.out.println("Input List:");
             controller.printArray(inputList);
 
             System.out.println("Maximum Subarray:");
             controller.printArray(maxSubArray);
 
-            System.out.println("Max Sum:" + maxSum);
+            System.out.println("Max Sum:" + maxInfo[2]);
+
+            System.out.println("Time Interval:");
+            System.out.println(controller.findTimeInterval(day, timeInterval, maxInfo[0], maxSubArray.length));
         }
         if (algorithm.equals(BENCHMARK_ALGORITHM)) {
             int[] maxSubArray = controller.getMaxSubArrayBenchmark(inputList);

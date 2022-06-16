@@ -832,13 +832,8 @@ public abstract class VaccinationCenter implements Serializable {
         return null;
     }
 
-    public boolean validateTimeIntervalForVaccinationCenter(int timeInterval, String start, String end) {
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("HH:mm");
-        LocalTime t1 = LocalTime.parse(start, fmt);
-        LocalTime t2 = LocalTime.parse(end, fmt);
-        long minutes = ChronoUnit.MINUTES.between(t1, t2);
-
-        if (findDivisors((int) minutes).contains(timeInterval))
+    public boolean validateTimeIntervalForVaccinationCenter(int timeInterval) {
+        if (findDivisors(720).contains(timeInterval))
             return true;
         return false;
     }

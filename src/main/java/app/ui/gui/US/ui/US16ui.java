@@ -149,7 +149,7 @@ public class US16ui {
             String algorithm = props.getProperty(Constants.PARAMS_ALGORITHM);
             int[] inputList = controller.createInputList(timeInterval, start, end);
             if (algorithm.equals(BRUTEFORCE_ALGORITHM)) {
-                int[] maxSubArray = controller.getMaxSubArrayBruteForce(inputList);
+                /*//int[] maxSubArray = controller.getMaxSubArrayBruteForce(inputList);
                 int maxSum = controller.getMaxSumBruteForce(maxSubArray);
                 System.out.println("Input List:");
                 controller.printArray(inputList);
@@ -157,7 +157,7 @@ public class US16ui {
                 System.out.println("Maximum Subarray:");
                 controller.printArray(maxSubArray);
 
-                System.out.println("Max Sum:" + maxSum);
+                System.out.println("Max Sum:" + maxSum);*/
             }
             if (algorithm.equals(BENCHMARK_ALGORITHM)) {
                 int[] maxSubArray = controller.getMaxSubArrayBenchmark(inputList);
