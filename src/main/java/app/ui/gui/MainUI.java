@@ -3,6 +3,7 @@ package app.ui.gui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,10 +11,12 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MainUI {
+public class MainUI implements Initializable {
     private Appfx mainAppfx;
     private Stage stage ;
     @FXML
@@ -30,10 +33,9 @@ public class MainUI {
     @FXML
     void btnDev(ActionEvent event) throws Exception {
 
-/*
-            DevTeamUI devTeamUI = (DevTeamUI) mainAppfx.replaceSceneContent("/fxml/DevTeam.fxml");
-            devTeamUI.setMainApp(mainAppfx);
-*/
+
+
+
 
 
         try {
@@ -74,5 +76,9 @@ public class MainUI {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }
 

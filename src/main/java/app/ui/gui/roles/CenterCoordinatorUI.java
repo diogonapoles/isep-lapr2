@@ -2,6 +2,10 @@ package app.ui.gui.roles;
 
 import app.controller.ChoosingVaccinationCenterController;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
+import app.ui.gui.Appfx;
+import app.ui.gui.LoginScene1UI;
+import app.ui.gui.US.ui.US16ui;
+import app.ui.gui.US.ui.US17ui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +27,7 @@ public class CenterCoordinatorUI implements Initializable {
     private Stage stage;
     private ChoosingVaccinationCenterController controller;
     public static VaccinationCenter vaccinationCenter;
+    private Appfx mainAppfx;
 
     @FXML
     private Button btnBack;
@@ -37,6 +43,15 @@ public class CenterCoordinatorUI implements Initializable {
 
     @FXML
     private Button btnRight;
+     @FXML
+     private Button btnCenter;
+
+
+    public void setMainApp(Appfx mainAppfx) {
+        this.mainAppfx = mainAppfx;
+
+    }
+
 
 
 
@@ -46,6 +61,7 @@ public class CenterCoordinatorUI implements Initializable {
         comboVac.getItems().addAll(centers);
         btnLeft.setDisable(true);
         btnRight.setDisable(true);
+        btnCenter.setDisable(true);
 
     }
 
@@ -53,6 +69,7 @@ public class CenterCoordinatorUI implements Initializable {
     void btnConfirm(ActionEvent event) {
         btnLeft.setDisable(false);
         btnRight.setDisable(false);
+        btnCenter.setDisable(false);
         vaccinationCenter = comboVac.getValue();
 
     }
@@ -73,14 +90,38 @@ public class CenterCoordinatorUI implements Initializable {
 
 
     @FXML
-    void btnUS16(ActionEvent event) {
+    void btnUS16(ActionEvent event) throws IOException {
+        try {
+            var loader = new FXMLLoader(getClass().getResource("/fxml/US/16s1.fxml"));
+            Parent root = loader.load();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            // scene.getStylesheets().add(getClass().getResource("/styles/Styles.css").toExternalForm());
+            String css = this.getClass().getResource("/styles/Styles.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            stage.setScene(scene);
 
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
     }
 
 
     @FXML
-    void btnUS17(ActionEvent event) {
+    void btnUS17(ActionEvent event) throws IOException {
+        try {
+            var loader = new FXMLLoader(getClass().getResource("/fxml/US/17s1.fxml"));
+            Parent root = loader.load();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            // scene.getStylesheets().add(getClass().getResource("/styles/Styles.css").toExternalForm());
+            String css = this.getClass().getResource("/styles/Styles.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            stage.setScene(scene);
 
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
     }
 
 
@@ -90,7 +131,9 @@ public class CenterCoordinatorUI implements Initializable {
 
 
     @FXML
-    void btnBack(ActionEvent event) {
+    void btnBack(ActionEvent event) throws Exception {
+
+
         try {
             var loader = new FXMLLoader(getClass().getResource("/fxml/Login1.fxml"));
             Parent root = loader.load();
@@ -106,5 +149,7 @@ public class CenterCoordinatorUI implements Initializable {
         }
 
     }
+
+
 
 }

@@ -14,13 +14,18 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
-<<<<<<< HEAD
-import java.util.List;
-import java.util.Properties;
-=======
-import java.text.SimpleDateFormat;
+
 import java.util.*;
 >>>>>>> master
+
+
+import java.util.List;
+import java.util.Properties;
+
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+
 
 /**
  * The type App.

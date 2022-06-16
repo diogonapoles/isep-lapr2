@@ -1,5 +1,8 @@
 package app.ui.gui.roles;
 
+import app.ui.gui.Appfx;
+import app.ui.gui.DevTeamUI;
+import app.ui.gui.LoginScene1UI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,17 +14,19 @@ import javafx.stage.Stage;
 
 public class AdminUI {
     private Stage stage;
+    private Appfx mainAppfx;
     @FXML
     private Button btnBack;
 
     @FXML
-    void btnBack(ActionEvent event) {
+    void btnBack(ActionEvent event) throws Exception {
+
         try {
             var loader = new FXMLLoader(getClass().getResource("/fxml/Login1.fxml"));
             Parent root = loader.load();
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
-            // scene.getStylesheets().add(getClass().getResource("/styles/Styles.css").toExternalForm());
+            // scene.getStylesheets().add(getClass( ).getResource("/styles/Styles.css").toExternalForm());
             String css = this.getClass().getResource("/styles/Styles.css").toExternalForm();
             scene.getStylesheets().add(css);
             stage.setScene(scene);
@@ -29,6 +34,10 @@ public class AdminUI {
         }catch (Exception ex){
             ex.printStackTrace();
         }
+
+    }
+    public void setMainApp(Appfx mainAppfx) {
+        this.mainAppfx = mainAppfx;
 
     }
 

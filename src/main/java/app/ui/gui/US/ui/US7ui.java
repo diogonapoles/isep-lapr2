@@ -1,5 +1,6 @@
 package app.ui.gui.US.ui;
 
+import app.ui.gui.Appfx;
 import app.ui.gui.US.ctrl.US7ctrl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,6 +22,7 @@ public class US7ui {
     private String snsUserNumber;
     private String adverseReactions;
     private Stage stage;
+    private Appfx mainAppfx;
 
 
     @FXML
@@ -34,6 +36,10 @@ public class US7ui {
     private Button btnOK1;
     @FXML
     private Button btnOK2;
+    public void setMainApp(Appfx mainAppfx) {
+        this.mainAppfx = mainAppfx;
+
+    }
 
 
     @FXML

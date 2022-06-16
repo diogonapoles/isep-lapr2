@@ -4,6 +4,8 @@ package app.ui.gui.US.ui;
 import app.controller.centerCoordinator.AnalyzePerformanceController;
 import app.domain.shared.Constants;
 import app.ui.console.utils.Utils;
+import app.ui.gui.Appfx;
+import app.ui.gui.MainUI;
 import app.ui.gui.US.ctrl.US16ctrl;
 import com.sun.jdi.event.ExceptionEvent;
 import javafx.event.ActionEvent;
@@ -24,6 +26,7 @@ import java.util.Properties;
 public class US16ui {
     private final US16ctrl controller;
     private Stage stage;
+    private Appfx mainAppfx;
     @FXML
     private TextField dateTF;
 
@@ -41,7 +44,10 @@ public class US16ui {
     @FXML
     private Button btnOK2;
 
+    public void setMainApp(Appfx mainAppfx) {
+        this.mainAppfx = mainAppfx;
 
+    }
 
 
 
@@ -183,7 +189,9 @@ public class US16ui {
 
         }
     @FXML
-    public void btnOK2(ActionEvent event) {
+    public void btnOK2(ActionEvent event) throws Exception {
+
+
         try {
             var loader = new FXMLLoader(getClass().getResource("/fxml/US/16s1.fxml"));
             Parent root = loader.load();
@@ -197,6 +205,9 @@ public class US16ui {
         }catch (Exception ex){
             ex.printStackTrace();
         }
+
+
+
     }
 @FXML
     public void btnOK1(ActionEvent event) {
