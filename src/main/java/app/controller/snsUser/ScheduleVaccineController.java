@@ -61,7 +61,7 @@ public class ScheduleVaccineController {
     }
 
     public VaccineSchedule createVaccineSchedule(SNSUser user, VaccinationCenter vaccinationCenter, VaccineType vaccineType, List<Vaccine> vaccineList, Date time){
-        return vaccinationCenter.createVaccineSchedule(vaccinationCenter, user, vaccineType,vaccineList, time);
+        return vaccinationCenter.createVaccineSchedule( user, vaccineType,vaccineList, time);
     }
 
     public boolean addVaccineSchedule(VaccinationCenter vaccinationCenter, VaccineSchedule schedule){
@@ -81,7 +81,7 @@ public class ScheduleVaccineController {
     }
 
     public Vaccine ongoingVaccine(VaccineType vaccineType, SNSUser snsUser, Date date){
-        return vaccinationCenter.validateOngoingVaccine(vaccineType, snsUser, date);
+        return vaccinationCenter.validateOngoingVaccine(vaccineType, date);
     }
 
     public Date readDate(String prompt)

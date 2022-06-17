@@ -55,7 +55,7 @@ public class VaccineAdministrationController {
 
     public void moveToRecoveryRoom(VaccineAdministration vaccineAdministration, Vaccine vaccine){
         vaccinationCenter.moveToRecoveryRoom(vaccineAdministration);
-        vaccinationCenter.recoveryRoomTimer(vaccineAdministration, vaccine);
+        //vaccinationCenter.recoveryRoomTimer(vaccineAdministration, vaccine);
     }
 
     public VaccineAdministration validateVaccineAdministration(UserArrival user, Vaccine vaccine){

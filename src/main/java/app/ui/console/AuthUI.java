@@ -1,6 +1,7 @@
 package app.ui.console;
 
 import app.controller.AuthController;
+import app.domain.model.Company;
 import app.domain.shared.Constants;
 import app.ui.console.administrator.AdminUI;
 import app.ui.console.centerCoordinator.CenterCoordinatorUI;
@@ -10,6 +11,7 @@ import app.ui.console.snsUser.SnsUserUI;
 import app.ui.console.utils.Utils;
 import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
