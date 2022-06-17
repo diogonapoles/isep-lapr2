@@ -29,6 +29,9 @@ public class Company {
     private FileUtils oFileUtils;
     private Stats oStats;
 
+    private VaccinatedToFile oVaccinatedToFile;
+    private int fullyVaccinated;
+
 
 
     /**
@@ -50,6 +53,7 @@ public class Company {
         this.oBenchmark = new Benchmark();
         this.oFileUtils = new FileUtils();
         this.oStats = new Stats();
+        this.oVaccinatedToFile = new VaccinatedToFile(fullyVaccinated);
     }
 
     /**
@@ -121,6 +125,8 @@ public class Company {
      * @return the sns user store
      */
     public SNSUserStore getSNSUserStore(){return this.oSNSUserStore;}
+
+    public VaccinatedToFile getVaccinatedToFile(){return this.oVaccinatedToFile;}
 
 
 }
