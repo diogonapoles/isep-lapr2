@@ -1,0 +1,34 @@
+@startuml
+left to right direction
+skinparam packageStyle rect
+
+Coordinator --> (UC015 Export Vaccination Statistics)
+Coordinator --> (UC016 Analyze Center's Performance)
+Coordinator --> (UC017 Import Legacy System Data)
+Coordinator --> (UC018 List all Vaccines)
+
+Adm --> (UC010 Register Employee)
+Adm --> (UC011 List of Employees by Role)
+Adm --> (UC012 Specify Vaccine Type)
+Adm --> (UC013 Specify Administration Process)
+Adm --> (UC014 Load Users from CSV File)
+
+Nurse --> (UC005 Consult Waiting Room User's List)
+Nurse --> (UC007 Record Adverse Reactions)
+Nurse --> (UC008 Administrate Vaccine)
+Nurse --> (UC009 Send User to Recovery Room)
+
+System --> (UC006 Record Daily Number of People Vaccinated)
+
+Receptionist --> (UC002 Schedule Vaccine)
+Receptionist --> (UC003 Register User)
+Receptionist --> (UC004 Register User Arrival)
+
+
+:SNS User: as User
+
+User --> (UC001 Schedule Vaccine)
+
+
+
+@enduml
