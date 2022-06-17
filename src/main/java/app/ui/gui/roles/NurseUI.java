@@ -4,6 +4,7 @@ import app.controller.ChoosingVaccinationCenterController;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.ui.gui.Appfx;
 import app.ui.gui.MainUI;
+import app.ui.gui.US.ctrl.US8ctrl;
 import app.ui.gui.US.ui.US17ui;
 import app.ui.gui.US.ui.US7ui;
 import javafx.event.ActionEvent;
@@ -107,7 +108,6 @@ public class NurseUI implements Initializable {
 
     @FXML
     void btnUS8(ActionEvent event) throws Exception {
-
 
         try {
             var loader = new FXMLLoader(getClass().getResource("/fxml/US/8s1.fxml"));

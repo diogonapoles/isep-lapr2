@@ -14,7 +14,7 @@ public class US7ctrl {
 
     private final App oApp;
     private final Company oCompany;
-    private VaccinationCenter vaccinationCenter  ;
+    private VaccinationCenter vaccinationCenter = NurseUI.vaccinationCenter; ;
 
 
     public US7ctrl(){
@@ -24,7 +24,6 @@ public class US7ctrl {
     }
 
     public VaccinationCenter getWorking() {
-        vaccinationCenter = NurseUI.vaccinationCenter;
         //vaccinationCenter = oCompany.getEmployeeStore().getWorking(oApp.getCurrentUserSession().getUserId().getEmail());
         return vaccinationCenter;
     }

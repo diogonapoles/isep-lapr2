@@ -2,10 +2,12 @@ package app.ui.gui.US.ui;
 
 
 import app.controller.nurse.VaccineAdministrationController;
+import app.domain.model.vaccinationCenter.VaccinationCenter;
 import app.domain.model.vaccinationProcess.UserArrival;
 import app.domain.model.vaccinationProcess.VaccineAdministration;
 import app.domain.model.vaccine.Vaccine;
 import app.ui.console.utils.Utils;
+import app.ui.gui.Appfx;
 import app.ui.gui.US.ctrl.US8ctrl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -83,6 +85,8 @@ public class US8ui implements Initializable {
 
         }
     }
+
+
     @FXML
     public void btnConfirm1(ActionEvent event) {
         if (vacCombo.getValue() != null) {

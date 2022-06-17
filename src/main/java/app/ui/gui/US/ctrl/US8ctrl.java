@@ -16,7 +16,7 @@ import java.util.List;
 public class US8ctrl {
     private final App oApp;
     private final Company oCompany;
-    private VaccinationCenter vaccinationCenter;
+    private VaccinationCenter vaccinationCenter = NurseUI.vaccinationCenter;
 
     public US8ctrl() {
         this.oApp = App.getInstance();
@@ -24,7 +24,6 @@ public class US8ctrl {
     }
 
     public VaccinationCenter getWorking() {
-        vaccinationCenter = NurseUI.vaccinationCenter;
         return vaccinationCenter;
     }
 
