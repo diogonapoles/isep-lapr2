@@ -1,8 +1,5 @@
 package app.ui.gui.US.ctrl;
 
-
-
-
 import app.controller.App;
 import app.domain.model.Company;
 import app.domain.model.vaccinationCenter.VaccinationCenter;

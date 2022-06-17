@@ -1,5 +1,6 @@
 package app.ui.gui;
 
+import app.domain.model.Stats;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,6 +16,7 @@ import java.util.logging.Logger;
 
 public class Appfx extends Application {
     private Stage stage;
+    private Appfx mainAppfx;
     private final double MINIMUM_WINDOW_WIDTH = 600.0;
     private final double MINIMUM_WINDOW_HEIGHT = 300.0;
     private final double SCENE_WIDTH = 450.0;
@@ -26,6 +28,8 @@ public class Appfx extends Application {
 
     @Override
         public void start(Stage stage) throws Exception {
+            Stats stats = new Stats();
+            stats.start();
             this.stage = stage ;
             stage.setTitle("LAPR2APP");
             stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
@@ -60,11 +64,16 @@ public class Appfx extends Application {
 
    public void toMainScene() {
         try {
-            MainUI mainUI = (MainUI) replaceSceneContent("/fxml/Main.fxml");
-            mainUI.setMainApp(this);
+            MainUI ui = (MainUI) replaceSceneContent("/fxml/Main.fxml");
+            ui.setMainApp(this);
         } catch (Exception ex) {
             Logger.getLogger(Appfx.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public void setMainApp(Appfx mainAppfx) {
+        this.mainAppfx = mainAppfx;
+
     }
 
     public Stage getStage() {

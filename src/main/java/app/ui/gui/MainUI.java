@@ -32,9 +32,18 @@ public class MainUI implements Initializable {
     }
     @FXML
     void btnDev(ActionEvent event) throws Exception {
+/*
+        try {
+            DevTeamUI UI = (DevTeamUI) mainAppfx.replaceSceneContent("/fxml/DevTeam.fxml");
+            UI.setMainApp(mainAppfx);
+        } catch (Exception ex) {
+            Logger.getLogger(Appfx.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
 
 
+
+ */
 
 
 
@@ -58,6 +67,15 @@ public class MainUI implements Initializable {
 
     @FXML
     void btnLogin(ActionEvent event) {
+    /*
+        try {
+            LoginScene1UI UI = (LoginScene1UI) mainAppfx.replaceSceneContent("/fxml/Login1.fxml");
+            UI.setMainApp(mainAppfx);
+        } catch (Exception ex) {
+            Logger.getLogger(Appfx.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+     */
 
 
         try {

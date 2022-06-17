@@ -8,6 +8,7 @@ import app.domain.model.vaccinationProcess.UserArrival;
 import app.domain.model.vaccinationProcess.VaccineAdministration;
 import app.domain.model.vaccine.Vaccine;
 import app.domain.model.vaccine.VaccineType;
+import app.ui.gui.roles.NurseUI;
 
 import java.util.Date;
 import java.util.List;
@@ -23,7 +24,7 @@ public class US8ctrl {
     }
 
     public VaccinationCenter getWorking() {
-        vaccinationCenter = oCompany.getEmployeeStore().getWorking(oApp.getCurrentUserSession().getUserId().getEmail());
+        vaccinationCenter = NurseUI.vaccinationCenter;
         return vaccinationCenter;
     }
 

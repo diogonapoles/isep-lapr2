@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
 public class US17ui implements Initializable {
 
     private  US17ctrl controller;
-    private final CenterCoordinatorUI ccUI;
+    private  CenterCoordinatorUI ccUI;
     private Appfx mainAppfx;
 
     private List listLegacyData = new ArrayList<>();
@@ -57,8 +57,10 @@ public class US17ui implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        addSortStuff();
+
         controller = new US17ctrl();
+        ccUI = new CenterCoordinatorUI();
+        addSortStuff();
         List<Object> choice = new ArrayList<>();
         choice = controller.getSortAlgorithms();
         choiceCombo.getItems().addAll(choice);
@@ -68,7 +70,9 @@ public class US17ui implements Initializable {
         List<Object> arrival = new ArrayList<>();
         arrival = controller.getSortArrivalLeaving();
         arrivalCombo.getItems().addAll(arrival);
-
+        choiceCombo.setValue("Bubble Sort");
+        orderCombo.setValue("Ascending");
+        arrivalCombo.setValue("Sort by Arrival time");
     }
 
     @FXML
@@ -100,7 +104,20 @@ public class US17ui implements Initializable {
 
  */
             } else
-                System.out.println("There is a problem with the file");
+                try {
+                    var loader = new FXMLLoader(getClass().getResource("/fxml/US/17s3.fxml"));
+                    Parent root = loader.load();
+                    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    // scene.getStylesheets().add(getClass().getResource("/styles/Styles.css").toExternalForm());
+                    String css = this.getClass().getResource("/styles/Styles.css").toExternalForm();
+                    scene.getStylesheets().add(css);
+                    stage.setScene(scene);
+
+                }catch (Exception ex){
+                    ex.printStackTrace();
+                }
+
 
 
         } catch (Exception e) {

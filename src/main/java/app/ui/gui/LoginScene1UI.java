@@ -41,7 +41,7 @@ public class LoginScene1UI implements Initializable {
 
     @FXML
     private Button btnConfirm;
-
+    int maxAttempts ;
 
 
     @FXML
@@ -74,7 +74,7 @@ public class LoginScene1UI implements Initializable {
 
         ctrl = new AuthController();
 
-        int maxAttempts = 3;
+
         boolean success = false;
         do {
             maxAttempts--;
@@ -162,6 +162,6 @@ public class LoginScene1UI implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        int maxAttempts ;
     }
 }
