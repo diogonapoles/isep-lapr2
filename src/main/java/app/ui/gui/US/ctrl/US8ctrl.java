@@ -53,7 +53,6 @@ public class US8ctrl {
 
     public void moveToRecoveryRoom(VaccineAdministration vaccineAdministration, Vaccine vaccine){
         vaccinationCenter.moveToRecoveryRoom(vaccineAdministration);
-        vaccinationCenter.recoveryRoomTimer(vaccineAdministration, vaccine);
     }
 
     public VaccineAdministration validateVaccineAdministration(UserArrival user, Vaccine vaccine){

@@ -24,6 +24,7 @@ public class Company {
     private BruteForce oBruteForce;
     private Benchmark oBenchmark;
     private FileUtils oFileUtils;
+    private Stats oStats;
 
 
 
@@ -45,6 +46,7 @@ public class Company {
         this.oLegacySystemData = new LegacySystemData();
         this.oBenchmark = new Benchmark();
         this.oFileUtils = new FileUtils();
+        this.oStats = new Stats();
     }
 
     /**
@@ -71,6 +73,8 @@ public class Company {
      * @return the csv reader
      */
     public CSVReader getCSVReader(){return this.oCSVReader;}
+
+    public Stats getStats(){return this.oStats;}
 
     public FileUtils getFileUtils(){return this.oFileUtils;}
 

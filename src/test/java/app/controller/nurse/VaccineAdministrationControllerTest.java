@@ -184,7 +184,7 @@ class VaccineAdministrationControllerTest {
             assertEquals(null, controller.validateVaccineAdministration(arrival, v1));
             controller.addVaccineAdministration(administration);
             controller.moveToRecoveryRoom(administration, v1);
-            hc.removeFromRecoveryRoom(administration, v1);
+            hc.removeFromRecoveryRoom(administration);
 
             administration.setVaccinationTime(new Date());
             assertEquals(administration, controller.validateVaccineAdministration(arrival, v1));

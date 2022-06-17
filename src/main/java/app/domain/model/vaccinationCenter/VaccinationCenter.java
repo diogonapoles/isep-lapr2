@@ -6,16 +6,12 @@ import app.domain.model.vaccinationProcess.UserLeaving;
 import app.domain.model.vaccinationProcess.VaccineAdministration;
 import app.domain.model.vaccinationProcess.VaccineSchedule;
 import app.domain.model.vaccine.*;
-import app.domain.store.VaccinationCenterStore;
 
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 /**
@@ -344,7 +340,7 @@ public abstract class VaccinationCenter implements Serializable {
     }
 
     /**
-     * New vaccine type vaccine type.
+     * New vaccine type.
      *
      * @param technology  the technology
      * @param code        the code
@@ -386,15 +382,6 @@ public abstract class VaccinationCenter implements Serializable {
     }
 
     /**
-     * Get current outbreak vaccine type.
-     *
-     * @return the vaccine type
-     */
-    public VaccineType getCurrentOutbreak(){
-        return listVaccineType.get(0);
-    }
-
-    /**
      * Register vaccine type boolean.
      *
      * @param oVaccineType the o vaccine type
@@ -410,7 +397,6 @@ public abstract class VaccinationCenter implements Serializable {
 
     public boolean addVaccineType(VaccineType vt){return this.listVaccineType.add(vt);}
 
-    public boolean addVaccine(VaccineType vt, Vaccine v){return vt.addVaccine(v);}
 
     /**
      * Get list vaccine type list.
@@ -430,8 +416,6 @@ public abstract class VaccinationCenter implements Serializable {
 
         if(!findSlot(vaccinationDay)){
             Slot slot = new Slot(vaccinationDay);
-            if(slot == null)
-                throw new IllegalArgumentException("Problem with the slot");
             listSlots.add(slot);
             slot.allSlots(vaccinationDay.getDaySchedule(), vaccinationCenter.maxNumVaccinesPerSlot);
             slot.startUserSlotList();
@@ -445,7 +429,7 @@ public abstract class VaccinationCenter implements Serializable {
     }
 
 
-    public VaccineSchedule createVaccineSchedule(VaccinationCenter vaccinationCenter, SNSUser user, VaccineType type, List<Vaccine> vaccineList, Date day){
+    public VaccineSchedule createVaccineSchedule(SNSUser user, VaccineType type, List<Vaccine> vaccineList, Date day){
         if (day == null)
             throw new IllegalArgumentException("There was a problem registering this schedule");
         if (!findSlot(vaccinationDay))
@@ -468,10 +452,7 @@ public abstract class VaccinationCenter implements Serializable {
         LocalDate date = day.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         LocalDate today = LocalDate.now(ZoneId.systemDefault());
 
-        if (date.isBefore(today)) {
-            return false;
-        }
-        return true;
+        return !date.isBefore(today);
     }
 
     public boolean findSlot(Day vaccinationDay){
@@ -502,18 +483,6 @@ public abstract class VaccinationCenter implements Serializable {
         return newDay;
     }
 
-    public List<Day> getListVaccinationDay() {
-        return listVaccinationDay;
-    }
-
-    public List<Slot> getListSlots() {
-        return listSlots;
-    }
-
-    public List<VaccineSchedule> getListSchedule() {
-        return listSchedule;
-    }
-
     public boolean validateVaccineSchedule(VaccineType type, SNSUser user, Date date){
         for (VaccineSchedule schedule : listSchedule) {
             SNSUser snsUser = schedule.getUser();
@@ -540,25 +509,6 @@ public abstract class VaccinationCenter implements Serializable {
         throw new IllegalArgumentException("This user is not within the age for this vaccine");
     }
 
-    public int numberOfDoses(Vaccine vaccine, SNSUser user){
-        int doses = 0;
-        for (VaccineAdministration vaccines : listAdministratedVaccines){
-            if (vaccines.getUserArrival().getSnsUser().equals(user) && vaccines.getVaccine().equals(vaccine)){
-                doses++;
-            }
-        }
-        return doses;
-    }
-
-    public List<VaccineSchedule> specificVaccineSchedule(Vaccine vaccine, SNSUser user){
-        List <VaccineSchedule> userSchedule = new ArrayList<>();
-        for (VaccineAdministration vaccines : listAdministratedVaccines){
-            if (vaccines.getUserArrival().getSnsUser().equals(user) && vaccines.getVaccine().equals(vaccine)){
-                userSchedule.add(vaccines.getUserArrival().getSchedule());
-            }
-        }
-        return userSchedule;
-    }
 
     public boolean validateTimeSinceLastDose(VaccineAdministration administration, Date vaccineDate){
         Calendar lastVaccine = Calendar.getInstance();
@@ -595,7 +545,7 @@ public abstract class VaccinationCenter implements Serializable {
         return true;
     }
 
-    public UserArrival newUserArrival(SNSUser snsUser, VaccinationCenter vc) {
+    public UserArrival newUserArrival(SNSUser snsUser) {
         VaccineSchedule schedule = validateUserSchedule(snsUser);
 
         return new UserArrival(snsUser, new Date(), schedule);
@@ -628,38 +578,6 @@ public abstract class VaccinationCenter implements Serializable {
         }
         throw new IllegalArgumentException("There is no schedule available for this SNS user");
     }
-/*    private VaccineSchedule validateUserSchedule(SNSUser snsUser) {
-        List<VaccineSchedule> scheduleList = scheduleForUserWithoutVaccineType(snsUser);
-        List<UserArrival> arrivalList = arrivalForUser(snsUser);
-        for (VaccineSchedule schedule : scheduleList) {
-            if (waitingRoom.isEmpty()) {
-                VaccineSchedule vaccineSchedule = compareVaccineScheduleToUserArrival(schedule, arrivalList);
-                if (vaccineSchedule != null)
-                    return vaccineSchedule;
-                throw new IllegalArgumentException("Couldn't find any schedule for this user");
-            }else {
-                for (UserArrival userArrival : waitingRoom) {
-                    if (!userArrival.getSnsUser().equals(snsUser)) {
-                        VaccineSchedule vaccineSchedule = compareVaccineScheduleToUserArrival(schedule, arrivalList);
-                        if (vaccineSchedule != null)
-                            return vaccineSchedule;
-                        throw new IllegalArgumentException("Couldn't find any schedule for this user");
-                    }
-                }
-                throw new IllegalArgumentException("User is already in the waiting room");
-            }
-        }
-        throw new IllegalArgumentException("Couldn't find any schedule for this user");
-    }
-
-    private VaccineSchedule compareVaccineScheduleToUserArrival(VaccineSchedule schedule, List<UserArrival> arrivalList){
-        for (UserArrival arrival : arrivalList){
-            if (!arrival.getSchedule().equals(schedule)){
-                return schedule;
-            }
-        }
-        return null;
-    }*/
 
     /**
      * Register user arrival boolean.
@@ -715,15 +633,16 @@ public abstract class VaccinationCenter implements Serializable {
         return recoveryRoom.add(vaccineAdministration);
     }
 
-    public boolean removeFromRecoveryRoom(VaccineAdministration vaccineAdministration, Vaccine vaccine) {
+    public boolean removeFromRecoveryRoom(VaccineAdministration vaccineAdministration) {
         for(VaccineAdministration administration : recoveryRoom){
             if (administration.getUserArrival().getSnsUser().equals(vaccineAdministration.getUserArrival().getSnsUser()) && administration.getVaccine().equals(vaccineAdministration.getVaccine()))
+
                 return recoveryRoom.remove(administration);
         }
         return false;
     }
 
-    public void recoveryRoomTimer(VaccineAdministration vaccineAdministration, Vaccine vaccine){
+    /*public void recoveryRoomTimer(VaccineAdministration vaccineAdministration, Vaccine vaccine){
         new java.util.Timer().schedule(
                 new java.util.TimerTask() {
                     @Override
@@ -734,15 +653,13 @@ public abstract class VaccinationCenter implements Serializable {
                 },
                 RECOVERY_ROOM_TIME
         );
-    }
+    }*/
 
     public boolean validateAdministratedVaccines(VaccineType vaccineType, SNSUser snsUser){
         List <VaccineSchedule> scheduleList = scheduleForUser(vaccineType, snsUser);
         int administrations = administrationsForUser(vaccineType, snsUser);
 
-        if (scheduleList.size()==administrations)
-            return true;
-        return false;
+        return scheduleList.size() == administrations;
     }
 
     public List<UserArrival> getWaitingRoom() {
@@ -799,20 +716,6 @@ public abstract class VaccinationCenter implements Serializable {
         return administrationList;
     }
 
-    public boolean validateDoses(SNSUser user, Vaccine vaccine) {
-        for(VaccineAdministration administration : listAdministratedVaccines){
-            if (administration.getUserArrival().getSnsUser().equals(user)){
-                if (administration.getVaccine().equals(vaccine) && administration.getDoses() >= vaccine.getDoseNumber()){
-                    return false;
-                }
-                if (administration.getVaccine().equals(vaccine) && administration.getDoses() < vaccine.getDoseNumber()){
-                    return true;
-                }
-            }
-        }
-        return true;
-    }
-
     public VaccineAdministration validateVaccineAdministration(SNSUser user, Vaccine vaccine) {
         for(VaccineAdministration administration : listAdministratedVaccines){
             if (administration.getUserArrival().getSnsUser().equals(user) && administration.getVaccine().equals(vaccine)){
@@ -827,7 +730,7 @@ public abstract class VaccinationCenter implements Serializable {
         return listAdministratedVaccines;
     }
 
-    public Vaccine validateOngoingVaccine(VaccineType vaccineType, SNSUser snsUser, Date scheduleDate){
+    public Vaccine validateOngoingVaccine(VaccineType vaccineType, Date scheduleDate){
         for (Vaccine vaccine : vaccineType.getListVaccines()) {
             for (VaccineAdministration administration : listAdministratedVaccines){
                 if (administration.getVaccine().equals(vaccine) && administration.getDoses() < vaccine.getDoseNumber()){
@@ -841,9 +744,7 @@ public abstract class VaccinationCenter implements Serializable {
     }
 
     public boolean validateTimeIntervalForVaccinationCenter(int timeInterval) {
-        if (findDivisors(720).contains(timeInterval))
-            return true;
-        return false;
+        return findDivisors(720).contains(timeInterval);
     }
 
     public List<Integer> findDivisors(int minutes){
@@ -864,14 +765,6 @@ public abstract class VaccinationCenter implements Serializable {
         }else{//endTime
             return closingHours>time;
         }
-    }
-
-    public List<UserArrival> getListUserArrival() {
-        return listUserArrival;
-    }
-
-    public List<UserLeaving> getListUserLeaving() {
-        return listUserLeaving;
     }
 
     //true = start

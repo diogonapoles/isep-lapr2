@@ -10,6 +10,10 @@ import app.ui.console.utils.Utils;
 public class RemoveFromRecoveryRoomUI implements Runnable {
     private RemoveFromRecoveryRoomController controller ;
 
+    RemoveFromRecoveryRoomUI(){
+        this.controller = new RemoveFromRecoveryRoomController();
+    }
+
     public void run() {
         if (controller.getWorking() == null) {
             System.out.println("Doesn't exist");
@@ -21,12 +25,13 @@ public class RemoveFromRecoveryRoomUI implements Runnable {
                 return;
             }
 
-            VaccineAdministration administration = (VaccineAdministration) Utils.showAndSelectOne(controller.getRecoveryRoom(user), "Available Vaccines for this user:");
+            VaccineAdministration administration = (VaccineAdministration) Utils.showAndSelectOne(controller.getRecoveryRoom(user), "Users in the Recovery Room:");
             if (administration == null) {
                 return;
             }
 
             controller.removeFromRecoveryRoom(administration);
+            System.out.println("Success");
         }
     }
 }
