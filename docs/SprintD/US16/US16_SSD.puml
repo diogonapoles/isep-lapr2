@@ -1,0 +1,18 @@
+dfa@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor "Coordinator" as CDN
+
+activate CDN
+CDN -> ":System" : asks to analyze vaccination center performance
+activate ":System"
+":System" --> CDN : requests data (timeInterval)
+deactivate ":System"
+
+CDN -> ":System" : types requested data
+activate ":System"
+":System" --> CDN : shows data and informs operation success
+deactivate ":System"
+@enduml

@@ -1,4 +1,4 @@
-package app.domain.model;
+package app.domain.shared;
 
 import app.domain.model.systemUser.SNSUser;
 import app.ui.console.utils.Data;

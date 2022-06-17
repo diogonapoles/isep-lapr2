@@ -1,6 +1,7 @@
-package app.domain.model;
+package app.domain.shared;
 
 import app.controller.App;
+import app.domain.model.Company;
 import app.domain.model.vaccinationProcess.UserArrival;
 import app.domain.model.vaccinationProcess.UserLeaving;
 
