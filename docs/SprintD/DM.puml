@@ -1,0 +1,185 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+class VaccinationCenter{
+name
+phoneNumber
+faxNumber
+homeAddress
+emailAddress
+websiteAddress
+openingHours
+closingHours
+slotDuration
+maxNumVaccinesPerSlot
+}
+class HealthcareCenter{
+}
+class MassVaccinationCommunityCenter{
+}
+VaccinationCenter <|-left- HealthcareCenter
+VaccinationCenter <|-up- MassVaccinationCommunityCenter
+
+class VaccineType{
+code
+designation
+}
+class InactivatedVaccine{
+}
+class LiveAttenuatedVaccine{
+}
+class mRNAVaccine{
+}
+class SubunitVaccine{
+}
+class ToxoidVaccine{
+}
+class ViralVectorVaccine{
+}
+VaccineType <|-up- InactivatedVaccine
+VaccineType <|-up- LiveAttenuatedVaccine
+VaccineType <|-up- ViralVectorVaccine
+VaccineType <|-up- mRNAVaccine
+VaccineType <|-left- SubunitVaccine
+VaccineType <|-right- ToxoidVaccine
+
+
+class Vaccine{
+name
+brand
+ageGroup
+doseNumber
+dosage
+timeSinceLastDose
+}
+
+class Slot{
+vaccineDay
+}
+
+class Day{
+vaccinationCenter
+day
+openingHours
+closingHours
+slotDuration
+maxNumVaccinesPerSlot
+}
+
+class Employee{
+name
+phoneNumber
+address
+emailAddress
+citizenCardNumber
+companyID
+}
+class CenterCoordinator{
+}
+class Receptionist{
+}
+class Nurse{
+}
+Employee <|-up- CenterCoordinator
+Employee <|-right- Receptionist
+Employee <|-down- Nurse
+
+class Administrator{
+}
+
+class AdverseReactions{
+}
+
+class Stats{
+}
+
+class Company{
+designation
+}
+
+class UserArrival{
+snsUser
+arrivalTime
+schedule
+}
+
+class UserLeaving{
+vaccineAdministration
+leavingTime
+}
+
+class VaccineAdministration{
+userArrival
+vaccine
+vaccinationTime
+recoveryRoomTime
+}
+
+class VaccineSchedule{
+snsUser
+vaccineType
+vaccineList
+vaccinationTime
+}
+class SNSUser{
+name
+address
+gender
+phoneNumber
+birthDate
+emailAddress
+snsUserNumber
+citizenCardNumber
+}
+
+class VaccinationCertificate
+class WaitingRoom
+class RecoveryRoom
+
+Company "1" -up-- "*" VaccinationCenter : manages >
+Company "1" -left-- "*" VaccineType : administers >
+
+VaccineType "1" -down-- "*" Vaccine : has >
+
+Vaccine "1" -down-- "*" VaccineAdministration : of <
+Vaccine "*" -right-- "1" SNSUser : > administrated on
+
+VaccinationCenter "1"-up--"*" VaccineType : has >
+VaccinationCenter "1" -right-- "*" Stats : reports >
+VaccinationCenter "1" -left- "*" VaccineAdministration : has >
+VaccinationCenter "1" -left- "*" VaccineSchedule : has >
+
+VaccineSchedule "*" -left-- "1" SNSUser : made for >
+VaccineSchedule "1" -up-- "0..1" VaccineType : administers >
+
+CenterCoordinator "1" -up--- "1" VaccinationCenter : coordinates >
+CenterCoordinator "*" -right- "*" Stats : analyses >
+
+VaccinationCertificate "1"--"1" VaccineType
+VaccinationCertificate "1"--"1" VaccineAdministration
+
+Nurse "*" -down- "1..*" WaitingRoom : consults users in >
+(Nurse, WaitingRoom) .. UserHealthHistoric
+Nurse "1" -up-- "*" VaccinationCertificate : issues and delivers >
+
+VaccineAdministration "*" -down-- "1" RecoveryRoom : sends user to >
+VaccineAdministration -up-- WaitingRoom : sends users to >
+VaccineAdministration -right-- Slot : has >
+VaccineAdministration -down-- Day : has >
+VaccineAdministration -down-- UserArrival : has >
+VaccineAdministration -down-- UserLeaving : has >
+
+Administrator "1" -right- "*" Employee : registers and configures >
+Administrator "1" -down- "*" VaccinationCenter : registers and configures >
+Administrator "1" -up- "*" SNSUser : registers and configures >
+
+Receptionist "*" -down-- "*" SNSUser : registers arrival of >
+Receptionist "*" -down--- "*" VaccineSchedule : confirms >
+Receptionist "1..*"-up-- "1..*"WaitingRoom : sends SNS user to >
+
+VaccineAdministration "1" -up-- "0..1" Notification : emits >
+
+Notification <|-- SMSNotification
+
+@enduml

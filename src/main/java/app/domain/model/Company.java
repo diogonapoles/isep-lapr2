@@ -1,6 +1,9 @@
 package app.domain.model;
 
 import app.domain.model.vaccine.Vaccine;
+import app.domain.shared.BruteForce;
+import app.domain.shared.CSVReader;
+import app.domain.shared.FileUtils;
 import app.domain.store.*;
 import pt.isep.lei.esoft.auth.AuthFacade;
 import org.apache.commons.lang3.StringUtils;
