@@ -72,7 +72,7 @@ public class US17ui implements Initializable {
         arrivalCombo.getItems().addAll(arrival);
         choiceCombo.setValue("Bubble Sort");
         orderCombo.setValue("Ascending");
-        arrivalCombo.setValue("Sort by Arrival time");
+        arrivalCombo.setValue("Sort By Arrival Time");
     }
 
     @FXML
