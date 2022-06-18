@@ -23,7 +23,11 @@ public class Vaccine implements Serializable {
 
     private VaccineType oVaccineType;
 
-  //  public Vaccine(VaccineType oVaccineType) {
+    public Vaccine() {
+
+    }
+
+    //  public Vaccine(VaccineType oVaccineType) {
 
     //    this.oVaccineType = oVaccineType;
     //}

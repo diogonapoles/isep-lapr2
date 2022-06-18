@@ -2,6 +2,7 @@ package app.controller.centerCoordinator;
 
 import app.controller.App;
 import app.domain.model.Company;
+import app.domain.model.vaccinationCenter.VaccinationCenter;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,15 +18,14 @@ public class VaccinatedToFileController {
     }
 
     public List getListAdministratedVaccines() {
-        
-        return oCompany.getVaccinationCenterStore().getListAdministratedVaccines();
+        return VaccinationCenter.getListAdministratedVaccines();
     }
 
     public boolean validateFileName(String fileName) {
         return oCompany.getVaccinatedToFile().validateFileName(fileName);
     }
 
-    public void writeToFile(String fileName) throws IOException {
+    public void writeToFile(String fileName) throws Exception {
         oCompany.getVaccinatedToFile().writeToFile(fileName);
     }
 }

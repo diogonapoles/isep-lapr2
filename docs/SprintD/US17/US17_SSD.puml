@@ -1,27 +1,23 @@
 @startuml
-'https://plantuml.com/class-diagram
+autonumber
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
+actor "Coordinator" as COO
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
 
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
+activate COO
+COO -> ":System" :  starts to import the data
+activate ":System"
+":System" --> COO : request data (filePath)
+deactivate ":System"
+COO -> ":System" :  type Requestes data
+activate ":System"
+":System" --> COO : informs operation success
 
-class ArrayList {
-Object[] elementData
-size()
-}
+deactivate ":System"
+COO -> ":System" : starts sorting process
+activate ":System"
+":System" --> COO : Show listSorted
+deactivate ":System"
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
-}
 
 @enduml

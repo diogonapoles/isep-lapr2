@@ -148,23 +148,11 @@ public class App {
         Vaccine v1 = vt1.newVaccine("COVID-19 Vaccine", "Pfizer", "18-22", 2, 5, 90);
         Vaccine v3 = vt1.newVaccine("COVID-19 Vaccine 2", "Janssen", "20-30", 1, 5, 360);
         Vaccine v2 = vt2.newVaccine("FLU Vaccine", "Pfizer", "10-45", 1, 5, 180);
-        Vaccine v4 = vt4.newVaccine("spikevax", "Moderna", "12-52", 1, 5, 130);
+        Vaccine v4 = vt4.newVaccine("spikevax", "Moderna", "12-52", 2, 5, 130);
         createVaccine(vc1.findVaccineType("12345"), vc1.findVaccineType("54321"), vc1.findVaccineType("65465"));
-    }
-
-    private void createSortingStuff() {
-        final List<Object> listSortAlgorithms = new ArrayList<>();
-        final List<Object> listSortOrder = new ArrayList<>();
-        final List<Object> listSortArrivalLeaving = new ArrayList<>();
-
-        listSortAlgorithms.add("Bubble Sort");
-        listSortAlgorithms.add("Insertion Sort");
-        listSortOrder.add("Ascending");
-        listSortOrder.add("Descending");
-        listSortArrivalLeaving.add("Sort By Arrival Time");
-        listSortArrivalLeaving.add("Sort by leaving Time");
 
     }
+
 
     private void createVaccineType(VaccinationCenter vc1) {
         VaccineType vt1 = vc1.newVaccineType(0, "12345", "COVID-19");

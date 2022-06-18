@@ -1,11 +1,14 @@
 package app.domain.model;
 
+import app.controller.App;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
+import app.domain.model.vaccine.Vaccine;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,12 +20,15 @@ public class VaccinatedToFile {
     private static final String SEPARATOR = "\n";
     private static final String HEADER = "Number of Fully Vaccinated Patients per Day";
 
-    private final List list = new ArrayList<>();
+    private List listVaccinated = new ArrayList<>();
+    private List listFullyVaccinated = new ArrayList();
 
-    private int fullyVaccinated;
+    private Vaccine oVaccine;
 
-    public VaccinatedToFile(int fullyVaccinated){
-        this.fullyVaccinated= fullyVaccinated;
+
+    public VaccinatedToFile() {
+        this.oVaccine = new Vaccine();
+
     }
 
     public boolean validateFileName(String fileName) {
@@ -38,40 +44,51 @@ public class VaccinatedToFile {
         }
     }
 
-    public String getFullyVaccinatedString(){
-        String str = (" vaccinations fully completed");
-        return str;
+
+    public List getFullyVaccinatedPatients() {
+        for (int i = 0; i < listVaccinated.size(); i++) {
+            if (Collections.frequency(listVaccinated, listVaccinated.get(i)) == 1) {
+                listFullyVaccinated.add(listVaccinated.get(i));
+            }
+        }
+        return listFullyVaccinated;
     }
-    public int getFullyVaccinatedPatients(){
-        return 5;
-    }
-    public List getList(){
-        list.add(getFullyVaccinatedPatients()+" Users");
-        list.add("10"+" Users");
-        return list;
+
+    public List getListVaccinated() {
+        return VaccinationCenter.getListAdministratedVaccines();
     }
 
 
-    public void writeToFile(String fileName) throws IOException {
+    public void writeToFile(String fileName) throws Exception {
         FileWriter writer = null;
         try {
             writer = new FileWriter(fileName);
 
-            List test;
-  //          test.add("ola");
-            test = getList();
 
+            listVaccinated = getListVaccinated();
+            listFullyVaccinated = getFullyVaccinatedPatients();
 
-            String collect = (String) test.stream().collect(Collectors.joining(SEPARATOR));
+            /*Object collect = listFullyVaccinated.stream().collect(Collectors.joining(SEPARATOR));
             System.out.println(HEADER + "\n");
             System.out.println(collect);
 
             writer.write(HEADER);
             writer.write(SEPARATOR);
-            writer.write(collect);
+            writer.write((String) collect);
+
+             */
+            System.out.println(HEADER + "\n");
+            System.out.println(listFullyVaccinated.size());
+            System.out.printf(String.valueOf(listFullyVaccinated));
+
+            writer.write(HEADER);
+            writer.write(SEPARATOR+SEPARATOR);
+            writer.write(listFullyVaccinated.size()+" Users Vaccinated");
+            writer.write(SEPARATOR);
+            writer.write(String.valueOf(listFullyVaccinated));
 
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new Exception("couldn´t write on the file");
         } finally {
             writer.close();
         }

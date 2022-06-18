@@ -18,6 +18,7 @@ public class VaccinationCenterStore extends VaccinationCenter{
      * Instantiates a new Vaccination center store.
      */
     public VaccinationCenterStore() {
+
     }
 
     /**
@@ -104,8 +105,6 @@ public class VaccinationCenterStore extends VaccinationCenter{
         return this.listVaccinationCenter;
     }
 
-    public List getListAdministrations() {
-        return getListAdministratedVaccines();
-    }
+
 
 }

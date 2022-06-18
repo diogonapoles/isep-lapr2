@@ -31,7 +31,6 @@ public class Company {
     private Stats oStats;
 
     private VaccinatedToFile oVaccinatedToFile;
-    private int fullyVaccinated;
     private VaccineType vaccineType;
 
 
@@ -56,7 +55,7 @@ public class Company {
         this.oFileUtils = new FileUtils();
         this.oStats = new Stats();
         this.vaccineType = new VaccineType();
-        this.oVaccinatedToFile = new VaccinatedToFile(fullyVaccinated);
+        this.oVaccinatedToFile = new VaccinatedToFile();
     }
 
     /**

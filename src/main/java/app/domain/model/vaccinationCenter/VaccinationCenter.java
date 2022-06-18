@@ -36,7 +36,7 @@ public abstract class VaccinationCenter implements Serializable {
     private List<VaccineSchedule> listSchedule;
     private List<UserArrival> listUserArrival;
     private List<UserLeaving> listUserLeaving;
-    private List<VaccineAdministration> listAdministratedVaccines;
+    private static List<VaccineAdministration> listAdministratedVaccines;
 
     private List<UserArrival> waitingRoom;
     private List<VaccineAdministration> recoveryRoom;
@@ -726,7 +726,7 @@ public abstract class VaccinationCenter implements Serializable {
         return null;
     }
 
-    public List<VaccineAdministration> getListAdministratedVaccines() {
+    public static List<VaccineAdministration> getListAdministratedVaccines() {
         return listAdministratedVaccines;
     }
 

@@ -1,23 +1,21 @@
 @startuml
 
 autonumber
-actor "Receptionist" as RCP
+actor "Coordinator" as COO
 
 
 participant "lsdui\n:LegacySystemDataUI" as UI
 participant "lsdctrl\n:LegacySystemDataCTRL" as CTRL
 participant "App" as APP
-participant "app\n:App" as App
+participant "oApp\n:App" as App
 participant "comp:Company" as COMP
 participant "lsdr:LegacySystemDataReader" as LSDR
 participant "lsd\n:LegacySystemData" as LSD
-participant "snsU: SNSUser" as snsU
-participant "svs\n:ScheduleVaccineStore" as SVS
-participant "auth\n:AuthFacade" as AF
 
 
 
-RCP -> UI : starts to import the data
+
+COO -> UI : starts to import the data
 activate UI
 UI -> CTRL : controller = UserArrivalController()
 activate CTRL
@@ -30,14 +28,20 @@ deactivate App
 
 deactivate CTRL
 
-UI --> RCP : request data (filePath)
+UI --> COO : request data (filePath)
 deactivate UI
 
-RCP -> UI : lis
+COO -> UI : type Requestes data
 activate UI
 
-UI -> CTRL : newLegacySystemDataReader(filePath)
+UI-> CTRL: validateFilePath(filePath)
 activate CTRL
+
+CTRL-> LSDR :validateFilePath(filePath)
+activate LSDR
+deactivate LSDR
+UI -> CTRL : newLegacySystemDataReader(filePath)
+
 
 CTRL -> LSDR : csvReaderLegacyData(filePath)
 activate LSDR
@@ -47,32 +51,16 @@ LSDR -> LSDR : createLegacySystemData(attributes)
 activate LSDR
 deactivate LSDR
 
-
-UI --> RCP : informs operation success
+UI -> CTRL : listLegacyData = getListLegacySystemData()
 deactivate LSDR
-deactivate CTRL
-deactivate UI
-
-
-RCP -> UI : listLegacyData = getListLegacySystemData()
-activate UI
-
-UI -> CTRL : getListLegacySystemData()
-activate CTRL
-deactivate CTRL
-
-UI --> RCP : returns list with data
-deactivate LSDR
-deactivate CTRL
-deactivate UI
 
 
 
-RCP -> UI : getSortChoices()
-activate UI
+
+
 
 UI -> CTRL : getSortChoices()
-activate CTRL
+
 
 
 CTRL -> LSD : getSortChoices()
@@ -81,7 +69,7 @@ deactivate LSD
 deactivate CTRL
 
 
-UI --> RCP : return Choices
+UI --> COO : informs operation Success
 
 deactivate LSDR
 deactivate CTRL
@@ -90,7 +78,7 @@ deactivate UI
 
 
 
-RCP -> UI : starts sorting process
+COO -> UI : starts sorting process
 activate UI
 
 UI -> CTRL : sortByParameters(sortChoice, sortOrder\n, sortArrivalLeaving, listLegacyData)
@@ -105,12 +93,12 @@ deactivate LSD
 
 CTRL --> UI : return listSorted
 deactivate CTRL
-UI --> RCP : Show listSorted
+UI --> COO : Show listSorted
 
 deactivate LSDR
 deactivate CTRL
 deactivate UI
-deactivate RCP
+deactivate COO
 
 
 
