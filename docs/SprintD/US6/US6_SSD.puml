@@ -1,0 +1,13 @@
+dfa@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+
+activate ":Task"
+":Task" --> ":System" : verifies configuration file and schedules task for\ndesired time
+activate ":System"
+":System" --> ":Task" : at the desired time, writes daily stats to a CSV file
+deactivate ":System"
+deactivate ":Task"
+@enduml

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="869px" preserveAspectRatio="none" style="width:1739px;height:869px;background:#FFFFFF;" version="1.1" viewBox="0 0 1739 869" width="1739px" zoomAndPan="magnify"><defs/><g><rect fill="#FFFFFF" height="745.6582" style="stroke:#181818;stroke-width:1.0;" width="10" x="25" y="62.9766"/><rect fill="#FFFFFF" height="675.0371" style="stroke:#181818;stroke-width:1.0;" width="10" x="373" y="99.5977"/><rect fill="#FFFFFF" height="624.416" style="stroke:#181818;stroke-width:1.0;" width="10" x="474" y="128.9082"/><rect fill="#FFFFFF" height="30" style="stroke:#181818;stroke-width:1.0;" width="10" x="638" y="158.2188"/><rect fill="#FFFFFF" height="30" style="stroke:#181818;stroke-width:1.0;" width="10" x="692" y="217.5293"/><rect fill="#FFFFFF" height="30" style="stroke:#181818;stroke-width:1.0;" width="10" x="766.5" y="276.8398"/><rect fill="#FFFFFF" height="30" style="stroke:#181818;stroke-width:1.0;" width="10" x="766.5" y="336.1504"/><rect fill="#FFFFFF" height="357.8633" style="stroke:#181818;stroke-width:1.0;" width="10" x="843.5" y="395.4609"/><rect fill="#FFFFFF" height="28" style="stroke:#181818;stroke-width:1.0;" width="10" x="848.5" y="432.7715"/><rect fill="#FFFFFF" height="70.3105" style="stroke:#181818;stroke-width:1.0;" width="10" x="848.5" y="505.082"/><rect fill="#FFFFFF" height="28" style="stroke:#181818;stroke-width:1.0;" width="10" x="853.5" y="547.3926"/><rect fill="#FFFFFF" height="141.6211" style="stroke:#181818;stroke-width:1.0;" width="10" x="848.5" y="611.7031"/><rect fill="#FFFFFF" height="28" style="stroke:#181818;stroke-width:1.0;" width="10" x="853.5" y="703.3242"/><rect fill="#FFFFFF" height="30" style="stroke:#181818;stroke-width:1.0;" width="10" x="1287.5" y="611.7031"/><rect height="89.6211" style="stroke:#000000;stroke-width:1.5;fill:none;" width="274.5" x="813" y="656.7031"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="30" x2="30" y1="52.9766" y2="817.6348"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="377.5" x2="377.5" y1="52.9766" y2="817.6348"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="478.5" x2="478.5" y1="52.9766" y2="817.6348"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="643" x2="643" y1="52.9766" y2="817.6348"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="697" x2="697" y1="52.9766" y2="817.6348"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="771" x2="771" y1="52.9766" y2="817.6348"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="848" x2="848" y1="52.9766" y2="817.6348"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="1292" x2="1292" y1="52.9766" y2="817.6348"/><line style="stroke:#181818;stroke-width:0.5;fill:none;stroke-dasharray:5.0,5.0;" x1="1562" x2="1562" y1="52.9766" y2="817.6348"/><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="50" x="5" y="21.4883"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="36" x="12" y="42.0234">:Task</text><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="50" x="5" y="816.6348"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="36" x="12" y="837.1699">:Task</text><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="51" x="352.5" y="21.4883"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="359.5" y="42.0234">:Main</text><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="51" x="352.5" y="816.6348"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="359.5" y="837.1699">:Main</text><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="121" x="418.5" y="21.4883"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="107" x="425.5" y="42.0234">:StatsController</text><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="121" x="418.5" y="816.6348"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="107" x="425.5" y="837.1699">:StatsController</text><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="42" x="622" y="21.4883"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="28" x="629" y="42.0234">App</text><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="42" x="622" y="816.6348"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="28" x="629" y="837.1699">App</text><rect fill="#E2E2F0" height="46.9766" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="46" x="674" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="26" x="684" y="25.5352">app</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="32" x="681" y="42.0234">:App</text><rect fill="#E2E2F0" height="46.9766" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="46" x="674" y="816.6348"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="26" x="684" y="837.1699">app</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="32" x="681" y="853.6582">:App</text><rect fill="#E2E2F0" height="46.9766" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="83" x="730" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="38" x="752.5" y="25.5352">comp</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="69" x="737" y="42.0234">:Company</text><rect fill="#E2E2F0" height="46.9766" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="83" x="730" y="816.6348"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="38" x="752.5" y="837.1699">comp</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="69" x="737" y="853.6582">:Company</text><rect fill="#E2E2F0" height="46.9766" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="51" x="823" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="32" x="832.5" y="25.5352">stats</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="830" y="42.0234">:Stats</text><rect fill="#E2E2F0" height="46.9766" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="51" x="823" y="816.6348"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="32" x="832.5" y="837.1699">stats</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="830" y="853.6582">:Stats</text><rect fill="#E2E2F0" height="46.9766" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="179" x="1203" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="35" x="1275" y="25.5352">store</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="165" x="1210" y="42.0234">:VaccinationCenterStore</text><rect fill="#E2E2F0" height="46.9766" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="179" x="1203" y="816.6348"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="35" x="1275" y="837.1699">store</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="165" x="1210" y="853.6582">:VaccinationCenterStore</text><rect fill="#E2E2F0" height="46.9766" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="341" x="1392" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="18" x="1553.5" y="25.5352">lvc</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="327" x="1399" y="42.0234">:List &lt;VaccinationCenter&gt; listVaccinationCenter</text><rect fill="#E2E2F0" height="46.9766" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="341" x="1392" y="816.6348"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="18" x="1553.5" y="837.1699">lvc</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="327" x="1399" y="853.6582">:List &lt;VaccinationCenter&gt; listVaccinationCenter</text><rect fill="#FFFFFF" height="745.6582" style="stroke:#181818;stroke-width:1.0;" width="10" x="25" y="62.9766"/><rect fill="#FFFFFF" height="675.0371" style="stroke:#181818;stroke-width:1.0;" width="10" x="373" y="99.5977"/><rect fill="#FFFFFF" height="624.416" style="stroke:#181818;stroke-width:1.0;" width="10" x="474" y="128.9082"/><rect fill="#FFFFFF" height="30" style="stroke:#181818;stroke-width:1.0;" width="10" x="638" y="158.2188"/><rect fill="#FFFFFF" height="30" style="stroke:#181818;stroke-width:1.0;" width="10" x="692" y="217.5293"/><rect fill="#FFFFFF" height="30" style="stroke:#181818;stroke-width:1.0;" width="10" x="766.5" y="276.8398"/><rect fill="#FFFFFF" height="30" style="stroke:#181818;stroke-width:1.0;" width="10" x="766.5" y="336.1504"/><rect fill="#FFFFFF" height="357.8633" style="stroke:#181818;stroke-width:1.0;" width="10" x="843.5" y="395.4609"/><rect fill="#FFFFFF" height="28" style="stroke:#181818;stroke-width:1.0;" width="10" x="848.5" y="432.7715"/><rect fill="#FFFFFF" height="70.3105" style="stroke:#181818;stroke-width:1.0;" width="10" x="848.5" y="505.082"/><rect fill="#FFFFFF" height="28" style="stroke:#181818;stroke-width:1.0;" width="10" x="853.5" y="547.3926"/><rect fill="#FFFFFF" height="141.6211" style="stroke:#181818;stroke-width:1.0;" width="10" x="848.5" y="611.7031"/><rect fill="#FFFFFF" height="28" style="stroke:#181818;stroke-width:1.0;" width="10" x="853.5" y="703.3242"/><rect fill="#FFFFFF" height="30" style="stroke:#181818;stroke-width:1.0;" width="10" x="1287.5" y="611.7031"/><polygon fill="#181818" points="361,95.5977,371,99.5977,361,103.5977,365,99.5977" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="35" x2="367" y1="99.5977" y2="99.5977"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="42" y="87.2002">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="306" x="55" y="79.5449">verifies configuration file and schedules task for</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="78" x="55" y="94.8555">desired time</text><polygon fill="#181818" points="462,124.9082,472,128.9082,462,132.9082,466,128.9082" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="383" x2="468" y1="128.9082" y2="128.9082"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="390" y="124.166">2</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="59" x="403" y="124.166">getStats()</text><polygon fill="#181818" points="626,154.2188,636,158.2188,626,162.2188,630,158.2188" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="484" x2="632" y1="158.2188" y2="158.2188"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="491" y="153.4766">3</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="122" x="504" y="153.4766">app = getInstance()</text><polygon fill="#181818" points="680,213.5293,690,217.5293,680,221.5293,684,217.5293" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="484" x2="686" y1="217.5293" y2="217.5293"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="491" y="212.7871">4</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="140" x="504" y="212.7871">comp = getCompany()</text><polygon fill="#181818" points="754.5,272.8398,764.5,276.8398,754.5,280.8398,758.5,276.8398" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="484" x2="760.5" y1="276.8398" y2="276.8398"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="491" y="272.0977">5</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="108" x="504" y="272.0977">stats = getStats()</text><polygon fill="#181818" points="754.5,332.1504,764.5,336.1504,754.5,340.1504,758.5,336.1504" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="484" x2="760.5" y1="336.1504" y2="336.1504"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="491" y="331.4082">6</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="224" x="504" y="331.4082">store = getVaccinationCenterStore()</text><polygon fill="#181818" points="831.5,391.4609,841.5,395.4609,831.5,399.4609,835.5,395.4609" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="484" x2="837.5" y1="395.4609" y2="395.4609"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="491" y="390.7188">7</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="72" x="504" y="390.7188">stats.start()</text><line style="stroke:#181818;stroke-width:1.0;" x1="858.5" x2="900.5" y1="424.7715" y2="424.7715"/><line style="stroke:#181818;stroke-width:1.0;" x1="900.5" x2="900.5" y1="424.7715" y2="437.7715"/><line style="stroke:#181818;stroke-width:1.0;" x1="859.5" x2="900.5" y1="437.7715" y2="437.7715"/><polygon fill="#181818" points="869.5,433.7715,859.5,437.7715,869.5,441.7715,865.5,437.7715" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="865.5" y="420.0293">8</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="98" x="878.5" y="420.0293">loadProperties()</text><line style="stroke:#181818;stroke-width:1.0;" x1="853.5" x2="900.5" y1="492.082" y2="492.082"/><line style="stroke:#181818;stroke-width:1.0;" x1="900.5" x2="900.5" y1="492.082" y2="505.082"/><line style="stroke:#181818;stroke-width:1.0;" x1="859.5" x2="900.5" y1="505.082" y2="505.082"/><polygon fill="#181818" points="869.5,501.082,859.5,505.082,869.5,509.082,865.5,505.082" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="865.5" y="487.3398">9</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="265" x="878.5" y="487.3398">startExecutionAt(targetHour, targetMin, 0)</text><line style="stroke:#181818;stroke-width:1.0;" x1="863.5" x2="905.5" y1="539.3926" y2="539.3926"/><line style="stroke:#181818;stroke-width:1.0;" x1="905.5" x2="905.5" y1="539.3926" y2="552.3926"/><line style="stroke:#181818;stroke-width:1.0;" x1="864.5" x2="905.5" y1="552.3926" y2="552.3926"/><polygon fill="#181818" points="874.5,548.3926,864.5,552.3926,874.5,556.3926,870.5,552.3926" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="18" x="870.5" y="534.6504">10</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="393" x="892.5" y="534.6504">computeNextDelay(int targetHour, int targetMin, int targetSec)</text><polygon fill="#181818" points="1275.5,607.7031,1285.5,611.7031,1275.5,615.7031,1279.5,611.7031" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="858.5" x2="1281.5" y1="611.7031" y2="611.7031"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="18" x="865.5" y="606.9609">11</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="165" x="887.5" y="606.9609">getListVaccinationCenter()</text><path d="M813,656.7031 L887,656.7031 L887,664.0137 L877,674.0137 L813,674.0137 L813,656.7031 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="89.6211" style="stroke:#000000;stroke-width:1.5;" width="274.5" x="813" y="656.7031"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="29" x="828" y="670.2715">loop</text><line style="stroke:#181818;stroke-width:1.0;" x1="863.5" x2="905.5" y1="695.3242" y2="695.3242"/><line style="stroke:#181818;stroke-width:1.0;" x1="905.5" x2="905.5" y1="695.3242" y2="708.3242"/><line style="stroke:#181818;stroke-width:1.0;" x1="864.5" x2="905.5" y1="708.3242" y2="708.3242"/><polygon fill="#181818" points="874.5,704.3242,864.5,708.3242,874.5,712.3242,870.5,708.3242" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="18" x="870.5" y="690.582">12</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="183" x="892.5" y="690.582">addDataToCSV(String output)</text><polygon fill="#181818" points="46,770.6348,36,774.6348,46,778.6348,42,774.6348" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="40" x2="377" y1="774.6348" y2="774.6348"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="18" x="52" y="769.8926">13</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="269" x="74" y="769.8926">shows data and informs operation success</text><!--MD5=[08a7dd6d13cfab28bc27113fb0445716]
+@startuml
+autonumber
+'hide footbox
+
+participant ":Task" as CDN
+participant ":Main" as UI
+participant ":StatsController" as CTRL
+participant "App" as _APP
+participant "app\n:App" as APP
+participant "comp\n:Company" as COMP
+participant "stats\n:Stats" as STATS
+participant "store\n:VaccinationCenterStore" as STORE
+participant "lvc\n:List <VaccinationCenter> listVaccinationCenter"
+
+activate CDN
+CDN -> UI : verifies configuration file and schedules task for\ndesired time
+activate UI
+UI -> CTRL : getStats()
+activate CTRL
+CTRL -> _APP : app = getInstance()
+activate _APP
+deactivate _APP
+CTRL -> APP : comp = getCompany()
+activate APP
+deactivate APP
+CTRL -> COMP : stats = getStats()
+activate COMP
+deactivate COMP
+CTRL -> COMP : store = getVaccinationCenterStore()
+activate COMP
+deactivate COMP
+CTRL -> STATS : stats.start()
+activate STATS
+STATS -> STATS : loadProperties()
+activate STATS
+deactivate STATS
+STATS -> STATS : startExecutionAt(targetHour, targetMin, 0)
+activate STATS
+STATS -> STATS : computeNextDelay(int targetHour, int targetMin, int targetSec)
+activate STATS
+deactivate STATS
+deactivate STATS
+STATS -> STORE : getListVaccinationCenter()
+activate STORE
+deactivate STORE
+activate STATS
+loop
+    STATS -> STATS : addDataToCSV(String output)
+    activate STATS
+    deactivate STATS
+end
+deactivate STATS
+deactivate CTRL
+deactivate STATS
+
+UI - -> CDN : shows data and informs operation success
+deactivate UI
+|||
+
+
+
+@enduml
+
+@startuml
+autonumber
+
+participant ":Task" as CDN
+participant ":Main" as UI
+participant ":StatsController" as CTRL
+participant "App" as _APP
+participant "app\n:App" as APP
+participant "comp\n:Company" as COMP
+participant "stats\n:Stats" as STATS
+participant "store\n:VaccinationCenterStore" as STORE
+participant "lvc\n:List <VaccinationCenter> listVaccinationCenter"
+
+activate CDN
+CDN -> UI : verifies configuration file and schedules task for\ndesired time
+activate UI
+UI -> CTRL : getStats()
+activate CTRL
+CTRL -> _APP : app = getInstance()
+activate _APP
+deactivate _APP
+CTRL -> APP : comp = getCompany()
+activate APP
+deactivate APP
+CTRL -> COMP : stats = getStats()
+activate COMP
+deactivate COMP
+CTRL -> COMP : store = getVaccinationCenterStore()
+activate COMP
+deactivate COMP
+CTRL -> STATS : stats.start()
+activate STATS
+STATS -> STATS : loadProperties()
+activate STATS
+deactivate STATS
+STATS -> STATS : startExecutionAt(targetHour, targetMin, 0)
+activate STATS
+STATS -> STATS : computeNextDelay(int targetHour, int targetMin, int targetSec)
+activate STATS
+deactivate STATS
+deactivate STATS
+STATS -> STORE : getListVaccinationCenter()
+activate STORE
+deactivate STORE
+activate STATS
+loop
+    STATS -> STATS : addDataToCSV(String output)
+    activate STATS
+    deactivate STATS
+end
+deactivate STATS
+deactivate CTRL
+deactivate STATS
+
+UI - -> CDN : shows data and informs operation success
+deactivate UI
+|||
+
+
+
+@enduml
+
+PlantUML version 1.2022.5(Sat Apr 30 11:55:52 WEST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: PT
+--></g></svg>

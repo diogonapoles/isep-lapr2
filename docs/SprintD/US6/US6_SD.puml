@@ -1,0 +1,62 @@
+@startuml
+autonumber
+'hide footbox
+
+participant ":Task" as CDN
+participant ":Main" as UI
+participant ":StatsController" as CTRL
+participant "App" as _APP
+participant "app\n:App" as APP
+participant "comp\n:Company" as COMP
+participant "stats\n:Stats" as STATS
+participant "store\n:VaccinationCenterStore" as STORE
+participant "lvc\n:List <VaccinationCenter> listVaccinationCenter"
+
+activate CDN
+CDN -> UI : verifies configuration file and schedules task for\ndesired time
+activate UI
+UI -> CTRL : getStats()
+activate CTRL
+CTRL -> _APP : app = getInstance()
+activate _APP
+deactivate _APP
+CTRL -> APP : comp = getCompany()
+activate APP
+deactivate APP
+CTRL -> COMP : stats = getStats()
+activate COMP
+deactivate COMP
+CTRL -> COMP : store = getVaccinationCenterStore()
+activate COMP
+deactivate COMP
+CTRL -> STATS : stats.start()
+activate STATS
+STATS -> STATS : loadProperties()
+activate STATS
+deactivate STATS
+STATS -> STATS : startExecutionAt(targetHour, targetMin, 0)
+activate STATS
+STATS -> STATS : computeNextDelay(int targetHour, int targetMin, int targetSec)
+activate STATS
+deactivate STATS
+deactivate STATS
+STATS -> STORE : getListVaccinationCenter()
+activate STORE
+deactivate STORE
+activate STATS
+loop
+    STATS -> STATS : addDataToCSV(String output)
+    activate STATS
+    deactivate STATS
+end
+deactivate STATS
+deactivate CTRL
+deactivate STATS
+
+UI --> CDN : shows data and informs operation success
+deactivate UI
+|||
+
+
+
+@enduml

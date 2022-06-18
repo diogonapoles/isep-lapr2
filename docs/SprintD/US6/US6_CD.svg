@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="647px" preserveAspectRatio="none" style="width:713px;height:647px;background:#FFFFFF;" version="1.1" viewBox="0 0 713 647" width="713px" zoomAndPan="magnify"><defs/><g><!--MD5=[335f4d9be48430461c68bf6d6fdba145]
+class App--><g id="elem_App"><rect codeLine="3" fill="#F1F1F1" height="80.9766" id="App" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="152" x="7" y="282"/><ellipse cx="64.75" cy="298" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M67.2231,304.1431 Q66.6421,304.4419 66.0029,304.5913 Q65.3638,304.7407 64.6582,304.7407 Q62.1514,304.7407 60.8315,303.0889 Q59.5117,301.437 59.5117,298.3159 Q59.5117,295.1865 60.8315,293.5347 Q62.1514,291.8828 64.6582,291.8828 Q65.3638,291.8828 66.0112,292.0322 Q66.6587,292.1816 67.2231,292.4805 L67.2231,295.2031 Q66.5923,294.6221 65.9988,294.3523 Q65.4053,294.0825 64.7744,294.0825 Q63.4297,294.0825 62.7449,295.1492 Q62.0601,296.2158 62.0601,298.3159 Q62.0601,300.4077 62.7449,301.4744 Q63.4297,302.541 64.7744,302.541 Q65.4053,302.541 65.9988,302.2712 Q66.5923,302.0015 67.2231,301.4204 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="28" x="85.25" y="303.291">App</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="158" y1="314" y2="314"/><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="158" y1="322" y2="322"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="108" x="13" y="339.5352">+getCompany()</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="140" x="13" y="356.0234">+static getInstance()</text></g><!--MD5=[84718776d214be480e4c259efcb737fc]
+class Main--><g id="elem_Main"><rect codeLine="9" fill="#F1F1F1" height="48" id="Main" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="65" x="70.5" y="7"/><ellipse cx="85.5" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M87.9731,29.1431 Q87.3921,29.4419 86.7529,29.5913 Q86.1138,29.7407 85.4082,29.7407 Q82.9014,29.7407 81.5815,28.0889 Q80.2617,26.437 80.2617,23.3159 Q80.2617,20.1865 81.5815,18.5347 Q82.9014,16.8828 85.4082,16.8828 Q86.1138,16.8828 86.7612,17.0322 Q87.4087,17.1816 87.9731,17.4805 L87.9731,20.2031 Q87.3423,19.6221 86.7488,19.3523 Q86.1553,19.0825 85.5244,19.0825 Q84.1797,19.0825 83.4949,20.1492 Q82.8101,21.2158 82.8101,23.3159 Q82.8101,25.4077 83.4949,26.4744 Q84.1797,27.541 85.5244,27.541 Q86.1553,27.541 86.7488,27.2712 Q87.3423,27.0015 87.9731,26.4204 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="33" x="99.5" y="28.291">Main</text><line style="stroke:#181818;stroke-width:0.5;" x1="71.5" x2="134.5" y1="39" y2="39"/><line style="stroke:#181818;stroke-width:0.5;" x1="71.5" x2="134.5" y1="47" y2="47"/></g><!--MD5=[b6bebd04bb72b22cfab58728e6e048f8]
+class StatsController--><g id="elem_StatsController"><rect codeLine="13" fill="#F1F1F1" height="97.4648" id="StatsController" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="163" x="21.5" y="116"/><ellipse cx="49.1" cy="132" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M51.5731,138.1431 Q50.9921,138.4419 50.3529,138.5913 Q49.7138,138.7407 49.0082,138.7407 Q46.5014,138.7407 45.1815,137.0889 Q43.8617,135.437 43.8617,132.3159 Q43.8617,129.1865 45.1815,127.5347 Q46.5014,125.8828 49.0082,125.8828 Q49.7138,125.8828 50.3612,126.0322 Q51.0087,126.1816 51.5731,126.4805 L51.5731,129.2031 Q50.9423,128.6221 50.3488,128.3523 Q49.7553,128.0825 49.1244,128.0825 Q47.7797,128.0825 47.0949,129.1492 Q46.4101,130.2158 46.4101,132.3159 Q46.4101,134.4077 47.0949,135.4744 Q47.7797,136.541 49.1244,136.541 Q49.7553,136.541 50.3488,136.2712 Q50.9423,136.0015 51.5731,135.4204 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="103" x="65.9" y="137.291">StatsController</text><line style="stroke:#181818;stroke-width:0.5;" x1="22.5" x2="183.5" y1="148" y2="148"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="81" x="27.5" y="165.5352">-App oApp;</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="151" x="27.5" y="182.0234">-Company oCompany</text><line style="stroke:#181818;stroke-width:0.5;" x1="22.5" x2="183.5" y1="188.9766" y2="188.9766"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="76" x="27.5" y="206.5117">+getStats()</text></g><!--MD5=[02e4b9b7573f1156f41e60aa5b4e25a4]
+class Company--><g id="elem_Company"><rect codeLine="19" fill="#F1F1F1" height="97.4648" id="Company" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="216" x="194" y="274"/><ellipse cx="265.25" cy="290" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M267.7231,296.1431 Q267.1421,296.4419 266.5029,296.5913 Q265.8638,296.7407 265.1582,296.7407 Q262.6514,296.7407 261.3315,295.0889 Q260.0117,293.437 260.0117,290.3159 Q260.0117,287.1865 261.3315,285.5347 Q262.6514,283.8828 265.1582,283.8828 Q265.8638,283.8828 266.5112,284.0322 Q267.1587,284.1816 267.7231,284.4805 L267.7231,287.2031 Q267.0923,286.6221 266.4988,286.3523 Q265.9053,286.0825 265.2744,286.0825 Q263.9297,286.0825 263.2449,287.1492 Q262.5601,288.2158 262.5601,290.3159 Q262.5601,292.4077 263.2449,293.4744 Q263.9297,294.541 265.2744,294.541 Q265.9053,294.541 266.4988,294.2712 Q267.0923,294.0015 267.7231,293.4204 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="65" x="285.75" y="295.291">Company</text><line style="stroke:#181818;stroke-width:0.5;" x1="195" x2="409" y1="306" y2="306"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="89" x="200" y="323.5352">-designation</text><line style="stroke:#181818;stroke-width:0.5;" x1="195" x2="409" y1="330.4883" y2="330.4883"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="204" x="200" y="348.0234">+getVaccinationCenterStore()</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="76" x="200" y="364.5117">+getStats()</text></g><!--MD5=[a29876ea2f21a6ca48ea477740122fd8]
+class VaccinationCenterStore--><g id="elem_VaccinationCenterStore"><rect codeLine="25" fill="#F1F1F1" height="64.4883" id="VaccinationCenterStore" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="203" x="19.5" y="543"/><ellipse cx="39" cy="559" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M41.4731,565.1431 Q40.8921,565.4419 40.2529,565.5913 Q39.6138,565.7407 38.9082,565.7407 Q36.4014,565.7407 35.0815,564.0889 Q33.7617,562.437 33.7617,559.3159 Q33.7617,556.1865 35.0815,554.5347 Q36.4014,552.8828 38.9082,552.8828 Q39.6138,552.8828 40.2612,553.0322 Q40.9087,553.1816 41.4731,553.4805 L41.4731,556.2031 Q40.8423,555.6221 40.2488,555.3523 Q39.6553,555.0825 39.0244,555.0825 Q37.6797,555.0825 36.9949,556.1492 Q36.3101,557.2158 36.3101,559.3159 Q36.3101,561.4077 36.9949,562.4744 Q37.6797,563.541 39.0244,563.541 Q39.6553,563.541 40.2488,563.2712 Q40.8423,563.0015 41.4731,562.4204 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="161" x="54" y="564.291">VaccinationCenterStore</text><line style="stroke:#181818;stroke-width:0.5;" x1="20.5" x2="221.5" y1="575" y2="575"/><line style="stroke:#181818;stroke-width:0.5;" x1="20.5" x2="221.5" y1="583" y2="583"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="191" x="25.5" y="600.5352">+getListVaccinationCenter()</text></g><!--MD5=[cc7b86182a2d491cea4d0231be410c3d]
+class Stats--><g id="elem_Stats"><rect codeLine="30" fill="#F1F1F1" height="130.4414" id="Stats" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="449" x="257.5" y="510"/><ellipse cx="461.25" cy="526" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M463.7231,532.1431 Q463.1421,532.4419 462.5029,532.5913 Q461.8638,532.7407 461.1582,532.7407 Q458.6514,532.7407 457.3315,531.0889 Q456.0117,529.437 456.0117,526.3159 Q456.0117,523.1865 457.3315,521.5347 Q458.6514,519.8828 461.1582,519.8828 Q461.8638,519.8828 462.5112,520.0322 Q463.1587,520.1816 463.7231,520.4805 L463.7231,523.2031 Q463.0923,522.6221 462.4988,522.3523 Q461.9053,522.0825 461.2744,522.0825 Q459.9297,522.0825 459.2449,523.1492 Q458.5601,524.2158 458.5601,526.3159 Q458.5601,528.4077 459.2449,529.4744 Q459.9297,530.541 461.2744,530.541 Q461.9053,530.541 462.4988,530.2712 Q463.0923,530.0015 463.7231,529.4204 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="33" x="481.75" y="531.291">Stats</text><line style="stroke:#181818;stroke-width:0.5;" x1="258.5" x2="705.5" y1="542" y2="542"/><line style="stroke:#181818;stroke-width:0.5;" x1="258.5" x2="705.5" y1="550" y2="550"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="121" x="263.5" y="567.5352">+loadProperties()</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="52" x="263.5" y="584.0234">+start()</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="422" x="263.5" y="600.5117">+startExecutionAt(int targetHour, int targetMin, int targetSec)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="437" x="263.5" y="617">+computeNextDelay(int targetHour, int targetMin, int targetSec)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="214" x="263.5" y="633.4883">+addDataToCSV(String output)</text></g><!--MD5=[5ea55881781cd93eb94ed526c613e5d7]
+link Main to StatsController--><g id="link_Main_StatsController"><path codeLine="38" d="M103,55.21 C103,70.51 103,91.19 103,110.38 " fill="none" id="Main-to-StatsController" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="103,115.75,107,106.75,103,110.75,99,106.75,103,115.75" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[4447eecbb74ccfd86709d03d84203d51]
+link StatsController to App--><g id="link_StatsController_App"><path codeLine="40" d="M96.89,213.15 C94.3,233.39 91.29,256.86 88.74,276.77 " fill="none" id="StatsController-to-App" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="88.1,281.75,93.2242,273.3392,88.743,276.7915,85.2907,272.3103,88.1,281.75" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[acd473bd68377231992524635014231b]
+link StatsController to Company--><g id="link_StatsController_Company"><path codeLine="41" d="M163.79,213.15 C187.02,231.36 213.59,252.19 237.18,270.68 " fill="none" id="StatsController-to-Company" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="241.24,273.87,236.633,265.1651,237.3079,270.7815,231.6915,271.4564,241.24,273.87" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[4498ef8455314f820b5cc91d50a4e52d]
+link Company to Stats--><g id="link_Company_Stats"><path codeLine="43" d="M336.28,371.21 C364.54,410.53 404.87,466.66 435.94,509.9 " fill="none" id="Company-Stats" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="399.9177,444.7157,397.0262,435.6553,392.2529,439.0853,399.9177,444.7157" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22" x="406" y="445.5684">has</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="332.7274" y="392.0229">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="422.1518" y="499.0664">1</text></g><!--MD5=[bc0d5b4bfe6e1bf0a8fced13bc4bdd47]
+link Company to VaccinationCenterStore--><g id="link_Company_VaccinationCenterStore"><path codeLine="44" d="M267.53,371.21 C231.12,421.6 174.75,499.6 143.61,542.7 " fill="none" id="Company-VaccinationCenterStore" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="226.0715,444.7079,233.7513,439.0979,228.9871,435.6553,226.0715,444.7079" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22" x="238" y="445.5684">has</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="253.8797" y="392.0229">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="139.4483" y="532.0413">1</text></g><!--MD5=[1bd453f4fcaa842d9dcc3ee28dd8a3f1]
+@startuml
+'https://plantuml.com/class-diagram
+skinparam classAttributeIconSize 0
+class App{
+    +getCompany()
+    +static getInstance()
+}
+
+
+class Main {
+}
+
+
+class StatsController{
+    -App oApp;
+    -Company oCompany
+    +getStats()
+}
+
+class Company {
+    -designation
+    +getVaccinationCenterStore()
+    +getStats()
+}
+
+class VaccinationCenterStore{
+    +getListVaccinationCenter()
+}
+
+
+class Stats{
+    +loadProperties()
+    +start()
+    +startExecutionAt(int targetHour, int targetMin, int targetSec)
+    +computeNextDelay(int targetHour, int targetMin, int targetSec)
+    +addDataToCSV(String output)
+}
+
+Main ..> StatsController
+
+StatsController .down.> App
+StatsController .down.> Company
+
+Company "1" -down- - "1" Stats : has >
+Company "1" -down- - "1" VaccinationCenterStore : has >
+
+@enduml
+
+@startuml
+skinparam classAttributeIconSize 0
+class App{
+    +getCompany()
+    +static getInstance()
+}
+
+
+class Main {
+}
+
+
+class StatsController{
+    -App oApp;
+    -Company oCompany
+    +getStats()
+}
+
+class Company {
+    -designation
+    +getVaccinationCenterStore()
+    +getStats()
+}
+
+class VaccinationCenterStore{
+    +getListVaccinationCenter()
+}
+
+
+class Stats{
+    +loadProperties()
+    +start()
+    +startExecutionAt(int targetHour, int targetMin, int targetSec)
+    +computeNextDelay(int targetHour, int targetMin, int targetSec)
+    +addDataToCSV(String output)
+}
+
+Main ..> StatsController
+
+StatsController .down.> App
+StatsController .down.> Company
+
+Company "1" -down- - "1" Stats : has >
+Company "1" -down- - "1" VaccinationCenterStore : has >
+
+@enduml
+
+PlantUML version 1.2022.5(Sat Apr 30 11:55:52 WEST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: PT
+--></g></svg>

@@ -1,0 +1,47 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam classAttributeIconSize 0
+class App{
+    +getCompany()
+    +static getInstance()
+}
+
+
+class Main {
+}
+
+
+class StatsController{
+    -App oApp;
+    -Company oCompany
+    +getStats()
+}
+
+class Company {
+    -designation
+    +getVaccinationCenterStore()
+    +getStats()
+}
+
+class VaccinationCenterStore{
+    +getListVaccinationCenter()
+}
+
+
+class Stats{
+    +loadProperties()
+    +start()
+    +startExecutionAt(int targetHour, int targetMin, int targetSec)
+    +computeNextDelay(int targetHour, int targetMin, int targetSec)
+    +addDataToCSV(String output)
+}
+
+Main ..> StatsController
+
+StatsController .down.> App
+StatsController .down.> Company
+
+Company "1" -down-- "1" Stats : has >
+Company "1" -down-- "1" VaccinationCenterStore : has >
+
+@enduml

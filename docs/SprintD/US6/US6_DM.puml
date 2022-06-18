@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class VaccinationCenter{
+name
+phoneNumber
+faxNumber
+homeAddress
+emailAddress
+websiteAddress
+openingHours
+closingHours
+slotDuration
+maxNumVaccinesPerSlot
+}
+
+class Company{
+designation
+}
+
+Company "1" -right- "*" VaccinationCenter : manages >
+VaccinationCenter "1" -right-- "*" Stats : reports >
+
+
+
+@enduml
