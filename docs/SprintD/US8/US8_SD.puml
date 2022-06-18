@@ -1,0 +1,124 @@
+@startuml
+autonumber
+actor "Nurse" as NU
+participant "VaccineAdministrationUI" as UI
+participant "VaccineAdministrationController" as CTRL
+participant "App" as _APP
+participant "app\n:App" as APP
+participant "comp\n:Company" as COMP
+participant "empStore\n:EmployeeStore" as EMPSTORE
+participant "VaccinationCenter" as VC
+participant "UserArrival" as UA
+participant "VaccineSchedule" as VS
+participant "VaccineAdministration" as VA
+participant "WaitingRoom" as WR
+participant "RecoveryRoom" as RR
+
+
+
+activate NU
+NU -> UI : Asks to record the administration of a vaccine
+activate UI
+UI -> CTRL : getWorking()
+activate CTRL
+CTRL -> _APP : app = getInstance()
+activate _APP
+deactivate _APP
+CTRL -> APP : comp = getCompany()
+activate APP
+deactivate APP
+CTRL -> COMP : empStore = getEmployeeStore()
+activate COMP
+deactivate COMP
+CTRL -> EMPSTORE : working = getWorking()
+activate EMPSTORE
+deactivate EMPSTORE
+deactivate CTRL
+UI -> CTRL : getWaitingRoom()
+activate CTRL
+CTRL -> VC  : waitingRoom = getListUserToWaitingRoom()
+
+activate VC
+deactivate VC
+deactivate CTRL
+
+
+
+UI --> NU : Asks to select the SNS user from the waiting room
+deactivate UI
+
+NU -> UI : Selects the SNS user from the waiting room
+activate UI
+UI -> CTRL : getAvailableVaccinesForUser(user)
+activate CTRL
+CTRL -> UA : user.getSchedule()
+activate UA
+UA -> VS : vaccineList = getVaccineList()
+activate VS
+deactivate VS
+deactivate UA
+deactivate CTRL
+
+
+UI --> NU : Shows and asks to select available(s) vaccine for chosen user
+deactivate UI
+
+NU -> UI : Selects the vaccine
+activate UI
+UI -> CTRL : validateVaccineAdministration(user, vaccine)
+
+activate CTRL
+CTRL -> VC : validateVaccineAdministration(user,vaccine)
+activate VC
+VC -> VA : administration.setVaccinationTime(date)
+activate VA
+deactivate VA
+deactivate VC
+deactivate CTRL
+
+
+UI --> NU : Asks if the Nurse wants to record the administration
+deactivate UI
+
+NU -> UI : Confirms
+activate UI
+UI->CTRL : addVaccineAdministration(vaccineAdministration)
+activate CTRL
+CTRL->VC : addVaccineAdministration(vaccineAdministration)
+activate VC
+
+
+deactivate VC
+
+
+deactivate CTRL
+UI->CTRL : removeFromWaitingRoom(user)
+activate CTRL
+CTRL->VC : removeFromWaitingRoom(user)
+activate VC
+VC -> WR : remove(arrival)
+activate WR
+deactivate WR
+
+
+deactivate VC
+
+deactivate CTRL
+UI->CTRL : moveToRecoveryRoom(vaccineAdministration, vaccine)
+activate CTRL
+CTRL->VC : moveToRecoveryRoom(vaccineAdministration)
+activate VC
+VC -> RR : add(vaccineAdministration)
+activate RR
+deactivate RR
+deactivate VC
+
+
+deactivate CTRL
+
+
+UI --> NU : Informs operation success
+deactivate UI
+
+deactivate NU
+@enduml
