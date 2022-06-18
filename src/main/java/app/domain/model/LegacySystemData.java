@@ -22,6 +22,9 @@ public class LegacySystemData implements Comparable<LegacySystemData> {
     private Date nurseAdministrationTime;
     private Date leavingDateTime;
 
+    private String oName;
+    private String oDescription;
+
 
     final int ARRIVAL_POSITION = 7;
     final int LEAVING_POSITION = 9;
@@ -152,6 +155,8 @@ public class LegacySystemData implements Comparable<LegacySystemData> {
     }
 
 
+
+
     public List sortByParameters(String sortChoice, String sortOrder, String sortArrivalLeaving, List listLegacyData) {
 
         boolean ascending = true;
@@ -218,8 +223,16 @@ public class LegacySystemData implements Comparable<LegacySystemData> {
     }
 
 
+    public void getName(String name){
+        this.oName=name;
+    }
+    public void getDescription(String description){
+        this.oDescription = description;
+    }
+
+
     public String toString() {
-        return String.format(/*getNameByNumber() + ";  " + getVaccineDescription() + ";  " +*/ getSnsUserNumber() + ";  " + getVaccineName() + ";  " + getDose() + ";  " + getLotNumber() + ";  " +
+        return String.format(/*oName + ";  " + oDescription + ";  " +*/ getSnsUserNumber() + ";  " + getVaccineName() + ";  " + getDose() + ";  " + getLotNumber() + ";  " +
                 getScheduledDateTime() + ";  " + getArrivalDateTime() + ";  " + getNurseAdministrationTime() + ";  " +
                 getLeavingDateTime());
     }

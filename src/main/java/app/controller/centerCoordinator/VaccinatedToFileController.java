@@ -17,6 +17,7 @@ public class VaccinatedToFileController {
     }
 
     public List getListAdministratedVaccines() {
+        
         return oCompany.getVaccinationCenterStore().getListAdministratedVaccines();
     }
 

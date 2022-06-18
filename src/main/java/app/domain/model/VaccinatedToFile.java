@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class VaccinatedToFile {
@@ -45,37 +46,36 @@ public class VaccinatedToFile {
         return 5;
     }
     public List getList(){
-        list.add(getFullyVaccinatedPatients()+DELIMITER+getFullyVaccinatedString());
+        list.add(getFullyVaccinatedPatients()+" Users");
+        list.add("10"+" Users");
         return list;
     }
 
 
     public void writeToFile(String fileName) throws IOException {
-        FileWriter fileT = null;
-
-
+        FileWriter writer = null;
         try {
-            fileT = new FileWriter(fileName);
-            //Add header
-            fileT.append(HEADER);
-            //Add a new line after the header
-            fileT.append(SEPARATOR);
-            //Iterate through bookList
-            Iterator it = getList().iterator();
-            while (it.hasNext()) {
-                VaccinatedToFile vtf = (VaccinatedToFile) it.next();
-                fileT.append((char) vtf.getFullyVaccinatedPatients());
-                fileT.append(DELIMITER);
-                fileT.append(vtf.getFullyVaccinatedString());
-                fileT.append(SEPARATOR);
-            }
+            writer = new FileWriter(fileName);
 
+            List test;
+  //          test.add("ola");
+            test = getList();
+
+
+            String collect = (String) test.stream().collect(Collectors.joining(SEPARATOR));
+            System.out.println(HEADER + "\n");
+            System.out.println(collect);
+
+            writer.write(HEADER);
+            writer.write(SEPARATOR);
+            writer.write(collect);
 
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
-            fileT.close();
+        } finally {
+            writer.close();
         }
+
 
     }
 }

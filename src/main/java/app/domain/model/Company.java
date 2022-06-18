@@ -1,6 +1,7 @@
 package app.domain.model;
 
 import app.domain.model.vaccine.Vaccine;
+import app.domain.model.vaccine.VaccineType;
 import app.domain.shared.BruteForce;
 import app.domain.shared.CSVReader;
 import app.domain.shared.FileUtils;
@@ -31,6 +32,7 @@ public class Company {
 
     private VaccinatedToFile oVaccinatedToFile;
     private int fullyVaccinated;
+    private VaccineType vaccineType;
 
 
 
@@ -53,6 +55,7 @@ public class Company {
         this.oBenchmark = new Benchmark();
         this.oFileUtils = new FileUtils();
         this.oStats = new Stats();
+        this.vaccineType = new VaccineType();
         this.oVaccinatedToFile = new VaccinatedToFile(fullyVaccinated);
     }
 
@@ -127,6 +130,7 @@ public class Company {
     public SNSUserStore getSNSUserStore(){return this.oSNSUserStore;}
 
     public VaccinatedToFile getVaccinatedToFile(){return this.oVaccinatedToFile;}
+    public VaccineType getVaccineType(){return this.vaccineType;}
 
 
 }

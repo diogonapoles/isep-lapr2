@@ -4,12 +4,13 @@ autonumber
 actor "Receptionist" as RCP
 
 
-participant ":UserArrivalUI" as UI
-participant ":UserArrivalController" as CTRL
+participant "lsdui\n:LegacySystemDataUI" as UI
+participant "lsdctrl\n:LegacySystemDataCTRL" as CTRL
 participant "App" as APP
 participant "app\n:App" as App
 participant "comp:Company" as COMP
-participant "uas\n:UserArrivalStore" as UAS
+participant "lsdr:LegacySystemDataReader" as LSDR
+participant "lsd\n:LegacySystemData" as LSD
 participant "snsU: SNSUser" as snsU
 participant "svs\n:ScheduleVaccineStore" as SVS
 participant "auth\n:AuthFacade" as AF
@@ -32,32 +33,86 @@ deactivate CTRL
 UI --> RCP : request data (filePath)
 deactivate UI
 
-RCP -> UI : types requested data
+RCP -> UI : lis
 activate UI
 
-UI -> CTRL : newUserArrival (snsUserNumber)
+UI -> CTRL : newLegacySystemDataReader(filePath)
 activate CTRL
 
-CTRL -> UAS : snsU = newUserArrival (snsUserNumber)
-activate UAS
-
-UAS --> snsU** : snsU = newUserArrival (snsUserNumber)
-
-UAS -> SVS: listScheduleVaccine = getListScheduleVaccine()
-activate SVS
-deactivate SVS
+CTRL -> LSDR : csvReaderLegacyData(filePath)
+activate LSDR
 
 
-UAS -> UAS : validateUserSchedule(snsU)
-activate UAS
-deactivate UAS
+LSDR -> LSDR : createLegacySystemData(attributes)
+activate LSDR
+deactivate LSDR
 
 
 UI --> RCP : informs operation success
-deactivate UAS
+deactivate LSDR
+deactivate CTRL
+deactivate UI
+
+
+RCP -> UI : listLegacyData = getListLegacySystemData()
+activate UI
+
+UI -> CTRL : getListLegacySystemData()
+activate CTRL
+deactivate CTRL
+
+UI --> RCP : returns list with data
+deactivate LSDR
+deactivate CTRL
+deactivate UI
+
+
+
+RCP -> UI : getSortChoices()
+activate UI
+
+UI -> CTRL : getSortChoices()
+activate CTRL
+
+
+CTRL -> LSD : getSortChoices()
+activate LSD
+deactivate LSD
+deactivate CTRL
+
+
+UI --> RCP : return Choices
+
+deactivate LSDR
+deactivate CTRL
+deactivate UI
+
+
+
+
+RCP -> UI : starts sorting process
+activate UI
+
+UI -> CTRL : sortByParameters(sortChoice, sortOrder\n, sortArrivalLeaving, listLegacyData)
+activate CTRL
+
+
+CTRL -> LSD : listSorted = sortByParameters(sortChoice,\n sortOrder, sortArrivalLeaving, listLegacyData)
+activate LSD
+deactivate LSD
+
+
+
+CTRL --> UI : return listSorted
+deactivate CTRL
+UI --> RCP : Show listSorted
+
+deactivate LSDR
 deactivate CTRL
 deactivate UI
 deactivate RCP
+
+
 
 
 @enduml

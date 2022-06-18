@@ -42,17 +42,23 @@ public class LegacySystemDataImporterUI implements Runnable {
                 String sortOrder = (String) Utils.showAndSelectOne(controller.getSortOrder(), "\n\nChoose the intended sorting method\n");
                 String sortArrivalLeaving = (String) Utils.showAndSelectOne(controller.getSortArrivalLeaving(), "\n\nChoose the intended parameter for Sorting\n");
 
+/*                String name = controller.getNameByNumber();
+                String vaccineDescription = controller.getVaccineDescription();
+                controller.getName(name);
+                controller.getDescription(vaccineDescription);
+
+ */
+
                 try {
                     listSorted = controller.sortByParameters(sortChoice, sortOrder, sortArrivalLeaving, listLegacyData);
                 } catch (Exception ex) {
                     ccUI.run();
                 }
 
-                System.out.println("Name; Vaccine; SNSUSerNumber; VaccineName; Dose; LotNumber; ScheduledDateTime; ArrivalDateTime; NurseAdministrationDateTime; LeavingDateTime");
+                System.out.println("\nSnsNumber  VaccineName   Dose     LotNumber       ScheduledDateTime               ArrivalDateTime          NurseAdministrationDateTime          LeavingDateTime\n");
                 for (int i = 0; i < listSorted.size(); i++) {
                     System.out.println(listSorted.get(i).toString());
                 }
-
 
 
             } else
@@ -75,7 +81,6 @@ public class LegacySystemDataImporterUI implements Runnable {
 
 
     }
-
 
 
 }

@@ -70,7 +70,7 @@ public class LegacySystemDataImporterController {
     }
 
     public String getNameByNumber() {
-        return oCompany.getSNSUserStore().getSNSUserNameByNumber(getSnsUserNumber());
+        return oCompany.getSNSUserStore().getSNSUserNameByNumber(oCompany.getLegacySystemData().getSnsUserNumber());
     }
 
     public String getVaccineDescription() {
@@ -78,14 +78,22 @@ public class LegacySystemDataImporterController {
     }
 
 
-    public int getSnsUserNumber() {
+  /*  public int getSnsUserNumber() {
         return oCompany.getLegacySystemData().getSnsUserNumber();
     }
+
+   */
 
 
     public List sortByParameters(String sortChoice, String sortOrder, String sortArrivalLeaving, List listLegacyData) {
         listSorted =oCompany.getLegacySystemData().sortByParameters(sortChoice, sortOrder, sortArrivalLeaving, listLegacyData);
     return listSorted;
+    }
+    public void getName(String name){
+        oCompany.getLegacySystemData().getName(name);
+    }
+    public void getDescription(String vaccineDescription){
+        oCompany.getLegacySystemData().getDescription(vaccineDescription);
     }
 
     public List getLeavingList(){

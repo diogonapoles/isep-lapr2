@@ -3,6 +3,9 @@ package app.controller;
 import app.domain.model.*;
 import app.domain.model.systemUser.Employee;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
+import app.domain.model.vaccinationProcess.UserArrival;
+import app.domain.model.vaccinationProcess.VaccineAdministration;
+import app.domain.model.vaccinationProcess.VaccineSchedule;
 import app.domain.model.vaccine.Vaccine;
 import app.domain.model.vaccine.VaccineType;
 import app.domain.shared.Constants;
@@ -114,15 +117,22 @@ public class App {
         SNSUser snsU2 = this.company.getSNSUserStore().newSNSUser("tomas", "masculine", "07/10/1999", "avenue 45", "915654723", "tomas23@gmail.com", "123444333", "76342123");
         createSnsUser();
 
+     /*   this.company.getVaccinationCenterStore().getListAdministratedVaccines().add(2,new VaccineAdministration(new UserArrival(getCompany().getSNSUserStore().getSNSUserByNumber("123444333"),
+                new Date(10/12/2022),new VaccineSchedule(new SNSUser("tomas", "avenue 23", "912912912", new Date(10/11/1998),"tomas23@gmail.com", "123444333","12344321"),
+                new VaccineType("65465","COVID-19"),company.getVaccineType().getListVaccines(),
+        new Date(10)))));
+
+      */
+
      //   createSortingStuff();
 
         VaccinationCenter vc1 = this.company.getVaccinationCenterStore().newVaccinationCenter(1, "Healthcare", 917876321, 493782,
                 "TestRua1", "teste1@gmail.com", "healthcare.com",
-                10, 20, 3, 20);
+                10, 18, 15, 5);
         this.company.getVaccinationCenterStore().registerVaccinationCenter(vc1);
         VaccinationCenter vc2 = this.company.getVaccinationCenterStore().newVaccinationCenter(0, "Community", 917312756, 654253,
                 "TestRua2", "teste2@gmail.com", "community.com",
-                8, 22, 5, 40);
+                8, 22, 10, 8);
         this.company.getVaccinationCenterStore().registerVaccinationCenter(vc2);
 
 //        createSchedules();
