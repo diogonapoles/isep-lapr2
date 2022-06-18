@@ -8,9 +8,10 @@ participant ":AnalyzePerformanceController" as CTRL
 participant "App" as _APP
 participant "app\n:App" as APP
 participant "comp\n:Company" as COMP
+participant "empStore\n:EmployeeStore" as EMPSTORE
+participant "legacySystemaData\n:LegacySystemData" as LSSTORE
 participant "bruteForce\n:BruteForce" as BF
-participant "legacySystemaData\n:LegacySystemData" as STORE
-participant "empStore\n:EmployeeStore" as STORE
+participant "working\n:VaccinationCenter" as VC
 participant "ts\n:List <Date> legacySystemDateList"
 
 activate CDN
@@ -27,13 +28,22 @@ deactivate APP
 CTRL -> COMP : empStore = getEmployeeStore()
 activate COMP
 deactivate COMP
+CTRL -> EMPSTORE : working = getWorking()
+activate EMPSTORE
+deactivate EMPSTORE
 deactivate CTRL
 UI -> CTRL : findDay()
 activate CTRL
+CTRL -> COMP : legacySystem = getLegacySystemData()
+activate COMP
+deactivate COMP
+CTRL -> LSSTORE : arrivalList = getArrivalList()
+activate LSSTORE
+deactivate LSSTORE
 CTRL -> COMP : bruteForce = getBruteForce()
 activate COMP
 deactivate COMP
-CTRL -> BF :
+CTRL -> BF : day = findDay(arrivalList)
 activate BF
 deactivate BF
 deactivate CTRL
@@ -44,37 +54,49 @@ deactivate UI
 
 CDN -> UI : types requested data
 activate UI
+UI -> CTRL : validateTimeIntervalForVaccinationCenter()
+activate CTRL
+CTRL -> VC : validateTimeInterval(timeInterval)
+activate VC
+VC -> VC : validateTimeInterval(timeInterval)
+activate VC
+deactivate VC
+deactivate VC
+deactivate CTRL
 UI -> CTRL : createInputList()
 activate CTRL
-CTRL -> _APP : app = getInstance()
-activate _APP
-deactivate _APP
-CTRL -> APP : comp = getCompany()
-activate APP
-deactivate APP
-CTRL -> COMP : csvr = getCSVReader()
-activate COMP
-deactivate COMP
-CTRL -> CSV : rcsvf = readCSVFile(fileLocation)
-activate CSV
-CSV -> CSV : validateHeader(line)
-activate CSV
-deactivate CSV
-CSV -> CSV : getCompleteHeader()
-activate CSV
-deactivate CSV
-loop line != null
-    CSV -> SU **: create(name, sex, birthDate, homeAddress,\nphoneNumber, emailAddress, snsUserNumber,\ncitizenCardNumber)
-    CSV -> CSV : saveSNSUser()
-    activate CSV
-    deactivate CSV
+CTRL -> BF : inputList = createInputList(timeInterval, day)
+activate BF
+BF -> BF : listLength = getListLength(timeInterval)
+activate BF
+deactivate BF
+deactivate BF
+deactivate CTRL
 
-end
+UI -> CTRL : getMaxSubArrayBruteForce()
+activate CTRL
+CTRL -> BF : maxInfo[] = getMaxSubArrayBruteForce(inputList)
+activate BF
+deactivate BF
+deactivate CTRL
 
-deactivate CSV
+UI -> CTRL : findMaxSubarray()
+activate CTRL
+CTRL -> CTRL : maxSubArray[] = findMaxSubarray(inputList, maxInfo[0], maxInfo[1]);
+activate CTRL
+deactivate CTRL
+deactivate CTRL
+
+UI -> CTRL : timeInterval()
+activate CTRL
+CTRL -> CTRL : timeInterval = findTimeInterval(day, timeInterval);
+activate CTRL
+deactivate CTRL
 deactivate CTRL
 UI --> CDN : shows data and informs operation success
 deactivate UI
 |||
+
+
 
 @enduml

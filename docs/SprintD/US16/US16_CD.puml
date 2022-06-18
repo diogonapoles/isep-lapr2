@@ -1,0 +1,82 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam classAttributeIconSize 0
+class App{
+    +getCompany()
+    +static getInstance()
+}
+
+class VaccinationCenter{
+    - String name
+    - Integer phoneNumber
+    - Integer faxNumber
+        - String homeAddress
+        - String emailAddress
+        - String websiteAddress
+        - Integer openingHours
+        - Integer closingHours
+        - Integer slotDuration
+        - Integer maxNumVaccinesPerSlot
+        - Day vaccinationDay
+        - List<Day> listVaccinationDay
+        - List<VaccineType> listVaccineType
+        - List<Slot> listSlots
+        - List<VaccineSchedule> listSchedule
+        - List<UserArrival> listUserArrival
+        - List<UserLeaving> listUserLeaving
+        - List<VaccineAdministration> listAdministratedVaccines
+    +validateTimeIntervalForVaccinationCenter(timeInterval)
+}
+
+
+class AnalyzePerformanceUI {
+}
+
+
+class AnalyzePerformanceController{
+    -App oApp;
+    -Company oCompany
+    -VaccinationCenter vaccinationCenter
+    +getWorking()
+    +setWorking(VaccinationCenter vc)
+    +validateTimeIntervalForVaccinationCenter(int timeInterval)
+    +createInputList(int timeInterval, String day)
+    +getMaxSubArrayBruteForce(int[] input)
+    +findDay()
+    +findMaxSubarray(int[] inputList, int i, int j)
+    +findTimeInterval(String day, int timeInterval)
+}
+
+class Company {
+    -designation
+    +getEmployeeStore()
+    +getBruteForce()
+    +getLegacySystemData()
+}
+
+class EmployeeStore{
+    +getWorking(String email)
+}
+
+class LegacySystemData{
+    +getArrivalList()
+}
+
+class BruteForce{
+    +findDay(List<Date> arrivals)
+    +createInputList(int timeInterval, Date opening)
+    +getListLength(int timeInterval)
+    +maxSubArray(int[] nums)
+    +findLimit(int[] nums, int maxPos, int maxSum)
+}
+
+AnalyzePerformanceUI .down.> AnalyzePerformanceController
+
+AnalyzePerformanceController .down.> App
+AnalyzePerformanceController .down.> Company
+AnalyzePerformanceController .right.> VaccinationCenter
+
+Company "1" -down-- "1" BruteForce : has >
+Company "1" -down-- "1" LegacySystemData : has >
+Company "1" -down-- "1" EmployeeStore : has >
+@enduml

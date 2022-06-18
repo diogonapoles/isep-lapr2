@@ -153,8 +153,8 @@ VaccinationCenter "1" -left- "*" VaccineSchedule : has >
 VaccineSchedule "*" -left-- "1" SNSUser : made for >
 VaccineSchedule "1" -up-- "0..1" VaccineType : administers >
 
-CenterCoordinator "1" -up--- "1" VaccinationCenter : coordinates >
-CenterCoordinator "*" -right- "*" Stats : analyses >
+CenterCoordinator "1" -up--- "1" VaccinationCenter : coordinates and analyzes >
+CenterCoordinator "*" -right- "*" Stats : analyzes >
 
 VaccinationCertificate "1"--"1" VaccineType
 VaccinationCertificate "1"--"1" VaccineAdministration

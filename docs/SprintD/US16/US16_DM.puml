@@ -1,0 +1,37 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class VaccinationCenter{
+name
+phoneNumber
+faxNumber
+homeAddress
+emailAddress
+websiteAddress
+openingHours
+closingHours
+slotDuration
+maxNumVaccinesPerSlot
+}
+class Employee{
+name
+phoneNumber
+address
+emailAddress
+citizenCardNumber
+companyID
+}
+class CenterCoordinator{
+}
+Employee <|-down- CenterCoordinator
+
+class Company{
+designation
+}
+
+CenterCoordinator "1" -down-- "1" VaccinationCenter : coordinates and analyzes >
+Company "1" -right- "*" VaccinationCenter : manages >
+
+
+
+@enduml
