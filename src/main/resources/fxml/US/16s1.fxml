@@ -6,23 +6,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.ui.gui.US.ui.US16ui">
+<AnchorPane prefHeight="243.0" prefWidth="610.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.ui.gui.US.ui.US16ui">
    <children>
-      <TextField fx:id="dateTF" layoutX="225.0" layoutY="77.0" />
-      <TextField fx:id="intervalTF" layoutX="225.0" layoutY="221.0" />
-      <TextField fx:id="endTF" layoutX="225.0" layoutY="174.0" />
-      <TextField fx:id="startTF" layoutX="225.0" layoutY="125.0" />
-      <Label layoutX="96.0" layoutY="81.0" text="Insert date to analyse:" />
+      <TextField fx:id="intervalTF" layoutX="229.0" layoutY="102.0" />
       <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnBack" text="Back" />
-      <Label layoutX="393.0" layoutY="81.0" text="(dd/MM/yyyy)" />
-      <Label layoutX="157.0" layoutY="129.0" text="Start time:" />
-      <Label layoutX="162.0" layoutY="178.0" text="End time:" />
-      <Label layoutX="51.0" layoutY="225.0" text="Type the desired time interval:" />
-      <Label layoutX="393.0" layoutY="129.0" text="(HH:mm)" />
-      <Label layoutX="393.0" layoutY="178.0" text="(HH:mm)" />
-      <Label layoutX="393.0" layoutY="225.0" text="(in minutes)" />
-      <Button fx:id="btnConfirm" layoutX="274.0" layoutY="287.0" mnemonicParsing="false" onAction="#btnConfirm" text="Confirm" />
+      <Label layoutX="55.0" layoutY="106.0" text="Type the desired time interval:" />
+      <Label layoutX="397.0" layoutY="106.0" text="(in minutes)" />
+      <Button fx:id="btnConfirm" layoutX="274.0" layoutY="165.0" mnemonicParsing="false" onAction="#btnConfirm" text="Confirm" />
       <Label layoutX="165.0" layoutY="14.0" text="Analyse performance data">
          <font>
             <Font size="24.0" />
