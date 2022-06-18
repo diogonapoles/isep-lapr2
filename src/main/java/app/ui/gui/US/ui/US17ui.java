@@ -25,18 +25,20 @@ import java.util.ResourceBundle;
 
 public class US17ui implements Initializable {
 
-    private  US17ctrl controller;
-    private  CenterCoordinatorUI ccUI;
+    private US17ctrl controller;
+    private CenterCoordinatorUI ccUI;
     private Appfx mainAppfx;
 
     private List listLegacyData = new ArrayList<>();
+    private List listSorted = new ArrayList();
     private Stage stage;
 
 
     public US17ui() {
         controller = new US17ctrl();
         ccUI = new CenterCoordinatorUI();
-}
+    }
+
     @FXML
     private ChoiceBox<Object> arrivalCombo;
 
@@ -78,7 +80,7 @@ public class US17ui implements Initializable {
     @FXML
     void btnConfirm(ActionEvent event) {
         try {
-            if (inputData()) {
+            if (inputData(event)) {
                 listLegacyData = controller.getListLegacySystemData();
 
                 addSortStuff();
@@ -88,19 +90,31 @@ public class US17ui implements Initializable {
                 String sortArrivalLeaving = arrivalCombo.getValue().toString();
 
                 try {
-                    controller.sortByParameters(sortChoice, sortOrder, sortArrivalLeaving, listLegacyData);
-                }catch (Exception ex){
+                    listSorted = controller.sortByParameters(sortChoice, sortOrder, sortArrivalLeaving, listLegacyData);
+                } catch (Exception ex) {
                     ccUI.run();
                 }
 
+                System.out.println("Name; Vaccine; SNSUSerNumber; VaccineName; Dose; LotNumber; ScheduledDateTime; ArrivalDateTime; NurseAdministrationDateTime; LeavingDateTime");
+                for (int i = 0; i < listSorted.size(); i++) {
+                    System.out.println(listSorted.get(i).toString());
+                }
+                try {
+                    var loader = new FXMLLoader(getClass().getResource("/fxml/US/17s2.fxml"));
+                    Parent root = loader.load();
+                    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    // scene.getStylesheets().add(getClass().getResource("/styles/Styles.css").toExternalForm());
+                    String css = this.getClass().getResource("/styles/Styles.css").toExternalForm();
+                    scene.getStylesheets().add(css);
+                    stage.setScene(scene);
+
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
 
 /*
-                if (Utils.confirm("Confirm data?(s/n)")) {
-                    controller.importLegacySystemDataCSV();
-                    controller.clearTempArray();
-                    System.out.println("Operation finished");
-                } else
-                    run();
+
 
  */
             } else
@@ -114,29 +128,94 @@ public class US17ui implements Initializable {
                     scene.getStylesheets().add(css);
                     stage.setScene(scene);
 
-                }catch (Exception ex){
+                } catch (Exception ex) {
                     ex.printStackTrace();
                 }
 
 
-
         } catch (Exception e) {
-            System.out.println("ola");
-            throw new RuntimeException(e);
+            try {
+                var loader = new FXMLLoader(getClass().getResource("/fxml/US/17s3.fxml"));
+                Parent root = loader.load();
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                // scene.getStylesheets().add(getClass().getResource("/styles/Styles.css").toExternalForm());
+                String css = this.getClass().getResource("/styles/Styles.css").toExternalForm();
+                scene.getStylesheets().add(css);
+                stage.setScene(scene);
 
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         }
     }
 
-    public boolean inputData() throws Exception {
-        String fileLocation = Utils.readLineFromConsole("File Location:");
-        return controller.newLegacySystemDataReader(fileLocation);
+    public boolean inputData(ActionEvent event) throws Exception {
+        try {
+            String fileLocation = pathTF.getText();
+            return controller.newLegacySystemDataReader(fileLocation);
+        } catch (Exception ex) {
+            try {
+                var loader = new FXMLLoader(getClass().getResource("/fxml/US/17s3.fxml"));
+                Parent root = loader.load();
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                // scene.getStylesheets().add(getClass().getResource("/styles/Styles.css").toExternalForm());
+                String css = this.getClass().getResource("/styles/Styles.css").toExternalForm();
+                scene.getStylesheets().add(css);
+                stage.setScene(scene);
+
+            } catch (Exception exception) {
+                ex.printStackTrace();
+            }
+            return false;
+        }
     }
+
+
     public void setMainApp(Appfx mainAppfx) {
         this.mainAppfx = mainAppfx;
 
     }
+    @FXML
+    public void btnOK2(ActionEvent event) throws Exception {
 
 
+        try {
+            var loader = new FXMLLoader(getClass().getResource("/fxml/US/17s1.fxml"));
+            Parent root = loader.load();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            // scene.getStylesheets().add(getClass().getResource("/styles/Styles.css").toExternalForm());
+            String css = this.getClass().getResource("/styles/Styles.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            stage.setScene(scene);
+
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+
+
+
+    }
+    @FXML
+    public void btnOK1(ActionEvent event) {
+        try {
+            var loader = new FXMLLoader(getClass().getResource("/fxml/CenterCoordinator.fxml"));
+            Parent root = loader.load();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            // scene.getStylesheets().add(getClass().getResource("/styles/Styles.css").toExternalForm());
+            String css = this.getClass().getResource("/styles/Styles.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            stage.setScene(scene);
+
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
+/*
     public void run() {
 
         try {
@@ -156,7 +235,7 @@ public class US17ui implements Initializable {
                 }
 
 
-/*
+
                 if (Utils.confirm("Confirm data?(s/n)")) {
                     controller.importLegacySystemDataCSV();
                     controller.clearTempArray();
@@ -164,7 +243,7 @@ public class US17ui implements Initializable {
                 } else
                     run();
 
- */
+
             } else
                 System.out.println("There is a problem with the file");
 
@@ -177,6 +256,7 @@ public class US17ui implements Initializable {
 
 
     }
+    */
 
     private void addSortStuff() {
 
@@ -186,6 +266,8 @@ public class US17ui implements Initializable {
 
 
     }
+
+
 
     private void getSortedData() {
         // Utils.showList(controller.getli(), "Sorted Data:");

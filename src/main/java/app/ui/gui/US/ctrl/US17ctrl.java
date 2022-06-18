@@ -19,11 +19,9 @@ public class US17ctrl {
     }
 
 
-
-
-    private List listLegacySystemData= new ArrayList<>();
-
-
+    private List listLegacySystemData = new ArrayList<>();
+    private List listSorted = new ArrayList();
+    private List listTest= new ArrayList();
 
 
     public boolean newLegacySystemDataReader(String filePath) throws Exception {
@@ -34,16 +32,17 @@ public class US17ctrl {
             return false;
     }
 
-    public List getListLegacySystemData(){return listLegacySystemData;}
+    public List getListLegacySystemData() {
+        return listLegacySystemData;
+    }
 
     public void sortLegacySystemData(List listLegacySystemData) {
-        boolean ascending=false;
-        int position=0;
-        this.listLegacySystemData= oCompany.getLegacySystemData().bubbleSortArrayList(listLegacySystemData, ascending,position);
+        boolean ascending = false;
+        int position = 0;
+        this.listLegacySystemData = oCompany.getLegacySystemData().bubbleSortArrayList(listLegacySystemData, ascending, position);
         System.out.println(listLegacySystemData);
 
     }
-
 
 
     public List<Object> getSortAlgorithms() {
@@ -55,7 +54,7 @@ public class US17ctrl {
 
     }
 
-    public List<Object> getSortOrder(){
+    public List<Object> getSortOrder() {
         return oCompany.getLegacySystemData().getSortOrder();
     }
 
@@ -64,24 +63,47 @@ public class US17ctrl {
 
     }
 
-    public List<Object> getSortArrivalLeaving(){
+    public List<Object> getSortArrivalLeaving() {
         return oCompany.getLegacySystemData().getSortArrivalLeaving();
     }
 
-    public void setSortArrivalLeaving () {
+    public void setSortArrivalLeaving() {
         oCompany.getLegacySystemData().setSortArrivalLeaving();
 
     }
 
-    public int getSnsUserNumber() {
+    public String getNameByNumber() {
+        return oCompany.getSNSUserStore().getSNSUserNameByNumber(oCompany.getLegacySystemData().getSnsUserNumber());
+    }
+
+    public String getVaccineDescription() {
+        return oCompany.getVaccine().getVaccineDescription();
+    }
+
+
+  /*  public int getSnsUserNumber() {
         return oCompany.getLegacySystemData().getSnsUserNumber();
     }
 
-    public String getSNSUserName(){
-        return oCompany.getSNSUserStore().getSNSUserNameByNumber(getSnsUserNumber());
+   */
+
+
+    public List sortByParameters(String sortChoice, String sortOrder, String sortArrivalLeaving, List listLegacyData) {
+        listSorted =oCompany.getLegacySystemData().sortByParameters(sortChoice, sortOrder, sortArrivalLeaving, listLegacyData);
+        return listSorted;
+    }
+    public void getName(String name){
+        oCompany.getLegacySystemData().getName(name);
+    }
+    public void getDescription(String vaccineDescription){
+        oCompany.getLegacySystemData().getDescription(vaccineDescription);
     }
 
-    public void sortByParameters(String sortChoice, String sortOrder, String sortArrivalLeaving, List listLegacyData) {
-        oCompany.getLegacySystemData().sortByParameters(sortChoice, sortOrder, sortArrivalLeaving, listLegacyData);
+    public List getLeavingList(){
+        return oCompany.getLegacySystemData().getLeavingList();
     }
+
+
+
+
 }
