@@ -107,6 +107,8 @@ public class US16ui {
         boolean success=true;
         if (controller.getWorking() == null) {
             System.out.println("Doesn't exist");
+
+            success=false;
             return;
         }
 
@@ -115,6 +117,7 @@ public class US16ui {
             props.load(new FileInputStream("config.properties"));
         } catch (IOException e) {
             System.out.println("Could not read config file");
+            success=false;
             return;
         }
 
@@ -123,6 +126,7 @@ public class US16ui {
             day = controller.findDay();
         }catch (Exception e){
             System.out.println("You have to load a legacy file first");
+            success=false;
             return;
         }
 
@@ -142,6 +146,7 @@ public class US16ui {
             }catch (Exception ex){
                 ex.printStackTrace();
             }
+            success=false;
             return;
         }
 
