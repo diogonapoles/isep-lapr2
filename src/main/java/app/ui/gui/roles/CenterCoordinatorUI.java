@@ -81,7 +81,19 @@ public class CenterCoordinatorUI implements Initializable {
 
     @FXML
     void btnUS15(ActionEvent event) {
+        try {
+            var loader = new FXMLLoader(getClass().getResource("/fxml/US/15s1.fxml"));
+            Parent root = loader.load();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            // scene.getStylesheets().add(getClass().getResource("/styles/Styles.css").toExternalForm());
+            String css = this.getClass().getResource("/styles/Styles.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            stage.setScene(scene);
 
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
     }
 
 
