@@ -29,7 +29,7 @@ deactivate COMP
 CTRL -> COMP : store = getVaccinationCenterStore()
 activate COMP
 deactivate COMP
-CTRL -> STATS : stats.start()
+CTRL -> STATS : start()
 activate STATS
 STATS -> STATS : loadProperties()
 activate STATS

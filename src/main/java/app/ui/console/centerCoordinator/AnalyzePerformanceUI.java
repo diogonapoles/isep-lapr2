@@ -6,6 +6,7 @@ import app.ui.console.utils.Utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Properties;
 
@@ -25,13 +26,7 @@ public class AnalyzePerformanceUI implements Runnable{
             return;
         }
 
-        Properties props = new Properties();
-        try {
-            props.load(new FileInputStream("config.properties"));
-        } catch (IOException e) {
-            System.out.println("Could not read config file");
-            return;
-        }
+        Properties props = getProperties();
 
         String day;
         try{
@@ -79,5 +74,23 @@ public class AnalyzePerformanceUI implements Runnable{
             System.out.println("Max Sum:" + maxSum);
         }
 
+    }
+
+    private Properties getProperties() {
+        Properties props = new Properties();
+
+        // Add default properties and values
+        props.setProperty(Constants.PARAMS_ALGORITHM, "BruteForce");
+
+
+        // Read configured values
+        try {
+            InputStream in = new FileInputStream(Constants.PARAMS_ALGORITHM);
+            props.load(in);
+            in.close();
+        } catch (IOException ex) {
+
+        }
+        return props;
     }
 }

@@ -3,24 +3,19 @@ autonumber
 actor "Nurse" as NU
 
 activate NU
-NU -> ":System" : Asks to record the administration of a vaccine
+NU -> ":System" : asks to record the administration of a vaccine
 activate ":System"
-":System" --> NU : Asks to select the SNS user from the waiting room
+":System" --> NU : shows data (user, vaccine) and asks to select one
 deactivate ":System"
 
-NU -> ":System" : Selects the SNS user from the waiting room
+NU -> ":System" : selects desired data
 activate ":System"
-":System" --> NU : Shows and asks to select available(s) vaccine for chosen user
+":System" --> NU : shows all data and requests confirmation
 deactivate ":System"
 
-NU -> ":System" : Selects the vaccine
+NU -> ":System" : confirms the data
 activate ":System"
-":System" --> NU : Asks if the Nurse wants to record the administration
-deactivate ":System"
-
-NU -> ":System" : Confirms
-activate ":System"
-":System" --> NU : Informs operation success
+":System" --> NU : informs operation success
 deactivate ":System"
 
 deactivate NU

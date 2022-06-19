@@ -1,0 +1,98 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class App{
+    +getCompany()
+    +static getInstance()
+}
+
+class VaccinationCenter{
+    - String name
+    - Integer phoneNumber
+    - Integer faxNumber
+        - String homeAddress
+        - String emailAddress
+        - String websiteAddress
+        - Integer openingHours
+        - Integer closingHours
+        - Integer slotDuration
+        - Integer maxNumVaccinesPerSlot
+        - Day vaccinationDay
+        - List<Day> listVaccinationDay
+        - List<VaccineType> listVaccineType
+        - List<Slot> listSlots
+        - List<VaccineSchedule> listSchedule
+        - List<UserArrival> listUserArrival
+        - List<UserLeaving> listUserLeaving
+        - List<VaccineAdministration> listAdministratedVaccines
+    +getListUserToWaitingRoom()
+    +createVaccineAdministration(user, vaccine, date)
+    +addVaccineAdministration(vaccineAdministration)
+    +removeFromWaitingRoom(user)
+    +moveToRecoveryRoom(vaccineAdministration)
+    +validateVaccineAdministration(user.getSnsUser(), vaccine)
+}
+
+class VaccineAdministration{
+    - UserArrival user
+    - Vaccine vaccine phoneNumber
+    - Date vaccinationTime
+}
+
+class VaccineSchedule{
+    - SNSUser user
+    - VaccineType vaccineType
+    - List<Vaccine> vaccineList
+    - Date time
+    +getVaccineList()
+}
+
+class UserArrival{
+    - SNSUser user
+    - Date arrivalTime
+    - VaccineSchedule schedule
+    +getSchedule()
+}
+
+
+class VaccineAdministrationUI {
+}
+
+
+class VaccineAdministrationController{
+    -App oApp;
+    -Company oCompany
+    -VaccinationCenter vaccinationCenter
+    +getWorking()
+    +setWorking(VaccinationCenter vc)
+    +getWaitingRoom()
+    +getAvailableVaccinesForUser(UserArrival user)
+    +createVaccineAdministration(UserArrival user, Vaccine vaccine, Date date)
+    +addVaccineAdministration(VaccineAdministration vaccineAdministration)
+    +removeFromWaitingRoom(UserArrival user)
+    +moveToRecoveryRoom(VaccineAdministration vaccineAdministration, Vaccine vaccine)
+    +validateVaccineAdministration(UserArrival user, Vaccine vaccine)
+}
+
+class Company {
+    -designation
+    +getEmployeeStore()
+}
+
+class EmployeeStore{
+    +getWorking(String email)
+}
+Company -down- EmployeeStore : has >
+VaccineAdministrationUI .down.> VaccineAdministrationController
+VaccineAdministrationController .down.> Company
+VaccineAdministrationController .down.> App
+VaccineAdministrationController .down.> VaccinationCenter
+
+VaccinationCenter -down- UserArrival : has >
+VaccinationCenter -down- VaccineSchedule : has >
+VaccinationCenter -down- VaccineAdministration : has >
+
+VaccineAdministration -- UserArrival : has >
+UserArrival -right- VaccineSchedule : has >
+
+@enduml

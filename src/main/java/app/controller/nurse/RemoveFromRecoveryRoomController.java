@@ -30,7 +30,7 @@ public class RemoveFromRecoveryRoomController {
         return null;
     }
 
-    public List<VaccineAdministration> getRecoveryRoom(SNSUser user) {
+    public List<VaccineAdministration> getRecoveryRoom() {
         return vaccinationCenter.getRecoveryRoom();
     }
 

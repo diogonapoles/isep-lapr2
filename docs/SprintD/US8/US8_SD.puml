@@ -11,13 +11,13 @@ participant "VaccinationCenter" as VC
 participant "UserArrival" as UA
 participant "VaccineSchedule" as VS
 participant "VaccineAdministration" as VA
-participant "WaitingRoom" as WR
-participant "RecoveryRoom" as RR
+participant "wr\n:List <UserArrival> waitingRoom"
+participant "rr\n:List <VaccineAdministration> recoveryRoom"
 
 
 
 activate NU
-NU -> UI : Asks to record the administration of a vaccine
+NU -> UI : asks to record the administration of a vaccine
 activate UI
 UI -> CTRL : getWorking()
 activate CTRL
@@ -34,57 +34,72 @@ CTRL -> EMPSTORE : working = getWorking()
 activate EMPSTORE
 deactivate EMPSTORE
 deactivate CTRL
+deactivate CTRL
+
+
+
+UI --> NU : shows data (user, vaccine) and asks to select one
+deactivate UI
+
+NU -> UI : selects desired data
+activate UI
 UI -> CTRL : getWaitingRoom()
 activate CTRL
-CTRL -> VC  : waitingRoom = getListUserToWaitingRoom()
-
+CTRL -> VC  : user = getListUserToWaitingRoom()
 activate VC
 deactivate VC
 deactivate CTRL
-
-
-
-UI --> NU : Asks to select the SNS user from the waiting room
-deactivate UI
-
-NU -> UI : Selects the SNS user from the waiting room
-activate UI
 UI -> CTRL : getAvailableVaccinesForUser(user)
 activate CTRL
-CTRL -> UA : user.getSchedule()
+CTRL -> UA : schedule = getSchedule()
 activate UA
-UA -> VS : vaccineList = getVaccineList()
+deactivate UA
+CTRL -> VS : getVaccineList()
 activate VS
 deactivate VS
-deactivate UA
 deactivate CTRL
-
-
-UI --> NU : Shows and asks to select available(s) vaccine for chosen user
-deactivate UI
-
-NU -> UI : Selects the vaccine
-activate UI
 UI -> CTRL : validateVaccineAdministration(user, vaccine)
-
 activate CTRL
-CTRL -> VC : validateVaccineAdministration(user,vaccine)
+CTRL -> VC : administration =  validateVaccineAdministration(user,vaccine)
 activate VC
-VC -> VA : administration.setVaccinationTime(date)
+VC -> VC : getVaccineAdministration()
+loop
+VC -> VC : validateVaccineAdministration(user,vaccine)
+VC -> VA : setVaccinationTime(date)
 activate VA
 deactivate VA
+end
 deactivate VC
+CTRL -> VA : date = getDate()
+activate VA
+deactivate VA
+deactivate CTRL
+deactivate UA
+alt if administration == null
+UI -> CTRL : createVaccineAdministration(user, vaccine, date)
+activate CTRL
+    CTRL -> VC : createVaccineAdministration(user, vaccine, date)
+    activate VC
+    VC -> VA : create(user, vaccine, date)
+    activate VA
+    deactivate VA
+    VC -> VC : saveAdministration()
+    activate VC
+    deactivate VC
+    deactivate VC
+end
 deactivate CTRL
 
 
-UI --> NU : Asks if the Nurse wants to record the administration
+UI --> NU : shows all data and requests confirmation
 deactivate UI
 
-NU -> UI : Confirms
+NU -> UI : confirms the data
+
 activate UI
-UI->CTRL : addVaccineAdministration(vaccineAdministration)
+UI->CTRL : addVaccineAdministration(administration)
 activate CTRL
-CTRL->VC : addVaccineAdministration(vaccineAdministration)
+CTRL->VC : addVaccineAdministration(administration)
 activate VC
 
 
@@ -96,28 +111,22 @@ UI->CTRL : removeFromWaitingRoom(user)
 activate CTRL
 CTRL->VC : removeFromWaitingRoom(user)
 activate VC
-VC -> WR : remove(arrival)
-activate WR
-deactivate WR
 
 
 deactivate VC
 
 deactivate CTRL
-UI->CTRL : moveToRecoveryRoom(vaccineAdministration, vaccine)
+UI->CTRL : moveToRecoveryRoom(administration, vaccine)
 activate CTRL
-CTRL->VC : moveToRecoveryRoom(vaccineAdministration)
+CTRL->VC : moveToRecoveryRoom(administration)
 activate VC
-VC -> RR : add(vaccineAdministration)
-activate RR
-deactivate RR
 deactivate VC
 
 
 deactivate CTRL
 
 
-UI --> NU : Informs operation success
+UI --> NU : informs operation success
 deactivate UI
 
 deactivate NU

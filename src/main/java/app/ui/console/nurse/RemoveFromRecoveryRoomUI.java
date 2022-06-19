@@ -19,13 +19,8 @@ public class RemoveFromRecoveryRoomUI implements Runnable {
             System.out.println("Doesn't exist");
             return;
         } else {
-            SNSUser user = controller.getSNSUserByNumber(Utils.readLineFromConsole("Insert SNS user number:"));
-            if (user == null){
-                System.out.println("Could't find SNS user in the System");
-                return;
-            }
 
-            VaccineAdministration administration = (VaccineAdministration) Utils.showAndSelectOne(controller.getRecoveryRoom(user), "Users in the Recovery Room:");
+            VaccineAdministration administration = (VaccineAdministration) Utils.showAndSelectOne(controller.getRecoveryRoom(), "Users in the Recovery Room:");
             if (administration == null) {
                 return;
             }

@@ -1,0 +1,52 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class VaccinationCenter{
+name
+phoneNumber
+faxNumber
+homeAddress
+emailAddress
+websiteAddress
+openingHours
+closingHours
+slotDuration
+maxNumVaccinesPerSlot
+}
+
+class Company{
+designation
+}
+
+class UserArrival{
+snsUser
+arrivalTime
+schedule
+}
+
+class VaccineAdministration{
+userArrival
+vaccine
+vaccinationTime
+recoveryRoomTime
+}
+
+class VaccineSchedule{
+snsUser
+vaccineType
+vaccineList
+vaccinationTime
+}
+
+Company "1" -up-- "*" VaccinationCenter : manages >
+
+VaccinationCenter "1" -up- "*" VaccineAdministration : has >
+VaccinationCenter "1" -right- "*" UserArrival : has >
+VaccinationCenter "1" -left- "*" VaccineSchedule : has >
+
+VaccineAdministration "*" -up-- "1" RecoveryRoom : sends user to >
+VaccineAdministration -up-- WaitingRoom : sends users to >
+
+VaccineAdministration -- UserArrival : has >
+UserArrival "1" -- "1" VaccineSchedule : has >
+@enduml

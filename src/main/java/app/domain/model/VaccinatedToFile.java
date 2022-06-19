@@ -2,6 +2,7 @@ package app.domain.model;
 
 import app.controller.App;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
+import app.domain.model.vaccinationProcess.VaccineAdministration;
 import app.domain.model.vaccine.Vaccine;
 
 import java.io.File;
@@ -20,8 +21,8 @@ public class VaccinatedToFile {
     private static final String SEPARATOR = "\n";
     private static final String HEADER = "Number of Fully Vaccinated Patients per Day";
 
-    private List listVaccinated = new ArrayList<>();
-    private List listFullyVaccinated = new ArrayList();
+    private List<VaccineAdministration> listVaccinated = new ArrayList<>();
+    private List<VaccineAdministration> listFullyVaccinated = new ArrayList();
 
     private Vaccine oVaccine;
 
@@ -46,9 +47,9 @@ public class VaccinatedToFile {
 
 
     public List getFullyVaccinatedPatients() {
-        for (int i = 0; i < listVaccinated.size(); i++) {
-            if (Collections.frequency(listVaccinated, listVaccinated.get(i)) == 1) {
-                listFullyVaccinated.add(listVaccinated.get(i));
+        for (VaccineAdministration administration : listVaccinated){
+            if (administration.getDoses() == administration.getVaccine().getDoseNumber()){
+                listFullyVaccinated.add(administration);
             }
         }
         return listFullyVaccinated;

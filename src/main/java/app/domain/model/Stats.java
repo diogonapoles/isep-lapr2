@@ -39,8 +39,7 @@ public class Stats {
     volatile boolean isStopIssued;
 
     public void start() throws IOException {
-        Properties props = new Properties();
-        props.load(new FileInputStream("config.properties"));
+        Properties props = getProperties();
         String time = props.getProperty(Constants.PARAMS_DAILYSTATISTICS_TIME);
         String[] hoursMinutes = time.split(":");
         int targetHour = Integer.parseInt(hoursMinutes[0]);
@@ -118,6 +117,24 @@ public class Stats {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private Properties getProperties() {
+        Properties props = new Properties();
+
+        // Add default properties and values
+        props.setProperty(Constants.PARAMS_DAILYSTATISTICS_TIME, "20:00");
+
+
+        // Read configured values
+        try {
+            InputStream in = new FileInputStream(Constants.PARAMS_DAILYSTATISTICS_TIME);
+            props.load(in);
+            in.close();
+        } catch (IOException ex) {
+
+        }
+        return props;
     }
 }
 
