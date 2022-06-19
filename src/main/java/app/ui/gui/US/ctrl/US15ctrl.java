@@ -17,6 +17,9 @@ public class US15ctrl {
     public US15ctrl() {
         oApp = App.getInstance();
         oCompany = oApp.getCompany();
+    }
+
+    public void getWorking(){
         vaccinationCenter = oCompany.getEmployeeStore().getWorking(oApp.getCurrentUserSession().getUserId().getEmail());
     }
 
