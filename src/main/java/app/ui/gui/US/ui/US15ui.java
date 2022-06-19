@@ -1,7 +1,8 @@
-/*
+
 package app.ui.gui.US.ui;
 
 import app.controller.centerCoordinator.VaccinatedToFileController;
+import app.domain.model.vaccinationProcess.VaccineAdministration;
 import app.ui.console.utils.Utils;
 import app.ui.gui.US.ctrl.US15ctrl;
 import javafx.event.ActionEvent;
@@ -51,11 +52,11 @@ public class US15ui implements Initializable {
     @FXML
     void btnConfirm(ActionEvent event) {
         String fileName = inputData();
-        controller.getListAdministratedVaccines();
+        List<VaccineAdministration> listAdministratedVaccines = controller.getListAdministratedVaccines();
 
         if (controller.validateFileName(fileName)) {
             try {
-                controller.writeToFile(fileName);
+                controller.writeToFile(fileName, listAdministratedVaccines);
                 try {
                     var loader = new FXMLLoader(getClass().getResource("/fxml/US/15s2.fxml"));
                     Parent root = loader.load();
@@ -175,4 +176,4 @@ public class US15ui implements Initializable {
         }
     }
 
-}*/
+}
