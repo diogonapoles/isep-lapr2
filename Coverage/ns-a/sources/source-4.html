@@ -1,0 +1,172 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > VaccineSchedule</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">app.domain.model.vaccinationProcess</a>
+</div>
+
+<h1>Coverage Summary for Class: VaccineSchedule (app.domain.model.vaccinationProcess)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">VaccineSchedule</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    27.3%
+  </span>
+  <span class="absValue">
+    (3/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    46.7%
+  </span>
+  <span class="absValue">
+    (7/15)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package app.domain.model.vaccinationProcess;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import app.domain.model.systemUser.SNSUser;
+<i class="no-highlight">4</i>&nbsp;import app.domain.model.vaccine.Vaccine;
+<i class="no-highlight">5</i>&nbsp;import app.domain.model.vaccine.VaccineType;
+<i class="no-highlight">6</i>&nbsp;
+<i class="no-highlight">7</i>&nbsp;import java.io.Serializable;
+<i class="no-highlight">8</i>&nbsp;import java.util.Date;
+<i class="no-highlight">9</i>&nbsp;import java.util.List;
+<i class="no-highlight">10</i>&nbsp;
+<i class="no-highlight">11</i>&nbsp;public class VaccineSchedule implements Comparable&lt;VaccineSchedule&gt;, Serializable {
+<i class="no-highlight">12</i>&nbsp;
+<i class="no-highlight">13</i>&nbsp;    private SNSUser user;
+<i class="no-highlight">14</i>&nbsp;    private VaccineType vaccineType;
+<i class="no-highlight">15</i>&nbsp;    private List&lt;Vaccine&gt; vaccineList;
+<i class="no-highlight">16</i>&nbsp;    private Date time;
+<i class="no-highlight">17</i>&nbsp;
+<b class="fc"><i class="no-highlight">18</i>&nbsp;    public VaccineSchedule(SNSUser user, VaccineType vaccineType, List&lt;Vaccine&gt; vaccineList, Date time) {</b>
+<b class="fc"><i class="no-highlight">19</i>&nbsp;        this.user = user;</b>
+<b class="fc"><i class="no-highlight">20</i>&nbsp;        this.vaccineType = vaccineType;</b>
+<b class="fc"><i class="no-highlight">21</i>&nbsp;        this.vaccineList = vaccineList;</b>
+<b class="fc"><i class="no-highlight">22</i>&nbsp;        this.time = time;</b>
+<i class="no-highlight">23</i>&nbsp;    }
+<i class="no-highlight">24</i>&nbsp;
+<i class="no-highlight">25</i>&nbsp;    public SNSUser getUser() {
+<b class="nc"><i class="no-highlight">26</i>&nbsp;        return user;</b>
+<i class="no-highlight">27</i>&nbsp;    }
+<i class="no-highlight">28</i>&nbsp;
+<i class="no-highlight">29</i>&nbsp;    public void setUser(SNSUser user) {
+<b class="nc"><i class="no-highlight">30</i>&nbsp;        this.user = user;</b>
+<i class="no-highlight">31</i>&nbsp;    }
+<i class="no-highlight">32</i>&nbsp;
+<i class="no-highlight">33</i>&nbsp;    public VaccineType getVaccineType() {
+<b class="nc"><i class="no-highlight">34</i>&nbsp;        return vaccineType;}</b>
+<i class="no-highlight">35</i>&nbsp;
+<i class="no-highlight">36</i>&nbsp;
+<i class="no-highlight">37</i>&nbsp;
+<i class="no-highlight">38</i>&nbsp;    public void setVaccineType(VaccineType vaccineType) {
+<b class="nc"><i class="no-highlight">39</i>&nbsp;        this.vaccineType = vaccineType;</b>
+<i class="no-highlight">40</i>&nbsp;    }
+<i class="no-highlight">41</i>&nbsp;
+<i class="no-highlight">42</i>&nbsp;    public Date getTime() {
+<b class="fc"><i class="no-highlight">43</i>&nbsp;        return time;</b>
+<i class="no-highlight">44</i>&nbsp;    }
+<i class="no-highlight">45</i>&nbsp;
+<i class="no-highlight">46</i>&nbsp;    public List&lt;Vaccine&gt; getVaccineList() {
+<b class="fc"><i class="no-highlight">47</i>&nbsp;        return vaccineList;</b>
+<i class="no-highlight">48</i>&nbsp;    }
+<i class="no-highlight">49</i>&nbsp;
+<i class="no-highlight">50</i>&nbsp;    public void setVaccineList(List&lt;Vaccine&gt; vaccineList) {
+<b class="nc"><i class="no-highlight">51</i>&nbsp;        this.vaccineList = vaccineList;</b>
+<i class="no-highlight">52</i>&nbsp;    }
+<i class="no-highlight">53</i>&nbsp;
+<i class="no-highlight">54</i>&nbsp;    public void setTime(Date time) {
+<b class="nc"><i class="no-highlight">55</i>&nbsp;        this.time = time;</b>
+<i class="no-highlight">56</i>&nbsp;    }
+<i class="no-highlight">57</i>&nbsp;
+<i class="no-highlight">58</i>&nbsp;    @Override
+<i class="no-highlight">59</i>&nbsp;    public String toString() {
+<b class="nc"><i class="no-highlight">60</i>&nbsp;        return &quot;VaccineSchedule [&quot; + &quot;SNS User = &quot; + user.getEmailAddress() + &quot; | Vaccine Type = &quot; + vaccineType.getCode() + &quot; | Vaccination Day = &quot; + time + &quot;]&quot;;</b>
+<i class="no-highlight">61</i>&nbsp;    }
+<i class="no-highlight">62</i>&nbsp;
+<i class="no-highlight">63</i>&nbsp;    @Override
+<i class="no-highlight">64</i>&nbsp;    public int compareTo(VaccineSchedule o) {
+<b class="nc"><i class="no-highlight">65</i>&nbsp;        return getTime().compareTo(o.getTime());</b>
+<i class="no-highlight">66</i>&nbsp;    }
+<i class="no-highlight">67</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-06-19 21:34</div>
+</div>
+</body>
+</html>

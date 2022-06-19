@@ -1,0 +1,269 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SNSUserStore</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">app.domain.store</a>
+</div>
+
+<h1>Coverage Summary for Class: SNSUserStore (app.domain.store)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SNSUserStore</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    36.4%
+  </span>
+  <span class="absValue">
+    (4/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    17%
+  </span>
+  <span class="absValue">
+    (8/47)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package app.domain.store;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import app.domain.shared.Constants;
+<i class="no-highlight">4</i>&nbsp;import app.domain.model.systemUser.SNSUser;
+<i class="no-highlight">5</i>&nbsp;import pt.isep.lei.esoft.auth.AuthFacade;
+<i class="no-highlight">6</i>&nbsp;
+<i class="no-highlight">7</i>&nbsp;import java.text.ParseException;
+<i class="no-highlight">8</i>&nbsp;import java.text.SimpleDateFormat;
+<i class="no-highlight">9</i>&nbsp;import java.util.ArrayList;
+<i class="no-highlight">10</i>&nbsp;import java.util.Date;
+<i class="no-highlight">11</i>&nbsp;import java.util.List;
+<i class="no-highlight">12</i>&nbsp;
+<i class="no-highlight">13</i>&nbsp;/**
+<i class="no-highlight">14</i>&nbsp; * The type Sns user store.
+<i class="no-highlight">15</i>&nbsp; */
+<i class="no-highlight">16</i>&nbsp;public class SNSUserStore {
+<b class="fc"><i class="no-highlight">17</i>&nbsp;    private final List&lt;SNSUser&gt; listSNSUser = new ArrayList&lt;&gt;();</b>
+<i class="no-highlight">18</i>&nbsp;    private final AuthFacade authFacade;
+<i class="no-highlight">19</i>&nbsp;
+<i class="no-highlight">20</i>&nbsp;    /**
+<i class="no-highlight">21</i>&nbsp;     * Instantiates a new Sns user store.
+<i class="no-highlight">22</i>&nbsp;     *
+<i class="no-highlight">23</i>&nbsp;     * @param authFacade the auth facade
+<i class="no-highlight">24</i>&nbsp;     */
+<b class="fc"><i class="no-highlight">25</i>&nbsp;    public SNSUserStore(AuthFacade authFacade) {</b>
+<b class="fc"><i class="no-highlight">26</i>&nbsp;        this.authFacade = authFacade;</b>
+<i class="no-highlight">27</i>&nbsp;
+<i class="no-highlight">28</i>&nbsp;    }
+<i class="no-highlight">29</i>&nbsp;
+<i class="no-highlight">30</i>&nbsp;    /**
+<i class="no-highlight">31</i>&nbsp;     * Import sns user csv boolean.
+<i class="no-highlight">32</i>&nbsp;     *
+<i class="no-highlight">33</i>&nbsp;     * @param list the list
+<i class="no-highlight">34</i>&nbsp;     * @return the boolean
+<i class="no-highlight">35</i>&nbsp;     */
+<i class="no-highlight">36</i>&nbsp;    public boolean importSNSUserCSV(List&lt;SNSUser&gt; list) {
+<b class="nc"><i class="no-highlight">37</i>&nbsp;        for (int counter = 0; counter &lt; list.size(); counter++) {</b>
+<b class="nc"><i class="no-highlight">38</i>&nbsp;            SNSUser oSNSUser = list.get(counter);</b>
+<b class="nc"><i class="no-highlight">39</i>&nbsp;            if (validateSNSUser(oSNSUser.getPhoneNumber(), oSNSUser.getHomeAddress(), oSNSUser.getEmailAddress()))</b>
+<b class="nc"><i class="no-highlight">40</i>&nbsp;                addSNSUser(oSNSUser);</b>
+<i class="no-highlight">41</i>&nbsp;
+<i class="no-highlight">42</i>&nbsp;            else
+<b class="nc"><i class="no-highlight">43</i>&nbsp;                return false;</b>
+<i class="no-highlight">44</i>&nbsp;        }
+<b class="nc"><i class="no-highlight">45</i>&nbsp;        return true;</b>
+<i class="no-highlight">46</i>&nbsp;    }
+<i class="no-highlight">47</i>&nbsp;
+<i class="no-highlight">48</i>&nbsp;    /**
+<i class="no-highlight">49</i>&nbsp;     * Validate temp list list.
+<i class="no-highlight">50</i>&nbsp;     *
+<i class="no-highlight">51</i>&nbsp;     * @param list the list
+<i class="no-highlight">52</i>&nbsp;     * @return the list
+<i class="no-highlight">53</i>&nbsp;     */
+<i class="no-highlight">54</i>&nbsp;    public List&lt;SNSUser&gt; validateTempList(List&lt;SNSUser&gt; list) {
+<b class="nc"><i class="no-highlight">55</i>&nbsp;        int size = list.size();</b>
+<b class="nc"><i class="no-highlight">56</i>&nbsp;        List&lt;SNSUser&gt; listCopy = new ArrayList&lt;&gt;();</b>
+<b class="nc"><i class="no-highlight">57</i>&nbsp;        for (int counter = 0; counter &lt; size; counter++) {</b>
+<b class="nc"><i class="no-highlight">58</i>&nbsp;            SNSUser oSNSUser = list.get(counter);</b>
+<b class="nc"><i class="no-highlight">59</i>&nbsp;            if (validateSNSUser(oSNSUser.getPhoneNumber(), oSNSUser.getHomeAddress(), oSNSUser.getEmailAddress())) {</b>
+<b class="nc"><i class="no-highlight">60</i>&nbsp;                listCopy.add(oSNSUser);</b>
+<i class="no-highlight">61</i>&nbsp;            } else {
+<b class="nc"><i class="no-highlight">62</i>&nbsp;                System.out.println(&quot;SNS USER WITH THE E-MAIL: &quot; + oSNSUser.getEmailAddress() + &quot; IS ALREADY REGISTERED IN THE SYSTEM!&quot;);</b>
+<i class="no-highlight">63</i>&nbsp;            }
+<i class="no-highlight">64</i>&nbsp;        }
+<b class="nc"><i class="no-highlight">65</i>&nbsp;        return listCopy;</b>
+<i class="no-highlight">66</i>&nbsp;    }
+<i class="no-highlight">67</i>&nbsp;
+<i class="no-highlight">68</i>&nbsp;    /**
+<i class="no-highlight">69</i>&nbsp;     * Validate sns user boolean.
+<i class="no-highlight">70</i>&nbsp;     *
+<i class="no-highlight">71</i>&nbsp;     * @param phoneNumber  the phone number
+<i class="no-highlight">72</i>&nbsp;     * @param homeAddress  the home address
+<i class="no-highlight">73</i>&nbsp;     * @param emailAddress the email address
+<i class="no-highlight">74</i>&nbsp;     * @return the boolean
+<i class="no-highlight">75</i>&nbsp;     */
+<i class="no-highlight">76</i>&nbsp;    public boolean validateSNSUser(String phoneNumber, String homeAddress, String emailAddress) {
+<b class="nc"><i class="no-highlight">77</i>&nbsp;        for (SNSUser user : listSNSUser) {</b>
+<b class="nc"><i class="no-highlight">78</i>&nbsp;            if (user.getPhoneNumber().contains(phoneNumber)</b>
+<b class="nc"><i class="no-highlight">79</i>&nbsp;                    || user.getEmailAddress().contains(emailAddress)</b>
+<b class="nc"><i class="no-highlight">80</i>&nbsp;                    || user.getHomeAddress().contains(homeAddress))</b>
+<b class="nc"><i class="no-highlight">81</i>&nbsp;                return false;</b>
+<b class="nc"><i class="no-highlight">82</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">83</i>&nbsp;        if (authFacade.existsUser(emailAddress)) {</b>
+<b class="nc"><i class="no-highlight">84</i>&nbsp;            return false;</b>
+<i class="no-highlight">85</i>&nbsp;        } else
+<b class="nc"><i class="no-highlight">86</i>&nbsp;            return true;</b>
+<i class="no-highlight">87</i>&nbsp;    }
+<i class="no-highlight">88</i>&nbsp;
+<i class="no-highlight">89</i>&nbsp;    /**
+<i class="no-highlight">90</i>&nbsp;     * Register sns user boolean.
+<i class="no-highlight">91</i>&nbsp;     *
+<i class="no-highlight">92</i>&nbsp;     * @param User the user
+<i class="no-highlight">93</i>&nbsp;     * @return the boolean
+<i class="no-highlight">94</i>&nbsp;     */
+<i class="no-highlight">95</i>&nbsp;    public boolean registerSNSUser(SNSUser User) {
+<b class="fc"><i class="no-highlight">96</i>&nbsp;        return addSNSUser(User);</b>
+<i class="no-highlight">97</i>&nbsp;    }
+<i class="no-highlight">98</i>&nbsp;
+<i class="no-highlight">99</i>&nbsp;    private boolean addSNSUser(SNSUser user) {
+<b class="fc"><i class="no-highlight">100</i>&nbsp;        return this.listSNSUser.add(user);</b>
+<i class="no-highlight">101</i>&nbsp;    }
+<i class="no-highlight">102</i>&nbsp;
+<i class="no-highlight">103</i>&nbsp;
+<i class="no-highlight">104</i>&nbsp;    /**
+<i class="no-highlight">105</i>&nbsp;     * New sns user sns user.
+<i class="no-highlight">106</i>&nbsp;     *
+<i class="no-highlight">107</i>&nbsp;     * @param name              the name
+<i class="no-highlight">108</i>&nbsp;     * @param gender            the gender
+<i class="no-highlight">109</i>&nbsp;     * @param birthDate         the birth date
+<i class="no-highlight">110</i>&nbsp;     * @param homeAddress       the home address
+<i class="no-highlight">111</i>&nbsp;     * @param phoneNumber       the phone number
+<i class="no-highlight">112</i>&nbsp;     * @param emailAddress      the email address
+<i class="no-highlight">113</i>&nbsp;     * @param snsUserNumber     the sns user number
+<i class="no-highlight">114</i>&nbsp;     * @param citizenCardNumber the citizen card number
+<i class="no-highlight">115</i>&nbsp;     * @return the sns user
+<i class="no-highlight">116</i>&nbsp;     * @throws ParseException the parse exception
+<i class="no-highlight">117</i>&nbsp;     */
+<i class="no-highlight">118</i>&nbsp;    public SNSUser newSNSUser(String name, String gender, String birthDate, String homeAddress, String phoneNumber, String emailAddress, String snsUserNumber, String citizenCardNumber) throws ParseException {
+<b class="fc"><i class="no-highlight">119</i>&nbsp;        this.authFacade.addUserWithRole(name, emailAddress, &quot;123456&quot;, Constants.ROLE_SNS_USER);</b>
+<b class="fc"><i class="no-highlight">120</i>&nbsp;        Date birth = new SimpleDateFormat(&quot;dd/MM/yyyy&quot;).parse(birthDate);</b>
+<b class="fc"><i class="no-highlight">121</i>&nbsp;        return new SNSUser(name, gender, birth, homeAddress, phoneNumber, emailAddress, snsUserNumber, citizenCardNumber);</b>
+<i class="no-highlight">122</i>&nbsp;    }
+<i class="no-highlight">123</i>&nbsp;
+<i class="no-highlight">124</i>&nbsp;    /**
+<i class="no-highlight">125</i>&nbsp;     * Get sns user list list.
+<i class="no-highlight">126</i>&nbsp;     *
+<i class="no-highlight">127</i>&nbsp;     * @return the list
+<i class="no-highlight">128</i>&nbsp;     */
+<i class="no-highlight">129</i>&nbsp;    public List&lt;SNSUser&gt; getSnsUserList(){
+<b class="nc"><i class="no-highlight">130</i>&nbsp;        return this.listSNSUser;</b>
+<i class="no-highlight">131</i>&nbsp;    }
+<i class="no-highlight">132</i>&nbsp;
+<i class="no-highlight">133</i>&nbsp;    /**
+<i class="no-highlight">134</i>&nbsp;     * Get sns user by number sns user.
+<i class="no-highlight">135</i>&nbsp;     *
+<i class="no-highlight">136</i>&nbsp;     * @param snsUserNumber the sns user number
+<i class="no-highlight">137</i>&nbsp;     * @return the sns user
+<i class="no-highlight">138</i>&nbsp;     */
+<i class="no-highlight">139</i>&nbsp;    public SNSUser getSNSUserByNumber(String snsUserNumber){
+<b class="nc"><i class="no-highlight">140</i>&nbsp;        for (SNSUser user : listSNSUser) {</b>
+<b class="nc"><i class="no-highlight">141</i>&nbsp;            if (user.getSnsUserNumber().contains(snsUserNumber))</b>
+<b class="nc"><i class="no-highlight">142</i>&nbsp;                return user;</b>
+<b class="nc"><i class="no-highlight">143</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">144</i>&nbsp;        return null;</b>
+<i class="no-highlight">145</i>&nbsp;    }
+<i class="no-highlight">146</i>&nbsp;
+<i class="no-highlight">147</i>&nbsp;    public SNSUser getSNSUserByEmail(String email){
+<b class="nc"><i class="no-highlight">148</i>&nbsp;        for (SNSUser user : listSNSUser) {</b>
+<b class="nc"><i class="no-highlight">149</i>&nbsp;            if (user.getEmailAddress().contains(email))</b>
+<b class="nc"><i class="no-highlight">150</i>&nbsp;                return user;</b>
+<b class="nc"><i class="no-highlight">151</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">152</i>&nbsp;        return null;</b>
+<i class="no-highlight">153</i>&nbsp;    }
+<i class="no-highlight">154</i>&nbsp;
+<i class="no-highlight">155</i>&nbsp;
+<i class="no-highlight">156</i>&nbsp;
+<i class="no-highlight">157</i>&nbsp;    public String getSNSUserNameByNumber(int snsUserNumber) {
+<b class="nc"><i class="no-highlight">158</i>&nbsp;        for (SNSUser user : listSNSUser){</b>
+<b class="nc"><i class="no-highlight">159</i>&nbsp;            if (user.getSnsUserNumber().equals(snsUserNumber))</b>
+<b class="nc"><i class="no-highlight">160</i>&nbsp;                return user.getName();</b>
+<b class="nc"><i class="no-highlight">161</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">162</i>&nbsp;    return null;</b>
+<i class="no-highlight">163</i>&nbsp;    }
+<i class="no-highlight">164</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-06-19 21:34</div>
+</div>
+</body>
+</html>

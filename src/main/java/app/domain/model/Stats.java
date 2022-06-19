@@ -139,7 +139,7 @@ public class Stats {
         Properties props = new Properties();
 
         // Add default properties and values
-        props.setProperty(Constants.PARAMS_DAILYSTATISTICS_TIME, "20:51");
+        props.setProperty(Constants.PARAMS_DAILYSTATISTICS_TIME, "20:00");
 
 
         // Read configured values

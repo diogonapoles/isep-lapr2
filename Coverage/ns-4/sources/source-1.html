@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > Main</title>
+  <title>Coverage Report > AdverseReactionsController</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/highlight-idea.css";
@@ -17,10 +17,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">app.ui</a>
+    <a href="../index.html">app.controller.nurse</a>
 </div>
 
-<h1>Coverage Summary for Class: Main (app.ui)</h1>
+<h1>Coverage Summary for Class: AdverseReactionsController (app.controller.nurse)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -39,29 +39,29 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">Main</td>
+  <td class="name">AdverseReactionsController</td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    0%
   </span>
   <span class="absValue">
-    (1/1)
+    (0/1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    50%
+    0%
   </span>
   <span class="absValue">
-    (1/2)
+    (0/4)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    33.3%
+    0%
   </span>
   <span class="absValue">
-    (2/6)
+    (0/11)
   </span>
 </td>
 </tr>
@@ -73,37 +73,55 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package app.ui;
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package app.controller.nurse;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;import app.ui.console.MainMenuUI;
-<i class="no-highlight">4</i>&nbsp;
-<i class="no-highlight">5</i>&nbsp;/**
-<i class="no-highlight">6</i>&nbsp; * The type Main.
-<i class="no-highlight">7</i>&nbsp; *
-<i class="no-highlight">8</i>&nbsp; * @author Paulo Maio &lt;pam@isep.ipp.pt&gt;
-<i class="no-highlight">9</i>&nbsp; */
-<i class="no-highlight">10</i>&nbsp;//Teste
-<b class="nc"><i class="no-highlight">11</i>&nbsp;public class Main {</b>
-<i class="no-highlight">12</i>&nbsp;
-<i class="no-highlight">13</i>&nbsp;    /**
-<i class="no-highlight">14</i>&nbsp;     * The entry point of application.
-<i class="no-highlight">15</i>&nbsp;     *
-<i class="no-highlight">16</i>&nbsp;     * @param args the input arguments
-<i class="no-highlight">17</i>&nbsp;     */
-<i class="no-highlight">18</i>&nbsp;    public static void main(String[] args)
-<i class="no-highlight">19</i>&nbsp;    {
-<i class="no-highlight">20</i>&nbsp;        try
-<i class="no-highlight">21</i>&nbsp;        {
-<b class="fc"><i class="no-highlight">22</i>&nbsp;            MainMenuUI menu = new MainMenuUI();</b>
+<i class="no-highlight">3</i>&nbsp;
+<i class="no-highlight">4</i>&nbsp;import app.controller.App;
+<i class="no-highlight">5</i>&nbsp;import app.domain.model.Company;
+<i class="no-highlight">6</i>&nbsp;import app.domain.model.vaccinationCenter.VaccinationCenter;
+<i class="no-highlight">7</i>&nbsp;import app.domain.model.vaccinationProcess.UserArrival;
+<i class="no-highlight">8</i>&nbsp;import app.domain.model.vaccinationProcess.VaccineAdministration;
+<i class="no-highlight">9</i>&nbsp;
+<i class="no-highlight">10</i>&nbsp;import java.util.List;
+<i class="no-highlight">11</i>&nbsp;
+<i class="no-highlight">12</i>&nbsp;public class AdverseReactionsController {
+<i class="no-highlight">13</i>&nbsp;
+<i class="no-highlight">14</i>&nbsp;
+<i class="no-highlight">15</i>&nbsp;    private final App oApp;
+<i class="no-highlight">16</i>&nbsp;    private final Company oCompany;
+<i class="no-highlight">17</i>&nbsp;    private VaccinationCenter vaccinationCenter;
+<i class="no-highlight">18</i>&nbsp;
+<i class="no-highlight">19</i>&nbsp;
+<b class="nc"><i class="no-highlight">20</i>&nbsp;    public AdverseReactionsController(){</b>
+<b class="nc"><i class="no-highlight">21</i>&nbsp;        this.oApp = App.getInstance();</b>
+<b class="nc"><i class="no-highlight">22</i>&nbsp;        this.oCompany = oApp.getCompany();</b>
 <i class="no-highlight">23</i>&nbsp;
-<b class="fc"><i class="no-highlight">24</i>&nbsp;            menu.run();</b>
-<i class="no-highlight">25</i>&nbsp;        }
-<b class="nc"><i class="no-highlight">26</i>&nbsp;        catch( Exception e )</b>
-<i class="no-highlight">27</i>&nbsp;        {
-<b class="nc"><i class="no-highlight">28</i>&nbsp;            e.printStackTrace();</b>
-<b class="nc"><i class="no-highlight">29</i>&nbsp;        }</b>
-<i class="no-highlight">30</i>&nbsp;    }
-<i class="no-highlight">31</i>&nbsp;}
+<i class="no-highlight">24</i>&nbsp;    }
+<i class="no-highlight">25</i>&nbsp;
+<i class="no-highlight">26</i>&nbsp;    public VaccinationCenter getWorking() {
+<b class="nc"><i class="no-highlight">27</i>&nbsp;        vaccinationCenter = oCompany.getEmployeeStore().getWorking(oApp.getCurrentUserSession().getUserId().getEmail());</b>
+<b class="nc"><i class="no-highlight">28</i>&nbsp;        return vaccinationCenter;</b>
+<i class="no-highlight">29</i>&nbsp;    }
+<i class="no-highlight">30</i>&nbsp;
+<i class="no-highlight">31</i>&nbsp;    public List&lt;VaccineAdministration&gt; getRecoveryRoom(){
+<b class="nc"><i class="no-highlight">32</i>&nbsp;        return this.getWorking().getRecoveryRoom();</b>
+<i class="no-highlight">33</i>&nbsp;    }
+<i class="no-highlight">34</i>&nbsp;
+<i class="no-highlight">35</i>&nbsp;
+<i class="no-highlight">36</i>&nbsp;
+<i class="no-highlight">37</i>&nbsp;    public Boolean isUserInRecoveryList(String snsUserNumber) {
+<b class="nc"><i class="no-highlight">38</i>&nbsp;        for (VaccineAdministration user : getRecoveryRoom()){</b>
+<b class="nc"><i class="no-highlight">39</i>&nbsp;            if (user.getUserArrival().getSnsUser().getSnsUserNumber().equals(snsUserNumber)){</b>
+<b class="nc"><i class="no-highlight">40</i>&nbsp;                return true;</b>
+<i class="no-highlight">41</i>&nbsp;            }else{
+<b class="nc"><i class="no-highlight">42</i>&nbsp;                return false;</b>
+<i class="no-highlight">43</i>&nbsp;            }
+<i class="no-highlight">44</i>&nbsp;
+<i class="no-highlight">45</i>&nbsp;        }
+<b class="nc"><i class="no-highlight">46</i>&nbsp;        return false;</b>
+<i class="no-highlight">47</i>&nbsp;    }
+<i class="no-highlight">48</i>&nbsp;
+<i class="no-highlight">49</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -130,7 +148,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2022-05-29 22:37</div>
+    <div style="float:right;">generated on 2022-06-19 21:34</div>
 </div>
 </body>
 </html>

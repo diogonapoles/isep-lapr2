@@ -17,6 +17,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Properties;
 import java.util.*;
@@ -151,6 +152,8 @@ public class App {
         Vaccine v4 = vt4.newVaccine("spikevax", "Moderna", "12-52", 2, 5, 130);
         createVaccine(vc1.findVaccineType("12345"), vc1.findVaccineType("54321"), vc1.findVaccineType("65465"));
 
+        List<Vaccine> listVaccines = new ArrayList<>();
+        listVaccines.add(v3);
     }
 
 
