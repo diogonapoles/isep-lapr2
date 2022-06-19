@@ -40,7 +40,7 @@ public class VaccineAdministrationUI implements Runnable{
                 if(controller.addVaccineAdministration(vaccineAdministration)){
                     controller.removeFromWaitingRoom(user);
                     controller.moveToRecoveryRoom(vaccineAdministration, vaccine);
-                    System.out.println("Success");
+                    System.out.println("Success | Administrated doses to SNS user (" + vaccineAdministration.getUserArrival().getSnsUser().getSnsUserNumber() +"): " + vaccineAdministration.getDoses() + "/" + vaccineAdministration.getVaccine().getDoseNumber());
                 }else{
                     System.out.println("Error saving this vaccine administration process");
                     return;

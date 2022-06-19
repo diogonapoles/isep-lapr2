@@ -126,11 +126,11 @@ public class App {
 
      //   createSortingStuff();
 
-        VaccinationCenter vc1 = this.company.getVaccinationCenterStore().newVaccinationCenter(1, "Healthcare", 917876321, 493782,
+        VaccinationCenter vc1 = this.company.getVaccinationCenterStore().newVaccinationCenter(1, "Community", 917876321, 493782,
                 "TestRua1", "teste1@gmail.com", "healthcare.com",
                 10, 18, 15, 5);
         this.company.getVaccinationCenterStore().registerVaccinationCenter(vc1);
-        VaccinationCenter vc2 = this.company.getVaccinationCenterStore().newVaccinationCenter(0, "Community", 917312756, 654253,
+        VaccinationCenter vc2 = this.company.getVaccinationCenterStore().newVaccinationCenter(0, "Healthcare", 917312756, 654253,
                 "TestRua2", "teste2@gmail.com", "community.com",
                 8, 22, 10, 8);
         this.company.getVaccinationCenterStore().registerVaccinationCenter(vc2);

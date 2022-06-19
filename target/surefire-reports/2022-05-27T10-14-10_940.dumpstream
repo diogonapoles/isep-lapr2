@@ -1,0 +1,57 @@
+# Created at 2022-05-27T10:14:10.942
+Exception in thread "main" java.lang.reflect.InvocationTargetException
+
+# Created at 2022-05-27T10:14:10.946
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+
+# Created at 2022-05-27T10:14:10.946
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+
+# Created at 2022-05-27T10:14:10.947
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+
+# Created at 2022-05-27T10:14:10.947
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+
+# Created at 2022-05-27T10:14:10.947
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+
+# Created at 2022-05-27T10:14:10.948
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+# Created at 2022-05-27T10:14:10.948
+Caused by: java.lang.RuntimeException: Class java/lang/UnknownError could not be instrumented.
+
+# Created at 2022-05-27T10:14:10.948
+	at org.jacoco.agent.rt.internal_28bab1d.core.runtime.ModifiedSystemClassRuntime.createFor(ModifiedSystemClassRuntime.java:140)
+
+# Created at 2022-05-27T10:14:10.949
+	at org.jacoco.agent.rt.internal_28bab1d.core.runtime.ModifiedSystemClassRuntime.createFor(ModifiedSystemClassRuntime.java:101)
+
+# Created at 2022-05-27T10:14:10.949
+	at org.jacoco.agent.rt.internal_28bab1d.PreMain.createRuntime(PreMain.java:55)
+
+# Created at 2022-05-27T10:14:10.949
+	at org.jacoco.agent.rt.internal_28bab1d.PreMain.premain(PreMain.java:47)
+
+# Created at 2022-05-27T10:14:10.949
+	... 6 more
+
+# Created at 2022-05-27T10:14:10.950
+Caused by: java.lang.NoSuchFieldException: $jacocoAccess
+
+# Created at 2022-05-27T10:14:10.950
+	at java.base/java.lang.Class.getField(Class.java:2117)
+
+# Created at 2022-05-27T10:14:10.951
+	at org.jacoco.agent.rt.internal_28bab1d.core.runtime.ModifiedSystemClassRuntime.createFor(ModifiedSystemClassRuntime.java:138)
+
+# Created at 2022-05-27T10:14:10.951
+	... 9 more
+
+# Created at 2022-05-27T10:14:10.951
+*** java.lang.instrument ASSERTION FAILED ***: "result" with message agent load/premain call failed at open/src/java.instrument/share/native/libinstrument/JPLISAgent.c line: 422
+
+# Created at 2022-05-27T10:14:10.951
+/bin/sh: line 1: 63795 Abort trap: 6           /Users/diogonapoles/Library/Java/JavaVirtualMachines/openjdk-17.0.1/Contents/Home/bin/java -javaagent:/Users/diogonapoles/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/Users/diogonapoles/lei-22-s2-1dc-g13/target/jacoco.exec -jar /Users/diogonapoles/lei-22-s2-1dc-g13/target/surefire/surefirebooter17416124612953888430.jar /Users/diogonapoles/lei-22-s2-1dc-g13/target/surefire 2022-05-27T10-14-10_354-jvmRun1 surefire1393843234605811609tmp surefire_0670905259956096807tmp
+

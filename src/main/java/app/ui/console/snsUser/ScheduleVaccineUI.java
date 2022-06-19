@@ -4,6 +4,7 @@ package app.ui.console.snsUser;
 import app.controller.snsUser.ScheduleVaccineController;
 import app.domain.model.systemUser.SNSUser;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
+import app.domain.model.vaccinationProcess.VaccineAdministration;
 import app.domain.model.vaccine.Vaccine;
 import app.domain.model.vaccinationProcess.VaccineSchedule;
 import app.domain.model.vaccine.VaccineType;
@@ -52,12 +53,16 @@ public class ScheduleVaccineUI implements Runnable {
             return;
         }
 
-        Vaccine vaccine =  controller.ongoingVaccine(vaccineType, user, date);
+        VaccineAdministration administration =  controller.ongoingVaccine(vaccineType, user, date);
         List<Vaccine> vaccineList = new ArrayList<>();
-        if (vaccine == null){
+        if (administration == null){
             vaccineList = controller.vaccineAge(user, vaccineType, vaccinationCenter);
         }else{
-            vaccineList.add(vaccine);
+            if(controller.timeSinceLastDose(administration, date)) {
+                vaccineList.add(administration.getVaccine());
+            }else {
+                System.out.println("You have to wait " + controller.calculateDaysLeftTimeSinceLastDose(administration.getVaccinationTime(), date) + " days until you can take a new dose for this vaccine type");
+            }
         }
 
         if (vaccineList.isEmpty()){

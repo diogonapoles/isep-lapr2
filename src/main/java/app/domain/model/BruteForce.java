@@ -1,16 +1,7 @@
-package app.domain.shared;
-
-import app.controller.App;
-import app.domain.model.Company;
-import app.domain.model.vaccinationProcess.UserArrival;
-import app.domain.model.vaccinationProcess.UserLeaving;
+package app.domain.model;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;

@@ -175,10 +175,10 @@ public class Vaccine implements Serializable {
     }
 
     public String toString(){
-        return String.format("Vaccine [name = "+ name+", Brand = "+brand+
-                ", Age Group = "+ageGroup+", Dose Number = "+doseNumber+
-                ", Dosage = "+dosage+"" +
-                ", Time Since Last Dose = "+timeSinceLastDose+"]");
+        return String.format("Vaccine [name = "+ name+" | Brand = "+brand+
+                " | Age Group = "+ageGroup+" | Dose Number = "+doseNumber+ " doses" +
+                " | Dosage = "+dosage+" mg/l" +
+                " | Time Since Last Dose = "+timeSinceLastDose+ " days]");
     }
 
     private static final Pattern p = Pattern.compile("\\d{2}-\\d{2}");

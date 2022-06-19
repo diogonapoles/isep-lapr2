@@ -29,10 +29,12 @@ public class Stats {
     private static final String SEPARATOR = ";";
 
 
-    private Company company;
+    private final App oApp;
+    private final Company oCompany;
 
-    public Stats() {
-        this.company = company;
+    public Stats(){
+        this.oApp = App.getInstance();
+        this.oCompany = oApp.getCompany();
     }
 
     ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
@@ -86,18 +88,21 @@ public class Stats {
     public void addDataToCSV(String output) {
         File file = new File(output);
         try {
+            int counter = 0;
             FileWriter writer = new FileWriter(file);
             List<String> header = new ArrayList<>();
             header.add("Vaccination Center");
             header.add("Vaccination Time");
             header.add("SNS User");
 
-            String collect = header.stream().collect(Collectors.joining(";"));
+            String collect = header.stream().collect(Collectors.joining(SEPARATOR));
             writer.write(collect);
+            writer.write("\n");
 
-            for (VaccinationCenter vaccinationCenter : company.getVaccinationCenterStore().getVaccinationCenters()){
+            for (VaccinationCenter vaccinationCenter : oCompany.getVaccinationCenterStore().getVaccinationCenters()){
                 for(VaccineAdministration administration : vaccinationCenter.getListAdministratedVaccines()){
                     if (DateUtils.isSameDay(administration.getVaccinationTime(), new Date())){
+                        counter++;
                         DateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
 
                         List<String> data = new ArrayList<>();
@@ -112,6 +117,18 @@ public class Stats {
                 }
             }
 
+            writer.write(";;");
+            writer.write("\n");
+            writer.close();
+
+            List<String> totalNumber = new ArrayList<>();
+            totalNumber.add("");
+            totalNumber.add("Total number of vaccinated users: ");
+            totalNumber.add(String.valueOf(counter));
+
+            String totalNumberStr = totalNumber.stream().collect(Collectors.joining(SEPARATOR));
+            writer.write(totalNumberStr);
+            writer.write("\n");
             writer.close();
 
         } catch (IOException e) {
@@ -123,7 +140,7 @@ public class Stats {
         Properties props = new Properties();
 
         // Add default properties and values
-        props.setProperty(Constants.PARAMS_DAILYSTATISTICS_TIME, "20:00");
+        props.setProperty(Constants.PARAMS_DAILYSTATISTICS_TIME, "19:45");
 
 
         // Read configured values

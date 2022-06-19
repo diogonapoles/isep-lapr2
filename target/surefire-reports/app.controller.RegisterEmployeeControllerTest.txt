@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: app.controller.RegisterEmployeeControllerTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.009 s <<< FAILURE! - in app.controller.RegisterEmployeeControllerTest
+newEmployee  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at app.controller.RegisterEmployeeControllerTest.newEmployee(RegisterEmployeeControllerTest.java:30)
+
+registerEmployee  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at app.controller.RegisterEmployeeControllerTest.registerEmployee(RegisterEmployeeControllerTest.java:46)
+

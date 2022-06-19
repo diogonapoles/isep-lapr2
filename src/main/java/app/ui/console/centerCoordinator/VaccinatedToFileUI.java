@@ -1,6 +1,7 @@
 package app.ui.console.centerCoordinator;
 
 import app.controller.centerCoordinator.VaccinatedToFileController;
+import app.domain.model.vaccinationProcess.VaccineAdministration;
 import app.ui.console.utils.Utils;
 
 import java.io.IOException;
@@ -19,12 +20,12 @@ public class VaccinatedToFileUI implements Runnable {
     @Override
     public void run() {
         String fileName = inputData();
-        controller.getListAdministratedVaccines();
+        List<VaccineAdministration> listAdministratedVaccines = controller.getListAdministratedVaccines();
 
 
         if (controller.validateFileName(fileName)) {
             try {
-                controller.writeToFile(fileName);
+                controller.writeToFile(fileName, listAdministratedVaccines);
             } catch (Exception e) {
                 throw new RuntimeException("couldn't write the data on the file");
             }

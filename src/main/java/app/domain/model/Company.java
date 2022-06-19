@@ -2,7 +2,6 @@ package app.domain.model;
 
 import app.domain.model.vaccine.Vaccine;
 import app.domain.model.vaccine.VaccineType;
-import app.domain.shared.BruteForce;
 import app.domain.shared.CSVReader;
 import app.domain.shared.FileUtils;
 import app.domain.store.*;
@@ -28,7 +27,6 @@ public class Company {
     private BruteForce oBruteForce;
     private Benchmark oBenchmark;
     private FileUtils oFileUtils;
-    private Stats oStats;
 
     private VaccinatedToFile oVaccinatedToFile;
     private VaccineType vaccineType;
@@ -53,7 +51,6 @@ public class Company {
         this.oLegacySystemData = new LegacySystemData();
         this.oBenchmark = new Benchmark();
         this.oFileUtils = new FileUtils();
-        this.oStats = new Stats();
         this.vaccineType = new VaccineType();
         this.oVaccinatedToFile = new VaccinatedToFile();
     }
@@ -82,8 +79,6 @@ public class Company {
      * @return the csv reader
      */
     public CSVReader getCSVReader(){return this.oCSVReader;}
-
-    public Stats getStats(){return this.oStats;}
 
     public FileUtils getFileUtils(){return this.oFileUtils;}
 

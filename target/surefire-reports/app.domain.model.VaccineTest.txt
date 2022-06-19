@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: app.domain.model.VaccineTest
+-------------------------------------------------------------------------------
+Tests run: 13, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.005 s <<< FAILURE! - in app.domain.model.VaccineTest
+testToString  Time elapsed: 0.002 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<...= M54A, Dosage = 10.[2], Time Since Last Do...> but was:<...= M54A, Dosage = 10.[0], Time Since Last Do...>
+	at app.domain.model.VaccineTest.testToString(VaccineTest.java:80)
+
+setDosage  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: Use assertEquals(expected, actual, delta) to compare floating-point numbers
+	at app.domain.model.VaccineTest.setDosage(VaccineTest.java:64)
+
+getDosage  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError: expected:<10.2> but was:<10.0>
+	at app.domain.model.VaccineTest.getDosage(VaccineTest.java:58)
+

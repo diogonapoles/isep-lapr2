@@ -17,15 +17,15 @@ public class US15ctrl {
         oCompany = oApp.getCompany();
     }
 
-    public List getListAdministratedVaccines() {
+    /*public List getListAdministratedVaccines() {
         return VaccinationCenter.getListAdministratedVaccines();
-    }
+    }*/
 
     public boolean validateFileName(String fileName) {
         return oCompany.getVaccinatedToFile().validateFileName(fileName);
     }
 
-    public void writeToFile(String fileName) throws Exception {
+    /*public void writeToFile(String fileName) throws Exception {
         oCompany.getVaccinatedToFile().writeToFile(fileName);
-    }
+    }*/
 }
