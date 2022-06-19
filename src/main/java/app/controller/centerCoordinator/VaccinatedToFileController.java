@@ -4,8 +4,7 @@ import app.controller.App;
 import app.domain.model.Company;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
 
-import java.io.File;
-import java.io.IOException;
+
 import java.util.List;
 
 public class VaccinatedToFileController {

@@ -1,26 +1,37 @@
 @startuml
+hide methods
+left to right direction
+skinparam classAttributeIconSize 0
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
 
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
+class Company{
+designation
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+
+Company "1"-->"*"LegacySystemData :has
+
+LegacySystemData "1"-->"1" LegacySystemDataReader : knows
+
+class LegacySystemDataReader{
+csvReaderLegacyData(String fileName)
+createLegacySystemData(String[] attributes)
+}
+
+class LegacySystemData {
+List<LegacySystemData> listLegacy
+      List<Object> listSortAlgorithms
+      List<Object> listSortOrder
+      List<Object> listSortArrivalLeaving
+snsUserNumber
+vaccineName
+dose
+lotNumber
+scheduledDateTime
+arrivalDateTime
+nurseAdministrationTime
+leavingDateTime
 }
 
 @enduml
