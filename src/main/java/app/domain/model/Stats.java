@@ -119,6 +119,15 @@ public class Stats {
 
             writer.write(";;");
             writer.write("\n");
+
+            List<String> totalNumber = new ArrayList<>();
+            totalNumber.add("");
+            totalNumber.add("Total number of vaccinated users: ");
+            totalNumber.add(String.valueOf(counter));
+
+            String totalNumberStr = totalNumber.stream().collect(Collectors.joining(SEPARATOR));
+            writer.write(totalNumberStr);
+            writer.write("\n");
             writer.close();
 
             List<String> totalNumber = new ArrayList<>();
@@ -140,7 +149,7 @@ public class Stats {
         Properties props = new Properties();
 
         // Add default properties and values
-        props.setProperty(Constants.PARAMS_DAILYSTATISTICS_TIME, "19:45");
+        props.setProperty(Constants.PARAMS_DAILYSTATISTICS_TIME, "20:51");
 
 
         // Read configured values
