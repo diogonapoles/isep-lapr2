@@ -119,7 +119,6 @@ public class Stats {
 
             writer.write(";;");
             writer.write("\n");
-            writer.close();
 
             List<String> totalNumber = new ArrayList<>();
             totalNumber.add("");
@@ -140,7 +139,7 @@ public class Stats {
         Properties props = new Properties();
 
         // Add default properties and values
-        props.setProperty(Constants.PARAMS_DAILYSTATISTICS_TIME, "19:45");
+        props.setProperty(Constants.PARAMS_DAILYSTATISTICS_TIME, "20:51");
 
 
         // Read configured values

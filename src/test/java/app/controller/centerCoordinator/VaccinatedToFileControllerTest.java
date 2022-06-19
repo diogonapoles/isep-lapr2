@@ -11,10 +11,6 @@ class VaccinatedToFileControllerTest {
     VaccinatedToFileController controller = new VaccinatedToFileController();
 
 
-    @Test
-    void getListAdministratedVaccines() {
-        assertNull(VaccinationCenter.getListAdministratedVaccines());
-    }
 
     @Test
     void validateFileName() {
