@@ -33,13 +33,6 @@ public class LegacySystemDataImporterController {
         return listLegacySystemData;
     }
 
-    public void sortLegacySystemData(List listLegacySystemData) {
-        boolean ascending = false;
-        int position = 0;
-        this.listLegacySystemData = oCompany.getLegacySystemData().bubbleSortArrayList(listLegacySystemData, ascending, position);
-        System.out.println(listLegacySystemData);
-
-    }
 
 
     public List<Object> getSortAlgorithms() {
@@ -75,12 +68,7 @@ public class LegacySystemDataImporterController {
         listSorted =oCompany.getLegacySystemData().sortByParameters(sortChoice, sortOrder, sortArrivalLeaving, listLegacyData);
     return listSorted;
     }
-    public void getName(String name){
-        oCompany.getLegacySystemData().getName(name);
-    }
-    public void getDescription(String vaccineDescription){
-        oCompany.getLegacySystemData().getDescription(vaccineDescription);
-    }
+
 
     public List getLeavingList(){
         return oCompany.getLegacySystemData().getLeavingList();

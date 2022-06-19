@@ -92,12 +92,7 @@ public class US17ctrl {
         listSorted =oCompany.getLegacySystemData().sortByParameters(sortChoice, sortOrder, sortArrivalLeaving, listLegacyData);
         return listSorted;
     }
-    public void getName(String name){
-        oCompany.getLegacySystemData().getName(name);
-    }
-    public void getDescription(String vaccineDescription){
-        oCompany.getLegacySystemData().getDescription(vaccineDescription);
-    }
+
 
     public List getLeavingList(){
         return oCompany.getLegacySystemData().getLeavingList();
