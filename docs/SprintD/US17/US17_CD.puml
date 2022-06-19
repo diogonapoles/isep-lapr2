@@ -1,72 +1,85 @@
 @startuml
 skinparam classAttributeIconSize 0
 
-class ApplicationPOT
-{
+class Application {
   +static getInstance()
-  +getCurrentSession()
-}
+  +getCompany()
 
-class UserSession
-{
-  +getUserEmail()
-}
-
-class Task {
-  -String reference
-  -String designation
-  -String informalDescription
-  -String technicalDescription
-  -Integer duration
-  -Double cost
-  +Task(ref,designation,informalDesc,technicalDesc,duration,cost,cat)
-}
-
-class Category {
-  -String id
-  -String description
-}
-
-class Organization {
-  -String name
-  -String VatNumber
-  -String website
-  -String phone
-  -String email
-  +Organization(name, VatNumber, webSite, phone, email, postalAddress, manager)
-  +createTask(ref,designation,informalDesc,technicalDesc,duration,cost,cat)
-  +saveTask(task)
-  -addTask(task)
-  -validateTask(task)
-}
-
-class Platform {
-  -String designation
-  +getCategories()
-  +getCategoryById(catId)
-  +getOrganizationByUserEmail(email)
-}
-
-class CreateTaskController {
-  +getCategories()
-  +createTask(ref,designation,informalDesc,technicalDesc,duration,cost,categoryId)
-  +saveTask()
-}
-
-class CreateTaskUI {
 
 }
 
-CreateTaskUI ..> CreateTaskController
-CreateTaskController ..> Platform
-CreateTaskController ..> Category
-CreateTaskController ..> Task
-CreateTaskController ..> Organization
-CreateTaskController ..> ApplicationPOT
-CreateTaskController ..> UserSession
-Task "*" -> "1" Category : classified in
-Platform "1" --> "*" Category : defines
-Organization "1" --> "*" Task : owns
+class LegacySystemData {
+ List<LegacySystemData> listLegacy
+      List<Object> listSortAlgorithms
+      List<Object> listSortOrder
+      List<Object> listSortArrivalLeaving
+-int snsUserNumber
+   -String vaccineName
+   -String dose
+   -String lotNumber
+   -Date scheduledDateTime
+   -Date arrivalDateTime
+   -Date nurseAdministrationTime
+   -Date leavingDateTime
+
++sortByParameters(String sortChoice, String sortOrder,\n String sortArrivalLeaving, List listLegacyData)
++getLeavingList()
++getArrivalList()
++getListSorted(List list)
++toString()
++bubbleSortArrayList(List<LegacySystemData> list,\n Boolean ascending, int position)
+}
+
+
+class Company {
++getVaccinatedToFile()
++getUsersVaccineSchedule()
+
+}
+
+class LegacySystemData{
+
+}
+
+class LegacySystemDataReader{
++csvReaderLegacyData(String fileName)
++createLegacySystemData(String[] attributes)
+}
+
+
+
+
+
+class LegacySystemDataController {
+-App oApp;
+-Company oCompany
+
++newLegacySystemDataReader(String filePath)
++getListLegacySystemData()
++getSortAlgorithms()
++setSortAlgorithms()
++getSortOrder()
++setSortOrder()
++getSortArrivalLeaving()
++setSortArrivalLeaving()
++getLeavingList()
++sortByParameters(String sortChoice, String sortOrder,\n String sortArrivalLeaving, List listLegacyData)
+}
+
+class LegacySystemDataUI {
+
+}
+
+
+LegacySystemDataUI ..> LegacySystemDataController
+LegacySystemDataController ..> Company
+LegacySystemDataController ..> Application
+Application ..> Company
+Company "1"-->"*"LegacySystemData :has
+LegacySystemDataController ..> LegacySystemData
+LegacySystemDataController ..> LegacySystemDataReader
+LegacySystemData "1"-->"1" LegacySystemDataReader : knows
+
 
 
 @enduml

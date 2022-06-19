@@ -18,7 +18,7 @@ public class LegacySystemDataImporterController {
 
     private List listLegacySystemData = new ArrayList<>();
     private List listSorted = new ArrayList();
-    private List listTest= new ArrayList();
+
 
 
     public boolean newLegacySystemDataReader(String filePath) throws Exception {

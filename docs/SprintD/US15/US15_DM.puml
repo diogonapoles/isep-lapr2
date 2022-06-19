@@ -4,53 +4,36 @@ left to right direction
 skinparam classAttributeIconSize 0
 
 
-class Platform {
-  -designation
+class VaccinatedToFile{
+List listVaccinated
+List listFullyVaccinated
 }
 
-class Organization {
-  -name
-  -VatNumber
-  -website
-  -phoneNumber
-  -email
+VaccinationCenter "1"-right-"*" VaccinatedToFile : produces >
+
+class VaccinationCenter{
+name
+phoneNumber
+faxNumber
+homeAddress
+emailAddress
+websiteAddress
+openingHours
+closingHours
+slotDuration
+maxNumVaccinesPerSlot
 }
 
-class Task {
-  -reference
-  -designation
-  -informalDesc
-  -technicalDesc
-  -duration
-  -cost
+class CenterCoordinator{
 }
 
-class Category {
-  -id
-  -description
+CenterCoordinator "1" -up--- "1" VaccinationCenter : coordinates and analyzes >
+
+class Company{
+designation
 }
 
-class Employee {
-  -name
-  -function
-  -phone
-  -email
-}
-
-class User {
-  -name
-  -email
-  -password
-}
-
-Platform "1" -- "*" Organization : has registered >
-Platform "1" -- "*" Category : defines >
-Organization "1" -- "1..*" Employee : has >
-Organization "1" -- "*" Task: owns >
-Task "*" -- "1" Employee: created by >
-Employee "0..1" -- "1" User: acts as >
-Task "*" -- "1" Category: classified as >
-
+Company "1" -up-- "*" VaccinationCenter : manages >
 
 
 @enduml

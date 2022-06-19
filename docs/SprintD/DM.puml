@@ -73,6 +73,14 @@ emailAddress
 citizenCardNumber
 companyID
 }
+
+class VaccinatedToFile{
+List listVaccinated
+List listFullyVaccinated
+}
+
+VaccinationCenter "1"-right-"*" VaccinatedToFile : produces >
+
 class CenterCoordinator{
 }
 class Receptionist{
@@ -137,6 +145,29 @@ class RecoveryRoom
 
 Company "1" -up-- "*" VaccinationCenter : manages >
 Company "1" -left-- "*" VaccineType : administers >
+Company "1"-->"*"LegacySystemData :has
+
+LegacySystemData "1"-->"1" LegacySystemDataReader : knows
+
+class LegacySystemDataReader{
+csvReaderLegacyData(String fileName)
+createLegacySystemData(String[] attributes)
+}
+
+class LegacySystemData {
+List<LegacySystemData> listLegacy
+      List<Object> listSortAlgorithms
+      List<Object> listSortOrder
+      List<Object> listSortArrivalLeaving
+snsUserNumber
+vaccineName
+dose
+lotNumber
+scheduledDateTime
+arrivalDateTime
+nurseAdministrationTime
+leavingDateTime
+}
 
 VaccineType "1" -down-- "*" Vaccine : has >
 

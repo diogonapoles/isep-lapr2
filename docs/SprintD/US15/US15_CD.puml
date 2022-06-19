@@ -1,72 +1,61 @@
 @startuml
 skinparam classAttributeIconSize 0
 
-class ApplicationPOT
-{
+class Application {
   +static getInstance()
-  +getCurrentSession()
-}
+  +getCompany()
 
-class UserSession
-{
-  +getUserEmail()
-}
-
-class Task {
-  -String reference
-  -String designation
-  -String informalDescription
-  -String technicalDescription
-  -Integer duration
-  -Double cost
-  +Task(ref,designation,informalDesc,technicalDesc,duration,cost,cat)
-}
-
-class Category {
-  -String id
-  -String description
-}
-
-class Organization {
-  -String name
-  -String VatNumber
-  -String website
-  -String phone
-  -String email
-  +Organization(name, VatNumber, webSite, phone, email, postalAddress, manager)
-  +createTask(ref,designation,informalDesc,technicalDesc,duration,cost,cat)
-  +saveTask(task)
-  -addTask(task)
-  -validateTask(task)
-}
-
-class Platform {
-  -String designation
-  +getCategories()
-  +getCategoryById(catId)
-  +getOrganizationByUserEmail(email)
-}
-
-class CreateTaskController {
-  +getCategories()
-  +createTask(ref,designation,informalDesc,technicalDesc,duration,cost,categoryId)
-  +saveTask()
-}
-
-class CreateTaskUI {
 
 }
 
-CreateTaskUI ..> CreateTaskController
-CreateTaskController ..> Platform
-CreateTaskController ..> Category
-CreateTaskController ..> Task
-CreateTaskController ..> Organization
-CreateTaskController ..> ApplicationPOT
-CreateTaskController ..> UserSession
-Task "*" -> "1" Category : classified in
-Platform "1" --> "*" Category : defines
-Organization "1" --> "*" Task : owns
+class VaccinatedToFile {
+-HEADER
+-List listFullyVaccinated
+-List listVaccinated
+
++validateFileName(String fileName)
++getFullyVaccinatedPatients()
++getListVaccinated()
++writeToFile(String fileName)
+}
+
+
+class Company {
++getVaccinatedToFile()
++getUsersVaccineSchedule()
+
+}
+
+
+
+class VaccinationCenter{
+getListAdministratedVaccines()
+}
+
+
+class VaccinatedToFileController {
+-App oApp;
+-Company oCompany
+
++getListAdministratedVaccines()
++validateFileName(String fileName)
++writeToFile(String fileName)
+}
+
+class VaccinatedToFileUI {
+
+}
+
+
+VaccinatedToFileUI ..> VaccinatedToFileController
+VaccinatedToFileController ..> Company
+VaccinatedToFileController ..> Application
+Application ..> Company
+Company "1"-->"*"VaccinationCenter :knows
+VaccinatedToFileController ..> VaccinatedToFile
+VaccinationCenter "1" --> "*" VaccinatedToFile : produces
+
+
 
 
 @enduml
