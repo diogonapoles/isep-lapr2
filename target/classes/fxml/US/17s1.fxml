@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.ui.gui.US.ui.US17ui">
+   <children>
+      <TextField fx:id="pathTF" layoutX="150.0" layoutY="77.0" prefHeight="26.0" prefWidth="337.0" />
+      <Label layoutX="96.0" layoutY="81.0" text="File Path:" />
+      <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnBack" text="Back" />
+      <Label layoutX="24.0" layoutY="129.0" text="Choose the intended sort algorithm:" />
+      <Label layoutX="23.0" layoutY="178.0" text="Choose the intended sorting method:" />
+      <Label layoutX="23.0" layoutY="225.0" text="Choose the intended parameter for Sorting:" />
+      <Button fx:id="btnConfirm" layoutX="344.0" layoutY="290.0" mnemonicParsing="false" onAction="#btnConfirm" text="Confirm" />
+      <Label layoutX="226.0" layoutY="22.0" text="Insert Legacy ">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="choiceCombo" layoutX="299.0" layoutY="125.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="orderCombo" layoutX="299.0" layoutY="174.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="arrivalCombo" layoutX="299.0" layoutY="221.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>

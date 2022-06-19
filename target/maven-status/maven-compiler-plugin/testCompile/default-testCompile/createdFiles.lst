@@ -1,0 +1,4 @@
+app\domain\model\vaccinationCenter\VaccinationCenterTest.class
+app\controller\nurse\VaccineAdministrationControllerTest.class
+app\domain\model\BruteForceTest.class
+app\controller\centerCoordinator\AnalyzePerformanceControllerTest.class

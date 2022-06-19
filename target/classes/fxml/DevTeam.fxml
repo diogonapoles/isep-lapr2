@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.ui.gui.DevTeamUI">
+   <children>
+      <Label layoutX="141.0" layoutY="109.0" text="Carolina Barbosa  -1211638@isep.ipp.pt">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnBack" text="Back" />
+      <Label layoutX="141.0" layoutY="154.0" text="Diogo    Napoles  -1211155@isep.ipp.pt">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="141.0" layoutY="199.0" text="Gustavo Caiano    -1210983@isep.ipp.pt">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="141.0" layoutY="243.0" text="Joao       Teixeira  -1210957@isep.ipp.pt">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="141.0" layoutY="283.0" text="Diogo    Alves      -1210989@isep.ipp.pt">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
