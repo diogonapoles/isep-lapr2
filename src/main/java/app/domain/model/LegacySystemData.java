@@ -223,13 +223,6 @@ public class LegacySystemData implements Comparable<LegacySystemData> {
     }
 
 
-    public void getName(String name){
-        this.oName=name;
-    }
-    public void getDescription(String description){
-        this.oDescription = description;
-    }
-
 
     public String toString() {
         return String.format(/*oName + ";  " + oDescription + ";  " +*/ getSnsUserNumber() + ";  " + getVaccineName() + ";  " + getDose() + ";  " + getLotNumber() + ";  " +

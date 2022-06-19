@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="1017px" preserveAspectRatio="none" style="width:1357px;height:1017px;background:#FFFFFF;" version="1.1" viewBox="0 0 1357 1017" width="1357px" zoomAndPan="magnify"><defs/><g><rect fill="#FFFFFF" height="181.4063" style="stroke:#181818;stroke-width:1.0;" width="10" x="241.5" y="114.9609"/><rect fill="#FFFFFF" height="376.1641" style="stroke:#181818;stroke-width:1.0;" width="10" x="241.5" y="326.7188"/><rect fill="#FFFFFF" height="184.1094" style="stroke:#181818;stroke-width:1.0;" width="10" x="241.5" y="733.2344"/><rect fill="#FFFFFF" height="120.7031" style="stroke:#181818;stroke-width:1.0;" width="10" x="556.5" y="145.3125"/><rect fill="#FFFFFF" height="315.4609" style="stroke:#181818;stroke-width:1.0;" width="10" x="556.5" y="357.0703"/><rect fill="#FFFFFF" height="107.0547" style="stroke:#181818;stroke-width:1.0;" width="10" x="556.5" y="779.9375"/><rect fill="#FFFFFF" height="30" style="stroke:#181818;stroke-width:1.0;" width="10" x="708.5" y="175.6641"/><rect fill="#FFFFFF" height="30" style="stroke:#181818;stroke-width:1.0;" width="10" x="761.5" y="236.0156"/><rect fill="#FFFFFF" height="30" style="stroke:#181818;stroke-width:1.0;" width="10" x="1022" y="387.4219"/><rect fill="#FFFFFF" height="103.7031" style="stroke:#181818;stroke-width:1.0;" width="10" x="1022" y="478.125"/><rect fill="#FFFFFF" height="28" style="stroke:#181818;stroke-width:1.0;" width="10" x="1027" y="516.4766"/><rect fill="#FFFFFF" height="30" style="stroke:#181818;stroke-width:1.0;" width="10" x="1276" y="642.5313"/><rect fill="#FFFFFF" height="30" style="stroke:#181818;stroke-width:1.0;" width="10" x="1276" y="826.6406"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="45" x2="45" y1="82.6094" y2="935.3438"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="246.5" x2="246.5" y1="82.6094" y2="935.3438"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="561" x2="561" y1="82.6094" y2="935.3438"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="713" x2="713" y1="82.6094" y2="935.3438"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="766" x2="766" y1="82.6094" y2="935.3438"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="856" x2="856" y1="82.6094" y2="935.3438"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1027" x2="1027" y1="82.6094" y2="935.3438"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1281" x2="1281" y1="82.6094" y2="935.3438"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="75" x="5" y="79.5332">Coordinator</text><ellipse cx="45.5" cy="13.5" fill="#E2E2F0" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M45.5,21.5 L45.5,48.5 M32.5,29.5 L58.5,29.5 M45.5,48.5 L32.5,63.5 M45.5,48.5 L58.5,63.5 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="75" x="5" y="948.877">Coordinator</text><ellipse cx="45.5" cy="960.4531" fill="#E2E2F0" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M45.5,968.4531 L45.5,995.4531 M32.5,976.4531 L58.5,976.4531 M45.5,995.4531 L32.5,1010.4531 M45.5,995.4531 L58.5,1010.4531 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><rect fill="#E2E2F0" height="49.2188" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="152" x="170.5" y="32.3906"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="29" x="232" y="53.9238">lsdui</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="138" x="177.5" y="71.5332">:LegacySystemDataUI</text><rect fill="#E2E2F0" height="49.2188" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="152" x="170.5" y="934.3438"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="29" x="232" y="955.877">lsdui</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="138" x="177.5" y="973.4863">:LegacySystemDataUI</text><rect fill="#E2E2F0" height="49.2188" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="177" x="473" y="32.3906"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="543" y="53.9238">lsdctrl</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="163" x="480" y="71.5332">:LegacySystemDataCTRL</text><rect fill="#E2E2F0" height="49.2188" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="177" x="473" y="934.3438"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="543" y="955.877">lsdctrl</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="163" x="480" y="973.4863">:LegacySystemDataCTRL</text><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="39" x="694" y="50"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="25" x="701" y="71.5332">App</text><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="39" x="694" y="934.3438"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="25" x="701" y="955.877">App</text><rect fill="#E2E2F0" height="49.2188" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="47" x="743" y="32.3906"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="33" x="750" y="53.9238">oApp</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="29" x="752" y="71.5332">:App</text><rect fill="#E2E2F0" height="49.2188" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="47" x="743" y="934.3438"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="33" x="750" y="955.877">oApp</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="29" x="752" y="973.4863">:App</text><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="112" x="800" y="50"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="98" x="807" y="71.5332">comp:Company</text><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="112" x="800" y="934.3438"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="98" x="807" y="955.877">comp:Company</text><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="210" x="922" y="50"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="196" x="929" y="71.5332">lsdr:LegacySystemDataReader</text><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="210" x="922" y="934.3438"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="196" x="929" y="955.877">lsdr:LegacySystemDataReader</text><rect fill="#E2E2F0" height="49.2188" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="140" x="1211" y="32.3906"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="18" x="1272" y="53.9238">lsd</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="126" x="1218" y="71.5332">:LegacySystemData</text><rect fill="#E2E2F0" height="49.2188" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="140" x="1211" y="934.3438"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="18" x="1272" y="955.877">lsd</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="126" x="1218" y="973.4863">:LegacySystemData</text><rect fill="#FFFFFF" height="181.4063" style="stroke:#181818;stroke-width:1.0;" width="10" x="241.5" y="114.9609"/><rect fill="#FFFFFF" height="376.1641" style="stroke:#181818;stroke-width:1.0;" width="10" x="241.5" y="326.7188"/><rect fill="#FFFFFF" height="184.1094" style="stroke:#181818;stroke-width:1.0;" width="10" x="241.5" y="733.2344"/><rect fill="#FFFFFF" height="120.7031" style="stroke:#181818;stroke-width:1.0;" width="10" x="556.5" y="145.3125"/><rect fill="#FFFFFF" height="315.4609" style="stroke:#181818;stroke-width:1.0;" width="10" x="556.5" y="357.0703"/><rect fill="#FFFFFF" height="107.0547" style="stroke:#181818;stroke-width:1.0;" width="10" x="556.5" y="779.9375"/><rect fill="#FFFFFF" height="30" style="stroke:#181818;stroke-width:1.0;" width="10" x="708.5" y="175.6641"/><rect fill="#FFFFFF" height="30" style="stroke:#181818;stroke-width:1.0;" width="10" x="761.5" y="236.0156"/><rect fill="#FFFFFF" height="30" style="stroke:#181818;stroke-width:1.0;" width="10" x="1022" y="387.4219"/><rect fill="#FFFFFF" height="103.7031" style="stroke:#181818;stroke-width:1.0;" width="10" x="1022" y="478.125"/><rect fill="#FFFFFF" height="28" style="stroke:#181818;stroke-width:1.0;" width="10" x="1027" y="516.4766"/><rect fill="#FFFFFF" height="30" style="stroke:#181818;stroke-width:1.0;" width="10" x="1276" y="642.5313"/><rect fill="#FFFFFF" height="30" style="stroke:#181818;stroke-width:1.0;" width="10" x="1276" y="826.6406"/><polygon fill="#181818" points="229.5,110.9609,239.5,114.9609,229.5,118.9609,233.5,114.9609" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="45.5" x2="235.5" y1="114.9609" y2="114.9609"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="52.5" y="110.1045">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="139" x="63.5" y="110.1045">starts to import the data</text><polygon fill="#181818" points="544.5,141.3125,554.5,145.3125,544.5,149.3125,548.5,145.3125" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="251.5" x2="550.5" y1="145.3125" y2="145.3125"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="258.5" y="140.4561">2</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="194" x="269.5" y="140.4561">controller = UserArrivalController()</text><polygon fill="#181818" points="696.5,171.6641,706.5,175.6641,696.5,179.6641,700.5,175.6641" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="566.5" x2="702.5" y1="175.6641" y2="175.6641"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="573.5" y="170.8076">3</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="112" x="584.5" y="170.8076">app = getInstance()</text><polygon fill="#181818" points="749.5,232.0156,759.5,236.0156,749.5,240.0156,753.5,236.0156" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="566.5" x2="755.5" y1="236.0156" y2="236.0156"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="573.5" y="231.1592">4</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="150" x="584.5" y="231.1592">company = getCompany()</text><polygon fill="#181818" points="56.5,292.3672,46.5,296.3672,56.5,300.3672,52.5,296.3672" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="50.5" x2="245.5" y1="296.3672" y2="296.3672"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="62.5" y="291.5107">5</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="127" x="73.5" y="291.5107">request data (filePath)</text><polygon fill="#181818" points="229.5,322.7188,239.5,326.7188,229.5,330.7188,233.5,326.7188" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="45.5" x2="235.5" y1="326.7188" y2="326.7188"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="52.5" y="321.8623">6</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="120" x="63.5" y="321.8623">type Requestes data</text><polygon fill="#181818" points="544.5,353.0703,554.5,357.0703,544.5,361.0703,548.5,357.0703" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="251.5" x2="550.5" y1="357.0703" y2="357.0703"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="258.5" y="352.2139">7</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="142" x="269.5" y="352.2139">validateFilePath(filePath)</text><polygon fill="#181818" points="1010,383.4219,1020,387.4219,1010,391.4219,1014,387.4219" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="566.5" x2="1016" y1="387.4219" y2="387.4219"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="573.5" y="382.5654">8</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="142" x="584.5" y="382.5654">validateFilePath(filePath)</text><polygon fill="#181818" points="544.5,443.7734,554.5,447.7734,544.5,451.7734,548.5,447.7734" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="251.5" x2="550.5" y1="447.7734" y2="447.7734"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="258.5" y="442.917">9</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="229" x="269.5" y="442.917">newLegacySystemDataReader(filePath)</text><polygon fill="#181818" points="1010,474.125,1020,478.125,1010,482.125,1014,478.125" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="566.5" x2="1016" y1="478.125" y2="478.125"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="573.5" y="473.2686">10</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="180" x="591.5" y="473.2686">csvReaderLegacyData(filePath)</text><line style="stroke:#181818;stroke-width:1.0;" x1="1037" x2="1079" y1="508.4766" y2="508.4766"/><line style="stroke:#181818;stroke-width:1.0;" x1="1079" x2="1079" y1="508.4766" y2="521.4766"/><line style="stroke:#181818;stroke-width:1.0;" x1="1038" x2="1079" y1="521.4766" y2="521.4766"/><polygon fill="#181818" points="1048,517.4766,1038,521.4766,1048,525.4766,1044,521.4766" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="1044" y="503.6201">11</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="212" x="1062" y="503.6201">createLegacySystemData(attributes)</text><polygon fill="#181818" points="544.5,577.8281,554.5,581.8281,544.5,585.8281,548.5,581.8281" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="251.5" x2="550.5" y1="581.8281" y2="581.8281"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="258.5" y="576.9717">12</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="263" x="276.5" y="576.9717">listLegacyData = getListLegacySystemData()</text><polygon fill="#181818" points="544.5,608.1797,554.5,612.1797,544.5,616.1797,548.5,612.1797" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="251.5" x2="550.5" y1="612.1797" y2="612.1797"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="258.5" y="607.3232">13</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="97" x="276.5" y="607.3232">getSortChoices()</text><polygon fill="#181818" points="1264,638.5313,1274,642.5313,1264,646.5313,1268,642.5313" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="566.5" x2="1270" y1="642.5313" y2="642.5313"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="573.5" y="637.6748">14</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="97" x="591.5" y="637.6748">getSortChoices()</text><polygon fill="#181818" points="56.5,698.8828,46.5,702.8828,56.5,706.8828,52.5,702.8828" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="50.5" x2="245.5" y1="702.8828" y2="702.8828"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="62.5" y="698.0264">15</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="154" x="80.5" y="698.0264">informs operation Success</text><polygon fill="#181818" points="229.5,729.2344,239.5,733.2344,229.5,737.2344,233.5,733.2344" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="45.5" x2="235.5" y1="733.2344" y2="733.2344"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="52.5" y="728.3779">16</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="126" x="70.5" y="728.3779">starts sorting process</text><polygon fill="#181818" points="544.5,775.9375,554.5,779.9375,544.5,783.9375,548.5,779.9375" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="251.5" x2="550.5" y1="779.9375" y2="779.9375"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="258.5" y="766.9053">17</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="233" x="276.5" y="758.7295">sortByParameters(sortChoice, sortOrder</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="206" x="276.5" y="775.0811">, sortArrivalLeaving, listLegacyData)</text><polygon fill="#181818" points="1264,822.6406,1274,826.6406,1264,830.6406,1268,826.6406" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="566.5" x2="1270" y1="826.6406" y2="826.6406"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="573.5" y="813.6084">18</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="246" x="591.5" y="805.4326">listSorted = sortByParameters(sortChoice,</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="260" x="595.5" y="821.7842">sortOrder, sortArrivalLeaving, listLegacyData)</text><polygon fill="#181818" points="262.5,882.9922,252.5,886.9922,262.5,890.9922,258.5,886.9922" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="256.5" x2="560.5" y1="886.9922" y2="886.9922"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="268.5" y="882.1357">19</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="92" x="286.5" y="882.1357">return listSorted</text><polygon fill="#181818" points="56.5,913.3438,46.5,917.3438,56.5,921.3438,52.5,917.3438" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="50.5" x2="245.5" y1="917.3438" y2="917.3438"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="62.5" y="912.4873">20</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="91" x="80.5" y="912.4873">Show listSorted</text><!--MD5=[912eb9fe3b2146665130ff75cd15b1a2]
+@startuml
+
+autonumber
+actor "Coordinator" as COO
+
+
+participant "lsdui\n:LegacySystemDataUI" as UI
+participant "lsdctrl\n:LegacySystemDataCTRL" as CTRL
+participant "App" as APP
+participant "oApp\n:App" as App
+participant "comp:Company" as COMP
+participant "lsdr:LegacySystemDataReader" as LSDR
+participant "lsd\n:LegacySystemData" as LSD
+
+
+
+
+COO -> UI : starts to import the data
+activate UI
+UI -> CTRL : controller = UserArrivalController()
+activate CTRL
+CTRL -> APP : app = getInstance()
+activate APP
+deactivate APP
+CTRL -> App : company = getCompany()
+activate App
+deactivate App
+
+deactivate CTRL
+
+UI - -> COO : request data (filePath)
+deactivate UI
+
+COO -> UI : type Requestes data
+activate UI
+
+UI-> CTRL: validateFilePath(filePath)
+activate CTRL
+
+CTRL-> LSDR :validateFilePath(filePath)
+activate LSDR
+deactivate LSDR
+UI -> CTRL : newLegacySystemDataReader(filePath)
+
+
+CTRL -> LSDR : csvReaderLegacyData(filePath)
+activate LSDR
+
+
+LSDR -> LSDR : createLegacySystemData(attributes)
+activate LSDR
+deactivate LSDR
+
+UI -> CTRL : listLegacyData = getListLegacySystemData()
+deactivate LSDR
+
+
+
+
+
+
+UI -> CTRL : getSortChoices()
+
+
+
+CTRL -> LSD : getSortChoices()
+activate LSD
+deactivate LSD
+deactivate CTRL
+
+
+UI - -> COO : informs operation Success
+
+deactivate LSDR
+deactivate CTRL
+deactivate UI
+
+
+
+
+COO -> UI : starts sorting process
+activate UI
+
+UI -> CTRL : sortByParameters(sortChoice, sortOrder\n, sortArrivalLeaving, listLegacyData)
+activate CTRL
+
+
+CTRL -> LSD : listSorted = sortByParameters(sortChoice,\n sortOrder, sortArrivalLeaving, listLegacyData)
+activate LSD
+deactivate LSD
+
+
+
+CTRL - -> UI : return listSorted
+deactivate CTRL
+UI - -> COO : Show listSorted
+
+deactivate LSDR
+deactivate CTRL
+deactivate UI
+deactivate COO
+
+
+
+
+@enduml
+
+PlantUML version 1.2022.5(Sat Apr 30 11:55:52 BST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: en
+Country: GB
+--></g></svg>
