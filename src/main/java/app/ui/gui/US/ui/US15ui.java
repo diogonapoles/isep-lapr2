@@ -54,7 +54,7 @@ public class US15ui implements Initializable {
         String fileName = inputData();
         List<VaccineAdministration> listAdministratedVaccines = controller.getListAdministratedVaccines();
 
-        controller.getWorking();
+        //controller.getWorking();
 
         if (controller.validateFileName(fileName)) {
             try {

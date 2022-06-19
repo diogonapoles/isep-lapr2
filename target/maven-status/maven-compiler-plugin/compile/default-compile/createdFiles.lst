@@ -81,6 +81,7 @@ app\ui\console\utils\Data$Mes$8.class
 app\domain\model\LegacySystemDataReader.class
 app\ui\console\receptionist\UserArrivalUI.class
 app\ui\console\utils\Data$DiaDaSemana$5.class
+app\domain\model\BruteForce.class
 app\domain\model\LegacySystemData$1.class
 app\ui\console\nurse\AdverseReactionsUI.class
 app\ui\console\utils\Data$DiaDaSemana$2.class
