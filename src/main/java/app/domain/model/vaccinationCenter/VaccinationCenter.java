@@ -7,7 +7,7 @@ import app.domain.model.vaccinationProcess.VaccineAdministration;
 import app.domain.model.vaccinationProcess.VaccineSchedule;
 import app.domain.model.vaccine.*;
 
-import java.io.Serializable;
+import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -36,7 +36,7 @@ public abstract class VaccinationCenter implements Serializable {
     private List<VaccineSchedule> listSchedule;
     private List<UserArrival> listUserArrival;
     private List<UserLeaving> listUserLeaving;
-    private static List<VaccineAdministration> listAdministratedVaccines;
+    private List<VaccineAdministration> listAdministratedVaccines;
 
     private List<UserArrival> waitingRoom;
     private List<VaccineAdministration> recoveryRoom;
@@ -91,7 +91,7 @@ public abstract class VaccinationCenter implements Serializable {
         this.listSchedule = new ArrayList<>();
         this.listVaccinationDay = new ArrayList<>();
         this.listUserArrival = new ArrayList<>();
-        this.listAdministratedVaccines = new ArrayList<>();
+        listAdministratedVaccines = new ArrayList<>();
         this.listUserLeaving = new ArrayList<>();
         this.waitingRoom = new ArrayList<>();
         this.recoveryRoom = new ArrayList<>();
@@ -726,17 +726,15 @@ public abstract class VaccinationCenter implements Serializable {
         return null;
     }
 
-    public static List<VaccineAdministration> getListAdministratedVaccines() {
+    public List<VaccineAdministration> getListAdministratedVaccines() {
         return listAdministratedVaccines;
     }
 
-    public Vaccine validateOngoingVaccine(VaccineType vaccineType, Date scheduleDate){
+    public VaccineAdministration validateOngoingVaccine(VaccineType vaccineType, Date scheduleDate){
         for (Vaccine vaccine : vaccineType.getListVaccines()) {
             for (VaccineAdministration administration : listAdministratedVaccines){
                 if (administration.getVaccine().equals(vaccine) && administration.getDoses() < vaccine.getDoseNumber()){
-                    if (validateTimeSinceLastDose(administration, scheduleDate)){
-                        return vaccine;
-                    }
+                    return administration;
                 }
             }
         }
@@ -781,6 +779,18 @@ public abstract class VaccinationCenter implements Serializable {
             }
         }else{
             throw new IllegalArgumentException("You have to respect the Vaccination Center timetable (" + openingHours + "-" + closingHours + ")");
+        }
+    }
+
+    public void issueNotification(VaccineAdministration administration) {
+        try {
+            FileWriter myWriter = new FileWriter("notifications.txt");
+            myWriter.write("The SNS user with the number " + administration.getUserArrival().getSnsUser().getSnsUserNumber() + " can now leave the recovery room");
+            myWriter.close();
+            System.out.println("Notification sent to the user with number " + administration.getUserArrival().getSnsUser().getSnsUserNumber());
+        } catch (IOException e) {
+            System.out.println("An error occurred while sending a notification to the user.");
+            e.printStackTrace();
         }
     }
 }

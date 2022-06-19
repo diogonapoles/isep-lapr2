@@ -26,6 +26,7 @@ public class RemoveFromRecoveryRoomUI implements Runnable {
             }
 
             controller.removeFromRecoveryRoom(administration);
+            controller.issueNotification(administration);
             System.out.println("Success");
         }
     }

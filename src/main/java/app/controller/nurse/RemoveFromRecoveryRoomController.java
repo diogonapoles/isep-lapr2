@@ -37,4 +37,8 @@ public class RemoveFromRecoveryRoomController {
     public void removeFromRecoveryRoom(VaccineAdministration administration){
         vaccinationCenter.removeFromRecoveryRoom(administration);
     }
+
+    public void issueNotification(VaccineAdministration administration){
+        vaccinationCenter.issueNotification(administration);
+    }
 }
