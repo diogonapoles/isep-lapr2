@@ -130,16 +130,6 @@ public class Stats {
             writer.write("\n");
             writer.close();
 
-            List<String> totalNumber = new ArrayList<>();
-            totalNumber.add("");
-            totalNumber.add("Total number of vaccinated users: ");
-            totalNumber.add(String.valueOf(counter));
-
-            String totalNumberStr = totalNumber.stream().collect(Collectors.joining(SEPARATOR));
-            writer.write(totalNumberStr);
-            writer.write("\n");
-            writer.close();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
