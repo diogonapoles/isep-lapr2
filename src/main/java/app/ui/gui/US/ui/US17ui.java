@@ -34,10 +34,12 @@ public class US17ui implements Initializable {
     private Stage stage;
 
 
-    public US17ui() {
-        controller = new US17ctrl();
-        ccUI = new CenterCoordinatorUI();
-    }
+
+
+@FXML
+private Button btnOK1 ;
+    @FXML
+    private Button btnOK2;
 
     @FXML
     private ChoiceBox<Object> arrivalCombo;
@@ -49,7 +51,7 @@ public class US17ui implements Initializable {
     private Button btnConfirm;
 
     @FXML
-    private ChoiceBox<Object> choiceCombo;
+    private ChoiceBox<Object> choiceCombo ;
 
     @FXML
     private ChoiceBox<Object> orderCombo;
@@ -58,28 +60,48 @@ public class US17ui implements Initializable {
     private TextField pathTF;
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL arg0, ResourceBundle arg1) {
+/*
+        choiceCombo.getItems().add("");
+        arrivalCombo.getItems().add("");
+        orderCombo.getItems().add("");
+        choiceCombo.getItems().clear();
+        arrivalCombo.getItems().clear();
+        orderCombo.getItems().clear();
+
+
+ */
+
 
         controller = new US17ctrl();
         ccUI = new CenterCoordinatorUI();
         addSortStuff();
+
         List<Object> choice = new ArrayList<>();
         choice = controller.getSortAlgorithms();
         choiceCombo.getItems().addAll(choice);
+
+
         List<Object> order = new ArrayList<>();
         order = controller.getSortOrder();
         orderCombo.getItems().addAll(order);
+
         List<Object> arrival = new ArrayList<>();
         arrival = controller.getSortArrivalLeaving();
         arrivalCombo.getItems().addAll(arrival);
-        choiceCombo.setValue("Bubble Sort");
+    choiceCombo.setValue("Bubble Sort");
         orderCombo.setValue("Ascending");
         arrivalCombo.setValue("Sort By Arrival Time");
+
+
+
+
     }
 
     @FXML
-    void btnConfirm(ActionEvent event) {
-        try {
+    void btnConfirm(ActionEvent event) throws Exception {
+        boolean success = true;
+
             if (inputData(event)) {
                 listLegacyData = controller.getListLegacySystemData();
 
@@ -98,26 +120,15 @@ public class US17ui implements Initializable {
                 System.out.println("Name; Vaccine; SNSUSerNumber; VaccineName; Dose; LotNumber; ScheduledDateTime; ArrivalDateTime; NurseAdministrationDateTime; LeavingDateTime");
                 for (int i = 0; i < listSorted.size(); i++) {
                     System.out.println(listSorted.get(i).toString());
-                }
-                try {
-                    var loader = new FXMLLoader(getClass().getResource("/fxml/US/17s2.fxml"));
-                    Parent root = loader.load();
-                    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    Scene scene = new Scene(root);
-                    // scene.getStylesheets().add(getClass().getResource("/styles/Styles.css").toExternalForm());
-                    String css = this.getClass().getResource("/styles/Styles.css").toExternalForm();
-                    scene.getStylesheets().add(css);
-                    stage.setScene(scene);
 
-                } catch (Exception ex) {
-                    ex.printStackTrace();
                 }
 
 /*
 
 
  */
-            } else
+            } else {
+                success = false;
                 try {
                     var loader = new FXMLLoader(getClass().getResource("/fxml/US/17s3.fxml"));
                     Parent root = loader.load();
@@ -129,13 +140,16 @@ public class US17ui implements Initializable {
                     stage.setScene(scene);
 
                 } catch (Exception ex) {
-                    ex.printStackTrace();
+
                 }
 
-
-        } catch (Exception e) {
+            }
+        if (success){
+            choiceCombo.getItems().clear();
+            arrivalCombo.getItems().clear();
+            orderCombo.getItems().clear();
             try {
-                var loader = new FXMLLoader(getClass().getResource("/fxml/US/17s3.fxml"));
+                var loader = new FXMLLoader(getClass().getResource("/fxml/US/17s2.fxml"));
                 Parent root = loader.load();
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 Scene scene = new Scene(root);
@@ -145,8 +159,11 @@ public class US17ui implements Initializable {
                 stage.setScene(scene);
 
             } catch (Exception ex) {
-                ex.printStackTrace();
+
             }
+
+
+
         }
     }
 
@@ -166,7 +183,7 @@ public class US17ui implements Initializable {
                 stage.setScene(scene);
 
             } catch (Exception exception) {
-                ex.printStackTrace();
+
             }
             return false;
         }
@@ -192,7 +209,7 @@ public class US17ui implements Initializable {
             stage.setScene(scene);
 
         }catch (Exception ex){
-            ex.printStackTrace();
+
         }
 
 
@@ -285,7 +302,9 @@ public class US17ui implements Initializable {
             stage.setScene(scene);
 
         }catch (Exception ex){
-            ex.printStackTrace();
+
         }
     }
+
+
 }

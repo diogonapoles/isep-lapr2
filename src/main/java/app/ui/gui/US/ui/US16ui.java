@@ -126,12 +126,25 @@ public class US16ui {
             day = controller.findDay();
         }catch (Exception e){
             System.out.println("You have to load a legacy file first");
+            try {
+                var loader = new FXMLLoader(getClass().getResource("/fxml/US/16s3.fxml"));
+                Parent root = loader.load();
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                // scene.getStylesheets().add(getClass().getResource("/styles/Styles.css").toExternalForm());
+                String css = this.getClass().getResource("/styles/Styles.css").toExternalForm();
+                scene.getStylesheets().add(css);
+                stage.setScene(scene);
+
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }
             success=false;
             return;
         }
 
 
-        int timeInterval = Utils.readIntegerFromConsole("Type the desired time interval (in minutes):");
+        int timeInterval = Integer.parseInt(intervalTF.getText());
         if (!controller.validateTimeIntervalForVaccinationCenter(timeInterval)) {
             try {
                 var loader = new FXMLLoader(getClass().getResource("/fxml/US/16s3.fxml"));
