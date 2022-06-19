@@ -20,7 +20,7 @@ public class ScheduleVaccineDTO {
      *
      * @param snsUserNumber     the sns user number
      * @param vaccinationCenter the vaccination center
-     * @param vaccine       the vaccine type
+     * @param vaccine           the vaccine type
      * @param dateTime          the date time
      */
     public ScheduleVaccineDTO(String snsUserNumber, VaccinationCenter vaccinationCenter, Vaccine vaccine, Date dateTime){

@@ -36,6 +36,12 @@ public class UserArrivalController {
         return vaccinationCenter;
     }
 
+    /**
+     * Get sns user by number sns user.
+     *
+     * @param snsUserNumber the sns user number
+     * @return the sns user
+     */
     public SNSUser getSNSUserByNumber(String snsUserNumber){
         for (SNSUser user : oCompany.getSNSUserStore().getSnsUserList()){
             if(user.getSnsUserNumber().equals(snsUserNumber))
@@ -47,6 +53,8 @@ public class UserArrivalController {
     /**
      * New user arrival boolean.
      *
+     * @param user              the user
+     * @param vaccinationCenter the vaccination center
      * @return the boolean
      */
     public boolean newUserArrival(SNSUser user, VaccinationCenter vaccinationCenter) {

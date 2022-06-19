@@ -7,9 +7,15 @@ import app.domain.model.vaccinationProcess.VaccineAdministration;
 import app.domain.model.vaccine.Vaccine;
 import app.ui.console.utils.Utils;
 
+/**
+ * The type Remove from recovery room ui.
+ */
 public class RemoveFromRecoveryRoomUI implements Runnable {
     private RemoveFromRecoveryRoomController controller ;
 
+    /**
+     * Instantiates a new Remove from recovery room ui.
+     */
     RemoveFromRecoveryRoomUI(){
         this.controller = new RemoveFromRecoveryRoomController();
     }

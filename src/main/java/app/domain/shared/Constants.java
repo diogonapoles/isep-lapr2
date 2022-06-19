@@ -37,7 +37,13 @@ public class Constants {
      */
     public static final String PARAMS_COMPANY_DESIGNATION = "Company.Designation";
 
+    /**
+     * The constant PARAMS_DAILYSTATISTICS_TIME.
+     */
     public static final String PARAMS_DAILYSTATISTICS_TIME = "DailyStatistics.Time";
 
+    /**
+     * The constant PARAMS_ALGORITHM.
+     */
     public static final String PARAMS_ALGORITHM = "AnalyzePerformance.Algorithm";
 }

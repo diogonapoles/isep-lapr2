@@ -16,6 +16,9 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * The type Main ui.
+ */
 public class MainUI implements Initializable {
     private Appfx mainAppfx;
     private Stage stage ;
@@ -25,11 +28,23 @@ public class MainUI implements Initializable {
     @FXML
     private Button btnlogin;
 
+    /**
+     * Sets main app.
+     *
+     * @param mainAppfx the main appfx
+     */
     @FXML
     public void setMainApp(Appfx mainAppfx) {
         this.mainAppfx = mainAppfx;
 
     }
+
+    /**
+     * Btn dev.
+     *
+     * @param event the event
+     * @throws Exception the exception
+     */
     @FXML
     void btnDev(ActionEvent event) throws Exception {
 /*
@@ -65,6 +80,11 @@ public class MainUI implements Initializable {
 
     }
 
+    /**
+     * Btn login.
+     *
+     * @param event the event
+     */
     @FXML
     void btnLogin(ActionEvent event) {
     /*

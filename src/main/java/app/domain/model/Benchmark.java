@@ -2,7 +2,16 @@ package app.domain.model;
 
 import java.util.Arrays;
 
+/**
+ * The type Benchmark.
+ */
 public class Benchmark {
+    /**
+     * Max int [ ].
+     *
+     * @param seq the seq
+     * @return the int [ ]
+     */
     public static int[] max(int[] seq) {
         int maxSoFar = 0;
         int maxEndingHere = 0;
@@ -28,6 +37,12 @@ public class Benchmark {
         return Arrays.copyOfRange(seq, startMaxSoFar, endMaxSoFar);
     }
 
+    /**
+     * Sum int.
+     *
+     * @param seq the seq
+     * @return the int
+     */
     public int sum(int[] seq){
         int counter = 0;
         for (int i = 0; i < seq.length; i++) {

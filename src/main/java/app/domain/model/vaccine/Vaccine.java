@@ -23,6 +23,9 @@ public class Vaccine implements Serializable {
 
     private VaccineType oVaccineType;
 
+    /**
+     * Instantiates a new Vaccine.
+     */
     public Vaccine() {
 
     }
@@ -131,6 +134,11 @@ public class Vaccine implements Serializable {
         return timeSinceLastDose;
     }
 
+    /**
+     * Get vaccine description string.
+     *
+     * @return the string
+     */
     public String getVaccineDescription(){
         return oVaccineType.getDesignation();
     }
@@ -183,12 +191,24 @@ public class Vaccine implements Serializable {
 
     private static final Pattern p = Pattern.compile("\\d{2}-\\d{2}");
 
+    /**
+     * Validate age group boolean.
+     *
+     * @param ageGroup the age group
+     * @return the boolean
+     */
     public boolean validateAgeGroup(String ageGroup){
         if(p.matcher(ageGroup).matches())
             return true;
         throw new IllegalArgumentException("Age group is not valid. It should be (minAge-maxAge)");
     }
 
+    /**
+     * Get age group int.
+     *
+     * @param limit the limit
+     * @return the int
+     */
     public int getAgeGroup(int limit){
         String[] group = ageGroup.split("-");
         return Integer.parseInt(group[limit]);

@@ -8,11 +8,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Vaccinated to file ui.
+ */
 public class VaccinatedToFileUI implements Runnable {
     private final VaccinatedToFileController controller;
 
     private List lista= new ArrayList();
 
+    /**
+     * Instantiates a new Vaccinated to file ui.
+     */
     public VaccinatedToFileUI() {
         controller = new VaccinatedToFileController();
     }

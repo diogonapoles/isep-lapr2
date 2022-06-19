@@ -12,12 +12,21 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+/**
+ * The type Admin ui.
+ */
 public class AdminUI {
     private Stage stage;
     private Appfx mainAppfx;
     @FXML
     private Button btnBack;
 
+    /**
+     * Btn back.
+     *
+     * @param event the event
+     * @throws Exception the exception
+     */
     @FXML
     void btnBack(ActionEvent event) throws Exception {
 
@@ -36,6 +45,12 @@ public class AdminUI {
         }
 
     }
+
+    /**
+     * Sets main app.
+     *
+     * @param mainAppfx the main appfx
+     */
     public void setMainApp(Appfx mainAppfx) {
         this.mainAppfx = mainAppfx;
 

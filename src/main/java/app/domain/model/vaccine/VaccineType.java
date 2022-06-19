@@ -117,6 +117,12 @@ public class VaccineType implements Serializable {
     }
 
 
+    /**
+     * Add vaccine boolean.
+     *
+     * @param v the v
+     * @return the boolean
+     */
     public boolean addVaccine(Vaccine v) {
         return this.listVaccine.add(v);
     }

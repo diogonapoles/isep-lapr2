@@ -24,6 +24,9 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Properties;
 
+/**
+ * The type Us 16 ui.
+ */
 public class US16ui {
     private final US16ctrl controller;
     private Stage stage;
@@ -43,10 +46,19 @@ public class US16ui {
     private Button btnOK2;
 
 
-
+    /**
+     * Instantiates a new Us 16 ui.
+     */
     public US16ui() {
         controller = new US16ctrl();
     }
+
+    /**
+     * Btn ok 2.
+     *
+     * @param event the event
+     * @throws Exception the exception
+     */
     @FXML
     public void btnOK2(ActionEvent event) throws Exception {
 
@@ -68,6 +80,12 @@ public class US16ui {
 
 
     }
+
+    /**
+     * Btn ok 1.
+     *
+     * @param event the event
+     */
     @FXML
     public void btnOK1(ActionEvent event) {
         try {
@@ -85,6 +103,11 @@ public class US16ui {
         }
     }
 
+    /**
+     * Btn back.
+     *
+     * @param event the event
+     */
     @FXML
     void btnBack(ActionEvent event) {
         try {
@@ -102,6 +125,11 @@ public class US16ui {
         }
     }
 
+    /**
+     * Btn confirm.
+     *
+     * @param event the event
+     */
     @FXML
     void btnConfirm(ActionEvent event) {
         boolean success=true;

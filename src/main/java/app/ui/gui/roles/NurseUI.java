@@ -22,10 +22,16 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * The type Nurse ui.
+ */
 public class NurseUI implements Initializable {
     private Stage stage;
     private ChoosingVaccinationCenterController controller;
     private boolean pressed = false;
+    /**
+     * The constant vaccinationCenter.
+     */
     public static VaccinationCenter vaccinationCenter;
     private Appfx mainAppfx;
     @FXML
@@ -42,6 +48,12 @@ public class NurseUI implements Initializable {
 
     @FXML
     private Button btnRight;
+
+    /**
+     * Sets main app.
+     *
+     * @param mainAppfx the main appfx
+     */
     public void setMainApp(Appfx mainAppfx) {
         this.mainAppfx = mainAppfx;
 
@@ -59,6 +71,11 @@ public class NurseUI implements Initializable {
 
     }
 
+    /**
+     * Btn confirm.
+     *
+     * @param event the event
+     */
     @FXML
     void btnConfirm(ActionEvent event) {
             btnLeft.setDisable(false);
@@ -71,16 +88,32 @@ public class NurseUI implements Initializable {
     }
 
 
+    /**
+     * Get vaccination center vaccination center.
+     *
+     * @return the vaccination center
+     */
     public VaccinationCenter getVaccinationCenter(){
         return this.vaccinationCenter;
     }
 
+    /**
+     * Btn press.
+     *
+     * @param event the event
+     */
     @FXML
     void btnPress(ActionEvent event) {
         pressed = true;
     }
 
 
+    /**
+     * Btn us 7.
+     *
+     * @param event the event
+     * @throws Exception the exception
+     */
     @FXML
     void btnUS7(ActionEvent event) throws Exception {
 
@@ -102,10 +135,12 @@ public class NurseUI implements Initializable {
     }
 
 
-
-
-
-
+    /**
+     * Btn us 8.
+     *
+     * @param event the event
+     * @throws Exception the exception
+     */
     @FXML
     void btnUS8(ActionEvent event) throws Exception {
 
@@ -127,11 +162,12 @@ public class NurseUI implements Initializable {
     }
 
 
-
-
-
-
-
+    /**
+     * Btn back.
+     *
+     * @param event the event
+     * @throws Exception the exception
+     */
     @FXML
     void btnBack(ActionEvent event) throws Exception {
 

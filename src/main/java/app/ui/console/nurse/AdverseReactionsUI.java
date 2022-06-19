@@ -4,6 +4,9 @@ import app.controller.nurse.AdverseReactionsController;
 import app.ui.console.utils.Utils;
 
 
+/**
+ * The type Adverse reactions ui.
+ */
 public class AdverseReactionsUI implements Runnable {
 
     private AdverseReactionsController controller;
@@ -11,6 +14,9 @@ public class AdverseReactionsUI implements Runnable {
     private String adverseReactions;
 
 
+    /**
+     * Instantiates a new Adverse reactions ui.
+     */
     public AdverseReactionsUI() {
         controller = new AdverseReactionsController();
     }

@@ -23,9 +23,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * The type Center coordinator ui.
+ */
 public class CenterCoordinatorUI implements Initializable {
     private Stage stage;
     private ChoosingVaccinationCenterController controller;
+    /**
+     * The constant vaccinationCenter.
+     */
     public static VaccinationCenter vaccinationCenter;
     private Appfx mainAppfx;
 
@@ -47,6 +53,11 @@ public class CenterCoordinatorUI implements Initializable {
      private Button btnCenter;
 
 
+    /**
+     * Sets main app.
+     *
+     * @param mainAppfx the main appfx
+     */
     public void setMainApp(Appfx mainAppfx) {
         this.mainAppfx = mainAppfx;
 
@@ -65,6 +76,11 @@ public class CenterCoordinatorUI implements Initializable {
 
     }
 
+    /**
+     * Btn confirm.
+     *
+     * @param event the event
+     */
     @FXML
     void btnConfirm(ActionEvent event) {
         btnLeft.setDisable(false);
@@ -75,10 +91,11 @@ public class CenterCoordinatorUI implements Initializable {
     }
 
 
-
-
-
-
+    /**
+     * Btn us 15.
+     *
+     * @param event the event
+     */
     @FXML
     void btnUS15(ActionEvent event) {
         try {
@@ -97,10 +114,12 @@ public class CenterCoordinatorUI implements Initializable {
     }
 
 
-
-
-
-
+    /**
+     * Btn us 16.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     void btnUS16(ActionEvent event) throws IOException {
         try {
@@ -119,6 +138,12 @@ public class CenterCoordinatorUI implements Initializable {
     }
 
 
+    /**
+     * Btn us 17.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     void btnUS17(ActionEvent event) throws IOException {
         try {
@@ -137,11 +162,12 @@ public class CenterCoordinatorUI implements Initializable {
     }
 
 
-
-
-
-
-
+    /**
+     * Btn back.
+     *
+     * @param event the event
+     * @throws Exception the exception
+     */
     @FXML
     void btnBack(ActionEvent event) throws Exception {
 

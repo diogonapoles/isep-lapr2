@@ -10,11 +10,21 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * The type Legacy system data reader.
+ */
 public class LegacySystemDataReader {
 
     private List listLegacy = new ArrayList();
 
 
+    /**
+     * Csv reader legacy data list.
+     *
+     * @param fileName the file name
+     * @return the list
+     * @throws Exception the exception
+     */
     public List csvReaderLegacyData(String fileName) throws Exception {
 
 

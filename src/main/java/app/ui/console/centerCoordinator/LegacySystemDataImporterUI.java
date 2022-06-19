@@ -6,6 +6,9 @@ import app.ui.console.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Legacy system data importer ui.
+ */
 public class LegacySystemDataImporterUI implements Runnable {
 
     private final LegacySystemDataImporterController controller;
@@ -15,11 +18,20 @@ public class LegacySystemDataImporterUI implements Runnable {
     private List listLegacyData = new ArrayList<>();
     private List listSorted = new ArrayList();
 
+    /**
+     * Instantiates a new Legacy system data importer ui.
+     */
     public LegacySystemDataImporterUI() {
         controller = new LegacySystemDataImporterController();
         ccUI = new CenterCoordinatorUI();
     }
 
+    /**
+     * Input data boolean.
+     *
+     * @return the boolean
+     * @throws Exception the exception
+     */
     public boolean inputData() throws Exception {
         try {
             String fileLocation = Utils.readLineFromConsole("File Location:");

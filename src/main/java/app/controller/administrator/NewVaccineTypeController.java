@@ -25,6 +25,11 @@ public class NewVaccineTypeController {
         this.oCompany = oApp.getCompany();
     }
 
+    /**
+     * Sets working.
+     *
+     * @param vaccinationCenter the vaccination center
+     */
     public void setWorking(VaccinationCenter vaccinationCenter) {
         oVaccinationCenter = vaccinationCenter;
     }
@@ -38,8 +43,6 @@ public class NewVaccineTypeController {
      * @param designation   the designation
      * @return the boolean
      */
-
-
     public boolean newVaccineType(int techSelection, String code, String designation){
         this.oVaccineType = oVaccinationCenter.newVaccineType(techSelection, code, designation);
         if (this.oVaccineType != null)
@@ -69,6 +72,11 @@ public class NewVaccineTypeController {
      */
     public boolean registerVaccineType(){return this.oVaccinationCenter.registerVaccineType(oVaccineType);}
 
+    /**
+     * Get vaccination centers list.
+     *
+     * @return the list
+     */
     public List<VaccinationCenter> getVaccinationCenters(){return this.oCompany.getVaccinationCenterStore().getVaccinationCenters();}
 
 }

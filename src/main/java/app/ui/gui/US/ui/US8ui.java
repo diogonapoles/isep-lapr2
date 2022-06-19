@@ -27,6 +27,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
+/**
+ * The type Us 8 ui.
+ */
 public class US8ui implements Initializable {
     private US8ctrl controller;
  private VaccineAdministration vaccineAdministration;
@@ -60,6 +63,11 @@ public class US8ui implements Initializable {
     private ChoiceBox<Vaccine> vacCombo;
 
 
+    /**
+     * Btn confirm 0.
+     *
+     * @param event the event
+     */
     @FXML
     void btnConfirm0(ActionEvent event) {
         if (userCombo.getValue() != null) {
@@ -87,6 +95,11 @@ public class US8ui implements Initializable {
     }
 
 
+    /**
+     * Btn confirm 1.
+     *
+     * @param event the event
+     */
     @FXML
     public void btnConfirm1(ActionEvent event) {
         if (vacCombo.getValue() != null) {
@@ -118,6 +131,12 @@ public class US8ui implements Initializable {
         }
 
     }
+
+    /**
+     * Btn yes.
+     *
+     * @param event the event
+     */
     @FXML
     void btnYes(ActionEvent event) {
 
@@ -157,6 +176,12 @@ public class US8ui implements Initializable {
 
         }
     }
+
+    /**
+     * Btn no.
+     *
+     * @param event the event
+     */
     @FXML
     void btnNo(ActionEvent event){
         try {
@@ -193,6 +218,12 @@ public class US8ui implements Initializable {
 
 
     }
+
+    /**
+     * Btn back.
+     *
+     * @param event the event
+     */
     @FXML
     public void btnBack(ActionEvent event) {
         try {
@@ -211,12 +242,18 @@ public class US8ui implements Initializable {
     }
 
 
-
-
-
+    /**
+     * Instantiates a new Us 8 ui.
+     */
     public US8ui() {
 
     }
+
+    /**
+     * Btn ok 1.
+     *
+     * @param event the event
+     */
     @FXML
     public void btnOK1(ActionEvent event) {
         try {
@@ -233,6 +270,12 @@ public class US8ui implements Initializable {
             ex.printStackTrace();
         }
     }
+
+    /**
+     * Btn ok 2.
+     *
+     * @param event the event
+     */
     @FXML
     public void btnOK2(ActionEvent event) {
         try {

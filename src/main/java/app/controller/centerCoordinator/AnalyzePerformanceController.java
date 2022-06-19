@@ -11,6 +11,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * The type Analyze performance controller.
+ */
 public class AnalyzePerformanceController {
 
     private App oApp;
@@ -19,6 +22,9 @@ public class AnalyzePerformanceController {
     private BruteForce bruteForceAlgorithm;
     private Benchmark benchmarkAlgorithm;
 
+    /**
+     * Instantiates a new Analyze performance controller.
+     */
     public AnalyzePerformanceController() {
         this.oApp = App.getInstance();
         this.oCompany = oApp.getCompany();
@@ -26,19 +32,42 @@ public class AnalyzePerformanceController {
         this.benchmarkAlgorithm = new Benchmark();
     }
 
+    /**
+     * Gets working.
+     *
+     * @return the working
+     */
     public VaccinationCenter getWorking() {
         vaccinationCenter = oCompany.getEmployeeStore().getWorking(oApp.getCurrentUserSession().getUserId().getEmail());
         return vaccinationCenter;
     }
 
+    /**
+     * Sets working.
+     *
+     * @param vc the vc
+     */
     public void setWorking(VaccinationCenter vc) {
         vaccinationCenter = vc;
     }
 
+    /**
+     * Validate time interval for vaccination center boolean.
+     *
+     * @param timeInterval the time interval
+     * @return the boolean
+     */
     public boolean validateTimeIntervalForVaccinationCenter(int timeInterval){
         return vaccinationCenter.validateTimeIntervalForVaccinationCenter(timeInterval);
     }
 
+    /**
+     * Create input list int [ ].
+     *
+     * @param timeInterval the time interval
+     * @param day          the day
+     * @return the int [ ]
+     */
     public int[] createInputList(int timeInterval, String day){
         String startStr = "08:00";
         Date start = stringToFullDate(day.concat(" ").concat(startStr));
@@ -46,14 +75,31 @@ public class AnalyzePerformanceController {
         return bruteForceAlgorithm.createInputList(timeInterval, start);
     }
 
+    /**
+     * Get max sub array brute force int [ ].
+     *
+     * @param input the input
+     * @return the int [ ]
+     */
     public int[] getMaxSubArrayBruteForce(int[] input){
         return bruteForceAlgorithm.maxSubArray(input);
     }
 
+    /**
+     * Find day string.
+     *
+     * @return the string
+     */
     public String findDay(){
         return bruteForceAlgorithm.findDay(oCompany.getLegacySystemData().getArrivalList());
     }
 
+    /**
+     * String to full date date.
+     *
+     * @param strDate the str date
+     * @return the date
+     */
     public Date stringToFullDate(String strDate) {
         Date date;
         try {
@@ -66,6 +112,11 @@ public class AnalyzePerformanceController {
         return date;
     }
 
+    /**
+     * Print array.
+     *
+     * @param array the array
+     */
     public void printArray(int[] array){
         System.out.print("[");
         for (int i = 0; i < array.length; i++) {
@@ -78,14 +129,34 @@ public class AnalyzePerformanceController {
         System.out.println();
     }
 
+    /**
+     * Get max sub array benchmark int [ ].
+     *
+     * @param inputList the input list
+     * @return the int [ ]
+     */
     public int[] getMaxSubArrayBenchmark(int[] inputList) {
         return benchmarkAlgorithm.max(inputList);
     }
 
+    /**
+     * Gets max sum benchmark.
+     *
+     * @param maxSubArray the max sub array
+     * @return the max sum benchmark
+     */
     public int getMaxSumBenchmark(int[] maxSubArray) {
         return benchmarkAlgorithm.sum(maxSubArray);
     }
 
+    /**
+     * Find max subarray int [ ].
+     *
+     * @param inputList the input list
+     * @param i         the
+     * @param j         the j
+     * @return the int [ ]
+     */
     public int[] findMaxSubarray(int[] inputList, int i, int j) {
         int[] subArray = new int[j-i];
         int pos = i;
@@ -96,6 +167,15 @@ public class AnalyzePerformanceController {
         return subArray;
     }
 
+    /**
+     * Find time interval string.
+     *
+     * @param day          the day
+     * @param timeInterval the time interval
+     * @param i            the
+     * @param length       the length
+     * @return the string
+     */
     public String findTimeInterval(String day, int timeInterval, int i, int length) {
         try {
             String start = "08:00";

@@ -29,10 +29,20 @@ public class NewVaccineController {
         this.oCompany = oApp.getCompany();
     }
 
+    /**
+     * Sets working.
+     *
+     * @param vaccinationCenter the vaccination center
+     */
     public void setWorking(VaccinationCenter vaccinationCenter) {
         oVaccinationCenter = vaccinationCenter;
     }
 
+    /**
+     * Sets vaccine type.
+     *
+     * @param vaccineType the vaccine type
+     */
     public void setVaccineType(VaccineType vaccineType) {
         oVaccineType = vaccineType;
     }
@@ -79,6 +89,11 @@ public class NewVaccineController {
      */
     public List<VaccineType> getVaccineTypes(){return this.oVaccinationCenter.getListVaccineType();}
 
+    /**
+     * Get vaccination centers list.
+     *
+     * @return the list
+     */
     public List<VaccinationCenter> getVaccinationCenters(){return this.oCompany.getVaccinationCenterStore().getVaccinationCenters();}
 
 }

@@ -23,6 +23,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * The type Us 17 ui.
+ */
 public class US17ui implements Initializable {
 
     private US17ctrl controller;
@@ -98,6 +101,12 @@ private Button btnOK1 ;
 
     }
 
+    /**
+     * Btn confirm.
+     *
+     * @param event the event
+     * @throws Exception the exception
+     */
     @FXML
     void btnConfirm(ActionEvent event) throws Exception {
         boolean success = true;
@@ -167,6 +176,13 @@ private Button btnOK1 ;
         }
     }
 
+    /**
+     * Input data boolean.
+     *
+     * @param event the event
+     * @return the boolean
+     * @throws Exception the exception
+     */
     public boolean inputData(ActionEvent event) throws Exception {
         try {
             String fileLocation = pathTF.getText();
@@ -190,10 +206,22 @@ private Button btnOK1 ;
     }
 
 
+    /**
+     * Sets main app.
+     *
+     * @param mainAppfx the main appfx
+     */
     public void setMainApp(Appfx mainAppfx) {
         this.mainAppfx = mainAppfx;
 
     }
+
+    /**
+     * Btn ok 2.
+     *
+     * @param event the event
+     * @throws Exception the exception
+     */
     @FXML
     public void btnOK2(ActionEvent event) throws Exception {
 
@@ -215,6 +243,12 @@ private Button btnOK1 ;
 
 
     }
+
+    /**
+     * Btn ok 1.
+     *
+     * @param event the event
+     */
     @FXML
     public void btnOK1(ActionEvent event) {
         try {
@@ -289,7 +323,13 @@ private Button btnOK1 ;
     private void getSortedData() {
         // Utils.showList(controller.getli(), "Sorted Data:");
     }
-@FXML
+
+    /**
+     * Btn back.
+     *
+     * @param event the event
+     */
+    @FXML
     void btnBack(ActionEvent event) {
         try {
             var loader = new FXMLLoader(getClass().getResource("/fxml/CenterCoordinator.fxml"));

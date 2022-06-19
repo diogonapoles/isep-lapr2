@@ -8,9 +8,15 @@ import app.ui.console.utils.Utils;
 
 import java.util.Date;
 
+/**
+ * The type Vaccine administration ui.
+ */
 public class VaccineAdministrationUI implements Runnable{
     private VaccineAdministrationController controller;
 
+    /**
+     * Instantiates a new Vaccine administration ui.
+     */
     public VaccineAdministrationUI() {
         this.controller = new VaccineAdministrationController();
     }

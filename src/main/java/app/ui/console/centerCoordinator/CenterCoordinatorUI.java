@@ -7,6 +7,9 @@ import app.ui.console.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Center coordinator ui.
+ */
 public class CenterCoordinatorUI implements Runnable {
 
     public void run() {

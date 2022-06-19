@@ -4,6 +4,9 @@ import app.controller.administrator.DataSavesManagementController;
 import app.controller.administrator.ListEmployeesController;
 import app.ui.console.utils.Utils;
 
+/**
+ * The type Data saves management ui.
+ */
 public class DataSavesManagementUI implements Runnable{
 
     private DataSavesManagementController controller;

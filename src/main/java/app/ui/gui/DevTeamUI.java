@@ -18,15 +18,31 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * The type Dev team ui.
+ */
 public class DevTeamUI implements Initializable {
     private Appfx mainAppfx;
     private Stage stage;
     @FXML
     private Button btnBack;
+
+    /**
+     * Sets main app.
+     *
+     * @param mainAppfx the main appfx
+     */
     public void setMainApp(Appfx mainAppfx) {
         this.mainAppfx = mainAppfx;
 
     }
+
+    /**
+     * Btn back.
+     *
+     * @param event the event
+     * @throws Exception the exception
+     */
     @FXML
     void btnBack(ActionEvent event) throws Exception {
       /*

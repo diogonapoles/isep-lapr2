@@ -59,6 +59,14 @@ public class EmployeeStore implements Serializable {
         return null;
     }
 
+    /**
+     * Validate employee boolean.
+     *
+     * @param phoneNumber       the phone number
+     * @param emailAddress      the email address
+     * @param citizenCardNumber the citizen card number
+     * @return the boolean
+     */
     public boolean validateEmployee(String phoneNumber, String emailAddress, String citizenCardNumber) {
 
         for (Employee employee : listEmployee) {
@@ -85,6 +93,12 @@ public class EmployeeStore implements Serializable {
         return addEmployee(employee);
     }
 
+    /**
+     * Register employee from file boolean.
+     *
+     * @param emp the emp
+     * @return the boolean
+     */
     public boolean registerEmployeeFromFile(Employee emp){
         String role = null;
         if (emp instanceof Receptionist)
@@ -177,6 +191,11 @@ public class EmployeeStore implements Serializable {
 
     private static final String EMPLOYEE_FILE_NAME = "employee.ser";
 
+    /**
+     * Gets list employee.
+     *
+     * @return the list employee
+     */
     public List<Employee> getListEmployee() {
         return listEmployee;
     }

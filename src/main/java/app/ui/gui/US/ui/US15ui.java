@@ -22,6 +22,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * The type Us 15 ui.
+ */
 public class US15ui implements Initializable {
     private US15ctrl controller;
     private Stage stage;
@@ -44,11 +47,19 @@ public class US15ui implements Initializable {
 
     private List lista= new ArrayList();
 
+    /**
+     * Instantiates a new Us 15 ui.
+     */
     public US15ui() {
         controller = new US15ctrl();
     }
 
 
+    /**
+     * Btn confirm.
+     *
+     * @param event the event
+     */
     @FXML
     void btnConfirm(ActionEvent event) {
         String fileName = inputData();
@@ -122,6 +133,12 @@ public class US15ui implements Initializable {
         controller = new US15ctrl();
     }
 
+    /**
+     * Btn ok 2.
+     *
+     * @param event the event
+     * @throws Exception the exception
+     */
     @FXML
     public void btnOK2(ActionEvent event) throws Exception {
 
@@ -143,6 +160,12 @@ public class US15ui implements Initializable {
 
 
     }
+
+    /**
+     * Btn ok 1.
+     *
+     * @param event the event
+     */
     @FXML
     public void btnOK1(ActionEvent event) {
         try {
@@ -161,6 +184,11 @@ public class US15ui implements Initializable {
     }
 
 
+    /**
+     * Btn back.
+     *
+     * @param event the event
+     */
     @FXML
     void btnBack(ActionEvent event) {
         try {

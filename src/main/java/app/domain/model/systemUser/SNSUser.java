@@ -8,6 +8,9 @@ import java.time.Period;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * The type Sns user.
+ */
 public class SNSUser implements Serializable {
 
     private String name;
@@ -21,6 +24,18 @@ public class SNSUser implements Serializable {
     private String vaccineScheduleDate;
 
 
+    /**
+     * Instantiates a new Sns user.
+     *
+     * @param name              the name
+     * @param gender            the gender
+     * @param birthDate         the birth date
+     * @param homeAddress       the home address
+     * @param phoneNumber       the phone number
+     * @param emailAddress      the email address
+     * @param snsUserNumber     the sns user number
+     * @param citizenCardNumber the citizen card number
+     */
     public SNSUser(String name, String gender, Date birthDate, String homeAddress, String phoneNumber, String emailAddress, String snsUserNumber, String citizenCardNumber) {
         try {
             if ((name == null) || (name.isEmpty())
@@ -58,6 +73,17 @@ public class SNSUser implements Serializable {
         }
     }
 
+    /**
+     * Instantiates a new Sns user.
+     *
+     * @param name              the name
+     * @param birthDate         the birth date
+     * @param homeAddress       the home address
+     * @param phoneNumber       the phone number
+     * @param emailAddress      the email address
+     * @param snsUserNumber     the sns user number
+     * @param citizenCardNumber the citizen card number
+     */
     public SNSUser(String name, Date birthDate, String homeAddress, String phoneNumber, String emailAddress, String snsUserNumber, String citizenCardNumber) {
         try {
             if ((name == null) || (name.isEmpty())
@@ -93,6 +119,17 @@ public class SNSUser implements Serializable {
         }
     }
 
+    /**
+     * Instantiates a new Sns user.
+     *
+     * @param name              the name
+     * @param homeAddress       the home address
+     * @param phoneNumber       the phone number
+     * @param birthDate         the birth date
+     * @param emailAddress      the email address
+     * @param snsUserNumber     the sns user number
+     * @param citizenCardNumber the citizen card number
+     */
     public SNSUser(String name, String homeAddress, String phoneNumber, Date birthDate, String emailAddress, String snsUserNumber, String citizenCardNumber) {
 
             if ((snsUserNumber == null) || snsUserNumber.length() != 9 || !StringUtils.isNumeric(snsUserNumber)) {
@@ -108,46 +145,101 @@ public class SNSUser implements Serializable {
     }
 
 
+    /**
+     * Gets gender.
+     *
+     * @return the gender
+     */
     public String getGender() {
         return gender;
     }
 
+    /**
+     * Sets gender.
+     *
+     * @param gender the gender
+     */
     public void setGender(String gender) {
         this.gender = gender;
     }
 
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Gets home address.
+     *
+     * @return the home address
+     */
     public String getHomeAddress() {
         return homeAddress;
     }
 
+    /**
+     * Sets home address.
+     *
+     * @param address the address
+     */
     public void setHomeAddress(String address) {
         homeAddress = address;
     }
 
+    /**
+     * Gets phone number.
+     *
+     * @return the phone number
+     */
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
+    /**
+     * Gets birth date.
+     *
+     * @return the birth date
+     */
     public Date getBirthDate() {
         return birthDate;
     }
 
+    /**
+     * Gets email address.
+     *
+     * @return the email address
+     */
     public String getEmailAddress() {
         return emailAddress;
     }
 
+    /**
+     * Gets sns user number.
+     *
+     * @return the sns user number
+     */
     public String getSnsUserNumber() {
         return snsUserNumber;
     }
 
+    /**
+     * Sets sns user number.
+     *
+     * @param snsUserNumber the sns user number
+     */
     public void setSnsUserNumber(String snsUserNumber) {
         this.snsUserNumber = snsUserNumber;
     }
 
+    /**
+     * Gets citizen card number.
+     *
+     * @return the citizen card number
+     */
     public String getCitizenCardNumber() {
         return citizenCardNumber;
     }
@@ -167,6 +259,11 @@ public class SNSUser implements Serializable {
                 '}';
     }
 
+    /**
+     * To string waiting room string.
+     *
+     * @return the string
+     */
     public String toStringWaitingRoom() {
         return "SNSUser{" +
                 "name='" + name + '\'' +
@@ -176,6 +273,11 @@ public class SNSUser implements Serializable {
                 '}';
     }
 
+    /**
+     * Get age int.
+     *
+     * @return the int
+     */
     public int getAge(){
         Calendar c = Calendar.getInstance();
         c.setTime(birthDate);

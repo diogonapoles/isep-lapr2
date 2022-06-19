@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * The type Slot.
+ */
 public class Slot implements Serializable {
 
     private Day vaccineDay;
@@ -14,6 +17,11 @@ public class Slot implements Serializable {
     private List<SNSUser> userSlotList;
     private List <Boolean> slotOcupation;
 
+    /**
+     * Instantiates a new Slot.
+     *
+     * @param vaccineDay the vaccine day
+     */
     public Slot(Day vaccineDay){
         this.vaccineDay = vaccineDay;
         this.allSlots = new ArrayList<>();
@@ -21,6 +29,12 @@ public class Slot implements Serializable {
         this.slotOcupation = new ArrayList<>();
     }
 
+    /**
+     * All slots.
+     *
+     * @param daySchedule the day schedule
+     * @param maxNumVacs  the max num vacs
+     */
     public void allSlots(List<Date> daySchedule, int maxNumVacs){
         List<Date> tempScheduleList = new ArrayList<>();
 
@@ -35,12 +49,21 @@ public class Slot implements Serializable {
         slotOcupationGenerator();
     }
 
+    /**
+     * Start user slot list.
+     */
     public void startUserSlotList(){
         for (int i = 0; i < allSlots.size(); i++) {
             userSlotList.add(null);
         }
     }
 
+    /**
+     * Add sns user slot.
+     *
+     * @param user the user
+     * @param date the date
+     */
     public void addSNSUserSlot(SNSUser user, Date date){
         int index = findDate(date);
         if(index == -1)
@@ -48,6 +71,9 @@ public class Slot implements Serializable {
         userSlotList.set(index, user);
     }
 
+    /**
+     * Slot ocupation generator.
+     */
     public void slotOcupationGenerator(){
         for (int i = 0; i < allSlots.size(); i++) {
             slotOcupation.add(i, false);
@@ -55,6 +81,9 @@ public class Slot implements Serializable {
     }
 
 
+    /**
+     * Modify slot ocupation.
+     */
     public void modifySlotOcupation(){
         for (int i = 0; i < allSlots.size(); i++) {
             if (validateSlot(i))
@@ -62,7 +91,13 @@ public class Slot implements Serializable {
         }
     }
 
-    //true = ocupado
+    /**
+     * Validate slot boolean.
+     *
+     * @param position the position
+     * @return the boolean
+     */
+//true = ocupado
     //false = livre
     public boolean validateSlot(int position){
         if(userSlotList.get(position) != null)
@@ -70,6 +105,11 @@ public class Slot implements Serializable {
         return false;
     }
 
+    /**
+     * Gets available slots.
+     *
+     * @return the available slots
+     */
     public List<Date> getAvailableSlots() {
         List <Date> availableSlots = new ArrayList<>();
         modifySlotOcupation();
@@ -81,6 +121,12 @@ public class Slot implements Serializable {
         return availableSlots;
     }
 
+    /**
+     * Find date int.
+     *
+     * @param date the date
+     * @return the int
+     */
     public int findDate(Date date){
         for (int index = 0; index < allSlots.size(); index++) {
             if (allSlots.get(index).equals(date) && !slotOcupation.get(index))
@@ -89,27 +135,57 @@ public class Slot implements Serializable {
         return -1;
     }
 
+    /**
+     * Gets vaccine day.
+     *
+     * @return the vaccine day
+     */
     public Day getVaccineDay() {
         return vaccineDay;
     }
 
+    /**
+     * Sets vaccine day.
+     *
+     * @param vaccineDay the vaccine day
+     */
     public void setVaccineDay(Day vaccineDay) {
         this.vaccineDay = vaccineDay;
     }
 
+    /**
+     * Gets all slots.
+     *
+     * @return the all slots
+     */
     public List<Date> getAllSlots() {
         return allSlots;
     }
 
+    /**
+     * Sets all slots.
+     *
+     * @param allSlots the all slots
+     */
     public void setAllSlots(List<Date> allSlots) {
         this.allSlots = allSlots;
     }
 
 
+    /**
+     * Gets user slot list.
+     *
+     * @return the user slot list
+     */
     public List<SNSUser> getUserSlotList() {
         return userSlotList;
     }
 
+    /**
+     * Sets user slot list.
+     *
+     * @param userSlotList the user slot list
+     */
     public void setUserSlotList(List<SNSUser> userSlotList) {
         this.userSlotList = userSlotList;
     }

@@ -10,9 +10,15 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Properties;
 
+/**
+ * The type Analyze performance ui.
+ */
 public class AnalyzePerformanceUI implements Runnable{
     private final AnalyzePerformanceController controller;
 
+    /**
+     * Instantiates a new Analyze performance ui.
+     */
     public AnalyzePerformanceUI() {
         controller = new AnalyzePerformanceController();
     }

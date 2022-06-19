@@ -20,6 +20,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+/**
+ * The type Stats.
+ */
 public class Stats {
 
     private static final DateFormat DATE_FORMAT = new SimpleDateFormat("dd_MM_yyyy");
@@ -32,14 +35,28 @@ public class Stats {
     private final App oApp;
     private final Company oCompany;
 
+    /**
+     * Instantiates a new Stats.
+     */
     public Stats(){
         this.oApp = App.getInstance();
         this.oCompany = oApp.getCompany();
     }
 
+    /**
+     * The Executor service.
+     */
     ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
+    /**
+     * The Is stop issued.
+     */
     volatile boolean isStopIssued;
 
+    /**
+     * Start.
+     *
+     * @throws IOException the io exception
+     */
     public void start() throws IOException {
         Properties props = getProperties();
         String time = props.getProperty(Constants.PARAMS_DAILYSTATISTICS_TIME);
@@ -49,6 +66,13 @@ public class Stats {
         startExecutionAt(targetHour, targetMin, 0);
     }
 
+    /**
+     * Start execution at.
+     *
+     * @param targetHour the target hour
+     * @param targetMin  the target min
+     * @param targetSec  the target sec
+     */
     public void startExecutionAt(int targetHour, int targetMin, int targetSec) {
         Runnable taskWrapper = new Runnable(){
 
@@ -76,6 +100,9 @@ public class Stats {
         return duration.getSeconds();
     }
 
+    /**
+     * Stop.
+     */
     public void stop() {
         executorService.shutdown();
         try {
@@ -85,6 +112,11 @@ public class Stats {
         }
     }
 
+    /**
+     * Add data to csv.
+     *
+     * @param output the output
+     */
     public void addDataToCSV(String output) {
         File file = new File(output);
         try {

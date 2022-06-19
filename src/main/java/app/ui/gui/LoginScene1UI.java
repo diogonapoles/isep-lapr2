@@ -28,6 +28,9 @@ import java.net.URL;
 import java.util.*;
 import java.util.List;
 
+/**
+ * The type Login scene 1 ui.
+ */
 public class LoginScene1UI implements Initializable {
     private Stage stage ;
     private AuthController ctrl;
@@ -41,9 +44,18 @@ public class LoginScene1UI implements Initializable {
 
     @FXML
     private Button btnConfirm;
+    /**
+     * The Max attempts.
+     */
     int maxAttempts ;
 
 
+    /**
+     * Btn back.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     void btnBack(ActionEvent event) throws IOException {
 
@@ -63,12 +75,23 @@ public class LoginScene1UI implements Initializable {
         }
 
     }
+
+    /**
+     * Sets main app.
+     *
+     * @param mainAppfx the main appfx
+     */
     public void setMainApp(Appfx mainAppfx) {
         this.mainAppfx = mainAppfx;
 
     }
 
 
+    /**
+     * Do login boolean.
+     *
+     * @return the boolean
+     */
     public boolean doLogin() {
 
 
@@ -93,6 +116,12 @@ public class LoginScene1UI implements Initializable {
         return success;
 
     }
+
+    /**
+     * Btn confirm.
+     *
+     * @param event the event
+     */
     @FXML
     public void btnConfirm(ActionEvent event) {
         boolean success = doLogin();

@@ -42,6 +42,7 @@ public abstract class VaccinationCenter implements Serializable {
     private List<VaccineAdministration> recoveryRoom;
 
     private final int RECOVERY_ROOM_TIME = 1800; //seconds
+
     /**
      * Instantiates a new Vaccination center.
      *
@@ -97,6 +98,11 @@ public abstract class VaccinationCenter implements Serializable {
         this.recoveryRoom = new ArrayList<>();
     }
 
+    /**
+     * Gets recovery room time.
+     *
+     * @return the recovery room time
+     */
     public int getRECOVERY_ROOM_TIME() {
         return RECOVERY_ROOM_TIME;
     }
@@ -108,8 +114,6 @@ public abstract class VaccinationCenter implements Serializable {
     public VaccinationCenter() {
 
     }
-
-
 
 
     /**
@@ -395,6 +399,12 @@ public abstract class VaccinationCenter implements Serializable {
             return false;
     }
 
+    /**
+     * Add vaccine type boolean.
+     *
+     * @param vt the vt
+     * @return the boolean
+     */
     public boolean addVaccineType(VaccineType vt){return this.listVaccineType.add(vt);}
 
 
@@ -408,6 +418,13 @@ public abstract class VaccinationCenter implements Serializable {
     }
 
 
+    /**
+     * Gets available slots.
+     *
+     * @param vaccinationCenter the vaccination center
+     * @param day               the day
+     * @return the available slots
+     */
     public List<Date> getAvailableSlots(VaccinationCenter vaccinationCenter, Date day) {
         if(!this.validateScheduleDate(day))
             throw new IllegalArgumentException("Date is not valid");
@@ -429,6 +446,15 @@ public abstract class VaccinationCenter implements Serializable {
     }
 
 
+    /**
+     * Create vaccine schedule vaccine schedule.
+     *
+     * @param user        the user
+     * @param type        the type
+     * @param vaccineList the vaccine list
+     * @param day         the day
+     * @return the vaccine schedule
+     */
     public VaccineSchedule createVaccineSchedule(SNSUser user, VaccineType type, List<Vaccine> vaccineList, Date day){
         if (day == null)
             throw new IllegalArgumentException("There was a problem registering this schedule");
@@ -444,6 +470,12 @@ public abstract class VaccinationCenter implements Serializable {
         return schedule;
     }
 
+    /**
+     * Add vaccine schedule boolean.
+     *
+     * @param schedule the schedule
+     * @return the boolean
+     */
     public boolean addVaccineSchedule(VaccineSchedule schedule){
         return listSchedule.add(schedule);
     }
@@ -455,6 +487,12 @@ public abstract class VaccinationCenter implements Serializable {
         return !date.isBefore(today);
     }
 
+    /**
+     * Find slot boolean.
+     *
+     * @param vaccinationDay the vaccination day
+     * @return the boolean
+     */
     public boolean findSlot(Day vaccinationDay){
         for (Slot slot1 : listSlots) {
             if (slot1.getVaccineDay().equals(vaccinationDay))
@@ -463,6 +501,12 @@ public abstract class VaccinationCenter implements Serializable {
         return false;
     }
 
+    /**
+     * Return slot slot.
+     *
+     * @param vaccinationDay the vaccination day
+     * @return the slot
+     */
     public Slot returnSlot(Day vaccinationDay){
         for (Slot slot : listSlots) {
             if (slot.getVaccineDay().equals(vaccinationDay))
@@ -471,6 +515,13 @@ public abstract class VaccinationCenter implements Serializable {
         return null;
     }
 
+    /**
+     * New vaccination day day.
+     *
+     * @param vaccinationCenter the vaccination center
+     * @param day               the day
+     * @return the day
+     */
     public Day newVaccinationDay(VaccinationCenter vaccinationCenter, Date day){
         for (Day vaxDay : listVaccinationDay) {
             if (vaxDay.getDay().equals(day))
@@ -483,6 +534,14 @@ public abstract class VaccinationCenter implements Serializable {
         return newDay;
     }
 
+    /**
+     * Validate vaccine schedule boolean.
+     *
+     * @param type the type
+     * @param user the user
+     * @param date the date
+     * @return the boolean
+     */
     public boolean validateVaccineSchedule(VaccineType type, SNSUser user, Date date){
         for (VaccineSchedule schedule : listSchedule) {
             SNSUser snsUser = schedule.getUser();
@@ -494,6 +553,12 @@ public abstract class VaccinationCenter implements Serializable {
         return true;
     }
 
+    /**
+     * Find vaccine type vaccine type.
+     *
+     * @param code the code
+     * @return the vaccine type
+     */
     public VaccineType findVaccineType(String code) {
         for (VaccineType type : listVaccineType) {
             if (type.getCode().equals(code)){
@@ -503,6 +568,13 @@ public abstract class VaccinationCenter implements Serializable {
         throw new IllegalArgumentException("Couldn't find this vaccine type");
     }
 
+    /**
+     * Validate age group boolean.
+     *
+     * @param vaccine the vaccine
+     * @param age     the age
+     * @return the boolean
+     */
     public boolean validateAgeGroup(Vaccine vaccine, int age) {
         if (vaccine.getAgeGroup(0) <= age && age <= vaccine.getAgeGroup(1))
             return true;
@@ -510,6 +582,13 @@ public abstract class VaccinationCenter implements Serializable {
     }
 
 
+    /**
+     * Validate time since last dose boolean.
+     *
+     * @param administration the administration
+     * @param vaccineDate    the vaccine date
+     * @return the boolean
+     */
     public boolean validateTimeSinceLastDose(VaccineAdministration administration, Date vaccineDate){
         Calendar lastVaccine = Calendar.getInstance();
         Calendar newVaccine = Calendar.getInstance();
@@ -522,7 +601,13 @@ public abstract class VaccinationCenter implements Serializable {
     }
 
 
-
+    /**
+     * Vaccine age list.
+     *
+     * @param vaccineType the vaccine type
+     * @param user        the user
+     * @return the list
+     */
     public List<Vaccine> vaccineAge(VaccineType vaccineType, SNSUser user){
         List<Vaccine> availableVaccines = new ArrayList<>();
         if(vaccineType.getListVaccines().isEmpty())
@@ -536,6 +621,13 @@ public abstract class VaccinationCenter implements Serializable {
         return availableVaccines;
     }
 
+    /**
+     * Took vaccine boolean.
+     *
+     * @param vaccine the vaccine
+     * @param user    the user
+     * @return the boolean
+     */
     public boolean tookVaccine(Vaccine vaccine, SNSUser user){
         for (VaccineAdministration administration : administrationsForUserVaccine(vaccine, user)) {
             if (administration.getVaccine().equals(vaccine) && administration.getDoses().equals(vaccine.getDoseNumber())){
@@ -545,6 +637,12 @@ public abstract class VaccinationCenter implements Serializable {
         return true;
     }
 
+    /**
+     * New user arrival user arrival.
+     *
+     * @param snsUser the sns user
+     * @return the user arrival
+     */
     public UserArrival newUserArrival(SNSUser snsUser) {
         VaccineSchedule schedule = validateUserSchedule(snsUser);
 
@@ -589,22 +687,52 @@ public abstract class VaccinationCenter implements Serializable {
         return addUserToUserArrivalList(userArrival);
     }
 
+    /**
+     * Add user to user arrival list boolean.
+     *
+     * @param userArrival the user arrival
+     * @return the boolean
+     */
     public boolean addUserToUserArrivalList(UserArrival userArrival) {
         return this.listUserArrival.add(userArrival);
     }
 
+    /**
+     * Gets list user to waiting room.
+     *
+     * @return the list user to waiting room
+     */
     public List<UserArrival> getListUserToWaitingRoom() {
         return waitingRoom;
     }
 
+    /**
+     * Get recovery room list.
+     *
+     * @return the list
+     */
     public List<VaccineAdministration> getRecoveryRoom(){
         return recoveryRoom;
     }
 
+    /**
+     * Create vaccine administration vaccine administration.
+     *
+     * @param user    the user
+     * @param vaccine the vaccine
+     * @param date    the date
+     * @return the vaccine administration
+     */
     public VaccineAdministration createVaccineAdministration(UserArrival user, Vaccine vaccine, Date date) {
         return new VaccineAdministration(user, vaccine, date, RECOVERY_ROOM_TIME);
     }
 
+    /**
+     * Add vaccine administration boolean.
+     *
+     * @param vaccineAdministration the vaccine administration
+     * @return the boolean
+     */
     public boolean addVaccineAdministration(VaccineAdministration vaccineAdministration) {
         vaccineAdministration.addDose();
         for (VaccineAdministration administration : listAdministratedVaccines){
@@ -617,10 +745,22 @@ public abstract class VaccinationCenter implements Serializable {
         return listAdministratedVaccines.add(vaccineAdministration);
     }
 
+    /**
+     * Move to waiting room boolean.
+     *
+     * @param user the user
+     * @return the boolean
+     */
     public boolean moveToWaitingRoom(UserArrival user){
         return waitingRoom.add(user);
     }
 
+    /**
+     * Remove from waiting room boolean.
+     *
+     * @param user the user
+     * @return the boolean
+     */
     public boolean removeFromWaitingRoom(UserArrival user) {
         for(UserArrival arrival : waitingRoom){
             if (arrival.getSnsUser().equals(user.getSnsUser()) && arrival.getSchedule().getVaccineType().equals(user.getSchedule().getVaccineType()))
@@ -629,10 +769,22 @@ public abstract class VaccinationCenter implements Serializable {
         return false;
     }
 
+    /**
+     * Move to recovery room boolean.
+     *
+     * @param vaccineAdministration the vaccine administration
+     * @return the boolean
+     */
     public boolean moveToRecoveryRoom(VaccineAdministration vaccineAdministration){
         return recoveryRoom.add(vaccineAdministration);
     }
 
+    /**
+     * Remove from recovery room boolean.
+     *
+     * @param vaccineAdministration the vaccine administration
+     * @return the boolean
+     */
     public boolean removeFromRecoveryRoom(VaccineAdministration vaccineAdministration) {
         for(VaccineAdministration administration : recoveryRoom){
             if (administration.getUserArrival().getSnsUser().equals(vaccineAdministration.getUserArrival().getSnsUser()) && administration.getVaccine().equals(vaccineAdministration.getVaccine()))
@@ -655,6 +807,13 @@ public abstract class VaccinationCenter implements Serializable {
         );
     }*/
 
+    /**
+     * Validate administrated vaccines boolean.
+     *
+     * @param vaccineType the vaccine type
+     * @param snsUser     the sns user
+     * @return the boolean
+     */
     public boolean validateAdministratedVaccines(VaccineType vaccineType, SNSUser snsUser){
         List <VaccineSchedule> scheduleList = scheduleForUser(vaccineType, snsUser);
         int administrations = administrationsForUser(vaccineType, snsUser);
@@ -662,10 +821,22 @@ public abstract class VaccinationCenter implements Serializable {
         return scheduleList.size() == administrations;
     }
 
+    /**
+     * Gets waiting room.
+     *
+     * @return the waiting room
+     */
     public List<UserArrival> getWaitingRoom() {
         return waitingRoom;
     }
 
+    /**
+     * Schedule for user list .
+     *
+     * @param vaccineType the vaccine type
+     * @param snsUser     the sns user
+     * @return the list
+     */
     public List <VaccineSchedule> scheduleForUser(VaccineType vaccineType, SNSUser snsUser) {
         List<VaccineSchedule> scheduleList = new ArrayList<>();
         for (VaccineSchedule schedule : listSchedule) {
@@ -676,6 +847,12 @@ public abstract class VaccinationCenter implements Serializable {
         return scheduleList;
     }
 
+    /**
+     * Schedule for user without vaccine type list .
+     *
+     * @param snsUser the sns user
+     * @return the list
+     */
     public List <VaccineSchedule> scheduleForUserWithoutVaccineType(SNSUser snsUser) {
         List<VaccineSchedule> scheduleList = new ArrayList<>();
         for (VaccineSchedule schedule : listSchedule) {
@@ -686,6 +863,12 @@ public abstract class VaccinationCenter implements Serializable {
         return scheduleList;
     }
 
+    /**
+     * Arrival for user list .
+     *
+     * @param snsUser the sns user
+     * @return the list
+     */
     public List <UserArrival> arrivalForUser(SNSUser snsUser) {
         List<UserArrival> arrivalList = new ArrayList<>();
         for (UserArrival arrival : listUserArrival) {
@@ -696,6 +879,13 @@ public abstract class VaccinationCenter implements Serializable {
         return arrivalList;
     }
 
+    /**
+     * Administrations for user int.
+     *
+     * @param vaccineType the vaccine type
+     * @param snsUser     the sns user
+     * @return the int
+     */
     public int administrationsForUser(VaccineType vaccineType, SNSUser snsUser){
         int counter=0;
         for (VaccineAdministration administration : listAdministratedVaccines){
@@ -706,6 +896,13 @@ public abstract class VaccinationCenter implements Serializable {
         return counter;
     }
 
+    /**
+     * Administrations for user vaccine list .
+     *
+     * @param vaccine the vaccine
+     * @param snsUser the sns user
+     * @return the list
+     */
     public List <VaccineAdministration> administrationsForUserVaccine(Vaccine vaccine, SNSUser snsUser){
         List <VaccineAdministration> administrationList = new ArrayList<>();
         for (VaccineAdministration administration : listAdministratedVaccines){
@@ -716,6 +913,13 @@ public abstract class VaccinationCenter implements Serializable {
         return administrationList;
     }
 
+    /**
+     * Validate vaccine administration vaccine administration.
+     *
+     * @param user    the user
+     * @param vaccine the vaccine
+     * @return the vaccine administration
+     */
     public VaccineAdministration validateVaccineAdministration(SNSUser user, Vaccine vaccine) {
         for(VaccineAdministration administration : listAdministratedVaccines){
             if (administration.getUserArrival().getSnsUser().equals(user) && administration.getVaccine().equals(vaccine)){
@@ -726,10 +930,22 @@ public abstract class VaccinationCenter implements Serializable {
         return null;
     }
 
+    /**
+     * Gets list administrated vaccines.
+     *
+     * @return the list administrated vaccines
+     */
     public List<VaccineAdministration> getListAdministratedVaccines() {
         return listAdministratedVaccines;
     }
 
+    /**
+     * Validate ongoing vaccine vaccine administration.
+     *
+     * @param vaccineType  the vaccine type
+     * @param scheduleDate the schedule date
+     * @return the vaccine administration
+     */
     public VaccineAdministration validateOngoingVaccine(VaccineType vaccineType, Date scheduleDate){
         for (Vaccine vaccine : vaccineType.getListVaccines()) {
             for (VaccineAdministration administration : listAdministratedVaccines){
@@ -741,10 +957,22 @@ public abstract class VaccinationCenter implements Serializable {
         return null;
     }
 
+    /**
+     * Validate time interval for vaccination center boolean.
+     *
+     * @param timeInterval the time interval
+     * @return the boolean
+     */
     public boolean validateTimeIntervalForVaccinationCenter(int timeInterval) {
         return findDivisors(720).contains(timeInterval);
     }
 
+    /**
+     * Find divisors list.
+     *
+     * @param minutes the minutes
+     * @return the list
+     */
     public List<Integer> findDivisors(int minutes){
         List<Integer> divisors = new ArrayList<>();
         for (int i = 1; i * i <= minutes; ++i)
@@ -757,6 +985,13 @@ public abstract class VaccinationCenter implements Serializable {
     }
 
 
+    /**
+     * Validate analyze performance time boolean.
+     *
+     * @param time the time
+     * @param flag the flag
+     * @return the boolean
+     */
     public boolean validateAnalyzePerformanceTime(int time, boolean flag){
         if(flag){//startTime
             return openingHours<=time;
@@ -765,7 +1000,14 @@ public abstract class VaccinationCenter implements Serializable {
         }
     }
 
-    //true = start
+    /**
+     * Analyze performance time date.
+     *
+     * @param time the time
+     * @param flag the flag
+     * @return the date
+     */
+//true = start
     //false = end
     public Date analyzePerformanceTime(String time, boolean flag){
         String[] timeSplit = time.split(":");
@@ -782,6 +1024,11 @@ public abstract class VaccinationCenter implements Serializable {
         }
     }
 
+    /**
+     * Issue notification.
+     *
+     * @param administration the administration
+     */
     public void issueNotification(VaccineAdministration administration) {
         try {
             FileWriter myWriter = new FileWriter("notifications.txt");

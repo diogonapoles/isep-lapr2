@@ -16,11 +16,21 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
+/**
+ * The type Receptionist ui.
+ */
 public class ReceptionistUI implements Initializable {
     private Stage stage;
     @FXML
     private Button btnBack;
     private Appfx mainAppfx;
+
+    /**
+     * Btn back.
+     *
+     * @param event the event
+     * @throws Exception the exception
+     */
     @FXML
     void btnBack(ActionEvent event) throws Exception {
         try {

@@ -100,7 +100,6 @@ public class VaccinationCenterStore extends VaccinationCenter{
      *
      * @return the list
      */
-
     public List<VaccinationCenter> getVaccinationCenters() {
         return this.listVaccinationCenter;
     }

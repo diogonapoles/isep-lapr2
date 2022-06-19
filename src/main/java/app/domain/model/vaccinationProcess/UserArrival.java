@@ -22,11 +22,22 @@ public class UserArrival implements Serializable {
     private Company oCompany;
 
 
+    /**
+     * Instantiates a new User arrival.
+     *
+     * @param snsUser     the sns user
+     * @param arrivalTime the arrival time
+     * @param schedule    the schedule
+     */
     public UserArrival(SNSUser snsUser, Date arrivalTime, VaccineSchedule schedule) {
         this.snsUser = snsUser;
         this.arrivalTime = arrivalTime;
         this.schedule = schedule;
     }
+
+    /**
+     * Instantiates a new User arrival.
+     */
     public UserArrival(){
         oApp= App.getInstance();
         oCompany=oApp.getCompany();
@@ -41,22 +52,47 @@ public class UserArrival implements Serializable {
         return snsUser;
     }
 
+    /**
+     * Sets sns user.
+     *
+     * @param snsUser the sns user
+     */
     public void setSnsUser(SNSUser snsUser) {
         this.snsUser = snsUser;
     }
 
+    /**
+     * Gets arrival time.
+     *
+     * @return the arrival time
+     */
     public Date getArrivalTime() {
         return arrivalTime;
     }
 
+    /**
+     * Sets arrival time.
+     *
+     * @param arrivalTime the arrival time
+     */
     public void setArrivalTime(Date arrivalTime) {
         this.arrivalTime = arrivalTime;
     }
 
+    /**
+     * Gets schedule.
+     *
+     * @return the schedule
+     */
     public VaccineSchedule getSchedule() {
         return schedule;
     }
 
+    /**
+     * Sets schedule.
+     *
+     * @param schedule the schedule
+     */
     public void setSchedule(VaccineSchedule schedule) {
         this.schedule = schedule;
     }
@@ -66,6 +102,11 @@ public class UserArrival implements Serializable {
         return "User [" + "E-mail = " + snsUser.getEmailAddress() + " | Arrival Time = " + arrivalTime + " | Scheduled Time = " + schedule.getTime() + "]";
     }
 
+    /**
+     * Get arrival list list.
+     *
+     * @return the list
+     */
     public List getArrivalList(){
         return oCompany.getLegacySystemData().getArrivalList();
     }

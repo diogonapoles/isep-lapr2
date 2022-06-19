@@ -14,10 +14,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * The type Schedule vaccine ui.
+ */
 public class ScheduleVaccineUI implements Runnable {
 
     private ScheduleVaccineController controller;
 
+    /**
+     * Instantiates a new Schedule vaccine ui.
+     */
     public ScheduleVaccineUI() {
         this.controller = new ScheduleVaccineController();
     }

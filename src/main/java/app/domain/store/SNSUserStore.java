@@ -144,6 +144,12 @@ public class SNSUserStore {
         return null;
     }
 
+    /**
+     * Get sns user by email sns user.
+     *
+     * @param email the email
+     * @return the sns user
+     */
     public SNSUser getSNSUserByEmail(String email){
         for (SNSUser user : listSNSUser) {
             if (user.getEmailAddress().contains(email))
@@ -153,7 +159,12 @@ public class SNSUserStore {
     }
 
 
-
+    /**
+     * Gets sns user name by number.
+     *
+     * @param snsUserNumber the sns user number
+     * @return the sns user name by number
+     */
     public String getSNSUserNameByNumber(int snsUserNumber) {
         for (SNSUser user : listSNSUser){
             if (user.getSnsUserNumber().equals(snsUserNumber))

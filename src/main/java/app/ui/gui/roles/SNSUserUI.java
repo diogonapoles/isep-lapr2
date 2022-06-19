@@ -9,11 +9,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+/**
+ * The type Sns user ui.
+ */
 public class SNSUserUI {
     private Stage stage;
     @FXML
     private Button btnBack;
 
+    /**
+     * Btn back.
+     *
+     * @param event the event
+     */
     @FXML
     void btnBack(ActionEvent event) {
         try {

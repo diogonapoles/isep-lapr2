@@ -27,6 +27,11 @@ public class ListWaitingRoomController {
         this.oCompany = oApp.getCompany();
     }
 
+    /**
+     * Gets working.
+     *
+     * @return the working
+     */
     public VaccinationCenter getWorking() {
         vaccinationCenter = oCompany.getEmployeeStore().getWorking(oApp.getCurrentUserSession().getUserId().getEmail());
         return vaccinationCenter;

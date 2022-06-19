@@ -32,7 +32,6 @@ public class Company {
     private VaccineType vaccineType;
 
 
-
     /**
      * Instantiates a new Company.
      *
@@ -80,16 +79,46 @@ public class Company {
      */
     public CSVReader getCSVReader(){return this.oCSVReader;}
 
+    /**
+     * Get file utils file utils.
+     *
+     * @return the file utils
+     */
     public FileUtils getFileUtils(){return this.oFileUtils;}
 
+    /**
+     * Get brute force algorithm brute force.
+     *
+     * @return the brute force
+     */
     public BruteForce getBruteForceAlgorithm(){return this.oBruteForce;}
 
+    /**
+     * Get benchmark algorithm benchmark.
+     *
+     * @return the benchmark
+     */
     public Benchmark getBenchmarkAlgorithm(){return this.oBenchmark;}
 
+    /**
+     * Get vaccine vaccine.
+     *
+     * @return the vaccine
+     */
     public Vaccine getVaccine(){return this.oVaccine;}
 
+    /**
+     * Get legacy system data reader legacy system data reader.
+     *
+     * @return the legacy system data reader
+     */
     public LegacySystemDataReader getLegacySystemDataReader(){return this.oLegacySystemDataReader;}
 
+    /**
+     * Get legacy system data legacy system data.
+     *
+     * @return the legacy system data
+     */
     public LegacySystemData getLegacySystemData(){return this.oLegacySystemData;}
 
     /**
@@ -123,7 +152,18 @@ public class Company {
      */
     public SNSUserStore getSNSUserStore(){return this.oSNSUserStore;}
 
+    /**
+     * Get vaccinated to file vaccinated to file.
+     *
+     * @return the vaccinated to file
+     */
     public VaccinatedToFile getVaccinatedToFile(){return this.oVaccinatedToFile;}
+
+    /**
+     * Get vaccine type vaccine type.
+     *
+     * @return the vaccine type
+     */
     public VaccineType getVaccineType(){return this.vaccineType;}
 
 

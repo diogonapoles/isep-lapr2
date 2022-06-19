@@ -14,6 +14,9 @@ import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * The type Appfx.
+ */
 public class Appfx extends Application {
     private Stage stage;
     private Appfx mainAppfx;
@@ -22,6 +25,11 @@ public class Appfx extends Application {
     private final double SCENE_WIDTH = 450.0;
     private final double SCENE_HEIGHT = 350.0;
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         launch(args);
     }
@@ -61,8 +69,10 @@ public class Appfx extends Application {
         }
 
 
-
-   public void toMainScene() {
+    /**
+     * To main scene.
+     */
+    public void toMainScene() {
         try {
             MainUI ui = (MainUI) replaceSceneContent("/fxml/Main.fxml");
             ui.setMainApp(this);
@@ -71,15 +81,32 @@ public class Appfx extends Application {
         }
     }
 
+    /**
+     * Sets main app.
+     *
+     * @param mainAppfx the main appfx
+     */
     public void setMainApp(Appfx mainAppfx) {
         this.mainAppfx = mainAppfx;
 
     }
 
+    /**
+     * Gets stage.
+     *
+     * @return the stage
+     */
     public Stage getStage() {
         return this.stage;
     }
 
+    /**
+     * Replace scene content initializable.
+     *
+     * @param fxml the fxml
+     * @return the initializable
+     * @throws Exception the exception
+     */
     public Initializable replaceSceneContent(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader();
         InputStream in = Appfx.class.getResourceAsStream(fxml);

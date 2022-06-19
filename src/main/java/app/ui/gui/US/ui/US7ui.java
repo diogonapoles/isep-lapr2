@@ -13,9 +13,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
-
-
-
+/**
+ * The type Us 7 ui.
+ */
 public class US7ui {
 
     private US7ctrl controller;
@@ -36,12 +36,23 @@ public class US7ui {
     private Button btnOK1;
     @FXML
     private Button btnOK2;
+
+    /**
+     * Sets main app.
+     *
+     * @param mainAppfx the main appfx
+     */
     public void setMainApp(Appfx mainAppfx) {
         this.mainAppfx = mainAppfx;
 
     }
 
 
+    /**
+     * Btn ok 1.
+     *
+     * @param event the event
+     */
     @FXML
    public void btnOK1(ActionEvent event) {
         try {
@@ -58,6 +69,12 @@ public class US7ui {
             ex.printStackTrace();
         }
     }
+
+    /**
+     * Btn ok 2.
+     *
+     * @param event the event
+     */
     @FXML
     public void btnOK2(ActionEvent event) {
         try {
@@ -76,11 +93,19 @@ public class US7ui {
     }
 
 
+    /**
+     * Instantiates a new Us 7 ui.
+     */
     public US7ui() {
         controller = new US7ctrl();
     }
 
 
+    /**
+     * Btn confirm.
+     *
+     * @param event the event
+     */
     @FXML
     public void btnConfirm(ActionEvent event) {
         snsUserNumber = userTextField.getText();
@@ -128,6 +153,11 @@ public class US7ui {
         return this.controller.isUserInRecoveryList(snsUserNumber);
     }
 
+    /**
+     * Btn back.
+     *
+     * @param event the event
+     */
     @FXML
     public void btnBack(ActionEvent event) {
         try {

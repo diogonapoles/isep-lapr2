@@ -7,13 +7,28 @@ import java.util.Date;
 import java.util.List;
 
 
+/**
+ * The type Brute force.
+ */
 public class BruteForce {
     private Company oCompany;
 
+    /**
+     * Instantiates a new Brute force.
+     *
+     * @param oCompany the o company
+     */
     public BruteForce(Company oCompany) {
         this.oCompany = oCompany;
     }
 
+    /**
+     * Create input list int [ ].
+     *
+     * @param timeInterval the time interval
+     * @param opening      the opening
+     * @return the int [ ]
+     */
     public int[] createInputList(int timeInterval, Date opening) {
         int listLength = getListLength(timeInterval);
         Calendar startCalendar = Calendar.getInstance();
@@ -57,12 +72,25 @@ public class BruteForce {
         return diffList;
     }
 
+    /**
+     * Find day string.
+     *
+     * @param arrivals the arrivals
+     * @return the string
+     */
     public String findDay(List<Date> arrivals){
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         return dateFormat.format(arrivals.get(1));
     }
 
     private static int TIME = 720;
+
+    /**
+     * Get list length int.
+     *
+     * @param timeInterval the time interval
+     * @return the int
+     */
     public int getListLength(int timeInterval){
         int length = TIME/timeInterval;
         if (length == 0 || length == 1){
@@ -72,6 +100,12 @@ public class BruteForce {
         }
     }
 
+    /**
+     * Max sub array int [ ].
+     *
+     * @param nums the nums
+     * @return the int [ ]
+     */
     public int[] maxSubArray(int[] nums) {
 
         int currSum = nums[0];
@@ -100,6 +134,14 @@ public class BruteForce {
         return max;
     }
 
+    /**
+     * Find limit int.
+     *
+     * @param nums   the nums
+     * @param maxPos the max pos
+     * @param maxSum the max sum
+     * @return the int
+     */
     public int findLimit(int[] nums, int maxPos, int maxSum){
         int sum=0;
         int i = maxPos;

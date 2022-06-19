@@ -12,8 +12,9 @@ import java.util.Collections;
 import java.util.List;
 
 
-
-
+/**
+ * The type Vaccinated to file.
+ */
 public class VaccinatedToFile {
 
 
@@ -24,11 +25,19 @@ public class VaccinatedToFile {
     private List<VaccineAdministration> listFullyVaccinated = new ArrayList();
 
 
-
+    /**
+     * Instantiates a new Vaccinated to file.
+     */
     public VaccinatedToFile() {
 
     }
 
+    /**
+     * Validate file name boolean.
+     *
+     * @param fileName the file name
+     * @return the boolean
+     */
     public boolean validateFileName(String fileName) {
         try {
             File myObj = new File(fileName);
@@ -43,6 +52,11 @@ public class VaccinatedToFile {
     }
 
 
+    /**
+     * Gets fully vaccinated patients.
+     *
+     * @return the fully vaccinated patients
+     */
     public List getFullyVaccinatedPatients() {
         for (VaccineAdministration administration : listVaccinated){
             if (administration.getDoses() == administration.getVaccine().getDoseNumber()){
@@ -53,7 +67,13 @@ public class VaccinatedToFile {
     }
 
 
-
+    /**
+     * Write to file.
+     *
+     * @param fileName                  the file name
+     * @param listAdministratedVaccines the list administrated vaccines
+     * @throws Exception the exception
+     */
     public void writeToFile(String fileName, List<VaccineAdministration> listAdministratedVaccines) throws Exception {
         FileWriter writer = null;
         try {
