@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: app.controller.NewVaccineControllerTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.152 s <<< FAILURE! - in app.controller.NewVaccineControllerTest
+newVaccine  Time elapsed: 0.007 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
+	at app.controller.NewVaccineControllerTest.newVaccine(NewVaccineControllerTest.java:19)
+

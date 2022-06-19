@@ -52,18 +52,15 @@ public class VaccinatedToFile {
         return listFullyVaccinated;
     }
 
-    public List getListVaccinated() {
-        return VaccinationCenter.getListAdministratedVaccines();
-    }
 
 
-    public void writeToFile(String fileName) throws Exception {
+    public void writeToFile(String fileName, List<VaccineAdministration> listAdministratedVaccines) throws Exception {
         FileWriter writer = null;
         try {
             writer = new FileWriter(fileName);
 
 
-            listVaccinated = getListVaccinated();
+            listVaccinated = listAdministratedVaccines;
             listFullyVaccinated = getFullyVaccinatedPatients();
 
             System.out.println(HEADER + "\n");

@@ -2,7 +2,6 @@ package app.domain.model;
 
 import app.controller.App;
 import app.controller.centerCoordinator.LegacySystemDataImporterController;
-import app.domain.shared.BruteForce;
 import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;

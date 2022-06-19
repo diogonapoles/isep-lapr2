@@ -16,12 +16,14 @@ public class AdverseReactionsUI implements Runnable {
     }
 
     public void run() {
-        snsUserNumber = Utils.readLineFromConsole("Insert the User SNS Number");
+        snsUserNumber = Utils.readLineFromConsole("Insert the SNS User Number");
         if (isUserInRecoveryList(snsUserNumber)) {
             adverseReactions = Utils.readLineFromConsole("Describe the Adverse Reactions Presented");
             System.out.println("Reactions Registered Successfully");
-        }else
-            throw new IllegalArgumentException("User is not in the Recovery Room");
+        }else {
+            System.out.println("User is not in the Recovery Room");
+            return;
+        }
 
 
 

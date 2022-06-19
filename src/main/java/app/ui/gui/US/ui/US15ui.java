@@ -1,3 +1,4 @@
+/*
 package app.ui.gui.US.ui;
 
 import app.controller.centerCoordinator.VaccinatedToFileController;
@@ -174,4 +175,4 @@ public class US15ui implements Initializable {
         }
     }
 
-}
+}*/

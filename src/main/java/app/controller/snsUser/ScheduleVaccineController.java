@@ -4,6 +4,7 @@ import app.controller.App;
 import app.domain.model.*;
 import app.domain.model.systemUser.SNSUser;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
+import app.domain.model.vaccinationProcess.VaccineAdministration;
 import app.domain.model.vaccine.Vaccine;
 import app.domain.model.vaccinationProcess.VaccineSchedule;
 import app.domain.model.vaccine.VaccineType;
@@ -13,6 +14,9 @@ import pt.isep.lei.esoft.auth.UserSession;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -80,8 +84,18 @@ public class ScheduleVaccineController {
         return vaccinationCenter.validateAdministratedVaccines(vaccineType, snsUser);
     }
 
-    public Vaccine ongoingVaccine(VaccineType vaccineType, SNSUser snsUser, Date date){
+    public VaccineAdministration ongoingVaccine(VaccineType vaccineType, SNSUser snsUser, Date date){
         return vaccinationCenter.validateOngoingVaccine(vaccineType, date);
+    }
+
+    public boolean timeSinceLastDose(VaccineAdministration administration, Date schedule){
+        return vaccinationCenter.validateTimeSinceLastDose(administration, schedule);
+    }
+
+    public int calculateDaysLeftTimeSinceLastDose(Date lastDose, Date newDose){
+        LocalDate d1 = lastDose.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate d2 = newDose.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        return (Period.between(d1, d2)).getDays();
     }
 
     public Date readDate(String prompt)

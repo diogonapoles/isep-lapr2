@@ -2,7 +2,7 @@ package app.controller.centerCoordinator;
 
 import app.controller.App;
 import app.domain.model.Benchmark;
-import app.domain.shared.BruteForce;
+import app.domain.model.BruteForce;
 import app.domain.model.Company;
 import app.domain.model.vaccinationCenter.VaccinationCenter;
 
