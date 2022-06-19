@@ -69,20 +69,6 @@ public class LegacySystemDataImporterController {
 
     }
 
-    public String getNameByNumber() {
-        return oCompany.getSNSUserStore().getSNSUserNameByNumber(oCompany.getLegacySystemData().getSnsUserNumber());
-    }
-
-    public String getVaccineDescription() {
-        return oCompany.getVaccine().getVaccineDescription();
-    }
-
-
-  /*  public int getSnsUserNumber() {
-        return oCompany.getLegacySystemData().getSnsUserNumber();
-    }
-
-   */
 
 
     public List sortByParameters(String sortChoice, String sortOrder, String sortArrivalLeaving, List listLegacyData) {
